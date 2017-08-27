@@ -1,0 +1,24 @@
+{
+  "name": "clarion",
+  "version": "0.1.0",
+  "description": "CLI for adding the Clarion framework to a project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "tsc && npm i -g"
+  },
+  "author": "Burton Smith @breakstuff.io",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "commander": "^2.11.0"
+  },
+  "bin": {
+    "clarion": "./bin/clarion" 
+  },
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/commander": "^2.9.1",
+    "@types/node": "^8.0.20"
+  }
+}
