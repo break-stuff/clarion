@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../clarion.js');
+require('../lib/clarion.js');

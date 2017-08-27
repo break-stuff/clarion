@@ -7,7 +7,7 @@ export interface IAdd {
 }
 
 export class Add implements IAdd {
-    fileManager: IFileManager = new FileManager();
+    _fileManager: IFileManager = new FileManager();
 
     addNewFile(): void {
         switch (program.args.length) {
@@ -27,7 +27,7 @@ export class Add implements IAdd {
     }
 
     addFileToCurrentDirectory(): void {
-        let directory = this.fileManager.findDirectoryByName(program.args[1]);
+        let directory = this._fileManager.findDirectoryByName(program.args[1]);
         if (directory) {
             console.log(chalk.yellow('Please add the name of a file to create.'));
         } else {
@@ -36,8 +36,8 @@ export class Add implements IAdd {
     }
 
     addFileToSpecifiedDirectory(): void {
-        let directoryName = this.fileManager.findDirectoryByName(program.args[1]);
-        let pathToDirectory = this.fileManager.findDirectory(directoryName);
+        let directoryName = this._fileManager.findDirectoryByName(program.args[1]);
+        let pathToDirectory = this._fileManager.findDirectory(directoryName);
         if (pathToDirectory) {
             this.processNewFile(pathToDirectory, program.args[2]);
         } else {
@@ -46,10 +46,10 @@ export class Add implements IAdd {
     }
 
     processNewFile(pathToDirectory: string, fileName: string) {
-        let extension = this.fileManager.getFileExtension(pathToDirectory);
+        let extension = this._fileManager.getFileExtension(pathToDirectory);
         let newFile = `${fileName}${extension}`;
-        let manifestFile = `${pathToDirectory}/${this.fileManager.getManifestFile(pathToDirectory)}`;
-        this.fileManager.saveFile(`${pathToDirectory}/${newFile}`, '');
-        this.fileManager.updateManifest(newFile, manifestFile);
+        let manifestFile = `${pathToDirectory}/${this._fileManager.getManifestFile(pathToDirectory)}`;
+        this._fileManager.saveFile(`${pathToDirectory}/${newFile}`, '');
+        this._fileManager.updateManifest(newFile, manifestFile);
     }
 }

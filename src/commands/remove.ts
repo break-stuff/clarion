@@ -7,7 +7,8 @@ export interface IRemove {
 }
 
 export class Remove implements IRemove {
-    fileManager: IFileManager = new FileManager();
+    _fileManager: IFileManager = new FileManager();
+    
     removeFile(): void {
         switch (program.args.length) {
             case 1:
@@ -26,7 +27,7 @@ export class Remove implements IRemove {
     }
 
     removeFileFromCurrentDirectory(): void {
-        let directory = this.fileManager.findDirectoryByName(program.args[1]);
+        let directory = this._fileManager.findDirectoryByName(program.args[1]);
         if (directory) {
             console.log(chalk.yellow('Please add the name of a file to be removed.'));
         } else {
@@ -40,8 +41,8 @@ export class Remove implements IRemove {
     }
 
     removeFileFromSpecifiedDirectory(): void {
-        let directoryName = this.fileManager.findDirectoryByName(program.args[1]);
-        let pathToDirectory = this.fileManager.findDirectory(directoryName);
+        let directoryName = this._fileManager.findDirectoryByName(program.args[1]);
+        let pathToDirectory = this._fileManager.findDirectory(directoryName);
         if (pathToDirectory) {
             this.processFileRemoval(pathToDirectory, program.args[2]);
             // let extension = this.fileManager.getFileExtension(pathToDirectory);
@@ -55,10 +56,10 @@ export class Remove implements IRemove {
     }
 
     processFileRemoval(pathToDirectory: string, fileName: string): void {
-        let extension = this.fileManager.getFileExtension(pathToDirectory);
+        let extension = this._fileManager.getFileExtension(pathToDirectory);
         let fileToRemove = `${fileName}${extension}`;
-        let manifestFile = `${pathToDirectory}/${this.fileManager.getManifestFile(pathToDirectory)}`;
-        this.fileManager.removeFile(`${pathToDirectory}/${fileToRemove}`);
-        this.fileManager.updateManifest(fileToRemove, manifestFile);
+        let manifestFile = `${pathToDirectory}/${this._fileManager.getManifestFile(pathToDirectory)}`;
+        this._fileManager.removeFile(`${pathToDirectory}/${fileToRemove}`);
+        this._fileManager.updateManifest(fileToRemove, manifestFile);
     }
 }

@@ -8,11 +8,11 @@ export interface IGulp {
 }
 
 export class Gulp implements IGulp {
-    fileManager: IFileManager = new FileManager();
+    _fileManager: IFileManager = new FileManager();
 
     createGulpfile(projectName: string): void {
         let rootPath = './' + projectName;
-        this.fileManager.saveFile(rootPath + '/gulpfile.js', this.createGulpfileContents());
+        this._fileManager.saveFile(rootPath + '/gulpfile.js', this.createGulpfileContents());
     }
     createGulpDependencies(): string {
         let devDependencies: any = {
@@ -34,8 +34,8 @@ export class Gulp implements IGulp {
     }
 
     createGulpfileContents(): string {
-        let extension = this.fileManager.getFileExtension(null);
-        let styleFormat = this.fileManager.getStyleFormat(extension);
+        let extension = this._fileManager.getFileExtension(null);
+        let styleFormat = this._fileManager.getStyleFormat(extension);
         let contents: string =`'use strict'\n` +
                 '\n' +
                 `var gulp = require('gulp');\n` +
