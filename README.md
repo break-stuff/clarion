@@ -2,6 +2,8 @@
 
 A simple CLI for scaffolding front-end projects using the Clarion Style Architecture.
 
+**Please not that this project is still in alpha as features are still being ironed out. But please do not let it deter you from taking advantage of its great capabilities.**
+
 ## Installation
 
 Install [Node.js](https://nodejs.org/en/), if you don't already have it installed.
