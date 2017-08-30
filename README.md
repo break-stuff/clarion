@@ -12,13 +12,13 @@ In your terminal or command prompt type:
 
     npm install -g clarion
 
-** **Mac and Linux Users: There is a permissions bug. This can be fixed by running the following command. Sorry, this will be updated shortly.**
+<!-- ** **Mac and Linux Users: There is a permissions bug. This can be fixed by running the following command. Sorry, this will be updated shortly.**
 
     chmod -R 755 /usr/local/lib/node_modules/clarion
 
 **or if you are using nvm**
 
-    chmod -R 755 /Users/<username>/.nvm/versions/node/<node version>/lib/node_modules/clarion
+    chmod -R 755 /Users/<username>/.nvm/versions/node/<node version>/lib/node_modules/clarion -->
 
 ## Start a new Project
     clarion start MyProject

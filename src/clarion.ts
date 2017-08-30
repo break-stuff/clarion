@@ -2,7 +2,7 @@ import * as program from "commander";
 import { ITaskManager, TaskManager } from "./taskManager";
 
 program
-    .version('0.1.5')
+    .version('0.1.6')
     .usage('<command> [project or file name] [options]')
     .command('start', 'generate a new project')
     .command('add', 'add a new file to your project')
