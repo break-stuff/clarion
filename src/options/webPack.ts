@@ -30,6 +30,7 @@ export class WebPack implements IWebPak {
         if (program.less) {
             devDependencies['less-loader'] = "^4.0.5";
         } else {
+            devDependencies['node-sass'] = "^4.5.3";
             devDependencies['sass-loader'] = "^6.0.6";
         }
 
@@ -49,7 +50,6 @@ export class WebPack implements IWebPak {
             + '    },\n'
             + '    module: {\n'
             + '        loaders: [\n'
-            + '            {test: /\\.js$/, exclude: /node_modules/, loader: \'babel-loader\'},\n'
             + `            {test: /\\${extension}$/, loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', '${styleFormat}-loader'])}\n`
             + '        ]\n'
             + '    },\n'

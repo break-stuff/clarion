@@ -2,7 +2,7 @@
 
 A simple CLI for scaffolding front-end projects using the Clarion Style Architecture.
 
-**Please not that this project is still in alpha as features are still being ironed out. But please do not let it deter you from taking advantage of its great capabilities.**
+**Please note that this project is still in alpha as features are still being ironed out. But please do not let it deter you from taking advantage of its great capabilities.**
 
 ## Installation
 
@@ -14,7 +14,7 @@ In your terminal or command prompt type:
 
 ** **Mac and Linux Users: There is a permissions bug. This can be fixed by running the following command. Sorry, this will be updated shortly.**
 
-    chmod -R 755 /user/local/lib/node_modules/clarion
+    chmod -R 755 /usr/local/lib/node_modules/clarion
 
 **or if you are using nvm**
 
