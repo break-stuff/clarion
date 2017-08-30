@@ -34,24 +34,33 @@ The project architecture implements the Clarion Style Architecture.
 
     MyProject/
     |--build/
+    |
     |--src/
     |  |--sass/
-    |  |   |--00_Abstracts/     # Variables, Functions, Mixins, and Placeholders
-    |  |   |--01_Base/          # Resets/Normalize, Typography Rules, Etc.
-    |  |   |  |--_index.scss    # Manifest File
-    |  |   |--02_Themes/        # Themes and Third Party Plug-In Styles
-    |  |   |  |--_index.scss
-    |  |   |--03_Elements/      # Styles for HTML tags, such as a form label, an input or a button
-    |  |   |  |--_index.scss
-    |  |   |--04_Components/    # Cards, Carousels, and Navbars
-    |  |   |  |--_index.scss   
-    |  |   |--05_Layouts/       # Grid System, Header, Footer, and Sidebars
-    |  |   |  |--_index.scss
-    |  |   |--06_Pages/         # Page specific styles
-    |  |   |  |--_index.scss
-    |  |   |--07_Utilities/     # Utilities and Helper Classes
-    |  |   |  |--_index.scss
-    |  |   |--styles.scss/      # Main Sass Manifest
+    |  |  |--00_Abstracts/     # Variables, Functions, Mixins, and Placeholders
+    |  |  |
+    |  |  |--01_Base/          # Resets/Normalize, Typography Rules, Etc.
+    |  |  |  |--_index.scss    # Manifest File
+    |  |  |
+    |  |  |--02_Themes/        # Themes and Third Party Plug-In Styles
+    |  |  |  |--_index.scss
+    |  |  |
+    |  |  |--03_Elements/      # Styles for HTML tags, such as a form label, an input or a button
+    |  |  |  |--_index.scss
+    |  |  |
+    |  |  |--04_Components/    # Cards, Carousels, and Navbars
+    |  |  |  |--_index.scss 
+    |  |  |  
+    |  |  |--05_Layouts/       # Grid System, Header, Footer, and Sidebars
+    |  |  |  |--_index.scss
+    |  |  |
+    |  |  |--06_Pages/         # Page specific styles
+    |  |  |  |--_index.scss
+    |  |  |
+    |  |  |--07_Utilities/     # Utilities and Helper Classes
+    |  |  |  |--_index.scss
+    |  |  |
+    |  |  |--styles.scss/      # Main Sass Manifest
     |  |
     |  |--scripts/
     |     |--components/        # Component-Specific Scripts
