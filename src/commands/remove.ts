@@ -1,6 +1,6 @@
 import * as program from "commander";
-import * as chalk from 'chalk';
 import { FileManager, IFileManager } from "../fileManager";
+import { ILogManager, LogManager } from "../logManager";
 
 export interface IRemove {
     removeFile(): void;
@@ -8,11 +8,12 @@ export interface IRemove {
 
 export class Remove implements IRemove {
     _fileManager: IFileManager = new FileManager();
+    _logManager: ILogManager = new LogManager();
     
     removeFile(): void {
         switch (program.args.length) {
             case 1:
-                console.log(chalk.yellow('Please add the name of a file to be removed.'));
+            this._logManager.warning('Please add the name of a file to be removed.');
                 break;
             case 2:
                 this.removeFileFromCurrentDirectory();
@@ -21,7 +22,7 @@ export class Remove implements IRemove {
                 this.removeFileFromSpecifiedDirectory();
                 break;
             default:
-                console.log(chalk.yellow('Sorry, we were not able to process your request.'));
+            this._logManager.warning('Sorry, we were not able to process your request.');
                 break;
         }
     }
@@ -29,14 +30,9 @@ export class Remove implements IRemove {
     removeFileFromCurrentDirectory(): void {
         let directory = this._fileManager.findDirectoryByName(program.args[1]);
         if (directory) {
-            console.log(chalk.yellow('Please add the name of a file to be removed.'));
+            this._logManager.warning('Please add the name of a file to be removed.');
         } else {
             this.processFileRemoval('.', program.args[1]);
-            // let extension = this.fileManager.getFileExtension('./');
-            // let fileToRemove = `./${program.args[1]}${extension}`;
-            // let manifestFile = `./${this.fileManager.getManifestFile('./')}`;
-            // this.fileManager.removeFile(fileToRemove);
-            // this.fileManager.updateManifest(fileToRemove, manifestFile);
         }
     }
 
@@ -45,13 +41,8 @@ export class Remove implements IRemove {
         let pathToDirectory = this._fileManager.findDirectory(directoryName);
         if (pathToDirectory) {
             this.processFileRemoval(pathToDirectory, program.args[2]);
-            // let extension = this.fileManager.getFileExtension(pathToDirectory);
-            // let fileToRemove = `${program.args[2]}${extension}`;
-            // let manifestFile = `${pathToDirectory}/${this.fileManager.getManifestFile(pathToDirectory)}`;
-            // this.fileManager.removeFile(`${pathToDirectory}/${fileToRemove}`);
-            // this.fileManager.updateManifest(fileToRemove, manifestFile);
         } else {
-            console.log(chalk.yellow('Sorry, the directory you specified was not found.'));
+            this._logManager.warning('Sorry, the directory you specified was not found.');
         }
     }
 

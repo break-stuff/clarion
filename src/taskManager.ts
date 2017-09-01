@@ -1,13 +1,15 @@
 import { IStart, Start } from "./commands/start";
 import { IAdd, Add } from "./commands/add";
 import { IRemove, Remove } from "./commands/remove";
-import * as chalk from "chalk";
+import { ILogManager, LogManager } from "./logManager";
 
 export interface ITaskManager {
     processUserAction(commands: string[]);
 }
 
 export class TaskManager implements ITaskManager {
+    _logManager: ILogManager = new LogManager();
+
     processUserAction(commands: string[]) {
         let action = commands[0];
 
@@ -26,11 +28,11 @@ export class TaskManager implements ITaskManager {
                     remove.removeFile();
                     break;
                 default:
-                    console.log(chalk.red(`${commands[0]} is not a recognized command.`));
+                    this._logManager.warning(`${commands[0]} is not a recognized command.`);
                     break;
             }
         } else {
-            console.log(chalk.red('Please enter a valid command. Try "clarion --help" for more information.'))
+            this._logManager.warning('Please enter a valid command. Try "clarion --help" for more information.');
         }
     }
 }

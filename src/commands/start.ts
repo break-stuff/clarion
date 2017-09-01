@@ -4,8 +4,8 @@ import { IWebPak, WebPack } from "../options/webPack";
 import { IGulp, Gulp } from "../options/gulp";
 import { IGrunt, Grunt } from "../options/grunt";
 import { IPostCssConfig, PostCssConfig } from "../options/postCss";
+import { ILogManager, LogManager } from "../logManager";
 import { data } from "../data";
-import * as chalk from 'chalk';
 
 export interface IStart {
     createNewProject(): void;
@@ -15,6 +15,7 @@ export class Start implements IStart {
     _fileManager: IFileManager = new FileManager();
     _projectDependencies: string = '';
     _projectCommands: string = '';
+    _logManager: ILogManager = new LogManager();
 
     createNewProject(): void {
         let projectName = program.args[1] || '';
@@ -163,8 +164,8 @@ export class Start implements IStart {
 
             if (projectName) instructions = `cd ${projectName} && `;
 
-            console.log(chalk.yellow('\nTo get started run the following command:'));
-            console.log(chalk.white(instructions + 'npm install'));
+            this._logManager.info('\nTo get started run the following command:');
+            this._logManager.info(instructions + 'npm install');
         }
     }
 }

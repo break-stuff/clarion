@@ -1,8 +1,8 @@
 import * as path from "path";
 import * as fs from "fs";
 import * as program from "commander";
-import * as chalk from 'chalk';
 import { data } from './data';
+import { ILogManager, LogManager } from "./logManager";
 
 export interface IFileManager {
     saveFile(destination: string, content: string): void;
@@ -17,26 +17,28 @@ export interface IFileManager {
     removeFile(filePath: string): void;
     findDirectory(directory: string): string;
     readFile(filePath: string): string;
-    getStyleFormat(extension:string): string;
+    getStyleFormat(extension: string): string;
 }
 
 export class FileManager implements IFileManager {
+    _logger: ILogManager = new LogManager();
+
     saveFile(destination: string, content: string): void {
         try {
             fs.writeFileSync(destination, content);
+            this._logger.success(`Saved file:        ${destination}`);
         } catch (error) {
-            console.log(chalk.red(`There was an error saving this file: ${destination} \n${error}`));
+            this._logger.error(`There was an error saving this file: ${destination} \n${error}`);
         }
-        console.log(chalk.blue(`Saved file:        ${destination}`));
     }
 
     createDirectory(pathName: string): void {
         try {
             fs.mkdirSync(pathName);
+            this._logger.success(`Created directory: ${pathName}`);
         } catch (error) {
-            console.log(chalk.red(`There was an error creating this directory: ${pathName} \n${error}`));
+            this._logger.error(`There was an error creating this directory: ${pathName} \n${error}`);
         }
-        console.log(chalk.green(`Created directory: ${pathName}`));
     }
 
     getFullFileName(fileName: string, manifestFile: string): string {
@@ -55,7 +57,6 @@ export class FileManager implements IFileManager {
         try {
             return fs.statSync(fileName).isFile();
         } catch (err) {
-            console.log('Could not find file: ' + fileName);
             return false;
         }
     }
@@ -113,29 +114,31 @@ export class FileManager implements IFileManager {
     }
 
     updateManifest(fileName: string, manifestFile: string): void {
-        switch (program.args[0]) {
-            case 'add':
-                this.addFileToManifest(fileName, manifestFile);
-                break;
-            case 'remove':
-                this.removeFileFromManifest(fileName, manifestFile);
-                break;
-            default:
-                console.log(chalk.yellow('Sorry, we were not able to process your request.'));
-                break;
+        if (this.fileExists(manifestFile)) {
+            switch (program.args[0]) {
+                case 'add':
+                    this.addFileToManifest(fileName, manifestFile);
+                    break;
+                case 'remove':
+                    this.removeFileFromManifest(fileName, manifestFile);
+                    break;
+                default:
+                    this._logger.warning('Sorry, we were not able to process your request.');
+                    break;
+            }
         }
     }
 
     addFileToManifest(fileName: string, manifestFile: string): void {
         fs.appendFileSync(manifestFile, `@import '${fileName}';\n`);
-        console.log(chalk.green(`Saved file:        ${fileName} was added to the manifest.`));
+        this._logger.success(`Saved file:        ${fileName} was added to the manifest.`);
     }
 
     removeFileFromManifest(fileName: string, manifestFile: string): void {
         let importStatements = this.readFile(manifestFile).split('\n');
         let fileIndex = importStatements.indexOf(`@import '${fileName}';`);
         if (fileIndex < 0) {
-            console.log(chalk.yellow('File to be removed was not found in your manifest.'));
+            this._logger.warning('File to be removed was not found in your manifest.');
         } else {
             importStatements.splice(fileIndex, 1);
             let formattedImportStatements = importStatements.join('\n');
@@ -145,11 +148,15 @@ export class FileManager implements IFileManager {
 
     removeFile(filePath: string): void {
         try {
-            fs.unlinkSync(filePath);
+            if (this.fileExists(filePath)) {
+                fs.unlinkSync(filePath);
+            } else {
+                this._logger.warning(filePath + ' was not found');
+            }
         } catch (error) {
-            console.log(chalk.red(`There was an error removing this file: ${filePath} \n${error}`));
+            this._logger.error(`There was an error removing this file: ${filePath} \n${error}`);
         }
-        console.log(chalk.blue(`File removed:      ${filePath}`));
+        this._logger.success(`File removed:      ${filePath}`);
     }
 
 
@@ -172,13 +179,13 @@ export class FileManager implements IFileManager {
     readFile(filePath: string): string {
         let contents = '';
 
-        if(this.fileExists(filePath))
+        if (this.fileExists(filePath))
             contents = fs.readFileSync(filePath).toString();
 
         return contents;
     }
 
-    getStyleFormat(extension:string): string {
+    getStyleFormat(extension: string): string {
         return extension.replace('.', '') === 'less' ? 'less' : 'sass';
     }
 }

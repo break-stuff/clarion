@@ -1,6 +1,6 @@
 import * as program from "commander";
-import * as chalk from 'chalk';
 import { FileManager, IFileManager } from "../fileManager";
+import { ILogManager, LogManager } from "../logManager";
 
 export interface IAdd {
     addNewFile(): void;
@@ -8,11 +8,12 @@ export interface IAdd {
 
 export class Add implements IAdd {
     _fileManager: IFileManager = new FileManager();
+    _logManager: ILogManager = new LogManager();
 
     addNewFile(): void {
         switch (program.args.length) {
             case 1:
-                console.log(chalk.yellow('Please add the name of a file to create.'));
+                this._logManager.warning('Please add the name of a file to create.');
                 break;
             case 2:
                 this.addFileToCurrentDirectory();
@@ -21,7 +22,7 @@ export class Add implements IAdd {
                 this.addFileToSpecifiedDirectory();
                 break;
             default:
-                console.log(chalk.yellow('Sorry, we were not able to process your request.'));
+                this._logManager.warning('Sorry, we were not able to process your request.');
                 break;
         }
     }
@@ -29,7 +30,7 @@ export class Add implements IAdd {
     addFileToCurrentDirectory(): void {
         let directory = this._fileManager.findDirectoryByName(program.args[1]);
         if (directory) {
-            console.log(chalk.yellow('Please add the name of a file to create.'));
+            this._logManager.warning('Please add the name of a file to create.');
         } else {
             this.processNewFile('.', program.args[1]);
         }
@@ -41,7 +42,7 @@ export class Add implements IAdd {
         if (pathToDirectory) {
             this.processNewFile(pathToDirectory, program.args[2]);
         } else {
-            console.log(chalk.yellow('Sorry, the directory you specified was not found.'));
+            this._logManager.warning('Sorry, the directory you specified was not found.');
         }
     }
 
@@ -49,7 +50,12 @@ export class Add implements IAdd {
         let extension = this._fileManager.getFileExtension(pathToDirectory);
         let newFile = `${fileName}${extension}`;
         let manifestFile = `${pathToDirectory}/${this._fileManager.getManifestFile(pathToDirectory)}`;
-        this._fileManager.saveFile(`${pathToDirectory}/${newFile}`, '');
-        this._fileManager.updateManifest(newFile, manifestFile);
+
+        if (!this._fileManager.fileExists(`${pathToDirectory}/${newFile}`)) {
+            this._fileManager.saveFile(`${pathToDirectory}/${newFile}`, '');
+            this._fileManager.updateManifest(newFile, manifestFile);
+        } else {
+            this._logManager.warning(newFile + ' already exists.');
+        }
     }
 }
