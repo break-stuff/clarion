@@ -1,6 +1,7 @@
 import { IStart, Start } from "./commands/start";
 import { IAdd, Add } from "./commands/add";
 import { IRemove, Remove } from "./commands/remove";
+import { IConfig, Config } from "./commands/config";
 import { ILogService, LogService } from "./services/logService";
 
 export interface ITaskService {
@@ -26,6 +27,10 @@ export class TaskService implements ITaskService {
                 case 'remove':
                     let remove: IRemove = new Remove();
                     remove.removeFile();
+                    break;
+                case 'config':
+                    let config: IConfig = new Config();
+                    config.updateConfig();
                     break;
                 default:
                     this._logService.warning(`${commands[0]} is not a recognized command.`);

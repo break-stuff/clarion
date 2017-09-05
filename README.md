@@ -47,25 +47,25 @@ The project architecture implements the Clarion Style Architecture.
     |  |  |--00_Abstracts/     # Variables, Functions, Mixins, and Placeholders
     |  |  |
     |  |  |--01_Base/          # Resets/Normalize, Typography Rules, Etc.
-    |  |  |  |--index.scss    # Manifest File
+    |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--02_Themes/        # Themes and Third Party Plug-In Styles
-    |  |  |  |--index.scss
+    |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--03_Elements/      # Styles for HTML tags, such as a form label, an input or a button
-    |  |  |  |--index.scss
+    |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--04_Components/    # Cards, Carousels, and Navbars
-    |  |  |  |--index.scss 
+    |  |  |  |--index.scss     # Manifest File
     |  |  |  
     |  |  |--05_Layouts/       # Grid System, Header, Footer, and Sidebars
-    |  |  |  |--index.scss
+    |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--06_Pages/         # Page specific styles
-    |  |  |  |--index.scss
+    |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--07_Utilities/     # Utilities and Helper Classes
-    |  |  |  |--index.scss
+    |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--styles.scss/      # Main Sass Manifest
     |  |

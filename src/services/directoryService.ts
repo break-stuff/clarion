@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as program from "commander";
 import data from '../data/directories';
 import { ILogService, LogService } from "./logService";
+import { IConfigService, ConfigService } from "./configService";
 
 
 export interface IDirectoryService {
@@ -14,6 +15,8 @@ export interface IDirectoryService {
 
 export class DirectoryService implements IDirectoryService {
     _logger: ILogService = new LogService();
+    _configService: IConfigService = new ConfigService();
+    _config = this._configService.getConfigData();
 
     createDirectory(pathName: string): void {
         try {
@@ -52,8 +55,8 @@ export class DirectoryService implements IDirectoryService {
             pathToDirectory = `./${directory}`;
         } else {
             data.styleTypes.forEach(x => {
-                if (this.directoryExists(`./src/${x}/${directory}`)) {
-                    pathToDirectory = `./src/${x}/${directory}`;
+                if (this.directoryExists(path.resolve('./', this._config.paths.styles, `${x}/${directory}`))) {
+                    pathToDirectory = path.resolve('./', this._config.paths.styles, `${x}/${directory}`);
                 }
             });
         }

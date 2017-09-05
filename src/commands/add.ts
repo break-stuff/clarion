@@ -2,6 +2,7 @@ import * as program from "commander";
 import { FileService, IFileService } from "../services/fileService";
 import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
+import { IConfigService, ConfigService } from "../services/configService";
 
 export interface IAdd {
     addNewFile(): void;
@@ -11,6 +12,8 @@ export class Add implements IAdd {
     _fileService: IFileService = new FileService();
     _logService: ILogService = new LogService();
     _directoryService: IDirectoryService = new DirectoryService();
+    _configService: IConfigService = new ConfigService();
+    _config = this._configService.getConfigData();
 
     addNewFile(): void {
         switch (program.args.length) {
@@ -54,8 +57,11 @@ export class Add implements IAdd {
         let manifestFile = `${pathToDirectory}/${this._fileService.getManifestFile(pathToDirectory)}`;
 
         if (!this._fileService.fileExists(`${pathToDirectory}/${newFile}`)) {
-            this._fileService.saveFile(`${pathToDirectory}/${newFile}`, `@import "../00_Abstracts/index${extension}"`);
-            this._fileService.updateManifest(newFile, manifestFile);
+            let importStatement = this._config.importAbstracts == 'true' && !pathToDirectory.includes('00_Abstracts') ? `@import "../00_Abstracts/index${extension}";` : '';
+            this._fileService.saveFile(`${pathToDirectory}/${newFile}`, importStatement);
+
+            if (this._config.addToManifest == 'true')
+                this._fileService.updateManifest(newFile, manifestFile);
         } else {
             this._logService.warning(newFile + ' already exists.');
         }

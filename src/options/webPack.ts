@@ -23,7 +23,7 @@ export class WebPack implements IWebPak {
             "postcss-loader": "^2.0.6",
             "webpack": "^3.5.5",
             "webpack-dev-server": "^2.7.1",
-            "cssnano": "^3.10.0",            
+            "cssnano": "^3.10.0",
         }
 
         if (program.less) {
@@ -44,7 +44,7 @@ export class WebPack implements IWebPak {
             + '\n'
             + 'module.exports = {\n'
             + '    entry: \'./src/scripts/main.js\',\n'
-            + '    output: {'
+            + '    output: {\n'
             + '        filename: \'./build/scripts.js\'\n'
             + '    },\n'
             + '    module: {\n'
@@ -74,6 +74,6 @@ export class WebPack implements IWebPak {
         let styleFormat = this.fileService.getStyleFormat(extension);
 
         return `{test: /\\${extension}$/, loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', '${styleFormat}-loader'])}`;
-        
+
     }
 }

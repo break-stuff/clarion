@@ -11,11 +11,11 @@ export class Remove implements IRemove {
     _fileService: IFileService = new FileService();
     _logService: ILogService = new LogService();
     _directoryService: IDirectoryService = new DirectoryService();
-    
+
     removeFile(): void {
         switch (program.args.length) {
             case 1:
-            this._logService.warning('Please add the name of a file to be removed.');
+                this._logService.warning('Please add the name of a file to be removed.');
                 break;
             case 2:
                 this.removeFileFromCurrentDirectory();
@@ -24,7 +24,7 @@ export class Remove implements IRemove {
                 this.removeFileFromSpecifiedDirectory();
                 break;
             default:
-            this._logService.warning('Sorry, we were not able to process your request.');
+                this._logService.warning('Sorry, we were not able to process your request.');
                 break;
         }
     }

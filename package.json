@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CLI for adding the Clarion Style Architecture to a project.",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "commander": "^2.11.0"
   },
   "bin": {
-    "clarion": "./bin/clarion" 
+    "clarion": "./bin/clarion"
   },
   "repository": {
     "type": "git",
