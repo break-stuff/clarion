@@ -47,31 +47,31 @@ The project architecture implements the Clarion Style Architecture.
     |  |  |--00_Abstracts/     # Variables, Functions, Mixins, and Placeholders
     |  |  |
     |  |  |--01_Base/          # Resets/Normalize, Typography Rules, Etc.
-    |  |  |  |--_index.scss    # Manifest File
+    |  |  |  |--index.scss    # Manifest File
     |  |  |
     |  |  |--02_Themes/        # Themes and Third Party Plug-In Styles
-    |  |  |  |--_index.scss
+    |  |  |  |--index.scss
     |  |  |
     |  |  |--03_Elements/      # Styles for HTML tags, such as a form label, an input or a button
-    |  |  |  |--_index.scss
+    |  |  |  |--index.scss
     |  |  |
     |  |  |--04_Components/    # Cards, Carousels, and Navbars
-    |  |  |  |--_index.scss 
+    |  |  |  |--index.scss 
     |  |  |  
     |  |  |--05_Layouts/       # Grid System, Header, Footer, and Sidebars
-    |  |  |  |--_index.scss
+    |  |  |  |--index.scss
     |  |  |
     |  |  |--06_Pages/         # Page specific styles
-    |  |  |  |--_index.scss
+    |  |  |  |--index.scss
     |  |  |
     |  |  |--07_Utilities/     # Utilities and Helper Classes
-    |  |  |  |--_index.scss
+    |  |  |  |--index.scss
     |  |  |
     |  |  |--styles.scss/      # Main Sass Manifest
     |  |
     |  |--scripts/
-    |     |--components/        # Component-Specific Scripts
-    |     |--services/          # Reusable Functionality
+    |     |--components/       # Component-Specific Scripts
+    |     |--services/         # Reusable Functionality
     |     |--main.js
     |   
     |--index.html
@@ -91,7 +91,7 @@ Additional style files can easily be manged through the CLI as well.
 
     clarion add element headings
 
-This will create the file headings.scss in the 03_Elements directory as well as add "@import 'headings.scss'" import statement to the directory manifest file so it can be included in your final CSS file.
+This will create the file _headings.scss in the 03_Elements directory as well as add "@import '_headings.scss'" import statement to the directory manifest file so it can be included in your final CSS file.
 
 ## Removing a File
 
@@ -105,7 +105,7 @@ Similar to adding a file, removing files can also be done through the CLI.
 
     clarion remove element headings
 
-This will remove the file headings.scss in the 03_Elements directory as well as remove "@import 'headings.scss'" import statement from the directory manifest file.
+This will remove the file _headings.scss in the 03_Elements directory as well as remove "@import '_headings.scss'" import statement from the directory manifest file.
 
 ## Building Your Project
 

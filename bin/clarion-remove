@@ -1,1 +1,7 @@
 #!/usr/bin/env node
+var program = require("commander");
+
+program
+.usage('<directory> <file name>')
+.command('remove', 'remove a file from your project')
+.parse(process.argv);

@@ -1,4 +1,4 @@
-import { IFileManager, FileManager } from "../fileManager";
+import { IFileService, FileService } from "../services/fileService";
 import * as program from "commander";
 
 export interface IGrunt {
@@ -7,11 +7,11 @@ export interface IGrunt {
 }
 
 export class Grunt implements IGrunt {
-    fileManager: IFileManager = new FileManager();
+    fileService: IFileService = new FileService();
 
     createGruntfile(projectName: string): void {
         let rootPath = './' + projectName;
-        this.fileManager.saveFile(rootPath + '/gruntfile.js', this.createGruntfileContents());
+        this.fileService.saveFile(rootPath + '/gruntfile.js', this.createGruntfileContents());
     }
     createGruntDependencies(): string {
         let stylePackage = program.less ? `"gulp-less": "^3.3.2"` : `"gulp-sass": "^3.1.0"`;
@@ -25,7 +25,7 @@ export class Grunt implements IGrunt {
     }
 
     createGruntfileContents(): string {
-        let extension = this.fileManager.getFileExtension(null).replace('.', '');
+        let extension = this.fileService.getFileExtension(null).replace('.', '');
         let packageName = extension === 'less' ? 'less' : 'sass';
         let contents: string =`COMING SOON!!!`;        
 

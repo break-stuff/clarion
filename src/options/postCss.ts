@@ -1,19 +1,15 @@
-import { IFileManager, FileManager } from "../fileManager";
+import { IFileService, FileService } from "../services/fileService";
+import data from '../data/postCss';
 
 export interface IPostCssConfig {
     createPostCssConfig(projectName: string): void;
 }
 
 export class PostCssConfig implements IPostCssConfig {
-    _fileManager: IFileManager = new FileManager();
+    _fileService: IFileService = new FileService();
     createPostCssConfig(projectName: string): void {
-        let content = `module.exports = {\n` +
-            `\tplugins: {\n` +
-            `\t\t'autoprefixer': {},\n` +
-            `\t\t'cssnano': {}\n` +
-            `\t}\n` +
-            `};`
+        let content = 'module.exports = ' + JSON.stringify(data.config, null, '\t');
 
-        this._fileManager.saveFile(`./${projectName}/postcss.config.js`, content);
+        this._fileService.saveFile(`./${projectName}/postcss.config.js`, content);
     }
 }

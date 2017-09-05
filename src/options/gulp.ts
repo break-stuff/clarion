@@ -1,4 +1,4 @@
-import { IFileManager, FileManager } from "../fileManager";
+import { IFileService, FileService } from "../services/fileService";
 import * as program from "commander";
 
 export interface IGulp {
@@ -8,11 +8,11 @@ export interface IGulp {
 }
 
 export class Gulp implements IGulp {
-    _fileManager: IFileManager = new FileManager();
+    _fileService: IFileService = new FileService();
 
     createGulpfile(projectName: string): void {
         let rootPath = './' + projectName;
-        this._fileManager.saveFile(rootPath + '/gulpfile.js', this.createGulpfileContents());
+        this._fileService.saveFile(rootPath + '/gulpfile.js', this.createGulpfileContents());
     }
     createGulpDependencies(): string {
         let devDependencies: any = {
@@ -34,8 +34,8 @@ export class Gulp implements IGulp {
     }
 
     createGulpfileContents(): string {
-        let extension = this._fileManager.getFileExtension(null);
-        let styleFormat = this._fileManager.getStyleFormat(extension);
+        let extension = this._fileService.getFileExtension(null);
+        let styleFormat = this._fileService.getStyleFormat(extension);
         let contents: string =`'use strict'\n` +
                 '\n' +
                 `var gulp = require('gulp');\n` +

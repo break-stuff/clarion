@@ -1,30 +1,31 @@
 import * as path from "path";
 import * as fs from "fs";
 import * as program from "commander";
-import { data } from './data';
-import { ILogManager, LogManager } from "./logManager";
+import * as data from '../data/directories';
+import { ILogService, LogService } from "./logService";
 
-export interface IFileManager {
+export interface IFileService {
     saveFile(destination: string, content: string): void;
-    createDirectory(pathName: string): void;
+    // createDirectory(pathName: string): void;
     getFullFileName(fileName: string, manifestFile: string): string;
     fileExists(fileName: string): boolean;
-    directoryExists(directoryName: string): boolean;
+    // directoryExists(directoryName: string): boolean;
     getManifestFile(filePath: string): string;
     getFileExtension(directory: string): string;
-    findDirectoryByName(directoryName: string): string;
+    // findDirectoryByName(directoryName: string): string;
     updateManifest(fileName: string, manifestFile: string): void;
     removeFile(filePath: string): void;
-    findDirectory(directory: string): string;
+    // findDirectory(directory: string): string;
     readFile(filePath: string): string;
     getStyleFormat(extension: string): string;
 }
 
-export class FileManager implements IFileManager {
-    _logger: ILogManager = new LogManager();
+export class FileService implements IFileService {
+    _logger: ILogService = new LogService();
 
     saveFile(destination: string, content: string): void {
         try {
+            destination = destination.replace('//', '/');
             fs.writeFileSync(destination, content);
             this._logger.success(`Saved file:        ${destination}`);
         } catch (error) {
@@ -32,14 +33,15 @@ export class FileManager implements IFileManager {
         }
     }
 
-    createDirectory(pathName: string): void {
-        try {
-            fs.mkdirSync(pathName);
-            this._logger.success(`Created directory: ${pathName}`);
-        } catch (error) {
-            this._logger.error(`There was an error creating this directory: ${pathName} \n${error}`);
-        }
-    }
+    // createDirectory(pathName: string): void {
+    //     try {
+    //         pathName = pathName.replace('//', '/');
+    //         fs.mkdirSync(pathName);
+    //         this._logger.success(`Created directory: ${pathName}`);
+    //     } catch (error) {
+    //         this._logger.error(`There was an error creating this directory: ${pathName} \n${error}`);
+    //     }
+    // }
 
     getFullFileName(fileName: string, manifestFile: string): string {
         let fullName = undefined;
@@ -61,13 +63,13 @@ export class FileManager implements IFileManager {
         }
     }
 
-    directoryExists(directoryName: string): boolean {
-        try {
-            return fs.statSync(directoryName).isDirectory();
-        } catch (err) {
-            return false;
-        }
-    }
+    // directoryExists(directoryName: string): boolean {
+    //     try {
+    //         return fs.statSync(directoryName).isDirectory();
+    //     } catch (err) {
+    //         return false;
+    //     }
+    // }
 
 
     getManifestFile(filePath: string): string {
@@ -76,7 +78,7 @@ export class FileManager implements IFileManager {
         let manifestFile;
 
         fs.readdirSync(filePath).forEach(file => {
-            if (file.startsWith('_index'))
+            if (file.startsWith('index'))
                 manifestFile = file;
         });
 
@@ -101,17 +103,17 @@ export class FileManager implements IFileManager {
         return manifest ? path.extname(manifest) : '.scss';
     }
 
-    findDirectoryByName(directoryName: string): string {
-        let directory: string;
+    // findDirectoryByName(directoryName: string): string {
+    //     let directory: string;
 
-        if (directoryName) {
-            directory = data.directories.find(x => {
-                return x.toLowerCase().includes(directoryName.toLowerCase());
-            });
-        }
+    //     if (directoryName) {
+    //         directory = data.directories.find(x => {
+    //             return x.toLowerCase().includes(directoryName.toLowerCase());
+    //         });
+    //     }
 
-        return directory;
-    }
+    //     return directory;
+    // }
 
     updateManifest(fileName: string, manifestFile: string): void {
         if (this.fileExists(manifestFile)) {
@@ -160,21 +162,21 @@ export class FileManager implements IFileManager {
     }
 
 
-    findDirectory(directory: string): string {
-        let pathToDirectory = '';
+    // findDirectory(directory: string): string {
+    //     let pathToDirectory = '';
 
-        if (this.directoryExists(`./${directory}`)) {
-            pathToDirectory = `./${directory}`;
-        } else {
-            data.styleTypes.forEach(x => {
-                if (this.directoryExists(`./src/${x}/${directory}`)) {
-                    pathToDirectory = `./src/${x}/${directory}`;
-                }
-            });
-        }
+    //     if (this.directoryExists(`./${directory}`)) {
+    //         pathToDirectory = `./${directory}`;
+    //     } else {
+    //         data.styleTypes.forEach(x => {
+    //             if (this.directoryExists(`./src/${x}/${directory}`)) {
+    //                 pathToDirectory = `./src/${x}/${directory}`;
+    //             }
+    //         });
+    //     }
 
-        return pathToDirectory;
-    }
+    //     return pathToDirectory;
+    // }
 
     readFile(filePath: string): string {
         let contents = '';

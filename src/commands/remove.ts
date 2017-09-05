@@ -1,19 +1,21 @@
 import * as program from "commander";
-import { FileManager, IFileManager } from "../fileManager";
-import { ILogManager, LogManager } from "../logManager";
+import { FileService, IFileService } from "../services/fileService";
+import { ILogService, LogService } from "../services/logService";
+import { IDirectoryService, DirectoryService } from "../services/directoryService";
 
 export interface IRemove {
     removeFile(): void;
 }
 
 export class Remove implements IRemove {
-    _fileManager: IFileManager = new FileManager();
-    _logManager: ILogManager = new LogManager();
+    _fileService: IFileService = new FileService();
+    _logService: ILogService = new LogService();
+    _directoryService: IDirectoryService = new DirectoryService();
     
     removeFile(): void {
         switch (program.args.length) {
             case 1:
-            this._logManager.warning('Please add the name of a file to be removed.');
+            this._logService.warning('Please add the name of a file to be removed.');
                 break;
             case 2:
                 this.removeFileFromCurrentDirectory();
@@ -22,35 +24,35 @@ export class Remove implements IRemove {
                 this.removeFileFromSpecifiedDirectory();
                 break;
             default:
-            this._logManager.warning('Sorry, we were not able to process your request.');
+            this._logService.warning('Sorry, we were not able to process your request.');
                 break;
         }
     }
 
     removeFileFromCurrentDirectory(): void {
-        let directory = this._fileManager.findDirectoryByName(program.args[1]);
+        let directory = this._directoryService.findDirectoryByName(program.args[1]);
         if (directory) {
-            this._logManager.warning('Please add the name of a file to be removed.');
+            this._logService.warning('Please add the name of a file to be removed.');
         } else {
             this.processFileRemoval('.', program.args[1]);
         }
     }
 
     removeFileFromSpecifiedDirectory(): void {
-        let directoryName = this._fileManager.findDirectoryByName(program.args[1]);
-        let pathToDirectory = this._fileManager.findDirectory(directoryName);
+        let directoryName = this._directoryService.findDirectoryByName(program.args[1]);
+        let pathToDirectory = this._directoryService.findDirectory(directoryName);
         if (pathToDirectory) {
             this.processFileRemoval(pathToDirectory, program.args[2]);
         } else {
-            this._logManager.warning('Sorry, the directory you specified was not found.');
+            this._logService.warning('Sorry, the directory you specified was not found.');
         }
     }
 
     processFileRemoval(pathToDirectory: string, fileName: string): void {
-        let extension = this._fileManager.getFileExtension(pathToDirectory);
-        let fileToRemove = `${fileName}${extension}`;
-        let manifestFile = `${pathToDirectory}/${this._fileManager.getManifestFile(pathToDirectory)}`;
-        this._fileManager.removeFile(`${pathToDirectory}/${fileToRemove}`);
-        this._fileManager.updateManifest(fileToRemove, manifestFile);
+        let extension = this._fileService.getFileExtension(pathToDirectory);
+        let fileToRemove = `_${fileName}${extension}`;
+        let manifestFile = `${pathToDirectory}/${this._fileService.getManifestFile(pathToDirectory)}`;
+        this._fileService.removeFile(`${pathToDirectory}/${fileToRemove}`);
+        this._fileService.updateManifest(fileToRemove, manifestFile);
     }
 }

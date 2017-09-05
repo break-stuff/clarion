@@ -1,10 +1,11 @@
 import * as program from "commander";
-import { FileManager, IFileManager } from "../fileManager";
+import { FileService, IFileService } from "../services/fileService";
 import { IWebPak, WebPack } from "../options/webPack";
 import { IGulp, Gulp } from "../options/gulp";
 import { IGrunt, Grunt } from "../options/grunt";
 import { IPostCssConfig, PostCssConfig } from "../options/postCss";
-import { ILogManager, LogManager } from "../logManager";
+import { ILogService, LogService } from "../services/logService";
+import { IDirectoryService, DirectoryService } from "../services/directoryService";
 import { data } from "../data";
 
 export interface IStart {
@@ -12,10 +13,11 @@ export interface IStart {
 }
 
 export class Start implements IStart {
-    _fileManager: IFileManager = new FileManager();
+    _fileService: IFileService = new FileService();
     _projectDependencies: string = '';
     _projectCommands: string = '';
-    _logManager: ILogManager = new LogManager();
+    _logService: ILogService = new LogService();
+    _directoryService: IDirectoryService = new DirectoryService();
 
     createNewProject(): void {
         let projectName = program.args[1] || '';
@@ -30,19 +32,19 @@ export class Start implements IStart {
     }
 
     createScriptScaffolding(projectName: string) {
-        let extension = this._fileManager.getFileExtension(null);
-        let styleFormat = this._fileManager.getStyleFormat(extension);
+        let extension = this._fileService.getFileExtension(null);
+        let styleFormat = this._fileService.getStyleFormat(extension);
         let mainContents = this.isWebPack ? `import '../${styleFormat}/styles${extension}';` : '';
         if (projectName) {
-            this._fileManager.createDirectory(projectName);
+            this._directoryService.createDirectory(projectName);
         }
 
-        this._fileManager.createDirectory(`./${projectName}/build`);
-        this._fileManager.createDirectory(`./${projectName}/src`);
-        this._fileManager.createDirectory(`./${projectName}/src/scripts`);
-        this._fileManager.createDirectory(`./${projectName}/src/scripts/components`);
-        this._fileManager.createDirectory(`./${projectName}/src/scripts/services`);
-        this._fileManager.saveFile(`./${projectName}/src/scripts/main.js`, mainContents);
+        this._directoryService.createDirectory(`./${projectName}/build`);
+        this._directoryService.createDirectory(`./${projectName}/src`);
+        this._directoryService.createDirectory(`./${projectName}/src/scripts`);
+        this._directoryService.createDirectory(`./${projectName}/src/scripts/components`);
+        this._directoryService.createDirectory(`./${projectName}/src/scripts/services`);
+        this._fileService.saveFile(`./${projectName}/src/scripts/main.js`, mainContents);
     }
 
     isWebPack(): boolean {
@@ -57,7 +59,7 @@ export class Start implements IStart {
     }
 
     createStyleScaffolding(projectName: string) {
-        let extension = this._fileManager.getFileExtension(null);
+        let extension = this._fileService.getFileExtension(null);
         let rootPath = this.createStyleRootDirectory(projectName, extension);
         let importStatements = this.createStyleDirectories(rootPath, extension);
         this.createRootManifest(rootPath, extension, importStatements);
@@ -66,9 +68,9 @@ export class Start implements IStart {
     createStyleRootDirectory(projectName: string, extension: string): string {
         let rootPath = './';
         if (!program.only) {
-            extension = this._fileManager.getStyleFormat(extension);
+            extension = this._fileService.getStyleFormat(extension);
             rootPath = `./${projectName}/src/${extension}`;
-            this._fileManager.createDirectory(rootPath);
+            this._directoryService.createDirectory(rootPath);
         }
         return rootPath;
     }
@@ -77,18 +79,16 @@ export class Start implements IStart {
         let importStatements = '';
 
         data.directories.forEach((dir, i) => {
-            this._fileManager.createDirectory(`${rootPath}/${dir}`);
-            if (i > 0) {
-                this._fileManager.saveFile(`${rootPath}/${dir}/_index${extension}`, '');
-                importStatements += `@import './${dir}/_index${extension}';\n`;
-            }
+            this._directoryService.createDirectory(`${rootPath}/${dir}`);
+            this._fileService.saveFile(`${rootPath}/${dir}/index${extension}`, '');
+            importStatements += `@import './${dir}/index${extension}';\n`;
         });
 
         return importStatements
     }
 
     createRootManifest(rootPath: string, extension: string, importStatements: string): void {
-        this._fileManager.saveFile(`${rootPath}/styles${extension}`, importStatements);
+        this._fileService.saveFile(`${rootPath}/styles${extension}`, importStatements);
     }
 
     createPackageJson(projectName: string) {
@@ -98,9 +98,7 @@ export class Start implements IStart {
             "version": "0.1.0",
             "description": "",
             "main": "index.js",
-            "scripts": {
-                "test": "echo \"Error: no test specified\" && exit 1"
-            },
+            "scripts": {},
             "keywords": [],
             "author": "",
             "license": "ISC",
@@ -108,7 +106,7 @@ export class Start implements IStart {
 
         config.devDependencies = this._projectDependencies;
         config.scripts = this._projectCommands;
-        this._fileManager.saveFile(`./${projectName}/package.json`, JSON.stringify(config, null, '\t'));
+        this._fileService.saveFile(`./${projectName}/package.json`, JSON.stringify(config, null, '\t'));
     }
 
     createTaskRunner(projectName: string): void {
@@ -138,24 +136,24 @@ export class Start implements IStart {
 
     createIndexHtml(projectName: string) {
         let contents = '<html lang="en">\n'
-        + '\n'
-        + '<head>\n'
-        + '    <meta charset="UTF-8">\n'
-        + '    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">\n'
-        + '    <meta http-equiv="X-UA-Compatible" content="ie=edge">\n'
-        + '    <title>Clarion</title>\n'
-        + '    <link rel="stylesheet" href="./build/styles.css">\n'
-        + '</head>\n'
-        + '\n'
-        + '<body>\n'
-        + '    <h1 style="text-align:center; font-family:sans-serif">Congratulations! You did it!</h1>\n'
-        + '    <img src="https://media.giphy.com/media/2xO491sY6f0cM/giphy.gif" alt="tobias huzzah!" style="display:block; margin:auto;">\n'
-        + '    <script src="./build/scripts.js"></script>\n'
-        + '</body>\n'
-        + '\n'
-        + '</html>\n';
+            + '\n'
+            + '<head>\n'
+            + '    <meta charset="UTF-8">\n'
+            + '    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">\n'
+            + '    <meta http-equiv="X-UA-Compatible" content="ie=edge">\n'
+            + '    <title>Clarion</title>\n'
+            + '    <link rel="stylesheet" href="./build/styles.css">\n'
+            + '</head>\n'
+            + '\n'
+            + '<body>\n'
+            + '    <h1 style="text-align:center; font-family:sans-serif">Congratulations! You did it!</h1>\n'
+            + '    <img src="https://media.giphy.com/media/2xO491sY6f0cM/giphy.gif" alt="tobias huzzah!" style="display:block; margin:auto;">\n'
+            + '    <script src="./build/scripts.js"></script>\n'
+            + '</body>\n'
+            + '\n'
+            + '</html>\n';
 
-        this._fileManager.saveFile(`./${projectName}/index.html`, contents);
+        this._fileService.saveFile(`./${projectName}/index.html`, contents);
     }
 
     displayStartupInstructions(projectName: string): void {
@@ -164,8 +162,8 @@ export class Start implements IStart {
 
             if (projectName) instructions = `cd ${projectName} && `;
 
-            this._logManager.info('\nTo get started run the following command:');
-            this._logManager.info(instructions + 'npm install');
+            this._logService.info('\nTo get started run the following command:');
+            this._logService.info(instructions + 'npm install');
         }
     }
 }

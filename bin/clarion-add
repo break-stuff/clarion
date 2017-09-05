@@ -1,1 +1,7 @@
 #!/usr/bin/env node
+var program = require("commander");
+
+program
+.usage('<directory> <file name>')
+.command('add', 'add a new file to your project')
+.parse(process.argv);

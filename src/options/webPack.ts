@@ -1,4 +1,4 @@
-import { IFileManager, FileManager } from "../fileManager";
+import { IFileService, FileService } from "../services/fileService";
 import * as program from "commander";
 
 export interface IWebPak {
@@ -8,14 +8,13 @@ export interface IWebPak {
 }
 
 export class WebPack implements IWebPak {
-    fileManager: IFileManager = new FileManager();
+    fileService: IFileService = new FileService();
 
     createWebPackConfig(projectName: string): void {
         let rootPath = './' + projectName;
-        this.fileManager.saveFile(rootPath + '/webpack.config.js', this.createWebPackConfigContents());
+        this.fileService.saveFile(rootPath + '/webpack.config.js', this.createWebPackConfigContents());
     }
     createWebPackDependencies(): string {
-        let formatLoader = program.less ? `"less-loader": "^4.0.5"` : `"sass-loader": "^6.0.6"`;
         let devDependencies: any = {
             "autoprefixer": "^7.1.2",
             "css-loader": "^0.28.4",
@@ -38,8 +37,8 @@ export class WebPack implements IWebPak {
     }
 
     createWebPackConfigContents(): string {
-        let extension = this.fileManager.getFileExtension(null);
-        let styleFormat = this.fileManager.getStyleFormat(extension);
+        let extension = this.fileService.getFileExtension(null);
+        let styleFormat = this.fileService.getStyleFormat(extension);
 
         let contents = 'var ExtractTextPlugin = require("extract-text-webpack-plugin")\n'
             + '\n'
@@ -68,5 +67,13 @@ export class WebPack implements IWebPak {
             "build": "cross-env NODE_ENV=production webpack --progress --hide-modules -p"
         };
         return commands;
+    }
+
+    addLoaders(): string {
+        let extension = this.fileService.getFileExtension(null);
+        let styleFormat = this.fileService.getStyleFormat(extension);
+
+        return `{test: /\\${extension}$/, loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', '${styleFormat}-loader'])}`;
+        
     }
 }

@@ -1,8 +1,8 @@
 import * as program from "commander";
-import { ITaskManager, TaskManager } from "./taskManager";
+import { ITaskService, TaskService } from "./taskManager";
 
 program
-    .version('0.1.8')
+    .version('0.2.0')
     .usage('<command> [project or file name] [options]')
     .command('start', 'generate a new project')
     .command('add', 'add a new file to your project')
@@ -18,6 +18,6 @@ program
     .parse(process.argv);
 
 if(program.args.length){
-    let taskManager = new TaskManager();
-    taskManager.processUserAction(program.args);
+    let taskService = new TaskService();
+    taskService.processUserAction(program.args);
 }

@@ -1,6 +1,6 @@
 import * as chalk from "chalk";
 
-export interface ILogManager {
+export interface ILogService {
     log(message: string): void;
     error(message: string): void;
     warning(message: string): void;
@@ -8,7 +8,7 @@ export interface ILogManager {
     info(message: string): void;
 }
 
-export class LogManager implements ILogManager {
+export class LogService implements ILogService {
     log(message: string): void {
         console.log(message);
     }
