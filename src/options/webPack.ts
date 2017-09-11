@@ -40,7 +40,7 @@ export class WebPack implements IWebPak {
         let extension = this.fileService.getFileExtension(null);
         let styleFormat = this.fileService.getStyleFormat(extension);
 
-        let contents = 'var ExtractTextPlugin = require("extract-text-webpack-plugin")\n'
+        let contents = 'var ExtractTextPlugin = require("extract-text-webpack-plugin");\n'
             + '\n'
             + 'module.exports = {\n'
             + '    entry: \'./src/scripts/main.js\',\n'

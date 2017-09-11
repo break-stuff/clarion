@@ -1,4 +1,4 @@
-import { IStart, Start } from "./commands/start";
+import { INewProject, NewProject } from "./commands/new";
 import { IAdd, Add } from "./commands/add";
 import { IRemove, Remove } from "./commands/remove";
 import { IConfig, Config } from "./commands/config";
@@ -16,9 +16,9 @@ export class TaskService implements ITaskService {
 
         if (action) {
             switch (action.toLowerCase()) {
-                case 'start':
-                    let start: IStart = new Start();
-                    start.createNewProject();
+                case 'new':
+                    let newProject: INewProject = new NewProject();
+                    newProject.createNewProject();
                     break;
                 case 'add':
                     let add: IAdd = new Add();

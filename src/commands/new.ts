@@ -8,11 +8,11 @@ import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
 import { data } from "../data";
 
-export interface IStart {
+export interface INewProject {
     createNewProject(): void;
 }
 
-export class Start implements IStart {
+export class NewProject implements INewProject {
     _fileService: IFileService = new FileService();
     _projectDependencies: string = '';
     _projectCommands: string = '';
@@ -158,12 +158,9 @@ export class Start implements IStart {
 
     displayStartupInstructions(projectName: string): void {
         if (!program.only) {
-            let instructions = '';
-
-            if (projectName) instructions = `cd ${projectName} && `;
-
             this._logService.info('\nTo get started run the following command:');
-            this._logService.info(instructions + 'npm install');
+            if (projectName) this._logService.info(`cd ${projectName}`);
+            this._logService.info('npm install');
         }
     }
 }

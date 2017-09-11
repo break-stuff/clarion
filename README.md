@@ -20,14 +20,15 @@ In your terminal or command prompt type:
 
     chmod -R 755 /Users/<username>/.nvm/versions/node/<node version>/lib/node_modules/clarion -->
 
-## Start a new Project
-    clarion start MyProject
+## Start a New Project
+    clarion new MyProject
 
 
 ## Run Your New Project
 First make sure all of your dependencies get installed.
 
-    cd MyProject && npm install
+    cd MyProject
+    npm install
 
 After your dependencies are installed you can run your project.
 

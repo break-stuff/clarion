@@ -53,11 +53,12 @@ export class Add implements IAdd {
 
     processNewFile(pathToDirectory: string, fileName: string) {
         let extension = this._fileService.getFileExtension(pathToDirectory);
-        let newFile = `_${fileName}${extension}`;
+        let newFile = this.getNewFile(fileName, extension);
         let manifestFile = `${pathToDirectory}/${this._fileService.getManifestFile(pathToDirectory)}`;
 
         if (!this._fileService.fileExists(`${pathToDirectory}/${newFile}`)) {
-            let importStatement = this._config.importAbstracts == 'true' && !pathToDirectory.includes('00_Abstracts') ? `@import "../00_Abstracts/index${extension}";` : '';
+            let pathToRoot = this.getPathToRoot(fileName);
+            let importStatement = this._config.importAbstracts == 'true' && !pathToDirectory.includes('00_Abstracts') ? `@import "${pathToRoot}00_Abstracts/index${extension}";` : '';
             this._fileService.saveFile(`${pathToDirectory}/${newFile}`, importStatement);
 
             if (this._config.addToManifest == 'true')
@@ -66,4 +67,30 @@ export class Add implements IAdd {
             this._logService.warning(newFile + ' already exists.');
         }
     }
+
+    getNewFile(fileName: string, extension: string) {
+        let directories = fileName.split('/');
+        let newFile;
+
+        if (directories.length > 1) {
+            console.log(directories);
+            directories[directories.length - 1] = `_${directories[directories.length - 1]}${extension}`;
+            newFile = directories.join('/');
+        } else {
+            newFile = `_${fileName}${extension}`;
+        }
+
+        return newFile;
+    }
+
+    getPathToRoot(fileName: string) {
+        let pathDepth = fileName.split('/').length;
+        let pathToRoot = '../';
+
+        for (let i = 1; i < pathDepth; i++) {
+            pathToRoot += '../';
+        }
+        return pathToRoot;
+    }
+
 }

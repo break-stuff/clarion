@@ -2,9 +2,9 @@ import * as program from "commander";
 import { ITaskService, TaskService } from "./taskManager";
 
 program
-    .version('0.3.0')
+    .version('0.4.0')
     .usage('<command> [project or file name] [options]')
-    .command('start', 'generate a new project')
+    .command('new', 'generate a new project')
     .command('add', 'add a new file to your project')
     .command('remove', 'remove a file from your project')
     .command('config', 'configure Clarion to your development environment')
