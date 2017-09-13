@@ -1,0 +1,17 @@
+# Setup
+title:        Clarion CLI Documentation
+tagline:      A framework for building modular and easy-to-maintain websites.
+baseurl:      ""
+paginate:     1
+
+# About/contact
+author:
+  name:       Burton Smith
+  url:        https://breakstuff.io 
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown

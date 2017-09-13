@@ -1,129 +1,69 @@
-# Clarion
+# Jekyll Cayman theme
 
-A simple CLI for scaffolding front-end projects using the Clarion Style Architecture.
+This is a [Jekyll][1] theme for [@jasonlong][2]'s [Cayman theme][4] on [GitHub Pages][3].
 
-**Please note that this project is still in alpha as features are still being ironed out. But please do not let it deter you from taking advantage of its great capabilities.**
+Cayman is a clean, responsive theme for [GitHub Pages](https://pages.github.com). This theme is available as an option if you use the [Automatic Page Generator](https://help.github.com/articles/creating-pages-with-the-automatic-generator/) or you can copy the template and styles to use on your own.
 
-## Installation
+You can preview the theme at http://jasonlong.github.io/cayman-theme or with real content at http://jasonlong.github.io/geo_pattern.
 
-Install [Node.js](https://nodejs.org/en/), if you don't already have it installed.
+![](http://cl.ly/image/1T3r3d18311V/content)
 
-In your terminal or command prompt type:
+# How to use it?
 
-    npm install -g clarion
+Download the theme @ http://github.com/pietromenna/jekyll-cayman-theme/archive/master.zip
 
-<!-- ** **Mac and Linux Users: There is a permissions bug. This can be fixed by running the following command. Sorry, this will be updated shortly.**
+Unzip it and use it as a regular jekyll folder.
 
-    chmod -R 755 /usr/local/lib/node_modules/clarion
+```
+$ unzip jekyll-cayman-theme-master.zip
+```
 
-**or if you are using nvm**
+Get inside the newly extracted folder
+```
+$ cd jekyll-cayman-theme-master
+```
 
-    chmod -R 755 /Users/<username>/.nvm/versions/node/<node version>/lib/node_modules/clarion -->
+Get the required gems
+```
+$ bundle install
+```
 
-## Start a new Project
-    clarion start MyProject
+Use it!
+
+```
+$ jekyll serve
+```
+
+For more details read about [Jekyll][1] on its web page.
+
+# Setup
+
+Some important configuration can be done in the file `_config.yml`. Please, check the Setup section in that file.
 
 
-## Run Your New Project
-First make sure all of your dependencies get installed.
+## baseurl
 
-    cd MyProject && npm install
+`baseurl` parameter is required in the case the site doesn't sit on the root of the domain. For example: http://pietromenna.github.io/jekyll-cayman-theme
 
-After your dependencies are installed you can run your project.
+In the case above the baseurl should be set to "/jekyll-cayman-theme".
 
-    npm run dev
+In the case the site sits in the root, you can leave `baseurl` as empty "".
 
-## About Your New Project
+# Contributing
 
-The default project is configured with [SASS](http://sass-lang.com/) using the .scss syntax and [webpack](https://webpack.js.org/) as the transpiler and module manager.
+Bug reports and pull requests are welcome on GitHub at https://github.com/pietromenn/jekyll-cayman-theme.
 
-The project architecture implements the Clarion Style Architecture.
+# Development
 
-    MyProject/
-    |--build/
-    |
-    |--src/
-    |  |--sass/
-    |  |  |--00_Abstracts/     # Variables, Functions, Mixins, and Placeholders
-    |  |  |
-    |  |  |--01_Base/          # Resets/Normalize, Typography Rules, Etc.
-    |  |  |  |--_index.scss    # Manifest File
-    |  |  |
-    |  |  |--02_Themes/        # Themes and Third Party Plug-In Styles
-    |  |  |  |--_index.scss
-    |  |  |
-    |  |  |--03_Elements/      # Styles for HTML tags, such as a form label, an input or a button
-    |  |  |  |--_index.scss
-    |  |  |
-    |  |  |--04_Components/    # Cards, Carousels, and Navbars
-    |  |  |  |--_index.scss 
-    |  |  |  
-    |  |  |--05_Layouts/       # Grid System, Header, Footer, and Sidebars
-    |  |  |  |--_index.scss
-    |  |  |
-    |  |  |--06_Pages/         # Page specific styles
-    |  |  |  |--_index.scss
-    |  |  |
-    |  |  |--07_Utilities/     # Utilities and Helper Classes
-    |  |  |  |--_index.scss
-    |  |  |
-    |  |  |--styles.scss/      # Main Sass Manifest
-    |  |
-    |  |--scripts/
-    |     |--components/        # Component-Specific Scripts
-    |     |--services/          # Reusable Functionality
-    |     |--main.js
-    |   
-    |--index.html
-    |--package.json
-    |--postcss.config.js
-    |--webpack.config.js
+To set up your environment to develop this theme, run `bundle install`.
 
-## Adding a New File
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
-Additional style files can easily be manged through the CLI as well.
+# License
 
-### Usage
+This work is licensed under a [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/) license.
 
-    clarion add <directory> <file name>
-
-### Example
-
-    clarion add element headings
-
-This will create the file headings.scss in the 03_Elements directory as well as add "@import 'headings.scss'" import statement to the directory manifest file so it can be included in your final CSS file.
-
-## Removing a File
-
-Similar to adding a file, removing files can also be done through the CLI.
-
-### Usage
-
-    clarion remove <directory> <file name>
-
-### Example
-
-    clarion remove element headings
-
-This will remove the file headings.scss in the 03_Elements directory as well as remove "@import 'headings.scss'" import statement from the directory manifest file.
-
-## Building Your Project
-
-To build your application for final use, run the build command.
-
-    npm run build
-
-The final transpiled JavaScript and CSS file are in build directory in the root of your project.
-
-## Options
-
-These are options you can run when initializing you project.
-
-    -O, --only     generate the style architecture only (great for integrating into frameworks)
-    -E, --empty    generate an empty project without any of the start-up files (COMING SOON!!!)
-    -C, --scss     files are in .scss format (default)
-    -A, --sass     files are in .sass format
-    -L, --less     files are in .less format
-    -W, --webpack  configure project for WebPack bundler (default)
-    -U, --gulp     configure project for Gulp task runner
-    -R, --grunt    configure project for Grunt task runner (COMING SOON!!!)
+[1]: http://jekyllrb.com/
+[2]: https://github.com/jasonlong
+[3]: http://pages.github.com/
+[4]: https://github.com/jasonlong/cayman-theme
