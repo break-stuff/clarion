@@ -1,21 +1,74 @@
 --- 
 layout: default 
-title: "Quick Start"
+title: "Quick Start" 
 ---
 
-<h1>Making Your Web Development Process Simpler</h1>
+<h1 class="u-text--center">Simplifying Your Web Development Process</h1>
 
 <div class="row">
-  <div class="col-md-3">
-    <h3>Simpler CSS</h3>
-    <p>Using the Clarion Style framework you can easily create scalable and maintainable style sheets.</p>
+  <div class="col">
+    <h4>Simpler CSS</h4>
+    <p>Using the Clarion Style framework you can easily create scalable and maintainable style sheets. This will reduce complexity
+      and reduce developemnt time.</p>
   </div>
-  <div class="col-md-3">
-    <h3>Easy Scaffolding</h3>
+  <div class="col">
+    <h4>Easy Scaffolding</h4>
     <p>Usign the CLI, you can scaffold out projects and create new integrated stlye sheets with no additional work.</p>
   </div>
-  <div class="col-md-3">
-    <h3>Use Your Favorite Tools</h3>
+  <div class="col">
+    <h4>Use Your Favorite Tools</h4>
     <p>Clarion makes it easy for you to use your favorite tools like SASS, LESS, Gulp, and WebPack.</p>
   </div>
 </div>
+<br>
+<div class="demo">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card c-card--terminal">
+          <div class="card-header">
+            New Project Quick-Steps
+          </div>
+          <div class="card-body">
+            <div><span class="bash-base">~ $</span>npm install -g clarion</div>
+            <div><span class="bash-base">~ $</span>clarion new MyProject</div>
+            <div><span class="bash-base">~ $</span>cd MyProject</div>
+            <div><span class="bash-base">~ $</span>npm install</div>
+            <div><span class="bash-base">~ $</span>npm run dev</div>
+          </div>
+        </div>
+      </div>
+      <div class="col demo__text">
+        Get started in just a few steps!
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Your New Project</h3>
+<p>The default project is configured with <a href="http://sass-lang.com/">SASS</a> using the .scss syntax and <a href="https://webpack.js.org/">webpack</a> as the transpiler and module manager.</p>
+<p>The project architecture implements the Clarion Style Architecture.</p>
+
+<h2>Adding a New File</h2>
+<p>Additional style files can easily be manged through the CLI as well. In your terminal type the following command:</p>
+<code>
+    clarion add element headings
+</code>
+<br><br>
+<p>This will create the file _headings.scss in the 03_Elements directory as well as add "@import '_headings.scss'" import statement to the directory manifest file so it can be included in your final CSS file.</p>
+
+<h2>Removing a File</h2>
+<p>Similar to adding a file, removing files can also be done through the CLI.</p>
+<code>
+    clarion remove element headings
+</code>
+<br><br>
+<p>This will remove the file _headings.scss in the 03_Elements directory as well as remove "@import '_headings.scss'" import statement from the directory manifest file.</p>
+
+<h2>Building Your Project for Production</h2>
+<p>To build your application for final use, run the build command.</p>
+<code>
+    npm run build
+</code>
+<br><br>
+<p>The final transpiled JavaScript and CSS file are in build directory in the root of your project.</p>

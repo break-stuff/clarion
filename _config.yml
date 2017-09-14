@@ -1,7 +1,7 @@
 # Setup
 title:        Clarion CLI Documentation
 tagline:      A framework for building modular and easy-to-maintain websites.
-baseurl:      ""
+baseurl:      "/clarion"
 paginate:     1
 
 # About/contact

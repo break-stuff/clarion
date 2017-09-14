@@ -1,19 +1,55 @@
-$(document).ready(function(){
-    var currentUrl = window.location.href;
-    var category = getPageCategory(currentUrl);
-
-    $('.' + category).addClass('active');
+$(document).ready(function () {
+    activatePageCategoryLink();
+    activateSubNavCategoryLink();
 });
 
-function getPageCategory(currentUrl) {
+function activatePageCategoryLink() {
+    var className = '';
     switch (true) {
-        case currentUrl.indexOf('documentation') > -1:
-            return 'documentation';
-        case currentUrl.indexOf('examples') > -1:
-            return 'examples';
-        case currentUrl.indexOf('contact') > -1:
-            return 'contact';
+        case urlContainsString('documentation'):
+            className = 'documentation';
+            break;
+        case urlContainsString('examples'):
+            className = 'examples';
+            break;
+        case urlContainsString('contact'):
+            className = 'contact';
+            break;
         default:
-            return 'quick-start';
+            className = 'quick-start';
+            break;
+
     }
+
+    addActiveClassToElement(className);
+}
+
+function activateSubNavCategoryLink() {
+    var className = '';
+
+    switch (true) {
+        case urlContainsString('new'):
+            className = 'js-docs-new';
+            break;
+        case urlContainsString('architecture'):
+            className = 'js-docs-architecture';
+            break;
+        case urlContainsString('add'):
+            className = 'js-docs-add';
+            break;
+        case urlContainsString('config'):
+            className = 'js-docs-config';
+            break;
+    }
+
+    addActiveClassToElement(className);
+}
+
+function addActiveClassToElement(className) {
+    $('.' + className).addClass('active');
+}
+
+function urlContainsString(stringToFind) {
+    var hasStringInUrl = window.location.href.indexOf(stringToFind) > -1;
+    return hasStringInUrl;
 }

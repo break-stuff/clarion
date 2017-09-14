@@ -3,6 +3,7 @@
 .main-menu {
     background-color: $color-primary; 
     background-image: linear-gradient(120deg, $color-primary, $color-secondary);
+    box-shadow: 0 3px 10px black;    
     .navbar-brand {
         font-weight: 300;
         font-family: $font-lato;
@@ -15,4 +16,8 @@
             color: rgba(250, 250, 250, .65);
         }
     }
+}
+
+.footer-menu {
+    
 }
