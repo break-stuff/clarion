@@ -1,15 +1,13 @@
 @import "../00_Abstracts/index.scss";
-
 .main-menu {
-    background-color: $color-primary; 
+    background-color: $color-primary;
     background-image: linear-gradient(120deg, $color-primary, $color-secondary);
-    box-shadow: 0 3px 10px black;    
+    box-shadow: 0 3px 10px black;
     .navbar-brand {
         font-weight: 300;
         font-family: $font-lato;
         font-size: 3rem;
     }
-
     .nav-item {
         font-family: $font-lato;
         .nav-link {
@@ -19,5 +17,10 @@
 }
 
 .footer-menu {
-    
+    background-color: $color-primary;
+    color: white;
+    a {
+        font-weight: bold;
+        color: white;
+    }
 }

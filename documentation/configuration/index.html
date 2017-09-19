@@ -1,0 +1,52 @@
+--- 
+layout: documentation 
+title: Configuration 
+---
+
+<h1>Configuration</h1>
+
+<p>In order to fit your development environment's needs, Clarion is configurable. If the default configuration is used, no config
+    file is generated in order to avoid unnecessary clutter in your project. To add a config file to your project, run the
+    following command at the root of your project:</p>
+<code>clarion config init</code><br><br>
+<p>You should now see a new file called <code>.clarion</code> in your project. The file contains a simple JSON object.</p>
+{% highlight javascript %}
+    {
+        "paths": {
+            "styles": "./src",
+            "scripts": "./src"
+        },
+        "format": {
+            "styles": "scss",
+            "scripts": "js"
+        },
+        "addToManifest": "true",
+        "importAbstracts": "true"
+    }
+{% endhighlight %}
+<p>You can modify this content directly using your text editor, but you can also use the Clarion CLI to make changes.</p>
+
+<h2>Paths</h2>
+<p>You can change the location of your project contents. This is extremely useful if you are using a framework or have a specific
+    architecture you need to adhere to.</p>
+<p>For example, if I wanted to move my styles folder to a directory called "app" rather than "src" I could do so using the following
+    command <strong>(Note: Clarion will look for your styles in directories called <code>sass</code>, <code>scss</code>, or <code>less</code>)</strong>:</p>
+<code>clarion config paths.styles app</code><br><br>
+
+<h2>Format</h2>
+<p>You can change the file format. This will not change the existing files, but will take effect for new files.</p>
+<code>clarion config format.styles less</code><br><br>
+<p>Any new files will now use the <code>.less</code> style format.</p>
+
+<h2>Add To Manifest</h2>
+<p>If you would like to turn off the feature of automatically adding an import statement for new files to your manifest file,
+    you can turn it off using the following command:</p>
+<code>clarion config addToManifest false</code><br><br>
+<p>You can turn it back on again by setting the value to <code>true</code>.</p>
+
+<h2>Import Abstracts</h2>
+<p>When a new style file is created, the Abstracts manifest file is imported to give you access to your variables, mixins, etc.
+    Some developers may want to be more selective about the files they would like to import. You can prevent Clarion from
+    adding this reference using the following command:</p>
+<code>clarion config importAbstracts false</code><br><br>
+<p>You can turn it back on again by setting the value to <code>true</code>.</p>

@@ -1,9 +1,7 @@
 @import "../00_Abstracts/index.scss";
 
 .c-sub-nav {
-    position: sticky;
     padding: 2rem;
-    top: 100px;
     .active {
         background-color: $color-primary;
         border-color: $color-primary;
