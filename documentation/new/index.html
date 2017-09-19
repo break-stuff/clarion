@@ -5,37 +5,47 @@ title: New Project
 
 <h1>Start Your Project</h1>
 <p>After installing the Clarion CLI running the following command will provide you with the default project:</p>
-<code>clarion new MyProject</code>
+<code>clarion new MyProject</code><br><br>
 <p>The default project comes pre-configured for SASS using the .scss format and WebPack as the compiler and bundler. There are some additional features that come out-of-the-box for you to help simplify your development process.</p>
 
 <h2>PostCSS</h2>
-<p>PostCSS is a post-compiler for your CSS. This allows additional functionality to be added to your styles without needing additional work on your end.</p>
+<p>PostCSS is a post-compiler for your CSS. This allows additional functionality to be added to your styles without needing additional work on your end. PostCSS transforms styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.</p>
+
 <h4>Autoprefixer</h4>
-<p>Autoprefixer will automatically add vendor prefixes to your CSS rules. This will help make you application more consistent across each browser.</p>
+<p>Autoprefixer is a plugin to parse CSS and add vendor prefixes to CSS rules using values from <a href="http://caniuse.com">Can I Use</a>. This will help make your application more consistent across each browser.</p>
+
 <h4>CSSNano</h4>
-<p>This is an additional PostCSS plugin that manifest your CSS.</p>
+<p>CSSNano takes your nicely formatted CSS and runs it through many focused optimizations, to ensure that the final result is as small as possible for a production environment.</p>
 
 <h2>Options</h2>
 <p>One fo the great things about the Clarion CLI is the amount of flexibility you have with your project tooling. There are so many options on the tools to use in your projects, it can be very overwhelming. The objective of Clarion CLI is to help simplify that process and reduce the time to start-up a new project.</p>
 
 <h3>Project Contents</h3>
+
 <h5><code>-O, --only</code></h5>
-<p>This will only install the style architecture. If you are using a framework or your team has a specific architecture pattern, this will allow you leverage the style architecture while still adhering to an existing framework or architecture.</p>
+<p>This will only install the style architecture. If you are using a framework or your team has a specific architecture pattern, this will allow you leverage the style architecture while still adhering to an existing specifications.</p>
+
 <h5><code>-E, --empty</code></h5>
-<p>This feature is currently the default. Coming soon the starter project will come with dome predefined Abstracts and helper classes.</p>
+<p>This feature is currently the default. Coming soon, the starter project will come with dome predefined Abstracts and helper classes.</p>
 
 <h3>Style Format</h3>
+
 <h5><code>-C, --scss</code></h5>
 <p>This will configure the style files to use .scss format. This is a SASS format. Many people prefer this format as the syntax is more consistent with standard CSS. This syntax is great for those who are starting out with SASS.</p>
+
 <h5><code>-A, --sass</code></h5>
 <p>This will configure the style files to use .sass format. This is also (obviously) a SASS format. This is more of a minimalist approach for writing SASS.</p>
+
 <h5><code>-L, --less</code></h5>
 <p>This will configure the style files to use .sass format.</p>
 
 <h3>Bundlers and Task Runners</h3>
+
 <h5><code>-W, --webpack</code></h5>
 <p>WebPack is the default bundler for your project. A wonderful aspect of WebPack is that if you are using Babel, Typescript, or ES6 syntax or greater, it will will resolve your module dependencies.</p>
+
 <h5><code>-U, --gulp</code></h5>
 <p>Gulp is a task runner built on Node.js and npm, used for automation of time-consuming and repetitive tasks involved in web development like minification, concatenation, cache busting, unit testing, linting, optimization etc.</p>
+
 <h5><code>-R, --grunt</code></h5>
 <p>Coming Soon!!! Grunt is also a task runner similar to Gulp and is used to automatically perform frequently used tasks such as minification, compilation, unit testing, linting, etc. It uses a command-line interface to run custom tasks defined in a file (known as a Gruntfile).</p>

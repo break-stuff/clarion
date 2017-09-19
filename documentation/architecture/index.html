@@ -7,13 +7,13 @@ title: Architecture
 <p>After creating your project, if you navigate to the <code>src</code> folder you should see 2 subdirectories: <code>sass</code> (unless you specified a different format) and <code>scripts</code>.</p>
 
 <h2>Styles</h2>
-<p>Clarion offers a unique architecure to help reduce the complexity of styling small and large web applications and websites.</p>
+<p>Clarion offers a unique architecure to help reduce the complexity of styling small and large web applications and sites.</p>
 
 <h3>What's with the numbers?</h3>
 <p>Seeing folders prefixed with numbers may seem a little awkward or even down-right blasphemous to you at first. There is a method to this madness. The reason for it is to put the folder structure in the order in witch the styles are implemented in your style sheet. This servers two purposes:</p>
 <ul>
     <li>Knowing the order that your styles are implemented allows you to see which rules are overriding other rules. Rules in the style sheets higher up in the folder structure will be overridden by the rules that are lower in the file structure (for example - rules in the Components section will override rules in the Elements section.</li>
-    <li>Understanding how the styles cascade should allow you to reduce if not eliminate the need to use <code>!important</code>. It has it's uses and appropriate applications, but abuse if this feature leads to style sheets that are painful to maintain and very difficult to troubleshoot.</li>
+    <li>Understanding how the styles cascade should allow you to reduce, if not eliminate, the need to use <code>!important</code>. It has it's uses and appropriate applications, but abuse if this feature leads to style sheets that are painful to maintain and very difficult to troubleshoot.</li>
 </ul>
 
 <h3>00_Abstracts</h3>
