@@ -2,6 +2,8 @@
 
 A simple CLI for scaffolding front-end projects using the Clarion Style Architecture.
 
+Check out the official Documentation here: [https://break-stuff.github.io/clarion](https://break-stuff.github.io/clarion/)
+
 **Please note that this project is still in alpha as features are still being ironed out. But please do not let it deter you from taking advantage of its great capabilities.**
 
 ## Installation
@@ -128,3 +130,8 @@ These are options you can run when initializing you project.
     -W, --webpack  configure project for WebPack bundler (default)
     -U, --gulp     configure project for Gulp task runner
     -R, --grunt    configure project for Grunt task runner (COMING SOON!!!)
+
+
+## Changelog
+
+    0.4.1 - Added link to documentation site.
