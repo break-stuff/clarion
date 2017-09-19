@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quick Start - Clarion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
+  <!-- <link rel="stylesheet" href="/clarion/css/normalize.css"> -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+  <!-- <link rel="stylesheet" href="/clarion/css/cayman.css"> -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-106134260-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+<body>
+  <!-- <section class="page-header">
+  <h1 class="project-name">Clarion CLI Documentation</h1>
+  <h2 class="project-tagline">A framework for building modular and easy-to-maintain websites.</h2>
+  <a href="#" class="btn">View on GitHub</a>
+  <a href="#" class="btn">Download .zip</a>
+  <a href="#" class="btn">Download .tar.gz</a>
+</section> -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
+    <a class="navbar-brand" href="/clarion/">Clarion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item quick-start">
+          <a class="nav-link" href="/clarion/">Quick Start</a>
+        </li>
+        <li class="nav-item documentation">
+          <a class="nav-link" href="/clarion/documentation/">Documentation</a>
+        </li>
+        <li class="nav-item examples">
+          <a class="nav-link" href="/clarion/examples/">Examples</a>
+        </li>
+        <li class="nav-item contact">
+          <a class="nav-link" href="/clarion/contact/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <main>
+    <div class="container">
+      <h1 class="u-text--center">Simplifying Your Web Development Process</h1>
+
+<div class="row">
+  <div class="col">
+    <h4>Simpler CSS</h4>
+    <p>Using the Clarion Style framework you can easily create scalable and maintainable style sheets. This will reduce complexity
+      and reduce development time.</p>
+  </div>
+  <div class="col">
+    <h4>Easy Scaffolding</h4>
+    <p>Using the CLI, you can scaffold out projects and create new integrated style sheets with no additional work.</p>
+  </div>
+  <div class="col">
+    <h4>Use Your Favorite Tools</h4>
+    <p>Clarion makes it easy for you to use your favorite tools like SASS, LESS, Gulp, and WebPack.</p>
+  </div>
+</div>
+<p><strong>Please note that this project is still in alpha as features are still being added. But, do not let it deter you from taking advantage of its great capabilities.</strong></p>
+<p>Make sure you have <a href="https://nodejs.org/">Node.js and npm</a> installed.</p>
+<div class="demo">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card c-card--terminal">
+          <div class="card-header">
+            Terminal: New Project Quick-Steps
+          </div>
+          <div class="card-body">
+            <div><span class="bash-base">></span>npm install -g clarion</div>
+            <div><span class="bash-base">></span>clarion new MyProject</div>
+            <div><span class="bash-base">></span>cd MyProject</div>
+            <div><span class="bash-base">></span>npm install</div>
+            <div><span class="bash-base">></span>npm run dev</div>
+          </div>
+        </div>
+      </div>
+      <div class="col demo__text">
+        Get started in just a few steps!
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Your New Project</h3>
+<p>The default project is configured with <a href="http://sass-lang.com/">SASS</a> using the .scss syntax and <a href="https://webpack.js.org/">webpack</a> as the compiler and module manager.</p>
+<p>The project architecture implements the Clarion Style Architecture.</p>
+
+<h2>Adding a New File</h2>
+<p>Additional style files can easily be manged through the CLI as well. In your terminal type the following command:</p>
+<code>
+    clarion add element headings
+</code>
+<br><br>
+<p>This will create the file <code>_headings.scss</code> in the <code>03_Elements</code> directory as well as add <code>@import '_headings.scss';</code> import statement to the directory manifest file so it can be included in your final CSS file.</p>
+
+<h2>Removing a File</h2>
+<p>Similar to adding a file, removing files can also be done through the CLI.</p>
+<code>
+    clarion remove element headings
+</code>
+<br><br>
+<p>This will remove the file <code>_headings.scss</code> in the <code>03_Elements</code> directory as well as remove <code>@import '_headings.scss';</code> import statement from the directory manifest file.</p>
+
+<h2>Building Your Project for Production</h2>
+<p>To build your application for final use, run the build command.</p>
+<code>
+    npm run build
+</code>
+<br><br>
+<p>The final compiled JavaScript and CSS file are in <code>build</code> directory in the root of your project.</p>
+    </div>
+  </main>
+  <footer>
+    <!-- <footer class="site-footer">
+  <span class="site-footer-owner"><a href="http://localhost:4000">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
+  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+</footer> -->
+
+<nav class="navbar navbar-light footer-menu">
+  <span><a href="http://localhost:4000/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+</nav>
+
+  </footer>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="/clarion/build/scripts.js"></script>
+</body>
+
+</html>

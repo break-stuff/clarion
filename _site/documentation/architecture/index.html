@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Architecture - Clarion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
+  <!-- <link rel="stylesheet" href="/clarion/css/normalize.css"> -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+  <!-- <link rel="stylesheet" href="/clarion/css/cayman.css"> -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-106134260-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+<body>
+  <!-- <section class="page-header">
+  <h1 class="project-name">Clarion CLI Documentation</h1>
+  <h2 class="project-tagline">A framework for building modular and easy-to-maintain websites.</h2>
+  <a href="#" class="btn">View on GitHub</a>
+  <a href="#" class="btn">Download .zip</a>
+  <a href="#" class="btn">Download .tar.gz</a>
+</section> -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
+    <a class="navbar-brand" href="/clarion/">Clarion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item quick-start">
+          <a class="nav-link" href="/clarion/">Quick Start</a>
+        </li>
+        <li class="nav-item documentation">
+          <a class="nav-link" href="/clarion/documentation/">Documentation</a>
+        </li>
+        <li class="nav-item examples">
+          <a class="nav-link" href="/clarion/examples/">Examples</a>
+        </li>
+        <li class="nav-item contact">
+          <a class="nav-link" href="/clarion/contact/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+    <div class="col col-md-8">
+        <h1>Architecture!</h1>
+<p>After creating your project, if you navigate to the <code>src</code> folder you should see 2 subdirectories: <code>sass</code> (unless you specified a different format) and <code>scripts</code>.</p>
+
+<h2>Styles</h2>
+<p>Clarion offers a unique architecure to help reduce the complexity of styling small and large web applications and sites.</p>
+
+<h3>What's with the numbers?</h3>
+<p>Seeing folders prefixed with numbers may seem a little awkward or even down-right blasphemous to you at first. There is a method to this madness. The reason for it is to put the folder structure in the order in witch the styles are implemented in your style sheet. This servers two purposes:</p>
+<ul>
+    <li>Knowing the order that your styles are implemented allows you to see which rules are overriding other rules. Rules in the style sheets higher up in the folder structure will be overridden by the rules that are lower in the file structure (for example - rules in the Components section will override rules in the Elements section.</li>
+    <li>Understanding how the styles cascade should allow you to reduce, if not eliminate, the need to use <code>!important</code>. It has it's uses and appropriate applications, but abuse if this feature leads to style sheets that are painful to maintain and very difficult to troubleshoot.</li>
+</ul>
+
+<h3>00_Abstracts</h3>
+<p>This folder is for your style tools and helpers used across the project. Your reusable code such as global variables, functions, mixins and placeholders should be put in here.</p>   
+<p>The code contained in this folder should not be code that outputs CSS directly.</p>
+<p>With larger projects you may want to break this into subdirectories like variables, functions, and mixins. Subdirectories are supported in the Clarion CLI.</p>
+
+<h3>01_Base</h3>
+<p>This folder holds the boilerplate code for the project. You would add your reset files and typographic rules. Keep in mind that most front-end frameworks like Bootstrap and Foundation already have their own CSS resets built into their styles, so additional resets may not be necessary.</p>
+
+<h3>02_Themes</h3>
+<p>The Themes folder contains third-party themes for your website and for things like plugins. This file has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme's rules without modifying the theme directly and ruining the integrity of the code.</p>
+
+<h3>03_Elements</h3>
+<p>The Elements folder is for styling specific elements such as links, buttons, form inputs, and header tags. Browsers, by default, have their own styling in place for these elements. Unfortunately, each of these rules are different based on witch browser you are using.</p>
+
+<h3>04_Components</h3>
+<p>Components are groups of elements. This can be things like a search box, navbar, or carousel. These groups of elements together have a specific purpose.</p>
+
+<h3>05_Layouts</h3>
+<p>This folder contains everything that takes part in laying out the web site or application. These could be containers used for organizing elements and components within them like like a header, footer, or sidebar. This could also be used for your grid-system.</p>
+
+<h3>06_Pages</h3>
+<p>This folder is for any page-specific styles, if you have any. Some sites may have custom styling for the Home page or the Contact Us page.</p>
+
+<h3>07_Utilities</h3>
+<p>The Utilities are used to create overrides or call out specific rules for an elements or components. For example, you could have a class for making text bold or aligning it to the right. The rule of thumb is to make it specific and make it simple.</p>
+
+<h3>Manifest Files</h3>
+<p>Each of these directories will have an index file (index.scss). This is called your manifest file. When a new file is added to a directory, it will automatically be added to this manifest file. Feel free to reorder the import statements in this file to something that works best for you. Also, if you would like to exclude a file from compilation, you can just comment it out until you are ready to incorporate it back into the code.</p>
+
+<h3><code>styles.scss</code></h3>
+<p>This file is your main manifest file. Inside you will find import statements for each of the manifest files from the various subdirectories.</p>
+
+<h2>Scripts</h2>
+<p>The default script section was intentionally left fairly simple. The <code>components</code> directory is used for component-specific JavaScript like menus and modals. The <code>services</code> directory is used for reusable functions and methods.</p>
+    </div>
+    <div class="col col-md-4">
+        <div class="list-group c-sub-nav" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action js-docs-new" href="/clarion/documentation/new/"
+        aria-controls="new project">New Project</a>
+    <a class="list-group-item list-group-item-action js-docs-architecture" href="/clarion/documentation/architecture/"
+        aria-controls="architecture">Architecture</a>
+    <a class="list-group-item list-group-item-action js-docs-add" href="/clarion/documentation/add/"
+        aria-controls="add and remove files">Add / Remove Files</a>
+    <a class="list-group-item list-group-item-action js-docs-config" href="/clarion/documentation/configuration/"
+        aria-controls="configuration">Configuration</a>
+</div>
+            
+    </div>
+</div>
+    </div>
+  </main>
+  <footer>
+    <!-- <footer class="site-footer">
+  <span class="site-footer-owner"><a href="http://localhost:4000">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
+  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+</footer> -->
+
+<nav class="navbar navbar-light footer-menu">
+  <span><a href="http://localhost:4000/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+</nav>
+
+  </footer>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="/clarion/build/scripts.js"></script>
+</body>
+
+</html>

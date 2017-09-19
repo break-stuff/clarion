@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>New Project - Clarion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
+  <!-- <link rel="stylesheet" href="/clarion/css/normalize.css"> -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+  <!-- <link rel="stylesheet" href="/clarion/css/cayman.css"> -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-106134260-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+<body>
+  <!-- <section class="page-header">
+  <h1 class="project-name">Clarion CLI Documentation</h1>
+  <h2 class="project-tagline">A framework for building modular and easy-to-maintain websites.</h2>
+  <a href="#" class="btn">View on GitHub</a>
+  <a href="#" class="btn">Download .zip</a>
+  <a href="#" class="btn">Download .tar.gz</a>
+</section> -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
+    <a class="navbar-brand" href="/clarion/">Clarion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item quick-start">
+          <a class="nav-link" href="/clarion/">Quick Start</a>
+        </li>
+        <li class="nav-item documentation">
+          <a class="nav-link" href="/clarion/documentation/">Documentation</a>
+        </li>
+        <li class="nav-item examples">
+          <a class="nav-link" href="/clarion/examples/">Examples</a>
+        </li>
+        <li class="nav-item contact">
+          <a class="nav-link" href="/clarion/contact/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+    <div class="col col-md-8">
+        <h1>Start Your Project</h1>
+<p>After installing the Clarion CLI running the following command will provide you with the default project:</p>
+<code>clarion new MyProject</code><br><br>
+<p>The default project comes pre-configured for SASS using the .scss format and WebPack as the compiler and bundler. There are some additional features that come out-of-the-box for you to help simplify your development process.</p>
+
+<h2>PostCSS</h2>
+<p>PostCSS is a post-compiler for your CSS. This allows additional functionality to be added to your styles without needing additional work on your end. PostCSS transforms styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.</p>
+
+<h4>Autoprefixer</h4>
+<p>Autoprefixer is a plugin to parse CSS and add vendor prefixes to CSS rules using values from <a href="http://caniuse.com">Can I Use</a>. This will help make your application more consistent across each browser.</p>
+
+<h4>CSSNano</h4>
+<p>CSSNano takes your nicely formatted CSS and runs it through many focused optimizations, to ensure that the final result is as small as possible for a production environment.</p>
+
+<h2>Options</h2>
+<p>One fo the great things about the Clarion CLI is the amount of flexibility you have with your project tooling. There are so many options on the tools to use in your projects, it can be very overwhelming. The objective of Clarion CLI is to help simplify that process and reduce the time to start-up a new project.</p>
+
+<h3>Project Contents</h3>
+
+<h5><code>-O, --only</code></h5>
+<p>This will only install the style architecture. If you are using a framework or your team has a specific architecture pattern, this will allow you leverage the style architecture while still adhering to an existing specifications.</p>
+
+<h5><code>-E, --empty</code></h5>
+<p>This feature is currently the default. Coming soon, the starter project will come with dome predefined Abstracts and helper classes.</p>
+
+<h3>Style Format</h3>
+
+<h5><code>-C, --scss</code></h5>
+<p>This will configure the style files to use .scss format. This is a SASS format. Many people prefer this format as the syntax is more consistent with standard CSS. This syntax is great for those who are starting out with SASS.</p>
+
+<h5><code>-A, --sass</code></h5>
+<p>This will configure the style files to use .sass format. This is also (obviously) a SASS format. This is more of a minimalist approach for writing SASS.</p>
+
+<h5><code>-L, --less</code></h5>
+<p>This will configure the style files to use .sass format.</p>
+
+<h3>Bundlers and Task Runners</h3>
+
+<h5><code>-W, --webpack</code></h5>
+<p>WebPack is the default bundler for your project. A wonderful aspect of WebPack is that if you are using Babel, Typescript, or ES6 syntax or greater, it will will resolve your module dependencies.</p>
+
+<h5><code>-U, --gulp</code></h5>
+<p>Gulp is a task runner built on Node.js and npm, used for automation of time-consuming and repetitive tasks involved in web development like minification, concatenation, cache busting, unit testing, linting, optimization etc.</p>
+
+<h5><code>-R, --grunt</code></h5>
+<p>Coming Soon!!! Grunt is also a task runner similar to Gulp and is used to automatically perform frequently used tasks such as minification, compilation, unit testing, linting, etc. It uses a command-line interface to run custom tasks defined in a file (known as a Gruntfile).</p>
+
+    </div>
+    <div class="col col-md-4">
+        <div class="list-group c-sub-nav" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action js-docs-new" href="/clarion/documentation/new/"
+        aria-controls="new project">New Project</a>
+    <a class="list-group-item list-group-item-action js-docs-architecture" href="/clarion/documentation/architecture/"
+        aria-controls="architecture">Architecture</a>
+    <a class="list-group-item list-group-item-action js-docs-add" href="/clarion/documentation/add/"
+        aria-controls="add and remove files">Add / Remove Files</a>
+    <a class="list-group-item list-group-item-action js-docs-config" href="/clarion/documentation/configuration/"
+        aria-controls="configuration">Configuration</a>
+</div>
+            
+    </div>
+</div>
+    </div>
+  </main>
+  <footer>
+    <!-- <footer class="site-footer">
+  <span class="site-footer-owner"><a href="http://localhost:4000">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
+  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+</footer> -->
+
+<nav class="navbar navbar-light footer-menu">
+  <span><a href="http://localhost:4000/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+</nav>
+
+  </footer>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="/clarion/build/scripts.js"></script>
+</body>
+
+</html>

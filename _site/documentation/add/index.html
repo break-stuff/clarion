@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Files - Clarion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
+  <!-- <link rel="stylesheet" href="/clarion/css/normalize.css"> -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+  <!-- <link rel="stylesheet" href="/clarion/css/cayman.css"> -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-106134260-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+<body>
+  <!-- <section class="page-header">
+  <h1 class="project-name">Clarion CLI Documentation</h1>
+  <h2 class="project-tagline">A framework for building modular and easy-to-maintain websites.</h2>
+  <a href="#" class="btn">View on GitHub</a>
+  <a href="#" class="btn">Download .zip</a>
+  <a href="#" class="btn">Download .tar.gz</a>
+</section> -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
+    <a class="navbar-brand" href="/clarion/">Clarion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item quick-start">
+          <a class="nav-link" href="/clarion/">Quick Start</a>
+        </li>
+        <li class="nav-item documentation">
+          <a class="nav-link" href="/clarion/documentation/">Documentation</a>
+        </li>
+        <li class="nav-item examples">
+          <a class="nav-link" href="/clarion/examples/">Examples</a>
+        </li>
+        <li class="nav-item contact">
+          <a class="nav-link" href="/clarion/contact/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+    <div class="col col-md-8">
+        <h1>Adding and Removing Files</h1>
+
+<p>When working with files that require references to other files in order to make them work properly, just adding and removing files is not as simple as it seems. The Clarion CLI is designed to help reduce that friction a little.</p>
+
+<h2>Adding a New File</h2>
+<p>Adding a new file is quite simple. In the root of your project type the following command:</p>
+<code>clarion add element headings</code><br><br>
+<p>This will create the file _headings.scss in the 03_Elements directory as well as add <code>@import '_headings.scss';</code> import statement to the directory manifest file so it can be included in your final CSS file.</p>
+<p>If you look in your newly created _headings.scss file, you will also see a reference to the Abstracts manifest file - <code>@import "../00_Abstracts/index.scss";</code>. this will give you access to the variables and tools you have created in that folder.</p>
+
+<h2>Removing a File</h2>
+<p>Similar to adding a file, removing files can also be done through the CLI:</p>
+<code>clarion remove element headings</code><br><br>
+<p>This will remove the file _headings.scss in the 03_Elements directory as well as remove "@import '_headings.scss'" import statement from the directory manifest file.</p>
+
+<h2>Fuzzy Search</h2>
+<p>When specifying a directory to add or remove a file from, you do not have to use the entire directory name. This parameter supports "fuzzy search" witch means that it will try to find the appropriate directory based on part or all of the directory name. So, if I wanted to, I could add an item to the Abstracts folder by using the following command:</p>
+<code>clarion add 00 variables</code><br><br>
+<p>Clarion would find the directory based on the double zeros (00) that were entered rather than the directory name.</p>
+
+<h2>Subdirectory Support</h2>
+<p>Clarion supports subdirectories within the architecture. For example, if you wanted to further split up your Abstracts folder into <code>variables</code> and <code>mixins</code>, I would still be able to add files to the subdirectories using the following commands (make sure the directories exist before adding files to them):</p>
+<code>clarion add abstract variables/colors</code><br><br>
+<code>clarion add abstract mixins/breakpoints</code><br><br>
+<p>This allows for greater flexibility in your architecture and enable your code to expand in the future.</p>
+    </div>
+    <div class="col col-md-4">
+        <div class="list-group c-sub-nav" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action js-docs-new" href="/clarion/documentation/new/"
+        aria-controls="new project">New Project</a>
+    <a class="list-group-item list-group-item-action js-docs-architecture" href="/clarion/documentation/architecture/"
+        aria-controls="architecture">Architecture</a>
+    <a class="list-group-item list-group-item-action js-docs-add" href="/clarion/documentation/add/"
+        aria-controls="add and remove files">Add / Remove Files</a>
+    <a class="list-group-item list-group-item-action js-docs-config" href="/clarion/documentation/configuration/"
+        aria-controls="configuration">Configuration</a>
+</div>
+            
+    </div>
+</div>
+    </div>
+  </main>
+  <footer>
+    <!-- <footer class="site-footer">
+  <span class="site-footer-owner"><a href="http://localhost:4000">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
+  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+</footer> -->
+
+<nav class="navbar navbar-light footer-menu">
+  <span><a href="http://localhost:4000/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+</nav>
+
+  </footer>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="/clarion/build/scripts.js"></script>
+</body>
+
+</html>
