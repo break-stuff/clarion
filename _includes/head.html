@@ -1,14 +1,21 @@
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }} - Clarion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#157878">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ site.baseurl }}/build/styles.css">
   <meta name="description" content="{{ page.description }}">
-  <!-- <link rel="stylesheet" href="{{ site.baseurl }}/css/normalize.css"> -->
-  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
-  <!-- <link rel="stylesheet" href="{{ site.baseurl }}/css/cayman.css"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#03284C">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title }} - Clarion">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="Clarion CLI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:title" content="{{ page.title }} - Clarion">
 
+  <title>{{ page.title }} - Clarion</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/build/styles.css">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {% include google-analytics.html %}
 </head>
