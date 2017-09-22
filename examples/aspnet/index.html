@@ -1,0 +1,39 @@
+--- 
+layout: default 
+title: Angular Example 
+description: An example on how to implement the Clarion Style Architecture into and Angular project. 
+---
+
+<h1>Clarion and ASP.Net</h1>
+
+<p>Clarion fits in nicely with your ASP.Net projects. Managing Font, Style and Script files in your presentation layer can often
+    become complex and cluttered very quickly. Clarion will help keep your project clean.</p>
+
+<h2>Add the Architecture</h2>
+<p>In the command line, navigate to to the project folder you would like to add Clarion to. (If you are using Visual Studio
+    2017, you right-click the project and select "Open in Command Line".)</p>
+<p>Run the following command to install the basic architecture:</p>
+<p><code>clarion new</code></p>
+
+<h2>Include New Files</h2>
+<p>The first thing that needs to be done is to include the new files and folders in the project.</p>
+<ol>
+    <li>At the top of the Solution Explorer window select the "Show All Files" button.</li>
+    <li>Right-click the following directories and files and select "Include In Project":
+        <ul>
+            <li><code>build</code></li>
+            <li><code>src</code></li>
+            <li><code>package.json</code></li>
+            <li><code>postcss.config.js</code></li>
+            <li><code>webpack.config.js</code></li>
+        </ul>
+    </li>
+    <li>You can delete the index.html file.</li>
+</ol>
+
+<h2>Update Directories</h2>
+<p>Now that the files have been added to the project, there are 2 things that need to be updated:</p>
+<ol>
+    <li>The added directories probably do not match the project's naming conventions.</li>
+    <li>Files added using the CLI will not be included in the project and will have to be included manually.</li>
+</ol>

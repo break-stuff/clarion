@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#03284C">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Angular Example - Clarion">
+  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta property="og:url" content="http://localhost:4000/examples/aspnet/">
+  <meta property="og:site_name" content="Clarion CLI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta name="twitter:title" content="Angular Example - Clarion">
+
+  <title>Angular Example - Clarion</title>
+  <link rel="canonical" href="http://localhost:4000/examples/aspnet/">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-106134260-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+<body>
+  <!-- <section class="page-header">
+  <h1 class="project-name">Clarion CLI Documentation</h1>
+  <h2 class="project-tagline">A framework for building modular and easy-to-maintain websites.</h2>
+  <a href="#" class="btn">View on GitHub</a>
+  <a href="#" class="btn">Download .zip</a>
+  <a href="#" class="btn">Download .tar.gz</a>
+</section> -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
+    <a class="navbar-brand" href="/clarion/">Clarion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item quick-start">
+          <a class="nav-link" href="/clarion/">Quick Start</a>
+        </li>
+        <li class="nav-item documentation">
+          <a class="nav-link" href="/clarion/documentation/">Documentation</a>
+        </li>
+        <li class="nav-item examples">
+          <a class="nav-link" href="/clarion/examples/">Examples</a>
+        </li>
+        <li class="nav-item contact">
+          <a class="nav-link" href="/clarion/contact/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Clarion and ASP.Net</h1>
+
+<p>Clarion fits in nicely with your ASP.Net projects. Managing Font, Style and Script files in your presentation layer can often
+    become complex and cluttered very quickly. Clarion will help keep your project clean.</p>
+
+<h2>Add the Architecture</h2>
+<p>In the command line, navigate to to the project folder you would like to add Clarion to. (If you are using Visual Studio
+    2017, you right-click the project and select "Open in Command Line".)</p>
+<p>Run the following command to install the basic architecture:</p>
+<p><code>clarion new</code></p>
+
+<h2>Include New Files</h2>
+<p>The first thing that needs to be done is to include the new files and folders in the project.</p>
+<ol>
+    <li>At the top of the Solution Explorer window select the "Show All Files" button.</li>
+    <li>Right-click the following directories and files and select "Include In Project":
+        <ul>
+            <li><code>build</code></li>
+            <li><code>src</code></li>
+            <li><code>package.json</code></li>
+            <li><code>postcss.config.js</code></li>
+            <li><code>webpack.config.js</code></li>
+        </ul>
+    </li>
+    <li>You can delete the index.html file.</li>
+</ol>
+
+<h2>Update Directories</h2>
+<p>Now that the files have been added to the project, there are 2 things that need to be updated:</p>
+<ol>
+    <li>The added directories probably do not match the project's naming conventions.</li>
+    <li>Files added using the CLI will not be included in the project and will have to be included manually.</li>
+</ol>
+    </div>
+  </main>
+  <footer>
+    <!-- <footer class="site-footer">
+  <span class="site-footer-owner"><a href="http://localhost:4000">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
+  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+</footer> -->
+
+<nav class="navbar navbar-light footer-menu">
+  <span><a href="/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+</nav>
+
+  </footer>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="/clarion/build/scripts.js"></script>
+</body>
+
+</html>

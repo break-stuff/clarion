@@ -3,15 +3,23 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>{} - Clarion</title>
+  <meta name="description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#157878">
+  <meta name="theme-color" content="#03284C">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/clarion/build/styles.css">
-  <!-- <link rel="stylesheet" href="/clarion/css/normalize.css"> -->
-  <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
-  <!-- <link rel="stylesheet" href="/clarion/css/cayman.css"> -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Angular Example - Clarion">
+  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta property="og:url" content="http://localhost:4000/examples/angular/">
+  <meta property="og:site_name" content="Clarion CLI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta name="twitter:title" content="Angular Example - Clarion">
 
+  <title>Angular Example - Clarion</title>
+  <link rel="canonical" href="http://localhost:4000/examples/angular/">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,7 +66,51 @@
   </header>
   <main>
     <div class="container">
-      
+      <div class="row">
+    <div class="col col-md-8">
+        <h1>Clarion and Angular</h1>
+
+<p>Clarion plays really well with Angular, especially if you are using Angular CLI. If you don't have it installed already, make sure you <a href="https://cli.angular.io/">install it now</a>.</p>
+
+<h2>Starting Your Project</h2>
+<p>By default, new projects that are created using the Angular CLI use <code>.css</code> as the style format. Fortunately, the Angular team has built in a way for you to also configure your project with <code>.scss</code>, <code>.sass</code>, or <code>.less</code> when you create a new project. To get started we will run the command to create a new project, but specify the style option:</p>
+<p><code>ng new MyProject --style=scss</code></p>
+
+<h3>Changing an Existing Project</h3>
+<p>If you have an existing project that uses the default <code>.css</code> format or would like to change from one format to another, you can do so by changing the Angular CLI configuration. If you already have an existing <code>.angular-cli.json</code> configuration file located at the root of your project, you can manually change the <code>styleExt</code> property of your choice. If you would like to play it safe, you can also use the Angular CLI to update your project:</p>
+<p><code>ng set defaults.styleExt scss</code></p>
+<p>You should now see the <code>.angular-cli.json</code>. Inside that file you should see, under the <code>defaults</code> property, the <code>styleExt</code> value set to <code>scss</code>.</p>
+<p>If you already has styles written in another format, you will need to rewrite them in the new format. Angular will not convert them.</p>
+
+<h2>Adding Clarion</h2>
+<p>Adding Clarion to the project can be done in 4 easy steps:</p>
+
+<h4>1. Create a Folder For Your Styles</h4>
+<p>Under the <code>src</code> directory create a new folder called <code>sass</code>.</p>
+<p><strong>Note: Clarion will look for the Clarion Style Architecture in folders called <code>sass</code>, <code>scss</code>, or <code>less</code>.</strong></p>
+
+<h4>2. Navigate to Your New Directory</h4>
+<p>Using your command line or terminal, navigate to your new <code>sass</code> folder:</p>
+<p><code>cd src/sass</code></p>
+
+<h4>3. Add Clarion</h4>
+<p>In order to avoid overriding andy of the files provided by the You can add the Clarion architecture by using the <code>--only</code> or <code>-O</code> option. This will only install the Clarion Style Architecture.</p>
+<p><code>clarion new -O</code></p>
+
+<h4>4. Add the Styles Manifest to Angular</h4>
+<p>In the root of your project open the <code>.angular-cli.json</code> file and change the <code>styles</code> value to <code>sass/styles.scss</code>.</p>
+
+<h2>Conclusion</h2>
+<p>You should be able to use the Clarion CLI as you normally would. No additional configuration is necessary.</p>
+    </div>
+    <div class="col col-md-4">
+        <div class="list-group c-sub-nav" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action js-ex-angular" href="/clarion/examples/angular/"
+        aria-controls="angular">Angular</a>
+</div>
+            
+    </div>
+</div>
     </div>
   </main>
   <footer>
@@ -68,7 +120,7 @@
 </footer> -->
 
 <nav class="navbar navbar-light footer-menu">
-  <span><a href="http://localhost:4000/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+  <span><a href="/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
 </nav>
 
   </footer>
