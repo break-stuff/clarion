@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "CLI for adding the Clarion Style Architecture to a project.",
   "main": "index.js",
   "scripts": {
