@@ -4,18 +4,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#03284C">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Open Graph data -->
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page.title }} - Clarion">
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="Clarion CLI">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="{{ site.url }}/clarion/images/clarion_default_image.png" />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:site" content="{{ site.url }}{{ page.url }}">
   <meta name="twitter:title" content="{{ page.title }} - Clarion">
+  <meta name="twitter:image" content="{{ site.url }}/clarion/images/clarion_default_image.png">
+  
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="{{ page.title }} - Clarion">
+  <meta itemprop="description" content="{{ page.description }}">
+  <meta itemprop="image" content="{{ site.url }}/clarion/images/clarion_default_image.png"> 
 
   <title>{{ page.title }} - Clarion</title>
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <link rel="stylesheet" href="{{ site.baseurl }}/build/styles.css">
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon.png" />
   {% include google-analytics.html %}
 </head>
