@@ -137,3 +137,5 @@ These are options you can run when initializing you project.
 0.4.1 - Added link to documentation site.
 
 0.4.2 - Added example for [Angular](https://break-stuff.github.io/clarion/examples/angular/).
+
+0.4.2 - Added example for [React](https://break-stuff.github.io/clarion/examples/react/).
