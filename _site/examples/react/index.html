@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta name="description" content="An example on how to implement the Clarion Style Architecture into a React project.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#03284C">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,26 +11,26 @@
   <!-- Open Graph data -->
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Angular Example - Clarion">
-  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
-  <meta property="og:url" content="http://localhost:4000/examples/angular/">
+  <meta property="og:title" content="React Example - Clarion">
+  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture into a React project.">
+  <meta property="og:url" content="http://localhost:4000/examples/react/">
   <meta property="og:site_name" content="Clarion CLI">
   <meta property="og:image" content="http://localhost:4000/clarion/images/clarion_default_image.png" />
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
-  <meta name="twitter:site" content="http://localhost:4000/examples/angular/">
-  <meta name="twitter:title" content="Angular Example - Clarion">
+  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture into a React project.">
+  <meta name="twitter:site" content="http://localhost:4000/examples/react/">
+  <meta name="twitter:title" content="React Example - Clarion">
   <meta name="twitter:image" content="http://localhost:4000/clarion/images/clarion_default_image.png">
   
   <!-- Schema.org markup for Google+ -->
-  <meta itemprop="name" content="Angular Example - Clarion">
-  <meta itemprop="description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta itemprop="name" content="React Example - Clarion">
+  <meta itemprop="description" content="An example on how to implement the Clarion Style Architecture into a React project.">
   <meta itemprop="image" content="http://localhost:4000/clarion/images/clarion_default_image.png"> 
 
-  <title>Angular Example - Clarion</title>
-  <link rel="canonical" href="http://localhost:4000/examples/angular/">
+  <title>React Example - Clarion</title>
+  <link rel="canonical" href="http://localhost:4000/examples/react/">
   <link rel="stylesheet" href="/clarion/build/styles.css">
   <link rel="icon" type="image/png" href="/clarion/favicon.png" />
   <script>
@@ -81,22 +81,35 @@
     <div class="container">
       <div class="row">
     <div class="col col-md-8">
-        <h1>Clarion and Angular</h1>
+        <h1>Clarion and React</h1>
 
-<p>Clarion plays really well with Angular, especially if you are using Angular CLI. If you don't have it installed already, make sure you <a href="https://cli.angular.io/">install it now</a>.</p>
+<p>React is a fantastically flexible framework that focuses on rendering complex views. This felibility can make documentation a little diffucult, so for this example I will be using the <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> command line scaffolding tool.</p>
 
 <h2>Starting Your Project</h2>
-<p>Before you get started, make sure Clarion and the Angular CLI are installed:</p>
-<p><code>npm install -g clarion @angular/cli</code></p>
+<p>Before you get started, make sure Clarion and create-react-app are installed:</p>
+<p><code>npm install -g clarion create-react-app</code></p>
 
-<p>By default, new projects that are created using the Angular CLI use <code>.css</code> as the style format. Fortunately, the Angular team has built in a way for you to also configure your project with <code>.scss</code>, <code>.sass</code>, or <code>.less</code> when you create a new project. To get started we will run the command to create a new project, but specify the style option:</p>
-<p><code>ng new MyProject --style=scss</code></p>
+<p>After the install is finished, create your new project:</p>
+<p><strong>Note: You must use all lower-case letters in your new project name.</strong></p>
+<p><code>create-react-app my-app</code></p>
 
-<h3>Changing an Existing Project</h3>
-<p>If you have an existing project that uses the default <code>.css</code> format or would like to change from one format to another, you can do so by changing the Angular CLI configuration. If you already have an existing <code>.angular-cli.json</code> configuration file located at the root of your project, you can manually change the <code>styleExt</code> property of your choice. If you would like to play it safe, you can also use the Angular CLI to update your project:</p>
-<p><code>ng set defaults.styleExt scss</code></p>
-<p>You should now see the <code>.angular-cli.json</code>. Inside that file you should see, under the <code>defaults</code> property, the <code>styleExt</code> value set to <code>scss</code>.</p>
-<p>If you already has styles written in another format, you will need to rewrite them in the new format. Angular will not convert them.</p>
+<h2>Update Your Project for SASS</h2>
+<p>The following is a summary from the <a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc">create-react-app documentation</a>:</p>
+
+<h5>Install the SASS Compiler</h5>
+<p><code>npm install --save node-sass-chokidar npm-run-all</code></p>
+
+<h5>Update the Project Commands</h5>
+<p>In the <code>package.json</code> file, replace the <code>scripts</code> commands with the following commands:</p>
+<p>
+    <code>"build-css": "node-sass-chokidar src/ -o src/",</code><br> 
+    <code>"watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",</code><br> 
+    <code>"start-js": "react-scripts start",</code><br> 
+    <code>"start": "npm-run-all -p watch-css start-js",</code><br> 
+    <code>"build": "npm run build-css && react-scripts build",</code><br>
+    <code>"test": "react-scripts test --env=jsdom",</code><br> 
+    <code>"eject": "react-scripts eject"</code><br> 
+</p>
 
 <h2>Adding Clarion</h2>
 <p>Adding Clarion to the project can be done in 4 easy steps:</p>
@@ -113,8 +126,8 @@
 <p>In order to avoid overriding andy of the files provided by the You can add the Clarion architecture by using the <code>--only</code> or <code>-O</code> option. This will only install the Clarion Style Architecture.</p>
 <p><code>clarion new -O</code></p>
 
-<h4>4. Add the Styles Manifest to Angular</h4>
-<p>In the root of your project open the <code>.angular-cli.json</code> file and change the <code>styles</code> value to <code>sass/styles.scss</code>.</p>
+<h4>4. Add the Styles to index.js</h4>
+<p>In the <code>src</code> folder open the <code>index.js</code> file and replace <code>import './index.css';</code> with <code>import './sass/styles.scss';</code>. This will include the styles in the build process.</p>
 
 <h2>Conclusion</h2>
 <p>You should be able to use the Clarion CLI as you normally would. No additional configuration is necessary.</p>

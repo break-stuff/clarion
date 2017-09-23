@@ -43,6 +43,9 @@ function activateSubNavCategoryLink() {
         case urlContainsString('angular'):
             className = 'js-ex-angular';
             break;
+        case urlContainsString('react'):
+            className = 'js-ex-react';
+            break;
     }
 
     addActiveClassToElement(className);
