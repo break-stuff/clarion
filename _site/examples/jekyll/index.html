@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us" itemscope itemtype="http://schema.org/Article">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="An example on how to implement the Clarion Style Architecture in a Jekyll project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#03284C">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Open Graph data -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jekyll Example - Clarion">
+  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture in a Jekyll project.">
+  <meta property="og:url" content="/examples/jekyll/">
+  <meta property="og:site_name" content="Clarion CLI">
+  <meta property="og:image" content="/clarion/images/clarion_default_image.png" />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture in a Jekyll project.">
+  <meta name="twitter:site" content="/examples/jekyll/">
+  <meta name="twitter:title" content="Jekyll Example - Clarion">
+  <meta name="twitter:image" content="/clarion/images/clarion_default_image.png">
+  
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Jekyll Example - Clarion">
+  <meta itemprop="description" content="An example on how to implement the Clarion Style Architecture in a Jekyll project.">
+  <meta itemprop="image" content="/clarion/images/clarion_default_image.png"> 
+
+  <title>Jekyll Example - Clarion</title>
+  <link rel="canonical" href="/examples/jekyll/">
+  <link rel="stylesheet" href="/clarion/build/styles.css">
+  <link rel="icon" type="image/png" href="/clarion/favicon.png" />
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-106134260-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+</head>
+
+<body>
+  <!-- <section class="page-header">
+  <h1 class="project-name">Clarion CLI Documentation</h1>
+  <h2 class="project-tagline">A framework for building modular and easy-to-maintain websites.</h2>
+  <a href="#" class="btn">View on GitHub</a>
+  <a href="#" class="btn">Download .zip</a>
+  <a href="#" class="btn">Download .tar.gz</a>
+</section> -->
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
+    <a class="navbar-brand" href="/clarion/">Clarion</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item quick-start">
+          <a class="nav-link" href="/clarion/">Quick Start</a>
+        </li>
+        <li class="nav-item documentation">
+          <a class="nav-link" href="/clarion/documentation/">Documentation</a>
+        </li>
+        <li class="nav-item examples">
+          <a class="nav-link" href="/clarion/examples/">Examples</a>
+        </li>
+        <li class="nav-item contact">
+          <a class="nav-link" href="/clarion/contact/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+    <div class="col col-md-8">
+        <h1>Clarion and Jekyll</h1>
+
+<p>Jekyll is a simple, blog-aware, static site generator. Jekyll also happens to be the engine behind GitHub Pages, which means you can use Jekyll to host your project’s page (like this one), blog, or website from GitHub. Integrating Clarion into Jekyll was very simple.</p>
+
+<h2>Starting Your Project</h2>
+<p>Before you get started, make sure Clarion and the Jekyll requirements are installed:</p>
+<p>
+    <code>npm install -g clarion</code><br>
+    <a href="https://jekyllrb.com/docs/installation/#requirements">Jekyll Requirements</a>
+</p>
+<p>This example will use the <a href="https://github.com/pietromenna/jekyll-cayman-theme">Jekyll Cayman theme</a>. The following instruction are excerpts from the official documentation:</p>
+
+<h4>Create Your Project</h4>
+<p>Download the theme <a href="http://github.com/pietromenna/jekyll-cayman-theme/archive/master.zip">here</a>.</p>
+<p>
+    In the terminal: <br>
+    <code>unzip jekyll-cayman-theme-master.zip</code><br>
+    <code>cd jekyll-cayman-theme-master</code><br>
+    <code>bundle install</code>
+</p>
+
+<h2>Adding Clarion</h2>
+<p>Before Clarion is installed, rename the <code>index.html</code> file at the core of the project to <code>_index.html</code> to prevent it from being overridden. Now install Clarion:</p>
+<p><code>clarion new</code></p>
+<p>Remove the new <code>index.html</code> and rename <code>_index.html</code> back to <code>index.html</code>.</p>
+<p>In the <code>_includes</code> directory add a reference to your style and script files to the <code>head.html</code> file (or in another designated file).</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/build/styles.css"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/build/scripts.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+<p><strong>Note: If you are using your Jekyll project for GitHub Pages, make sure you prefix the <code>href</code> and <code>src</code> paths with your project name.</strong></p>
+
+<h2>Using the Theme</h2>
+<p>The Cayman theme uses 2 files in the <code>css</code> directory: <code>cayman.css</code> and <code>normalize.css</code>. You can add the files to your styles in 2 ways:</p>
+<ol>
+    <li>Cut and paste them or copy them to the appropriate place and change the extension</li>
+    <li>Create new files and and add the contents to the new files</li>
+</ol>
+
+<p>Let's use the CLI to do the latter. Create 2 new files: the first file will go in the <code>src/sass/02_Themes</code> directory for the cayman theme and the second will go in the <code>src/sass/01_Base</code> directory since it is a CSS reset.</p>
+<p><code>clarion add theme cayman</code></p>
+<p><code>clarion add base normalize</code></p>
+<p>Copy the contents of the <code>css/cayman.css</code> file to the newly created <code>src/sass/02_Themes/_cayman.scss</code> file and <code>css/normalize.css</code> to <code>src/sass/01_Base/_normalize.scss</code>.</p>
+<p>Now you can remove the references to the to <code>css/cayman.css</code> and <code>css/normalize.css</code> in the <code>_includes/head.html</code> file.</p>
+
+<h2>WebPack Watch and Jekyll Serve</h2>
+<p>When you run <code>jekyll serve</code>, Jekyll will watch for any changes to you files, process them, and the output will go in the <code>_sites</code> directory. The problem is that while this process is running you cannot run additional commands or have additional watchers running to compile your styles or scripts. This can be resolved by installing a package called <a href="https://www.npmjs.com/package/concurrently">concurrently</a>. This will allow multiple commands to be run simultaneously.</p>
+<p><code>npm i concurrently --save-dev</code></p>
+<p>In the <code>package.json</code>, under <code>scripts</code>, update the <code>dev</code> command to run the webpack watch command and the jekyll serve command simultaneously:</p>
+<p><code>"dev": "concurrently --kill-others \"cross-env NODE_ENV=development webpack -w \" \"bundle exec jekyll serve\"",</code></p>
+<p>Now, update the <code>build</code> command to include Jekyll's build command:</p>
+<p><code>"build": "cross-env NODE_ENV=production webpack --progress --hide-modules -p && bundle exec jekyll build"</code></p>
+
+<h2>Conclusion</h2>
+<p>You should be able to use the Clarion CLI as you normally would. No additional configuration is necessary.</p>
+    </div>
+    <div class="col col-md-4">
+        <div class="list-group c-sub-nav" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action js-ex-angular" href="/clarion/examples/angular/"
+        aria-controls="angular">Angular</a>
+    <a class="list-group-item list-group-item-action js-ex-react" href="/clarion/examples/react/"
+        aria-controls="react">React</a>
+    <a class="list-group-item list-group-item-action js-ex-jekyll" href="/clarion/examples/jekyll/"
+        aria-controls="jekyll">Jekyll</a>
+</div>
+            
+    </div>
+</div>
+    </div>
+  </main>
+  <footer>
+    <!-- <footer class="site-footer">
+  <span class="site-footer-owner"><a href="">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
+  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+</footer> -->
+
+<nav class="navbar navbar-light footer-menu">
+  <span><a href="/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+</nav>
+
+  </footer>
+  <script async src="/clarion/build/scripts.js"></script>
+</body>
+
+</html>

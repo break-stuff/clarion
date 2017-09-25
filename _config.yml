@@ -15,3 +15,8 @@ gems:
 
 #Others
 markdown: kramdown
+
+sass:
+    sass_dir: src/sass
+
+exclude: [src, webpack.config.js, jekyll-cayman-theme.gemspec, package.json, postcss.config.js, README.md, Gemfile, Gemfile.lock]
