@@ -19,4 +19,4 @@ markdown: kramdown
 sass:
     sass_dir: src/sass
 
-exclude: [src, webpack.config.js, jekyll-cayman-theme.gemspec, package.json, postcss.config.js, README.md, Gemfile, Gemfile.lock]
+exclude: [src, webpack.config.js, jekyll-cayman-theme.gemspec, package.json, package-lock.json, postcss.config.js, README.md, Gemfile, Gemfile.lock, node_modules]
