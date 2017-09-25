@@ -55,7 +55,8 @@ function activateSubNavCategoryLink() {
 }
 
 function addActiveClassToElement(className) {
-    $('.' + className).addClass('active');
+    if(className)
+        $('.' + className).addClass('active');
 }
 
 function urlContainsString(stringToFind) {
