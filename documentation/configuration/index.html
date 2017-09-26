@@ -11,20 +11,20 @@ description: Documentation for customizing the Clarion CLI using the configurati
     following command at the root of your project:</p>
 <code>clarion config init</code><br><br>
 <p>You should now see a new file called <code>.clarion</code> in your project. The file contains a simple JSON object.</p>
-{% highlight javascript %}
-    {
-        "paths": {
-            "styles": "./src",
-            "scripts": "./src"
-        },
-        "format": {
-            "styles": "scss",
-            "scripts": "js"
-        },
-        "addToManifest": "true",
-        "importAbstracts": "true"
-    }
-{% endhighlight %}
+<pre>
+{
+    "paths": {
+        "styles": "./src",
+        "scripts": "./src"
+    },
+    "format": {
+        "styles": "scss",
+        "scripts": "js"
+    },
+    "addToManifest": "true",
+    "importAbstracts": "true"
+}
+</pre>
 <p>You can modify this content directly using your text editor, but you can also use the Clarion CLI to make changes.</p>
 
 <h2>Paths</h2>

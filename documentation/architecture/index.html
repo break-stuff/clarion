@@ -29,7 +29,7 @@ description: Documentation on the Clarion Style Architecture.
 <p>The Themes folder contains third-party themes for your website and for things like plugins. This file has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme's rules without modifying the theme directly and ruining the integrity of the code.</p>
 
 <h3>03_Elements</h3>
-<p>The Elements folder is for styling specific elements such as links, buttons, form inputs, and header tags. Browsers, by default, have their own styling in place for these elements. Unfortunately, each of these rules are different based on witch browser you are using.</p>
+<p>The Elements folder is for styling specific elements such as links, buttons, form inputs, and header tags. These are the smallest building blocks in the web and cannot be broken up into smaller parts. Browsers, by default, have their own styling in place for these elements, but tend to be inconsistent. Because of this, adding a reset to the <code>01_Base</code> directory or adding one to build pipeline is recommended.</p>
 
 <h3>04_Components</h3>
 <p>Components are groups of elements. This can be things like a search box, navbar, or carousel. These groups of elements together have a specific purpose.</p>

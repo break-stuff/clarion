@@ -1,3 +1,11 @@
 @import "../00_Abstracts/index.scss";
 
-code {}
+code, pre {
+    padding: .2rem .4rem;
+    font-size: 90%;
+    color: #bd4147;
+    background-color: #f8f9fa;
+    border-radius: .25rem;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
