@@ -4,7 +4,6 @@ A simple CLI for scaffolding front-end projects using the Clarion Style Architec
 
 Check out the official Documentation here: [https://break-stuff.github.io/clarion](https://break-stuff.github.io/clarion/)
 
-**Please note that this project is still in alpha as features are still being ironed out. But please do not let it deter you from taking advantage of its great capabilities.**
 
 ## Installation
 
@@ -14,13 +13,6 @@ In your terminal or command prompt type:
 
     npm install -g clarion
 
-<!-- ** **Mac and Linux Users: There is a permissions bug. This can be fixed by running the following command. Sorry, this will be updated shortly.**
-
-    chmod -R 755 /usr/local/lib/node_modules/clarion
-
-**or if you are using nvm**
-
-    chmod -R 755 /Users/<username>/.nvm/versions/node/<node version>/lib/node_modules/clarion -->
 
 ## Start a New Project
     clarion new MyProject
@@ -134,8 +126,12 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
-0.4.1 - Added link to documentation site.
+0.4.4 - Added example for [Jekyll](https://break-stuff.github.io/clarion/examples/jekyll/).
+
+0.4.3 - Added example for [React](https://break-stuff.github.io/clarion/examples/react/).
 
 0.4.2 - Added example for [Angular](https://break-stuff.github.io/clarion/examples/angular/).
 
-0.4.2 - Added example for [React](https://break-stuff.github.io/clarion/examples/react/).
+0.4.1 - Added link to documentation site.
+
+
