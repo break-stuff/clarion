@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta name="description" content="An example on how to implement the Clarion Style Architecture into an ASP.Net project.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#03284C">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,25 +11,25 @@
   <!-- Open Graph data -->
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Angular Example - Clarion">
-  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta property="og:title" content="ASP.Net Example - Clarion">
+  <meta property="og:description" content="An example on how to implement the Clarion Style Architecture into an ASP.Net project.">
   <meta property="og:url" content="http://localhost:4000/examples/aspnet/">
   <meta property="og:site_name" content="Clarion CLI">
   <meta property="og:image" content="http://localhost:4000/clarion/images/clarion_default_image.png" />
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta name="twitter:description" content="An example on how to implement the Clarion Style Architecture into an ASP.Net project.">
   <meta name="twitter:site" content="http://localhost:4000/examples/aspnet/">
-  <meta name="twitter:title" content="Angular Example - Clarion">
+  <meta name="twitter:title" content="ASP.Net Example - Clarion">
   <meta name="twitter:image" content="http://localhost:4000/clarion/images/clarion_default_image.png">
   
   <!-- Schema.org markup for Google+ -->
-  <meta itemprop="name" content="Angular Example - Clarion">
-  <meta itemprop="description" content="An example on how to implement the Clarion Style Architecture into and Angular project.">
+  <meta itemprop="name" content="ASP.Net Example - Clarion">
+  <meta itemprop="description" content="An example on how to implement the Clarion Style Architecture into an ASP.Net project.">
   <meta itemprop="image" content="http://localhost:4000/clarion/images/clarion_default_image.png"> 
 
-  <title>Angular Example - Clarion</title>
+  <title>ASP.Net Example - Clarion</title>
   <link rel="canonical" href="http://localhost:4000/examples/aspnet/">
   <link rel="stylesheet" href="/clarion/build/styles.css">
   <link rel="icon" type="image/png" href="/clarion/favicon.png" />
@@ -79,7 +79,9 @@
   </header>
   <main>
     <div class="container">
-      <h1>Clarion and ASP.Net</h1>
+      <div class="row">
+    <div class="col col-md-8">
+        <h1>Clarion and ASP.Net</h1>
 
 <p>Clarion fits in nicely with your ASP.Net projects. Managing Font, Style and Script files in your presentation layer can often
     become complex and cluttered very quickly. Clarion will help keep your project clean.</p>
@@ -107,21 +109,61 @@
 </ol>
 
 <h2>Update Directories</h2>
-<p>Now that the files have been added to the project, there are 2 things that need to be updated:</p>
+<p>Now that the files have been added to the project, there are 2 things that need to be fixed:</p>
 <ol>
     <li>The added directories probably do not match the project's naming conventions.</li>
-    <li>Files added using the CLI will not be included in the project and will have to be included manually.</li>
+    <li>New files added using the CLI will not be included in the project and will have to be included manually.</li>
 </ol>
+
+<h3>File Organization</h3>
+<p>The new directories that have been added to the project most likely do not match your project's naming convention. A popular way of organizing precompiled content such as SASS and TypeScript is to put them into an <code>Assets</code> directory.</p>
+<p>Rename the <code>src</code> directory to <code>Assets</code>. Also, just to keep it tidy, let's move the <code>build</code> directory into that same directory. Now all of our front-end code is in the same place. (It is also common to store <code>image</code> files in here as well.)</p>
+<h5>Update WebPack</h5>
+<p>We need to update WebPack to look into this new directory to compile the code as well as change the output directory to the new location in the <code>Assets</code> directory. If you are using Gulp or Grunt, the process will be similar.</p>
+<ol>
+    <li>Open the <code>webpack.config.js</code> at the root of the project</li>
+    <li>Change the <code>entry</code> property to the new <code>Assets</code> directory: <code>entry: './Assets/scripts/main.js',</code></li>
+    <li>Change the <code>output</code> object so that the <code>filename</code> property also points to the new directory: <code>filename: './Assets/build/scripts.js'</code></li>
+    <li>In the <code>plugins</code> section change the css output path to <code>new ExtractTextPlugin("./Assets/build/styles.css")</code></li>
+</ol>
+
+<h3>Adding new Files</h3>
+<p>New files that are added using the CLI will not automatically be included in the project. In order to include them you will have to show hidden files, right-click, and select "Include In Project". This process will effectively eliminate any efficiencies gained by using the CLI. Instead, we can modify the <code>.csproj</code> to automatically include them.</p>
+<ol>
+    <li>In Visual Studio, right-click the project and select "Unload Project"</li>
+    <li>Right-click the unloaded project a select "Edit {your project name}.csproj"</li>
+    <li>Search for the section where your <code>Assets</code> directory contents are being included</li>
+    <li>Add the following line: <code><Content Include="Assets\**" /></code></li>
+    <li>Save the file, right-click the unloaded project and click "Reload Project"</li>
+    <li>In your command line, run <code>npm run build</code>. You should see the compiled <code>css</code> and <code>js</code> files already included in the project (you may have to refresh the Solution Explorer)</li>
+</ol>
+
+<h2>Configuring Clarion</h2>
+<p>Now that we have moved things around, we need to configure Clarion to tell Clarion where to add new files.</p>
+<ol>
+    <li>In your terminal run the command <code>clarion config init</code></li>
+    <li>Include the new <code>.clarion</code> file in your project</li>
+    <li>Change the style path in the <code>.clarion</code> file to <code>"./Assets</code> by running the following command <code>clarion config paths.styles ./Assets</code> or by manually changing the <code>style</code> property in the <code>paths</code> object to "./Assets".</li>
+</ol>
+
+<p>After saving the configuration changes in the <code>.clarion</code> config file, you should be able to use the Clarion CLI normally.</p>
+    </div>
+    <div class="col col-md-4">
+        <div class="list-group c-sub-nav" id="list-tab" role="tablist">
+    <a class="list-group-item list-group-item-action js-ex-angular" href="/clarion/examples/angular/" aria-controls="angular">Angular</a>
+    <a class="list-group-item list-group-item-action js-ex-aspnet" href="/clarion/examples/aspnet/" aria-controls="jekyll">ASP.Net</a>
+    <a class="list-group-item list-group-item-action js-ex-ghost" href="/clarion/examples/ghost/" aria-controls="jekyll">Ghost Blog</a>
+    <a class="list-group-item list-group-item-action js-ex-jekyll" href="/clarion/examples/jekyll/" aria-controls="jekyll">Jekyll</a>
+    <a class="list-group-item list-group-item-action js-ex-react" href="/clarion/examples/react/" aria-controls="react">React</a>
+    <a class="list-group-item list-group-item-action js-ex-vuejs" href="/clarion/examples/vuejs/" aria-controls="vuejs">Vue.js</a>
+</div>            
+    </div>
+</div>
     </div>
   </main>
   <footer>
-    <!-- <footer class="site-footer">
-  <span class="site-footer-owner"><a href="http://localhost:4000">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span>
-  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
-</footer> -->
-
-<nav class="navbar navbar-light footer-menu">
-  <span><a href="/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://breakstuff.io">Burton Smith</a>.</span> 
+    <nav class="navbar navbar-light footer-menu">
+  <span><a href="/clarion/">Clarion CLI Documentation</a> is maintained by <a href="https://www.linkedin.com/in/burton-smith-48132a34">Burton Smith</a>.</span> 
 </nav>
 
   </footer>

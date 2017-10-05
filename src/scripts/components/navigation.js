@@ -43,11 +43,20 @@ function activateSubNavCategoryLink() {
         case urlContainsString('angular'):
             className = 'js-ex-angular';
             break;
-        case urlContainsString('react'):
-            className = 'js-ex-react';
+        case urlContainsString('aspnet'):
+            className = 'js-ex-aspnet';
+            break;
+        case urlContainsString('ghost'):
+            className = 'js-ex-ghost';
             break;
         case urlContainsString('jekyll'):
             className = 'js-ex-jekyll';
+            break;
+        case urlContainsString('react'):
+            className = 'js-ex-react';
+            break;
+        case urlContainsString('vuejs'):
+            className = 'js-ex-vuejs';
             break;
     }
 
@@ -55,7 +64,7 @@ function activateSubNavCategoryLink() {
 }
 
 function addActiveClassToElement(className) {
-    if(className)
+    if (className)
         $('.' + className).addClass('active');
 }
 
