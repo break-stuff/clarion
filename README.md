@@ -44,7 +44,7 @@ The project architecture implements the Clarion Style Architecture.
     |  |  |--01_Base/          # Resets/Normalize, Typography Rules, Etc.
     |  |  |  |--index.scss     # Manifest File
     |  |  |
-    |  |  |--02_Themes/        # Themes and Third Party Plug-In Styles
+    |  |  |--02_Vendors/       # Style sheets provided by a third party such as themes or plug-ins
     |  |  |  |--index.scss     # Manifest File
     |  |  |
     |  |  |--03_Elements/      # Styles for HTML tags, such as a form label, an input or a button
@@ -125,6 +125,8 @@ These are options you can run when initializing you project.
 
 
 ## Changelog
+
+0.5.0 - Renamed 02_Themes to 02_Vendors.
 
 0.4.4 - Added example for [Jekyll](https://break-stuff.github.io/clarion/examples/jekyll/).
 
