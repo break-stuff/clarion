@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/clarion/sitemap.xml
+Sitemap: /clarion/sitemap.xml

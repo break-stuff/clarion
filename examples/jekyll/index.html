@@ -45,10 +45,10 @@ description: An example on how to implement the Clarion Style Architecture in a 
     <li>Create new files and and add the contents to the new files</li>
 </ol>
 
-<p>Let's use the CLI to do the latter. Create 2 new files: the first file will go in the <code>src/sass/02_Themes</code> directory for the cayman theme and the second will go in the <code>src/sass/01_Base</code> directory since it is a CSS reset.</p>
+<p>Let's use the CLI to do the latter. Create 2 new files: the first file will go in the <code>src/sass/02_Vendors</code> directory for the cayman theme and the second will go in the <code>src/sass/01_Base</code> directory since it is a CSS reset.</p>
 <p><code>clarion add theme cayman</code></p>
 <p><code>clarion add base normalize</code></p>
-<p>Copy the contents of the <code>css/cayman.css</code> file to the newly created <code>src/sass/02_Themes/_cayman.scss</code> file and <code>css/normalize.css</code> to <code>src/sass/01_Base/_normalize.scss</code>.</p>
+<p>Copy the contents of the <code>css/cayman.css</code> file to the newly created <code>src/sass/02_Vendors/_cayman.scss</code> file and <code>css/normalize.css</code> to <code>src/sass/01_Base/_normalize.scss</code>.</p>
 <p>Now you can remove the references to the to <code>css/cayman.css</code> and <code>css/normalize.css</code> in the <code>_includes/head.html</code> file.</p>
 
 <h2>WebPack Watch and Jekyll Serve</h2>

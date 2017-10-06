@@ -13,24 +13,24 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Architecture - Clarion">
   <meta property="og:description" content="Documentation on the Clarion Style Architecture.">
-  <meta property="og:url" content="http://localhost:4000/documentation/architecture/">
+  <meta property="og:url" content="/documentation/architecture/">
   <meta property="og:site_name" content="Clarion CLI">
-  <meta property="og:image" content="http://localhost:4000/clarion/images/clarion_default_image.png" />
+  <meta property="og:image" content="/clarion/images/clarion_default_image.png" />
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:description" content="Documentation on the Clarion Style Architecture.">
-  <meta name="twitter:site" content="http://localhost:4000/documentation/architecture/">
+  <meta name="twitter:site" content="/documentation/architecture/">
   <meta name="twitter:title" content="Architecture - Clarion">
-  <meta name="twitter:image" content="http://localhost:4000/clarion/images/clarion_default_image.png">
+  <meta name="twitter:image" content="/clarion/images/clarion_default_image.png">
   
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="Architecture - Clarion">
   <meta itemprop="description" content="Documentation on the Clarion Style Architecture.">
-  <meta itemprop="image" content="http://localhost:4000/clarion/images/clarion_default_image.png"> 
+  <meta itemprop="image" content="/clarion/images/clarion_default_image.png"> 
 
   <title>Architecture - Clarion</title>
-  <link rel="canonical" href="http://localhost:4000/documentation/architecture/">
+  <link rel="canonical" href="/documentation/architecture/">
   <link rel="stylesheet" href="/clarion/build/styles.css">
   <link rel="icon" type="image/png" href="/clarion/favicon.png" />
   <script>
@@ -102,8 +102,8 @@
 <h3>01_Base</h3>
 <p>This folder holds the boilerplate code for the project. You would add your reset files and typographic rules. Keep in mind that most front-end frameworks like Bootstrap and Foundation already have their own CSS resets built into their styles, so additional resets may not be necessary.</p>
 
-<h3>02_Themes</h3>
-<p>The Themes folder contains third-party themes for your website and for things like plugins. This file has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme's rules without modifying the theme directly and ruining the integrity of the code.</p>
+<h3>02_Vendors</h3>
+<p>The Themes folder contains third-party themes for your website and for things like styles for plugins. This file has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme's rules without modifying the theme directly and ruining the integrity of the code.</p>
 
 <h3>03_Elements</h3>
 <p>The Elements folder is for styling specific elements such as links, buttons, form inputs, and header tags. These are the smallest building blocks in the web and cannot be broken up into smaller parts. Browsers, by default, have their own styling in place for these elements, but tend to be inconsistent. Because of this, adding a reset to the <code>01_Base</code> directory or adding one to build pipeline is recommended.</p>

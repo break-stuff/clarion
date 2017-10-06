@@ -25,8 +25,8 @@ description: Documentation on the Clarion Style Architecture.
 <h3>01_Base</h3>
 <p>This folder holds the boilerplate code for the project. You would add your reset files and typographic rules. Keep in mind that most front-end frameworks like Bootstrap and Foundation already have their own CSS resets built into their styles, so additional resets may not be necessary.</p>
 
-<h3>02_Themes</h3>
-<p>The Themes folder contains third-party themes for your website and for things like plugins. This file has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme's rules without modifying the theme directly and ruining the integrity of the code.</p>
+<h3>02_Vendors</h3>
+<p>The Themes folder contains third-party themes for your website and for things like styles for plugins. This file has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme's rules without modifying the theme directly and ruining the integrity of the code.</p>
 
 <h3>03_Elements</h3>
 <p>The Elements folder is for styling specific elements such as links, buttons, form inputs, and header tags. These are the smallest building blocks in the web and cannot be broken up into smaller parts. Browsers, by default, have their own styling in place for these elements, but tend to be inconsistent. Because of this, adding a reset to the <code>01_Base</code> directory or adding one to build pipeline is recommended.</p>
