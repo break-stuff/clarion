@@ -30,7 +30,7 @@ After your dependencies are installed you can run your project.
 
 ## About Your New Project
 
-The default project is configured with [SASS](http://sass-lang.com/) using the .scss syntax and [webpack](https://webpack.js.org/) as the transpiler and module manager.
+The default project is configured with [SASS](http://sass-lang.com/) using the .scss syntax and [webpack](https://webpack.js.org/) as the compiler and module manager.
 
 The project architecture implements the Clarion Style Architecture.
 
@@ -108,7 +108,7 @@ To build your application for final use, run the build command.
 
     npm run build
 
-The final transpiled JavaScript and CSS file are in build directory in the root of your project.
+The final compiled JavaScript and CSS file are in build directory in the root of your project.
 
 ## Options
 
@@ -125,6 +125,8 @@ These are options you can run when initializing you project.
 
 
 ## Changelog
+
+0.5.1 - Added example for [ASP.Net](https://break-stuff.github.io/clarion/examples/aspnet/).
 
 0.5.0 - Renamed 02_Themes to 02_Vendors.
 
