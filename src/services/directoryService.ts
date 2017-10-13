@@ -38,9 +38,10 @@ export class DirectoryService implements IDirectoryService {
 
     findDirectoryByName(directoryName: string): string {
         let directory: string;
+        let directories = this.getAllStyleDirectories();
 
         if (directoryName) {
-            directory = data.directories.find(x => {
+            directory = directories.find(x => {
                 return x.toLowerCase().includes(directoryName.toLowerCase());
             });
         }
@@ -55,12 +56,42 @@ export class DirectoryService implements IDirectoryService {
             pathToDirectory = `./${directory}`;
         } else {
             data.styleTypes.forEach(x => {
-                if (this.directoryExists(path.resolve('./', this._config.paths.styles, `${x}/${directory}`))) {
-                    pathToDirectory = path.resolve('./', this._config.paths.styles, `${x}/${directory}`);
+                let proposedPath = path.resolve(this.findStyleRootDirectory(), directory);
+                if (this.directoryExists(proposedPath)) {
+                    pathToDirectory = proposedPath;
                 }
             });
         }
 
         return pathToDirectory;
+    }
+
+    getAllStyleDirectories(): string[] {
+        let config = this._configService.getConfigData();
+        let stylePath = this.findStyleRootDirectory();
+        console.log(stylePath);
+        let directories = this.getDirectoriesInDirectory(stylePath);
+        console.log(directories);
+
+        return directories;
+    }
+
+    findStyleRootDirectory(): string {
+        let stylesDirectory = '';
+        
+        data.styleTypes.forEach(type => {
+            let proposedPath = path.resolve('./', this._config.paths.styles, type);
+            if (this.directoryExists(proposedPath)) {
+                stylesDirectory = proposedPath;
+            }
+        });
+
+        return stylesDirectory;
+    }
+
+    getDirectoriesInDirectory(path): string[] {
+        return fs.readdirSync(path).filter(function (file) {
+            return fs.statSync(path+'/'+file).isDirectory();
+        });
     }
 }

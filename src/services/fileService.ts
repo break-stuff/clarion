@@ -6,16 +6,11 @@ import { ILogService, LogService } from "./logService";
 
 export interface IFileService {
     saveFile(destination: string, content: string): void;
-    // createDirectory(pathName: string): void;
-    getFullFileName(fileName: string, manifestFile: string): string;
     fileExists(fileName: string): boolean;
-    // directoryExists(directoryName: string): boolean;
     getManifestFile(filePath: string): string;
     getFileExtension(directory: string): string;
-    // findDirectoryByName(directoryName: string): string;
     updateManifest(fileName: string, manifestFile: string): void;
     removeFile(filePath: string): void;
-    // findDirectory(directory: string): string;
     readFile(filePath: string): string;
     getStyleFormat(extension: string): string;
 }
@@ -33,28 +28,6 @@ export class FileService implements IFileService {
         }
     }
 
-    // createDirectory(pathName: string): void {
-    //     try {
-    //         pathName = pathName.replace('//', '/');
-    //         fs.mkdirSync(pathName);
-    //         this._logger.success(`Created directory: ${pathName}`);
-    //     } catch (error) {
-    //         this._logger.error(`There was an error creating this directory: ${pathName} \n${error}`);
-    //     }
-    // }
-
-    getFullFileName(fileName: string, manifestFile: string): string {
-        let fullName = undefined;
-        let extension = this.getFileExtension(null);
-
-        if (this.fileExists(fileName)) {
-            fullName = fileName;
-        } else if (this.fileExists(fileName + extension)) {
-            fullName = fileName + extension;
-        }
-        return fileName;
-    }
-
     fileExists(fileName: string): boolean {
         try {
             return fs.statSync(fileName).isFile();
@@ -62,14 +35,6 @@ export class FileService implements IFileService {
             return false;
         }
     }
-
-    // directoryExists(directoryName: string): boolean {
-    //     try {
-    //         return fs.statSync(directoryName).isDirectory();
-    //     } catch (err) {
-    //         return false;
-    //     }
-    // }
 
 
     getManifestFile(filePath: string): string {
@@ -103,18 +68,6 @@ export class FileService implements IFileService {
         return manifest ? path.extname(manifest) : '.scss';
     }
 
-    // findDirectoryByName(directoryName: string): string {
-    //     let directory: string;
-
-    //     if (directoryName) {
-    //         directory = data.directories.find(x => {
-    //             return x.toLowerCase().includes(directoryName.toLowerCase());
-    //         });
-    //     }
-
-    //     return directory;
-    // }
-
     updateManifest(fileName: string, manifestFile: string): void {
         if (this.fileExists(manifestFile)) {
             switch (program.args[0]) {
@@ -139,6 +92,7 @@ export class FileService implements IFileService {
     removeFileFromManifest(fileName: string, manifestFile: string): void {
         let importStatements = this.readFile(manifestFile).split('\n');
         let fileIndex = importStatements.indexOf(`@import '${fileName}';`);
+        
         if (fileIndex < 0) {
             this._logger.warning('File to be removed was not found in your manifest.');
         } else {
@@ -152,39 +106,18 @@ export class FileService implements IFileService {
         try {
             if (this.fileExists(filePath)) {
                 fs.unlinkSync(filePath);
+                this._logger.success(`File removed:      ${filePath}`);                
             } else {
                 this._logger.warning(filePath + ' was not found');
             }
         } catch (error) {
             this._logger.error(`There was an error removing this file: ${filePath} \n${error}`);
         }
-        this._logger.success(`File removed:      ${filePath}`);
     }
 
 
-    // findDirectory(directory: string): string {
-    //     let pathToDirectory = '';
-
-    //     if (this.directoryExists(`./${directory}`)) {
-    //         pathToDirectory = `./${directory}`;
-    //     } else {
-    //         data.styleTypes.forEach(x => {
-    //             if (this.directoryExists(`./src/${x}/${directory}`)) {
-    //                 pathToDirectory = `./src/${x}/${directory}`;
-    //             }
-    //         });
-    //     }
-
-    //     return pathToDirectory;
-    // }
-
     readFile(filePath: string): string {
-        let contents = '';
-
-        if (this.fileExists(filePath))
-            contents = fs.readFileSync(filePath).toString();
-
-        return contents;
+        return this.fileExists(filePath) ? fs.readFileSync(filePath).toString() : '';
     }
 
     getStyleFormat(extension: string): string {

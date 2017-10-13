@@ -6,7 +6,7 @@ import { IGrunt, Grunt } from "../options/grunt";
 import { IPostCssConfig, PostCssConfig } from "../options/postCss";
 import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
-import { data } from "../data";
+import data from "../data/directories";
 
 export interface INewProject {
     createNewProject(): void;

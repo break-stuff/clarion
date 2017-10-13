@@ -7,6 +7,19 @@ export interface IConfigService {
     getConfigData(): any;
 }
 
+export interface IConfig {
+    paths: {
+        styles: string,
+        scripts: string
+    },
+    format: {
+        styles: string,
+        scripts: string
+    },
+    addToManifest: string,
+    importAbstracts: string
+}
+
 export class ConfigService implements IConfigService {
     _fileService: IFileService = new FileService();
     _logger: ILogService = new LogService();
@@ -20,7 +33,7 @@ export class ConfigService implements IConfigService {
             this._fileService.saveFile('.clarion', JSON.stringify(config, null, '\t'));
     }
 
-    getConfigData(): any {
+    getConfigData(): IConfig {
         if (this._fileService.fileExists('./.clarion')) {
             let config = this._fileService.readFile('./.clarion');
 

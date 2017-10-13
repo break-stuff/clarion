@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "CLI for adding the Clarion Style Architecture to a project.",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "type": "git",
     "url": "https://github.com/break-stuff/clarion"
   },
+  "homepage": "https://break-stuff.github.io/clarion/",
   "keywords": [
     "scaffolding",
     "CLI",

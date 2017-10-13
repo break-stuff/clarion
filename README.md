@@ -126,6 +126,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+0.6.0 - Modified add feature to find any directory name rather than only those in the Clarion Style Architecture.
+
 0.5.1 - Added example for [ASP.Net](https://break-stuff.github.io/clarion/examples/aspnet/).
 
 0.5.0 - Renamed 02_Themes to 02_Vendors.

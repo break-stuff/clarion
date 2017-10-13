@@ -33,21 +33,28 @@ export class Add implements IAdd {
     }
 
     addFileToCurrentDirectory(): void {
-        let directory = this._directoryService.findDirectoryByName(program.args[1]);
-        if (directory) {
-            this._logService.warning('Please add the name of a file to create.');
+        let fileName = program.args[1];
+        if (!this._fileService.getManifestFile('./')) {
+            this._logService.warning('Sorry, this is not a directory you can add styles to or you may be missing parameters.');
         } else {
-            this.processNewFile('.', program.args[1]);
+            this.processNewFile('.', fileName);
         }
     }
 
     addFileToSpecifiedDirectory(): void {
-        let directoryName = this._directoryService.findDirectoryByName(program.args[1]);
-        let pathToDirectory = this._directoryService.findDirectory(directoryName);
-        if (pathToDirectory) {
-            this.processNewFile(pathToDirectory, program.args[2]);
+        let styleDirectory = program.args[1];
+        let fileName = program.args[2];
+        let directoryName = this._directoryService.findDirectoryByName(styleDirectory);
+
+        if(directoryName) {
+            let pathToDirectory = this._directoryService.findDirectory(directoryName);
+            if (pathToDirectory) {
+                this.processNewFile(pathToDirectory, fileName);
+            } else {
+                this._logService.warning('Sorry, the directory you specified was not found.');
+            }
         } else {
-            this._logService.warning('Sorry, the directory you specified was not found.');
+            this._logService.warning('Please specify a directory.');
         }
     }
 
@@ -70,17 +77,13 @@ export class Add implements IAdd {
 
     getNewFile(fileName: string, extension: string) {
         let directories = fileName.split('/');
-        let newFile;
 
         if (directories.length > 1) {
-            console.log(directories);
             directories[directories.length - 1] = `_${directories[directories.length - 1]}${extension}`;
-            newFile = directories.join('/');
-        } else {
-            newFile = `_${fileName}${extension}`;
+            return directories.join('/');
         }
 
-        return newFile;
+        return `_${fileName}${extension}`;
     }
 
     getPathToRoot(fileName: string) {
@@ -90,6 +93,7 @@ export class Add implements IAdd {
         for (let i = 1; i < pathDepth; i++) {
             pathToRoot += '../';
         }
+        
         return pathToRoot;
     }
 
