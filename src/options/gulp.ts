@@ -58,7 +58,7 @@ export class Gulp implements IGulp {
                   `});` +
                   `\n` +
                 `gulp.task('${styleFormat}', function () {\n` +
-                    `\treturn gulp.src('./src/${styleFormat}/styles.${extension}')\n` +
+                    `\treturn gulp.src('./src/${styleFormat}/styles${extension}')\n` +
                     `\t\t.pipe(sourcemaps.init())\n` +
                     `\t\t.pipe(sass().on('error', sass.logError))\n` +
                     `\t\t.pipe(postcss())\n` +
@@ -67,7 +67,7 @@ export class Gulp implements IGulp {
                 `});\n` +
                 `\n` +
                 `gulp.task('${styleFormat}:watch', function () {\n` +
-                    `\tgulp.watch('./src/${styleFormat}/**/*.${extension}', ['${styleFormat}']);\n` +
+                    `\tgulp.watch('./src/${styleFormat}/**/*${extension}', ['${styleFormat}']);\n` +
                 `});`;        
 
         return contents;
