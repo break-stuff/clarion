@@ -69,9 +69,7 @@ export class DirectoryService implements IDirectoryService {
     getAllStyleDirectories(): string[] {
         let config = this._configService.getConfigData();
         let stylePath = this.findStyleRootDirectory();
-        console.log(stylePath);
         let directories = this.getDirectoriesInDirectory(stylePath);
-        console.log(directories);
 
         return directories;
     }
