@@ -1,11 +1,12 @@
 {
   "name": "clarion",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "CLI for adding the Clarion Style Architecture to a project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "tsc && npm i -g"
+    "update": "tsc && npm i -g",
+    "publish": "tsc && npm publish"
   },
   "author": "Burton Smith <burton@breakstuff.io>",
   "license": "MIT",

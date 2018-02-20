@@ -3,7 +3,7 @@ import * as program from "commander";
 
 export interface IGulp {
     createGulpfile(projectName: string):void;
-    createGulpDependencies():string;
+    createGulpDependencies():string[];
     createProgramCommands():string;
 }
 
@@ -14,23 +14,21 @@ export class Gulp implements IGulp {
         let rootPath = './' + projectName;
         this._fileService.saveFile(rootPath + '/gulpfile.js', this.createGulpfileContents());
     }
-    createGulpDependencies(): string {
-        let devDependencies: any = {
-            "autoprefixer": "^7.1.2",
-            "cross-env": "^3.0.0",
-            "gulp": "^3.9.1",
-            "gulp-postcss": "^7.0.0",
-            "gulp-webserver": "^0.9.1",
-            "cssnano": "^3.10.0",
-        }
+    createGulpDependencies(): string[] {
+        let dependencies:string[] = [
+            "autoprefixer",
+            "cssnano",
+            "pixrem",
+            "cross-env",
+            "gulp",
+            "gulp-postcss",
+            "gulp-webserver",
+            "gulp-sourcemaps"
+        ];
 
-        if(program.less) {
-            devDependencies['gulp-less'] = "^3.3.2";
-        } else {
-            devDependencies['gulp-sass'] = "^3.1.0";
-        }
+        dependencies.push(program.less ? 'gulp-less' : 'gulp-sass');
 
-        return devDependencies;
+        return dependencies;
     }
 
     createGulpfileContents(): string {
@@ -49,25 +47,25 @@ export class Gulp implements IGulp {
                 `gulp.task('build', ['${styleFormat}'])\n` +
                 `\n` +
                 `gulp.task('webserver', function() {\n` +
-                    `\tgulp.src('.')\n` +
-                      `\t\t.pipe(webserver({\n` +
-                        `\t\t\tlivereload:       true,\n` +
-                        `\t\t\tdirectoryListing: false,\n` +
-                        `\t\t\topen:             true\n` +
-                      `\t\t}));\n` +
-                  `});` +
-                  `\n` +
+                `    gulp.src('.')\n` +
+                `      .pipe(webserver({\n` +
+                `        livereload:       true,\n` +
+                `        directoryListing: false,\n` +
+                `        open:             true\n` +
+                `      }));\n` +
+                `  });` +
+                `  \n` +
                 `gulp.task('${styleFormat}', function () {\n` +
-                    `\treturn gulp.src('./src/${styleFormat}/styles${extension}')\n` +
-                    `\t\t.pipe(sourcemaps.init())\n` +
-                    `\t\t.pipe(sass().on('error', sass.logError))\n` +
-                    `\t\t.pipe(postcss())\n` +
-                    `\t\t.pipe(sourcemaps.write('./'))\n` +
-                    `\t\t.pipe(gulp.dest('./build'));\n` +
+                `    return gulp.src('./src/${styleFormat}/styles${extension}')\n` +
+                `    .pipe(sourcemaps.init())\n` +
+                `    .pipe(sass().on('error', sass.logError))\n` +
+                `    .pipe(postcss())\n` +
+                `    .pipe(sourcemaps.write('./'))\n` +
+                `    .pipe(gulp.dest('./build'));\n` +
                 `});\n` +
                 `\n` +
                 `gulp.task('${styleFormat}:watch', function () {\n` +
-                    `\tgulp.watch('./src/${styleFormat}/**/*${extension}', ['${styleFormat}']);\n` +
+                `    gulp.watch('./src/${styleFormat}/**/*${extension}', ['${styleFormat}']);\n` +
                 `});`;        
 
         return contents;

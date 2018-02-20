@@ -2,7 +2,8 @@ export default {
     config : {
         plugins: {
             autoprefixer: {},
-            cssnano: {}
+            cssnano: {},
+            pixrem: {}
         }
     }
 }

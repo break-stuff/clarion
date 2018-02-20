@@ -6,6 +6,7 @@ import { IGrunt, Grunt } from "../options/grunt";
 import { IPostCssConfig, PostCssConfig } from "../options/postCss";
 import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
+import { IShellService, ShellService } from '../services/shellService'
 import data from "../data/directories";
 
 export interface INewProject {
@@ -15,9 +16,11 @@ export interface INewProject {
 export class NewProject implements INewProject {
     _fileService: IFileService = new FileService();
     _projectDependencies: string = '';
+    _devDependencies: string[] = [];
     _projectCommands: string = '';
     _logService: ILogService = new LogService();
     _directoryService: IDirectoryService = new DirectoryService();
+    _shellService: IShellService = new ShellService();
 
     createNewProject(): void {
         let projectName = program.args[1] || '';
@@ -104,9 +107,9 @@ export class NewProject implements INewProject {
             "license": "ISC",
         };
 
-        config.devDependencies = this._projectDependencies;
         config.scripts = this._projectCommands;
         this._fileService.saveFile(`./${projectName}/package.json`, JSON.stringify(config, null, '\t'));
+        this._shellService.installNPMDependencies(projectName, this._devDependencies, true);
     }
 
     createTaskRunner(projectName: string): void {
@@ -115,19 +118,20 @@ export class NewProject implements INewProject {
             case program.grunt:
                 let grunt: IGrunt = new Grunt();
                 grunt.createGruntfile(projectName);
-                this._projectDependencies = grunt.createGruntDependencies();
+                this._devDependencies = grunt.createGruntDependencies();
+                this._projectCommands = grunt.createProgramCommands();
                 break;
             case program.gulp:
                 let gulp: IGulp = new Gulp();
                 gulp.createGulpfile(projectName);
-                this._projectDependencies = gulp.createGulpDependencies();
+                this._devDependencies = gulp.createGulpDependencies();
                 this._projectCommands = gulp.createProgramCommands();
                 postCss.createPostCssConfig(projectName);
                 break;
             default:
                 let webPack: IWebPak = new WebPack();
                 webPack.createWebPackConfig(projectName);
-                this._projectDependencies = webPack.createWebPackDependencies();
+                this._devDependencies = webPack.createWebPackDependencies();
                 this._projectCommands = webPack.createProgramCommands();
                 postCss.createPostCssConfig(projectName);
                 break;
@@ -160,7 +164,7 @@ export class NewProject implements INewProject {
         if (!program.only) {
             this._logService.info('\nTo get started run the following command:');
             if (projectName) this._logService.info(`cd ${projectName}`);
-            this._logService.info('npm install');
+            this._logService.info('npm run dev');
         }
     }
 }
