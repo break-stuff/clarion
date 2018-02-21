@@ -126,6 +126,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+0.7.1 - Added missing dependency for Gulp project.
+
 0.7.0 - Revised dependency management so the latest packages are always installed, added Grunt, and added 'pixrem' to postcss.
 
 0.6.1 - Fixed error in gulpfile.js.
