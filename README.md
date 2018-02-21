@@ -120,8 +120,9 @@ These are options you can run when initializing you project.
     -A, --sass     files are in .sass format
     -L, --less     files are in .less format
     -W, --webpack  configure project for WebPack bundler (default)
+    -W, --webpack  configure project for Parcel bundler
     -U, --gulp     configure project for Gulp task runner
-    -R, --grunt    configure project for Grunt task runner (COMING SOON!!!)
+    -R, --grunt    configure project for Grunt task runner
 
 
 ## Changelog
