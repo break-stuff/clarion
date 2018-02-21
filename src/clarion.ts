@@ -2,7 +2,7 @@ import * as program from "commander";
 import { ITaskService, TaskService } from "./taskManager";
 
 program
-    .version('0.7.1')
+    .version('0.8.0')
     .usage('<command> [project or file name] [options]')
     .command('new', 'generate a new project')
     .command('add', 'add a new file to your project')
@@ -14,8 +14,9 @@ program
     .option('-A, --sass', 'files are in .sass format')
     .option('-L, --less', 'files are in .less format')
     .option('-W, --webpack', 'configure project for WebPack bundler (default)')
+    .option('-P, --parcel', 'configure project for Parcel bundler')
     .option('-U, --gulp', 'configure project for Gulp task runner')
-    .option('-R, --grunt', 'configure project for Grunt task runner (COMING SOON!!!)')
+    .option('-R, --grunt', 'configure project for Grunt task runner')
     .parse(process.argv);
 
 if (program.args.length) {

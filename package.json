@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "CLI for adding the Clarion Style Architecture to a project.",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://break-stuff.github.io/clarion/",
   "keywords": [
+    "starter project",
     "scaffolding",
     "CLI",
     "build",
@@ -35,12 +36,14 @@
     "scss",
     "less",
     "webpack",
+    "parcel",
     "grunt",
     "gulp",
     "angular",
     "react",
     "jekyll",
-    "asp.net"
+    "asp.net",
+    "bootstrap"
   ],
   "devDependencies": {
     "@types/chalk": "^0.4.31",

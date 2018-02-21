@@ -3,6 +3,7 @@ import { FileService, IFileService } from "../services/fileService";
 import { IWebPak, WebPack } from "../options/webPack";
 import { IGulp, Gulp } from "../options/gulp";
 import { IGrunt, Grunt } from "../options/grunt";
+import { IParcel, Parcel } from "../options/parcel";
 import { IPostCssConfig, PostCssConfig } from "../options/postCss";
 import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
@@ -21,6 +22,7 @@ export class NewProject implements INewProject {
     _logService: ILogService = new LogService();
     _directoryService: IDirectoryService = new DirectoryService();
     _shellService: IShellService = new ShellService();
+    _styleRootPath: string = '';
 
     createNewProject(): void {
         let projectName = program.args[1] || '';
@@ -37,6 +39,7 @@ export class NewProject implements INewProject {
     createScriptScaffolding(projectName: string) {
         let extension = this._fileService.getFileExtension(null);
         let styleFormat = this._fileService.getStyleFormat(extension);
+        this._styleRootPath = `./src/${styleFormat}/styles${extension}`;
         let mainContents = this.isWebPack ? `import '../${styleFormat}/styles${extension}';` : '';
         if (projectName) {
             this._directoryService.createDirectory(projectName);
@@ -55,6 +58,8 @@ export class NewProject implements INewProject {
             case program.gulp:
                 return false;
             case program.grunt:
+                return false;
+            case program.parcel:
                 return false;
             default:
                 return true;
@@ -128,6 +133,12 @@ export class NewProject implements INewProject {
                 this._projectCommands = gulp.createProgramCommands();
                 postCss.createPostCssConfig(projectName);
                 break;
+            case program.parcel:
+                let parcel: IParcel = new Parcel();
+                this._devDependencies = parcel.createParcelDependencies();
+                this._projectCommands = parcel.createProgramCommands();
+                postCss.createPostCssConfig(projectName);
+                break;
             default:
                 let webPack: IWebPak = new WebPack();
                 webPack.createWebPackConfig(projectName);
@@ -139,6 +150,8 @@ export class NewProject implements INewProject {
     }
 
     createIndexHtml(projectName: string) {
+        let jsDir = program.parcel ? './src/scripts/main.js' : './build/scripts.js';
+        let cssDir = program.parcel ? this._styleRootPath : './build/styles.css';
         let contents = '<html lang="en">\n'
             + '\n'
             + '<head>\n'
@@ -146,13 +159,13 @@ export class NewProject implements INewProject {
             + '    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">\n'
             + '    <meta http-equiv="X-UA-Compatible" content="ie=edge">\n'
             + '    <title>Clarion</title>\n'
-            + '    <link rel="stylesheet" href="./build/styles.css">\n'
+            + `    <link rel="stylesheet" href="${cssDir}">\n`
             + '</head>\n'
             + '\n'
             + '<body>\n'
             + '    <h1 style="text-align:center; font-family:sans-serif">Congratulations! You did it!</h1>\n'
             + '    <img src="https://media.giphy.com/media/2xO491sY6f0cM/giphy.gif" alt="tobias huzzah!" style="display:block; margin:auto;">\n'
-            + '    <script src="./build/scripts.js"></script>\n'
+            + `    <script src="${jsDir}"></script>\n`
             + '</body>\n'
             + '\n'
             + '</html>\n';
