@@ -21,3 +21,23 @@
         }
     }
 }
+
+.headliners {
+    .card {
+        border: 0;
+
+        &-img-top {
+            max-width: 8rem;
+            max-height: 8rem;
+            margin: auto;
+        }
+
+        &-title {
+            font-size: 1.75rem;
+        }
+
+        &-text {
+            text-align: justify;
+        }
+    }
+}

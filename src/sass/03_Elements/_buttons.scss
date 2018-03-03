@@ -4,4 +4,9 @@
     color: white;
     background-color: $color-primary;
     border-color: $color-primary;
+
+    &:hover {
+        background-color: $color-primary--lighter;
+        border-color: $color-primary--lighter;
+    }
 }

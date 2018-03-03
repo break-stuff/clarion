@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Documentation on the Clarion Style Architecture.">
+  <meta name="description" content="Documentation and descriptions of the files and folders in the on the Clarion CSS Architecture.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#03284C">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,25 +11,25 @@
   <!-- Open Graph data -->
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Architecture - Clarion">
-  <meta property="og:description" content="Documentation on the Clarion Style Architecture.">
+  <meta property="og:title" content="Clarion CSS Architecture - Clarion">
+  <meta property="og:description" content="Documentation and descriptions of the files and folders in the on the Clarion CSS Architecture.">
   <meta property="og:url" content="/documentation/architecture/">
   <meta property="og:site_name" content="Clarion CLI">
   <meta property="og:image" content="/clarion/images/clarion_default_image.png" />
 
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="Documentation on the Clarion Style Architecture.">
+  <meta name="twitter:description" content="Documentation and descriptions of the files and folders in the on the Clarion CSS Architecture.">
   <meta name="twitter:site" content="/documentation/architecture/">
-  <meta name="twitter:title" content="Architecture - Clarion">
+  <meta name="twitter:title" content="Clarion CSS Architecture - Clarion">
   <meta name="twitter:image" content="/clarion/images/clarion_default_image.png">
   
   <!-- Schema.org markup for Google+ -->
-  <meta itemprop="name" content="Architecture - Clarion">
-  <meta itemprop="description" content="Documentation on the Clarion Style Architecture.">
+  <meta itemprop="name" content="Clarion CSS Architecture - Clarion">
+  <meta itemprop="description" content="Documentation and descriptions of the files and folders in the on the Clarion CSS Architecture.">
   <meta itemprop="image" content="/clarion/images/clarion_default_image.png"> 
 
-  <title>Architecture - Clarion</title>
+  <title>Clarion CSS Architecture - Clarion</title>
   <link rel="canonical" href="/documentation/architecture/">
   <link rel="stylesheet" href="/clarion/build/styles.css">
   <link rel="icon" type="image/png" href="/clarion/favicon.png" />
@@ -123,8 +123,11 @@
 <h3>Manifest Files</h3>
 <p>Each of these directories will have an index file (index.scss). This is called your manifest file. When a new file is added to a directory, it will automatically be added to this manifest file. Feel free to reorder the import statements in this file to something that works best for you. Also, if you would like to exclude a file from compilation, you can just comment it out until you are ready to incorporate it back into the code.</p>
 
-<h3><code>styles.scss</code></h3>
-<p>This file is your main manifest file. Inside you will find import statements for each of the manifest files from the various subdirectories.</p>
+<h3>Main Style Manifest</h3>
+<p>At the root of your <code>less</code> or <code>sass</code> file, you should see your main manifest file (if you used the default configuration, it will be called <code>styles.scss</code>). This file is your main manifest file. Inside you will find import statements for each of the manifest files from the various subdirectories.</p>
+
+<h2>Customize the Architecture</h2>
+<p>That's right! If this naming Convention doesn't work for you or you feel like it is missing something, feel free to change it up. Just make sure you update the references in the references in the main manifest file. A popular trend is to add a directory called "Shame". Here you add any emergency style changes and eventually move the changes into the appropriate file later. To do this, create a directory called <code>08_Shame</code> and add a manifest file to it (<code>index.scss</code> - or whatever format you are using). Finally, add a reference to that manifest file in the main manifest. Once the new directory is added, Clarion will automatically add detect it and you can use the CLI to add files to it.</p>
 
 <h2>Scripts</h2>
 <p>The default script section was intentionally left fairly simple. The <code>components</code> directory is used for component-specific JavaScript like menus and modals. The <code>services</code> directory is used for reusable functions and methods.</p>

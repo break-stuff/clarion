@@ -5,5 +5,10 @@ a {
     &:hover {
         color: $color-secondary;
     }
+}
 
+p {
+    a{
+        text-decoration: underline;
+    }
 }
