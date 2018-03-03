@@ -2,7 +2,7 @@
 
 A simple CLI for scaffolding front-end projects using the Clarion Style Architecture.
 
-Check out the official Documentation here: [https://break-stuff.github.io/clarion](https://break-stuff.github.io/clarion/)
+Check out the official Documentation here: [www.projectclarion.com](https://projectclarion.com)
 
 
 ## Installation
@@ -17,15 +17,13 @@ In your terminal or command prompt type:
 ## Start a New Project
     clarion new MyProject
 
+Your dependencies will automatically be installed!
+
 
 ## Run Your New Project
-First make sure all of your dependencies get installed.
-
-    cd MyProject
-    npm install
-
 After your dependencies are installed you can run your project.
 
+    cd MyProject
     npm run dev
 
 ## About Your New Project
@@ -120,12 +118,14 @@ These are options you can run when initializing you project.
     -A, --sass     files are in .sass format
     -L, --less     files are in .less format
     -W, --webpack  configure project for WebPack bundler (default)
-    -W, --webpack  configure project for Parcel bundler
+    -P, --parcel   configure project for Parcel bundler
     -U, --gulp     configure project for Gulp task runner
     -R, --grunt    configure project for Grunt task runner
 
 
 ## Changelog
+
+0.8.3 - Added example for [Vue.js](https://projectclarion.com/examples/vuejs/).
 
 0.8.1 - Added option for Parcel project creation.
 
@@ -137,15 +137,15 @@ These are options you can run when initializing you project.
 
 0.6.0 - Modified add feature to find any directory name rather than only those in the Clarion Style Architecture.
 
-0.5.1 - Added example for [ASP.Net](https://break-stuff.github.io/clarion/examples/aspnet/).
+0.5.1 - Added example for [ASP.Net](https://projectclarion.com/examples/aspnet/).
 
 0.5.0 - Renamed 02_Themes to 02_Vendors.
 
-0.4.4 - Added example for [Jekyll](https://break-stuff.github.io/clarion/examples/jekyll/).
+0.4.4 - Added example for [Jekyll](https://projectclarion.com/examples/jekyll/).
 
-0.4.3 - Added example for [React](https://break-stuff.github.io/clarion/examples/react/).
+0.4.3 - Added example for [React](https://projectclarion.com/examples/react/).
 
-0.4.2 - Added example for [Angular](https://break-stuff.github.io/clarion/examples/angular/).
+0.4.2 - Added example for [Angular](https://projectclarion.com/examples/angular/).
 
 0.4.1 - Added link to documentation site.
 
