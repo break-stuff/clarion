@@ -2,7 +2,7 @@
 
 A simple CLI for scaffolding front-end projects using the Clarion Style Architecture.
 
-Check out the official Documentation here: [www.projectclarion.com](https://projectclarion.com)
+Check out the official Documentation here: [www.projectclarion.com](http://projectclarion.com)
 
 
 ## Installation
@@ -125,7 +125,7 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
-0.8.3 - Added example for [Vue.js](https://projectclarion.com/examples/vuejs/).
+0.8.4 - Added example for [Vue.js](http://projectclarion.com/examples/vuejs/).
 
 0.8.1 - Added option for Parcel project creation.
 
@@ -137,15 +137,15 @@ These are options you can run when initializing you project.
 
 0.6.0 - Modified add feature to find any directory name rather than only those in the Clarion Style Architecture.
 
-0.5.1 - Added example for [ASP.Net](https://projectclarion.com/examples/aspnet/).
+0.5.1 - Added example for [ASP.Net](http://projectclarion.com/examples/aspnet/).
 
 0.5.0 - Renamed 02_Themes to 02_Vendors.
 
-0.4.4 - Added example for [Jekyll](https://projectclarion.com/examples/jekyll/).
+0.4.4 - Added example for [Jekyll](http://projectclarion.com/examples/jekyll/).
 
-0.4.3 - Added example for [React](https://projectclarion.com/examples/react/).
+0.4.3 - Added example for [React](http://projectclarion.com/examples/react/).
 
-0.4.2 - Added example for [Angular](https://projectclarion.com/examples/angular/).
+0.4.2 - Added example for [Angular](http://projectclarion.com/examples/angular/).
 
 0.4.1 - Added link to documentation site.
 
