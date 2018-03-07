@@ -125,6 +125,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+0.8.5 - Updated Webpack project for changes in version 4.
+
 0.8.4 - Added example for [Vue.js](http://projectclarion.com/examples/vuejs/).
 
 0.8.1 - Added option for Parcel project creation.

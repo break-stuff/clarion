@@ -50,7 +50,7 @@ export class WebPack implements IWebPak {
             + '        filename: \'./build/scripts.js\'\n'
             + '    },\n'
             + '    module: {\n'
-            + '        loaders: [\n'
+            + '        rules: [\n'
             + `            {test: /\\${extension}$/, loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', '${styleFormat}-loader'])}\n`
             + '        ]\n'
             + '    },\n'
