@@ -32,9 +32,12 @@
     "architecture",
     "javascript",
     "css",
+    "css architecture",
     "sass",
+    "sass architecture",
     "scss",
     "less",
+    "less architecture",
     "webpack",
     "parcel",
     "grunt",
@@ -43,7 +46,8 @@
     "react",
     "jekyll",
     "asp.net",
-    "bootstrap"
+    "bootstrap",
+    "vue.js"
   ],
   "devDependencies": {
     "@types/chalk": "^0.4.31",
