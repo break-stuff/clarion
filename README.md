@@ -125,6 +125,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+0.8.6 - Temperarily removed "extract-text-webpack-plugin" as it is currently imcompatible with Webpack v4.
+
 0.8.5 - Updated Webpack project for changes in version 4.
 
 0.8.4 - Added example for [Vue.js](http://projectclarion.com/examples/vuejs/).

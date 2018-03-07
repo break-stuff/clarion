@@ -42,7 +42,7 @@ export class WebPack implements IWebPak {
         let extension = this.fileService.getFileExtension(null);
         let styleFormat = this.fileService.getStyleFormat(extension);
 
-        let contents = 'var ExtractTextPlugin = require("extract-text-webpack-plugin");\n'
+        let contents = '//var ExtractTextPlugin = require("extract-text-webpack-plugin");\n'
             + '\n'
             + 'module.exports = {\n'
             + '    entry: \'./src/scripts/main.js\',\n'
@@ -51,13 +51,13 @@ export class WebPack implements IWebPak {
             + '    },\n'
             + '    module: {\n'
             + '        rules: [\n'
-            + `            {test: /\\${extension}$/, loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', '${styleFormat}-loader'])}\n`
+            + `            {test: /\\${extension}$/, loader: ['css-loader', 'postcss-loader', '${styleFormat}-loader']}\n`
             + '        ]\n'
             + '    },\n'
-            + '    devtool: "source-map",\n'
-            + '    plugins: [\n'
-            + '        new ExtractTextPlugin("./build/styles.css")\n'
-            + '    ]\n'
+            + '//    plugins: [\n'
+            + '//    devtool: "source-map",\n'
+            + '//        new ExtractTextPlugin("./build/styles.css")\n'
+            + '//    ]\n'
             + '}';
 
         return contents;
