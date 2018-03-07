@@ -23,6 +23,7 @@ export class WebPack implements IWebPak {
             "extract-text-webpack-plugin",
             "postcss-loader",
             "webpack",
+			"webpack-cli",
             "webpack-dev-server",
             "cssnano",
         ]
