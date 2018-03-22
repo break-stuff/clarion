@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "CLI for adding the Clarion Style Architecture to a project.",
   "main": "index.js",
   "scripts": {
@@ -12,16 +12,17 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.1.0",
-    "commander": "^2.11.0"
+    "commander": "^2.15.1"
   },
   "bin": {
     "clarion": "./bin/clarion"
   },
+  "install": "npm i -g clarion",
   "repository": {
     "type": "git",
     "url": "https://github.com/break-stuff/clarion"
   },
-  "homepage": "https://break-stuff.github.io/clarion/",
+  "homepage": "projectclarion.com",
   "keywords": [
     "starter project",
     "scaffolding",
@@ -52,6 +53,6 @@
   "devDependencies": {
     "@types/chalk": "^0.4.31",
     "@types/commander": "^2.9.1",
-    "@types/node": "^8.0.20"
+    "@types/node": "^8.9.5"
   }
 }
