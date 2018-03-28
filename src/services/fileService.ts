@@ -1,7 +1,6 @@
 import * as path from "path";
 import * as fs from "fs";
 import * as program from "commander";
-import * as data from '../data/directories';
 import { ILogService, LogService } from "./logService";
 
 export interface IFileService {

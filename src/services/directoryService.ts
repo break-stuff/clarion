@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as fs from "fs";
 import * as program from "commander";
-import data from '../data/directories';
+import {IProjectData, projectData} from '../data/projectData';
 import { ILogService, LogService } from "./logService";
 import { IConfigService, ConfigService } from "./configService";
 
@@ -55,7 +55,7 @@ export class DirectoryService implements IDirectoryService {
         if (this.directoryExists(`./${directory}`)) {
             pathToDirectory = `./${directory}`;
         } else {
-            data.styleTypes.forEach(x => {
+            projectData.styleTypes.forEach(x => {
                 let proposedPath = path.resolve(this.findStyleRootDirectory(), directory);
                 if (this.directoryExists(proposedPath)) {
                     pathToDirectory = proposedPath;
@@ -77,7 +77,7 @@ export class DirectoryService implements IDirectoryService {
     findStyleRootDirectory(): string {
         let stylesDirectory = '';
         
-        data.styleTypes.forEach(type => {
+        projectData.styleTypes.forEach(type => {
             let proposedPath = path.resolve('./', this._config.paths.styles, type);
             if (this.directoryExists(proposedPath)) {
                 stylesDirectory = proposedPath;

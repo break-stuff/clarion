@@ -7,5 +7,12 @@
         "sourceMap": false,
         "outDir": "./lib",
         "newLine": "LF"
-    }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
 }
