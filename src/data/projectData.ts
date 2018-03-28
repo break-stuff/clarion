@@ -244,6 +244,7 @@ gulp.task('%%styleFormat%%:watch', function () {
             "autoprefixer",
             "pixrem",
             "css-loader",
+            "style-loader",
             "cross-env",
             "extract-text-webpack-plugin",
             "postcss-loader",
@@ -273,7 +274,22 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\\%%extension%%$/, loader: ['css-loader', 'postcss-loader', '%%styleFormat%%-loader']}
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: 'style-loader'
+                  },
+                  {
+                    loader: 'css-loader'
+                  },
+                  {
+                    loader: 'sass-loader'
+                  },
+                  {
+                    loader: 'postcss-loader'
+                  }
+                ]
+            }
         ]
     },
 //    plugins: [
@@ -298,8 +314,8 @@ module.exports = {
         <h2>This page is intentionally ugly!</h2>
         <p>Create some styles and start having fun!</p>
         <ul>
-                <li>Modify headings by creating a headings file: <code>clarion add element headings</code>.</li>
-                <li>Modify paragraphs by creating a paragraphs file: <code>clarion add element paragraphs</code>.</li>
+            <li>Modify headings by creating a headings file: <code>clarion add element headings</code>.</li>
+            <li>Modify paragraphs by creating a paragraphs file: <code>clarion add element paragraphs</code>.</li>
         </ul>
         <h3>Here is some sweet, sweet dummy text to play with. Enjoy!</h3>
         <p>Bacon ipsum dolor amet ball tip hamburger adipisicing chicken prosciutto non. Shoulder venison quis, flank leberkas turducken dolor tenderloin nostrud. Ham strip steak swine boudin tempor. Shoulder doner mollit brisket. Cillum strip steak picanha kevin et culpa commodo lorem pastrami.</p>

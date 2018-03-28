@@ -125,9 +125,13 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+0.9.1 - Fixed Webpack build error.
+
+0.9.0 - Refactored to use a better templating system and added unit tests.
+
 0.8.7 - Updated documentation to include new site URL and install instructions.
 
-0.8.6 - Temperarily removed "extract-text-webpack-plugin" as it is currently incompatible with Webpack v4.
+0.8.6 - Temporarily removed "extract-text-webpack-plugin" as it is currently incompatible with Webpack v4.
 
 0.8.5 - Updated Webpack project for changes in version 4.
 
