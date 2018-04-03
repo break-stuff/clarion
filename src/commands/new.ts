@@ -106,8 +106,8 @@ export class NewProject implements INewProject {
 
 
     createIndexHtml(projectName: string) {
-        let jsDir = program.parcel ? './src/scripts/main.js' : './build/scripts.js';
-        let cssDir = program.parcel ? this._styleRootPath : './build/styles.css';
+        let jsDir = program.parcel ? './src/scripts/main.js' : './dist/scripts.js';
+        let cssDir = program.parcel ? this._styleRootPath : './dist/styles.css';
         let contents = this._projectService.getHtmlTemplate(cssDir, jsDir);
         this._fileService.saveFile(`./${projectName}/index.html`, contents);
     }

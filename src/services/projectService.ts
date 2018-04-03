@@ -21,7 +21,7 @@ export class ProjectDataService implements IProjectDataService {
     }
 
     getProjectData(projectName: string): IProjectData {
-        this.createBundleConfigurationFile(projectName);
+        if(!program.parcel) this.createBundleConfigurationFile(projectName);
         if(!program.grunt) this.createPostCssConfig(projectName);
 
         return {
@@ -53,6 +53,8 @@ export class ProjectDataService implements IProjectDataService {
         let contents: string = this._projectTypeData.configContents
                                                         .replace(/%%styleFormat%%/g, styleFormat)
                                                         .replace(/%%extension%%/g, extension);
+        
+        if(program.grunt) contents.replace(/grunt-less/g, 'grunt-contrib-less');
 
         return contents;
     }

@@ -62,7 +62,7 @@ export var projectData: IProjectData = {
         "scss"
     ],
     projectDirectories: [
-        './%%projectName%%/build',
+        './%%projectName%%/dist',
         './%%projectName%%/src',
         './%%projectName%%/src/scripts',
         './%%projectName%%/src/scripts/components',
@@ -113,7 +113,7 @@ export var projectData: IProjectData = {
             'grunt-contrib-less'
         ],
         sassDependencies: [
-            'grunt-contrib-sass'
+            'grunt-sass'
         ],
         npmCommands: {
             "dev": "cross-env NODE_ENV=development grunt dev",
@@ -126,7 +126,7 @@ module.exports = function (grunt) {
         %%styleFormat%%: {
             dist: {
                 files: {
-                    'build/styles.css': 'src/%%styleFormat%%/styles.%%extension%%'
+                    'dist/styles.css': 'src/%%styleFormat%%/styles.%%extension%%'
                 }
             }
         },
@@ -155,7 +155,7 @@ module.exports = function (grunt) {
             uses_defaults: {}
         }
     });
-    grunt.loadNpmTasks('grunt-contrib-%%styleFormat%%');
+    grunt.loadNpmTasks('grunt-%%styleFormat%%');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -208,16 +208,16 @@ gulp.task('webserver', function() {
 });
     
 gulp.task('%%styleFormat%%', function () {
-    return gulp.src('./src/%%styleFormat%%/styles%%extension%%')
+    return gulp.src('./src/%%styleFormat%%/styles.%%extension%%')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('%%styleFormat%%:watch', function () {
-    gulp.watch('./src/%%styleFormat%%/**/*%%extension%%', ['%%styleFormat%%']);
+    gulp.watch('./src/%%styleFormat%%/**/*.%%extension%%', ['%%styleFormat%%']);
 });`
     },
     parcel: {
@@ -234,7 +234,7 @@ gulp.task('%%styleFormat%%:watch', function () {
         ],
         npmCommands: {
             "dev": "cross-env NODE_ENV=development parcel index.html",
-            "build": "cross-env NODE_ENV=production parcel build index.html -d ./build"
+            "build": "cross-env NODE_ENV=production parcel build index.html -d ./dist"
         },
         configContents: null
     },
@@ -270,12 +270,12 @@ gulp.task('%%styleFormat%%:watch', function () {
 module.exports = {
     entry: './src/scripts/main.js',
     output: {
-        filename: './build/scripts.js'
+        filename: 'scripts.js'
     },
     module: {
         rules: [
             {
-                test: /\.scss$/,
+                test: /\.%%extension%%$/,
                 use: [{
                     loader: 'style-loader'
                   },
@@ -294,7 +294,7 @@ module.exports = {
     },
 //    plugins: [
 //    devtool: "source-map",
-//        new ExtractTextPlugin("./build/styles.css")
+//        new ExtractTextPlugin("./dist/styles.css")
 //    ]
 }`
     },
