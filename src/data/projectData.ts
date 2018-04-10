@@ -141,7 +141,7 @@ export var projectData: IProjectData = {
         ],
         npmCommands: {
             "dev": "cross-env NODE_ENV=development grunt dev",
-            "build": "cross-env NODE_ENV=production gulp build"
+            "build": "cross-env NODE_ENV=production grunt build"
         },
         configContents: `
 module.exports = function (grunt) {

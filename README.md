@@ -112,11 +112,16 @@ The final compiled JavaScript and CSS file are in build directory in the root of
 
 These are options you can run when initializing you project.
 
+    Project Content
     -O, --only     generate the style architecture only (great for integrating into frameworks)
     -E, --empty    generate an empty project without any of the start-up files (COMING SOON!!!)
+
+    Style Format
     -C, --scss     files are in .scss format (default)
     -A, --sass     files are in .sass format
     -L, --less     files are in .less format
+
+    Task Runners and Bundlers
     -W, --webpack  configure project for WebPack bundler (default)
     -P, --parcel   configure project for Parcel bundler
     -U, --gulp     configure project for Gulp task runner
@@ -124,6 +129,8 @@ These are options you can run when initializing you project.
 
 
 ## Changelog
+
+1.0.1 - Fixed an type-o in the Grunt project.
 
 1.0.0 - Final testing and added documentation via markdown files in each directory.
 
