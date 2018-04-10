@@ -80,10 +80,11 @@ export class NewProject implements INewProject {
     createStyleDirectories(rootPath: string, extension: string): string {
         let importStatements = '';
 
-        projectData.styleDirectories.forEach((dir, i) => {
-            this._directoryService.createDirectory(`${rootPath}/${dir}`);
-            this._fileService.saveFile(`${rootPath}/${dir}/index${extension}`, '');
-            importStatements += `@import './${dir}/index${extension}';\n`;
+        projectData.styleDirectories.forEach((dir) => {
+            this._directoryService.createDirectory(`${rootPath}/${dir.name}`);
+            this._fileService.saveFile(`${rootPath}/${dir.name}/index${extension}`, '');
+            this._fileService.saveFile(`${rootPath}/${dir.name}/README.md`, dir.readMe);
+            importStatements += `@import './${dir.name}/index${extension}';\n`;
         });
 
         return importStatements

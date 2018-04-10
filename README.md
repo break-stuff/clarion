@@ -125,6 +125,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+1.0.0 - Final testing and added documentation via markdown files in each directory.
+
 0.9.2 - Fixed bugs in SASS projects.
 
 0.9.1 - Fixed Webpack build error.

@@ -1,5 +1,5 @@
 export interface IProjectData {
-    styleDirectories: string[];
+    styleDirectories: {name:string; readMe:string;}[];
     styleTypes: string[];
     projectDirectories: string[];
     packageJson: IPackageJson;
@@ -47,14 +47,38 @@ export interface IProjectTypeData {
 
 export var projectData: IProjectData = {
     styleDirectories: [
-        "00_Abstracts",
-        "01_Base",
-        "02_Vendors",
-        "03_Elements",
-        "04_Components",
-        "05_Layouts",
-        "06_Pages",
-        "07_Utilities"
+        { 
+            name: "00_Abstracts",
+            readMe: '# Abstracts\n\nThis folder is for your style tools and helpers used across the project. Your reusable code such as global variables, functions, mixins and placeholders should be put in here.\n\nThe code contained in this folder should not be code that outputs CSS directly.\n\nWith larger projects you may want to break this into subdirectories like variables, functions, and mixins. Subdirectories are supported in the Clarion CLI.' 
+        },
+        { 
+            name: "01_Base",
+            readMe: '# Base\n\nThis folder holds the boilerplate code for the project. You would add your reset files and typographic rules. Keep in mind that most front-end frameworks like Bootstrap and Foundation already have their own CSS resets built into their styles, so additional resets may not be necessary.' 
+        },
+        { 
+            name: "02_Vendors",
+            readMe: '# Vendors\n\nThe Themes folder contains third-party themes for your website and for things like styles for plugins. This folder has been added higher in the architecture so that if you would like to create customizations, you can do so in the subsequent folders like Components, Layouts, and Pages. This will allow you to override the theme\'s rules without modifying the theme directly and ruining the integrity of the code.' 
+        },
+        { 
+            name: "03_Elements",
+            readMe: '# Elements\n\nThe Elements folder is for styling specific elements such as links, buttons, form inputs, and header tags. These are the smallest building blocks in the web and cannot be broken up into smaller parts. Browsers, by default, have their own styling in place for these elements, but tend to be inconsistent. Because of this, adding a reset to the 01_Base directory or adding one to the build pipeline is recommended.' 
+        },
+        { 
+            name: "04_Components",
+            readMe: '# Components\n\nComponents are groups of elements. This can be things like a search box, navbar, or carousel. These groups of elements together have a specific purpose.' 
+        },
+        { 
+            name: "05_Layouts",
+            readMe: '# Layouts\n\nThis folder contains everything that takes part in laying out the web site or application. These could be containers used for organizing elements and components within them like like a header, footer, or sidebar. This could also be used for your grid-system.' 
+        },
+        { 
+            name: "06_Pages",
+            readMe: '# Pages\n\nThis folder is for any page-specific styles, if you have any. Some sites may have custom styling for the Home page or the Contact Us page.' 
+        },
+        { 
+            name: "07_Utilities",
+            readMe: '# Utilities\n\nThe Utilities are used to create overrides or call out specific rules for an elements or components. For example, you could have a class for making text bold or aligning it to the right. The rule of thumb is to make it specific and make it simple.' 
+        }
     ],
     styleTypes: [
         "less",
@@ -186,7 +210,7 @@ module.exports = function (grunt) {
             "build": "cross-env NODE_ENV=production gulp build"
         },
         configContents:
-`'use strict';
+            `'use strict';
 
 var gulp = require('gulp');
 var %%styleFormat%% = require('gulp-%%styleFormat%%');
@@ -249,7 +273,7 @@ gulp.task('%%styleFormat%%:watch', function () {
             "extract-text-webpack-plugin",
             "postcss-loader",
             "webpack",
-			"webpack-cli",
+            "webpack-cli",
             "webpack-dev-server",
             "cssnano",
         ],
@@ -264,8 +288,8 @@ gulp.task('%%styleFormat%%:watch', function () {
             "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --open --hot --mode development",
             "build": "cross-env NODE_ENV=production webpack --progress --hide-modules -p --mode production"
         },
-        configContents: 
-`//var ExtractTextPlugin = require("extract-text-webpack-plugin");
+        configContents:
+            `//var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: './src/scripts/main.js',
@@ -298,8 +322,8 @@ module.exports = {
 //    ]
 }`
     },
-    indexHtml : 
-`<html lang="en">
+    indexHtml:
+        `<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
