@@ -270,7 +270,7 @@ gulp.task('%%styleFormat%%:watch', function () {
             "css-loader",
             "style-loader",
             "cross-env",
-            "extract-text-webpack-plugin",
+            "mini-css-extract-plugin",
             "postcss-loader",
             "webpack",
             "webpack-cli",
@@ -289,7 +289,7 @@ gulp.task('%%styleFormat%%:watch', function () {
             "build": "cross-env NODE_ENV=production webpack --progress --hide-modules -p --mode production"
         },
         configContents:
-            `//var ExtractTextPlugin = require("extract-text-webpack-plugin");
+            `const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: './src/scripts/main.js',
@@ -300,26 +300,20 @@ module.exports = {
         rules: [
             {
                 test: /\.%%extension%%$/,
-                use: [{
-                    loader: 'style-loader'
-                  },
-                  {
-                    loader: 'css-loader'
-                  },
-                  {
-                    loader: 'sass-loader'
-                  },
-                  {
-                    loader: 'postcss-loader'
-                  }
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    '%%styleFormat%%-loader',
+                    'postcss-loader'
                 ]
             }
         ]
     },
-//    plugins: [
-//    devtool: "source-map",
-//        new ExtractTextPlugin("./dist/styles.css")
-//    ]
+    plugins: [
+        new MiniCssExtractPlugin({
+          filename: "styles.css"
+        })
+    ]
 }`
     },
     indexHtml:

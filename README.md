@@ -130,6 +130,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+1.0.2 - Replaced failing 'extract-text-webpack-plugin' with 'mini-css-extract-plugin' for Webpack 4.
+
 1.0.1 - Fixed an type-o in the Grunt project.
 
 1.0.0 - Final testing and added documentation via markdown files in each directory.
