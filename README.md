@@ -130,7 +130,7 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
-1.1.0 - Added ability to add new Directories via the CLI.
+1.1.1 - Added ability to add new Directories [via the CLI](https://projectclarion.com/documentation/architecture/).
 
 1.0.3 - Replaced failing 'extract-text-webpack-plugin' with 'mini-css-extract-plugin' for Webpack 4.
 
