@@ -24,7 +24,7 @@ export class Add implements IAdd {
                 this.addFileToCurrentDirectory();
                 break;
             case 3:
-                this.addFileToSpecifiedDirectory();
+                this.updateDirectories();
                 break;
             default:
                 this._logService.warning('Sorry, we were not able to process your request.');
@@ -39,6 +39,24 @@ export class Add implements IAdd {
         } else {
             this.processNewFile('.', fileName);
         }
+    }
+
+    updateDirectories() {
+        if(program.args[1] === 'directory') {
+            this.addNewDirectory();
+        } else {
+            this.addFileToSpecifiedDirectory();
+        }
+    }
+
+    addNewDirectory() {
+        let newDirectory = program.args[2];
+        let extension = this._fileService.getFileExtension('/');
+        let rootDirectory = this._directoryService.findStyleRootDirectory();
+
+        this._directoryService.createDirectory(`${rootDirectory}/${newDirectory}`);
+        this._fileService.saveFile(`${rootDirectory}/${newDirectory}/index${extension}`, '');
+        this._fileService.updateManifest(`@import './${newDirectory}/index${extension}';`, `${rootDirectory}/styles${extension}`, true);
     }
 
     addFileToSpecifiedDirectory(): void {
@@ -69,7 +87,7 @@ export class Add implements IAdd {
             this._fileService.saveFile(`${pathToDirectory}/${newFile}`, importStatement);
 
             if (this._config.addToManifest == 'true')
-                this._fileService.updateManifest(newFile, manifestFile);
+                this._fileService.updateManifest(newFile, manifestFile, false);
         } else {
             this._logService.warning(newFile + ' already exists.');
         }

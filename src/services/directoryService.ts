@@ -11,6 +11,7 @@ export interface IDirectoryService {
     directoryExists(directoryName: string): boolean;
     findDirectoryByName(directoryName: string): string;
     findDirectory(directory: string): string;
+    findStyleRootDirectory(): string;
 }
 
 export class DirectoryService implements IDirectoryService {
