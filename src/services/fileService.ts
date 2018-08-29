@@ -8,7 +8,7 @@ export interface IFileService {
     fileExists(fileName: string): boolean;
     getManifestFile(filePath: string): string;
     getFileExtension(directory: string): string;
-    updateManifest(fileName: string, manifestFile: string): void;
+    updateManifest(fileName: string, manifestFile: string, sort: boolean): void;
     removeFile(filePath: string): void;
     readFile(filePath: string): string;
     getStyleFormat(extension: string): string;
@@ -42,7 +42,7 @@ export class FileService implements IFileService {
         let manifestFile;
 
         fs.readdirSync(filePath).forEach(file => {
-            if (file.startsWith('index'))
+            if (file.startsWith('index') || file.startsWith('style'))
                 manifestFile = file;
         });
 
@@ -67,11 +67,11 @@ export class FileService implements IFileService {
         return manifest ? path.extname(manifest) : '.scss';
     }
 
-    updateManifest(fileName: string, manifestFile: string): void {
+    updateManifest(fileName: string, manifestFile: string, sort: boolean): void {
         if (this.fileExists(manifestFile)) {
             switch (program.args[0]) {
                 case 'add':
-                    this.addFileToManifest(fileName, manifestFile);
+                    this.addFileToManifest(fileName, manifestFile, sort);
                     break;
                 case 'remove':
                     this.removeFileFromManifest(fileName, manifestFile);
@@ -83,8 +83,17 @@ export class FileService implements IFileService {
         }
     }
 
-    addFileToManifest(fileName: string, manifestFile: string): void {
-        fs.appendFileSync(manifestFile, `@import '${fileName}';\n`);
+    addFileToManifest(fileName: string, manifestFile: string, sort: boolean): void {
+        if(sort) {
+            var data = fs.readFileSync(manifestFile, 'utf8');
+            let importStatements = data.split('\n').filter(String);
+            importStatements.push(fileName);
+            importStatements.sort();
+            this.saveFile(manifestFile, importStatements.join('\n'));
+        } else {
+            fs.appendFileSync(manifestFile, `@import '${fileName}';\n`);
+        }
+
         this._logger.success(`Saved file:        ${fileName} was added to the manifest.`);
     }
 
