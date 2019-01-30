@@ -1,4 +1,5 @@
-import * as program from "commander";
+import inquirer = require('inquirer');
+import {newProject, INewProjectInfo} from '../data/newProject';
 import { FileService, IFileService } from "../services/fileService";
 import { IProjectData, IProjectDataService, ProjectDataService } from '../services/projectService';
 import { ILogService, LogService } from "../services/logService";
@@ -7,7 +8,7 @@ import { IShellService, ShellService } from '../services/shellService'
 import { projectData } from "../data/projectData";
 
 export interface INewProject {
-    createNewProject(): void;
+    init(newProductInfo: INewProjectInfo): void;
 }
 
 export class NewProject implements INewProject {
@@ -15,14 +16,23 @@ export class NewProject implements INewProject {
     _logService: ILogService = new LogService();
     _directoryService: IDirectoryService = new DirectoryService();
     _shellService: IShellService = new ShellService();
-    _projectService: IProjectDataService = new ProjectDataService();
+    _projectService: IProjectDataService;
+    _newProductInfo: INewProjectInfo;
 
     _styleRootPath: string = '';
     _projectData: IProjectData;
 
+    init(newProductInfo: INewProjectInfo) {
+        this._newProductInfo = newProductInfo;
+        this._projectService = new ProjectDataService(this._newProductInfo);
+        this.createNewProject();
+    }
+
     createNewProject(): void {
-        let projectName = program.args[1] || '';
-        if (!program.only) {
+        let projectName = this._newProductInfo.projectName;
+
+        if (this._newProductInfo.projectType !== newProject.options.projectType.architectureOnly 
+            && this._newProductInfo.projectType !== newProject.options.projectType.stylesOnly) {
             this.createScriptScaffolding(projectName);
             this.createTaskRunner(projectName);
             this.createPackageJson(projectName);
@@ -36,7 +46,7 @@ export class NewProject implements INewProject {
         let extension = this._fileService.getFileExtension(null);
         let styleFormat = this._fileService.getStyleFormat(extension);
         this._styleRootPath = `./src/${styleFormat}/styles${extension}`;
-        let mainContents = this.isWebPack ? `import '../${styleFormat}/styles${extension}';` : '';
+        let mainContents = this._newProductInfo.pipeline === newProject.options.pipeline.webpack ? `import '../${styleFormat}/styles${extension}';` : '';
         if (projectName) {
             this._directoryService.createDirectory(projectName);
         }
@@ -45,19 +55,6 @@ export class NewProject implements INewProject {
             this._directoryService.createDirectory(x.replace('%%projectName%%', projectName));
         });
         this._fileService.saveFile(`./${projectName}/src/scripts/main.js`, mainContents);
-    }
-
-    isWebPack(): boolean {
-        switch (true) {
-            case program.gulp:
-                return false;
-            case program.grunt:
-                return false;
-            case program.parcel:
-                return false;
-            default:
-                return true;
-        }
     }
 
     createStyleScaffolding(projectName: string) {
@@ -69,7 +66,7 @@ export class NewProject implements INewProject {
 
     createStyleRootDirectory(projectName: string, extension: string): string {
         let rootPath = './';
-        if (!program.only) {
+        if (this._newProductInfo.projectType !== newProject.options.projectType.architectureOnly) {
             extension = this._fileService.getStyleFormat(extension);
             rootPath = `./${projectName}/src/${extension}`;
             this._directoryService.createDirectory(rootPath);
@@ -95,7 +92,11 @@ export class NewProject implements INewProject {
     }
 
     createPackageJson(projectName: string) {
-        projectData.packageJson.name = projectName || 'your_project_name';
+        projectData.packageJson.name = projectName
+                    .replace(/\s+/g, '-')
+                    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+                    .toLowerCase();
+
         projectData.packageJson.scripts = this._projectData.projectCommands;
         this._fileService.saveFile(`./${projectName}/package.json`, JSON.stringify(projectData.packageJson, null, '\t'));
         this._shellService.installNPMDependencies(projectName, this._projectData.devDependencies, true);
@@ -107,14 +108,15 @@ export class NewProject implements INewProject {
 
 
     createIndexHtml(projectName: string) {
-        let jsDir = program.parcel ? './src/scripts/main.js' : './dist/scripts.js';
-        let cssDir = program.parcel ? this._styleRootPath : './dist/styles.css';
+        let isParcel = this._newProductInfo.pipeline === newProject.options.pipeline.parcel;
+        let jsDir = isParcel ? './src/scripts/main.js' : './dist/scripts.js';
+        let cssDir = isParcel ? this._styleRootPath : './dist/styles.css';
         let contents = this._projectService.getHtmlTemplate(cssDir, jsDir);
         this._fileService.saveFile(`./${projectName}/index.html`, contents);
     }
 
     displayStartupInstructions(projectName: string): void {
-        if (!program.only) {
+        if (this._newProductInfo.projectType !== newProject.options.projectType.architectureOnly) {
             this._logService.info('\nTo get started run the following command:');
             if (projectName) this._logService.info(`cd ${projectName}`);
             this._logService.info('npm run dev');

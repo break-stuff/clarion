@@ -1,7 +1,7 @@
+import { prompt } from "inquirer";
 import * as path from "path";
 import * as fs from "fs";
-import * as program from "commander";
-import {IProjectData, projectData} from '../data/projectData';
+import { projectData} from '../data/projectData';
 import { ILogService, LogService } from "./logService";
 import { IConfigService, ConfigService } from "./configService";
 
@@ -12,6 +12,8 @@ export interface IDirectoryService {
     findDirectoryByName(directoryName: string): string;
     findDirectory(directory: string): string;
     findStyleRootDirectory(): string;
+    getAllStyleDirectories(): string[];
+    promptForMissingDirectory(): Promise<string>;
 }
 
 export class DirectoryService implements IDirectoryService {
@@ -36,6 +38,23 @@ export class DirectoryService implements IDirectoryService {
             return false;
         }
     }
+
+    promptForMissingDirectory(): Promise<string> {
+		let directories = this.getAllStyleDirectories();
+		let question = {
+			type: "list",
+			name: "directory",
+			message: "We could not find the directory you entered. Are you looking for one of these?",
+			choices: directories
+		};
+
+		if (directories.length === 0) {
+            this._logger.warning("Please specify a directory.");
+        }
+		else {
+            return prompt(question).then(answers => answers.directory);
+        }
+	}
 
     findDirectoryByName(directoryName: string): string {
         let directory: string;

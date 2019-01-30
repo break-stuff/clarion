@@ -1,117 +1,120 @@
-import * as program from "commander";
 import { FileService, IFileService } from "../services/fileService";
 import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
 import { IConfigService, ConfigService } from "../services/configService";
 
 export interface IAdd {
-    addNewFile(): void;
+	addNewDirectory(folderName: string): void;
+	addFileToCurrentDirectory(fileName: string): void;
+	addFileToSpecifiedDirectory(dir: string, fileName: string): void;
 }
 
 export class Add implements IAdd {
-    _fileService: IFileService = new FileService();
-    _logService: ILogService = new LogService();
-    _directoryService: IDirectoryService = new DirectoryService();
-    _configService: IConfigService = new ConfigService();
-    _config = this._configService.getConfigData();
+	_fileService: IFileService = new FileService();
+	_logService: ILogService = new LogService();
+	_directoryService: IDirectoryService = new DirectoryService();
+	_configService: IConfigService = new ConfigService();
+	_config = this._configService.getConfigData();
 
-    addNewFile(): void {
-        switch (program.args.length) {
-            case 1:
-                this._logService.warning('Please add the name of a file to create.');
-                break;
-            case 2:
-                this.addFileToCurrentDirectory();
-                break;
-            case 3:
-                this.updateDirectories();
-                break;
-            default:
-                this._logService.warning('Sorry, we were not able to process your request.');
-                break;
-        }
-    }
+	addFileToCurrentDirectory(fileName: string): void {
+		if (!this._fileService.getManifestFile("./")) {
+			this._logService.warning(
+				"Sorry, this is not a directory you can add styles to or you may be missing parameters."
+			);
+		} else {
+			this.processNewFile(".", fileName);
+		}
+	}
 
-    addFileToCurrentDirectory(): void {
-        let fileName = program.args[1];
-        if (!this._fileService.getManifestFile('./')) {
-            this._logService.warning('Sorry, this is not a directory you can add styles to or you may be missing parameters.');
-        } else {
-            this.processNewFile('.', fileName);
-        }
-    }
+	addNewDirectory(folderName: string) {
+		let extension = this._fileService.getFileExtension("/");
+		let rootDirectory = this._directoryService.findStyleRootDirectory();
 
-    updateDirectories() {
-        if(program.args[1] === 'directory') {
-            this.addNewDirectory();
-        } else {
-            this.addFileToSpecifiedDirectory();
-        }
-    }
+		this._directoryService.createDirectory(
+			`${rootDirectory}/${folderName}`
+		);
+		this._fileService.saveFile(
+			`${rootDirectory}/${folderName}/index${extension}`,
+			""
+		);
+		this._fileService.addFileToManifest(
+			`@import './${folderName}/index${extension}';`,
+			`${rootDirectory}/styles${extension}`,
+			true
+		);
+	}
 
-    addNewDirectory() {
-        let newDirectory = program.args[2];
-        let extension = this._fileService.getFileExtension('/');
-        let rootDirectory = this._directoryService.findStyleRootDirectory();
+	addFileToSpecifiedDirectory(dir: string, fileName: string): void {
+		let directoryName = this._directoryService.findDirectoryByName(dir);
 
-        this._directoryService.createDirectory(`${rootDirectory}/${newDirectory}`);
-        this._fileService.saveFile(`${rootDirectory}/${newDirectory}/index${extension}`, '');
-        this._fileService.updateManifest(`@import './${newDirectory}/index${extension}';`, `${rootDirectory}/styles${extension}`, true);
-    }
+		if (directoryName) {
+			let pathToDirectory = this._directoryService.findDirectory(
+				directoryName
+			);
+			if (pathToDirectory) {
+				this.processNewFile(pathToDirectory, fileName);
+			} else {
+				this._logService.warning(
+					"Sorry, the directory you specified was not found."
+				);
+			}
+		} else {
+            this._directoryService.promptForMissingDirectory()
+                .then(directory => this.addFileToSpecifiedDirectory(directory, fileName));
+		}
+	}
 
-    addFileToSpecifiedDirectory(): void {
-        let styleDirectory = program.args[1];
-        let fileName = program.args[2];
-        let directoryName = this._directoryService.findDirectoryByName(styleDirectory);
+	processNewFile(pathToDirectory: string, fileName: string) {
+		let extension = this._fileService.getFileExtension(pathToDirectory);
+		let newFile = this.getNewFile(fileName, extension);
+		let manifestFile = `${pathToDirectory}/${this._fileService.getManifestFile(
+			pathToDirectory
+		)}`;
 
-        if(directoryName) {
-            let pathToDirectory = this._directoryService.findDirectory(directoryName);
-            if (pathToDirectory) {
-                this.processNewFile(pathToDirectory, fileName);
-            } else {
-                this._logService.warning('Sorry, the directory you specified was not found.');
-            }
-        } else {
-            this._logService.warning('Please specify a directory.');
-        }
-    }
+		if (!this._fileService.fileExists(`${pathToDirectory}/${newFile}`)) {
+			let pathToRoot = this.getPathToRoot(fileName);
+			let importStatement =
+				this._config.importAbstracts == "true" &&
+				!pathToDirectory.includes("00_Abstracts")
+					? `@import "${pathToRoot}00_Abstracts/index${extension}";`
+					: "";
+			this._fileService.saveFile(
+				`${pathToDirectory}/${newFile}`,
+				importStatement
+			);
 
-    processNewFile(pathToDirectory: string, fileName: string) {
-        let extension = this._fileService.getFileExtension(pathToDirectory);
-        let newFile = this.getNewFile(fileName, extension);
-        let manifestFile = `${pathToDirectory}/${this._fileService.getManifestFile(pathToDirectory)}`;
+			if (this._config.addToManifest == "true")
+				this._fileService.addFileToManifest(
+					newFile,
+					manifestFile,
+					false
+				);
+		} else {
+			this._logService.warning(newFile + " already exists.");
+		}
+	}
 
-        if (!this._fileService.fileExists(`${pathToDirectory}/${newFile}`)) {
-            let pathToRoot = this.getPathToRoot(fileName);
-            let importStatement = this._config.importAbstracts == 'true' && !pathToDirectory.includes('00_Abstracts') ? `@import "${pathToRoot}00_Abstracts/index${extension}";` : '';
-            this._fileService.saveFile(`${pathToDirectory}/${newFile}`, importStatement);
+	getNewFile(fileName: string, extension: string) {
+		let directories = fileName.split("/");
 
-            if (this._config.addToManifest == 'true')
-                this._fileService.updateManifest(newFile, manifestFile, false);
-        } else {
-            this._logService.warning(newFile + ' already exists.');
-        }
-    }
+		if (directories.length > 1) {
+			directories[directories.length - 1] = `_${
+				directories[directories.length - 1]
+			}${extension}`;
+			return directories.join("/");
+		}
 
-    getNewFile(fileName: string, extension: string) {
-        let directories = fileName.split('/');
+		return `_${fileName}${extension}`;
+	}
 
-        if (directories.length > 1) {
-            directories[directories.length - 1] = `_${directories[directories.length - 1]}${extension}`;
-            return directories.join('/');
-        }
+	getPathToRoot(fileName: string) {
+		let pathDepth = fileName.split("/").length;
+		let pathToRoot = "../";
 
-        return `_${fileName}${extension}`;
-    }
+		for (let i = 1; i < pathDepth; i++) {
+			pathToRoot += "../";
+		}
 
-    getPathToRoot(fileName: string) {
-        let pathDepth = fileName.split('/').length;
-        let pathToRoot = '../';
-
-        for (let i = 1; i < pathDepth; i++) {
-            pathToRoot += '../';
-        }
-        
-        return pathToRoot;
-    }
+		return pathToRoot;
+	}
 }

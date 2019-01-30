@@ -1,25 +1,63 @@
-import * as program from "commander";
-import { ITaskService, TaskService } from "./taskManager";
+import * as commander from "commander";
+import { prompt } from "inquirer";
+import * as newProjectData from './data/newProject';
+import { NewProject } from "./commands/new";
+import { IAdd, Add } from "./commands/add";
+import { IRemove, Remove } from "./commands/remove";
+import { IConfigService, ConfigService } from "./services/configService";
 
-export default program
-    .version('1.1.2')
-    .usage('<command> [project or file name] [options]')
-    .command('new', 'generate a new project')
-    .command('add', 'add a new file to your project')
-    .command('remove', 'remove a file from your project')
-    .command('config', 'configure Clarion to your development environment')
-    .option('-O, --only', 'generate the style architecture only (great for integrating into frameworks)')
-    .option('-E, --empty', 'generate an empty project without any of the start-up files')
-    .option('-C, --scss', 'files are in .scss format (default)')
-    .option('-A, --sass', 'files are in .sass format')
-    .option('-L, --less', 'files are in .less format')
-    .option('-W, --webpack', 'configure project for WebPack bundler (default)')
-    .option('-P, --parcel', 'configure project for Parcel bundler')
-    .option('-U, --gulp', 'configure project for Gulp task runner')
-    .option('-R, --grunt', 'configure project for Grunt task runner')
-    .parse(process.argv);
+commander
+    .version("2.0.0")
+    .usage("<command> [project or file name] [options]");
 
-if (program.args.length) {
-    let taskService = new TaskService();
-    taskService.processUserAction(program.args);
-}
+commander
+    .command("new")
+    .description('Create a new project')
+    .action(() => {
+        prompt(newProjectData.questions)
+            .then(answers => {
+                const newProject = new NewProject();
+                newProject.init(answers);
+            });
+});
+
+commander
+    .command('add <dir> [filename]')
+    .description('Use "add <dir> <filename>" to add a style sheet to a specific directory || Use "add <filename>" to add a style sheet to current directory')
+    .action((dir, filename) => {
+        let add: IAdd = new Add();
+        if(filename)
+            add.addFileToSpecifiedDirectory(dir, filename);
+        else
+            add.addFileToCurrentDirectory(dir);
+});
+
+commander
+    .command('mkdir <foldername>')
+    .description('Add new style directory to architecture')
+    .action((foldername) => {
+        let add: IAdd = new Add();
+        add.addNewDirectory(foldername);
+});
+
+commander
+    .command('remove <dir> [filename]')
+    .description('Use "add <dir> <filename>" to add a style sheet to a specific directory || Use "add <filename>" to add a style sheet to current directory')
+    .action((dir, filename) => {
+        let remove: IRemove = new Remove();
+        if(filename)
+            remove.removeFileFromSpecifiedDirectory(dir, filename);
+        else
+            remove.removeFileFromCurrentDirectory(dir);
+    });
+
+    
+commander
+    .command('config')
+    .description('Configure Clarion to your development environment')
+    .action(() => {
+        let configService: IConfigService = new ConfigService();
+        configService.updateConfigInfo();
+    });
+
+commander.parse(process.argv);

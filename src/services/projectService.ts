@@ -1,6 +1,6 @@
 import { IFileService, FileService } from "../services/fileService";
-import * as program from "commander";
 import { IProjectTypeData, projectData } from '../data/projectData';
+import { INewProjectInfo, newProject } from "../data/newProject";
 
 export interface IProjectData {
     devDependencies: string[];
@@ -16,13 +16,13 @@ export class ProjectDataService implements IProjectDataService {
     _fileService: IFileService = new FileService();
     _projectTypeData: IProjectTypeData;
 
-    constructor() {
+    constructor(private _newProductInfo: INewProjectInfo) {
         this._projectTypeData = this.getProjectTypeData();        
     }
 
     getProjectData(projectName: string): IProjectData {
-        if(!program.parcel) this.createBundleConfigurationFile(projectName);
-        if(!program.grunt) this.createPostCssConfig(projectName);
+        if(this._newProductInfo.pipeline !== newProject.options.pipeline.parcel) this.createBundleConfigurationFile(projectName);
+        if(this._newProductInfo.pipeline !== newProject.options.pipeline.grunt) this.createPostCssConfig(projectName);
 
         return {
             devDependencies: this.getProjectDependencies(),
@@ -54,25 +54,25 @@ export class ProjectDataService implements IProjectDataService {
                                                         .replace(/%%styleFormat%%/g, styleFormat)
                                                         .replace(/%%extension%%/g, extension);
         
-        if(program.grunt) contents.replace(/grunt-less/g, 'grunt-contrib-less');
+        if(this._newProductInfo.pipeline === 'Grunt') contents.replace(/grunt-less/g, 'grunt-contrib-less');
 
         return contents;
     }
 
     getProjectDependencies(): string[] {
         let dependencies = this._projectTypeData.devDependencies;
-        dependencies = dependencies.concat(program.less ? this._projectTypeData.lessDependencies : this._projectTypeData.sassDependencies);
+        dependencies = dependencies.concat(this._newProductInfo.styleFormat === newProject.options.styleFormat.less ? this._projectTypeData.lessDependencies : this._projectTypeData.sassDependencies);
 
         return dependencies;
     }
 
     getProjectTypeData() {
         switch (true) {
-            case program.grunt:
+            case this._newProductInfo.pipeline === newProject.options.pipeline.grunt:
                 return projectData.grunt;
-            case program.gulp:
+            case this._newProductInfo.pipeline === newProject.options.pipeline.gulp:
                 return projectData.gulp;
-            case program.parcel:
+            case this._newProductInfo.pipeline === newProject.options.pipeline.parcel:
                 return projectData.parcel;
             default:
                 return projectData.webpack;

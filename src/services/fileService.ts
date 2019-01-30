@@ -8,10 +8,11 @@ export interface IFileService {
     fileExists(fileName: string): boolean;
     getManifestFile(filePath: string): string;
     getFileExtension(directory: string): string;
-    updateManifest(fileName: string, manifestFile: string, sort: boolean): void;
     removeFile(filePath: string): void;
     readFile(filePath: string): string;
     getStyleFormat(extension: string): string;
+    addFileToManifest(fileName: string, manifestFile: string, sort: boolean): void;
+    removeFileFromManifest(fileName: string, manifestFile: string): void;
 }
 
 export class FileService implements IFileService {
@@ -65,22 +66,6 @@ export class FileService implements IFileService {
     getManifestExtension(directory: string): string {
         let manifest = this.getManifestFile(directory);
         return manifest ? path.extname(manifest) : '.scss';
-    }
-
-    updateManifest(fileName: string, manifestFile: string, sort: boolean): void {
-        if (this.fileExists(manifestFile)) {
-            switch (program.args[0]) {
-                case 'add':
-                    this.addFileToManifest(fileName, manifestFile, sort);
-                    break;
-                case 'remove':
-                    this.removeFileFromManifest(fileName, manifestFile);
-                    break;
-                default:
-                    this._logger.warning('Sorry, we were not able to process your request.');
-                    break;
-            }
-        }
     }
 
     addFileToManifest(fileName: string, manifestFile: string, sort: boolean): void {
