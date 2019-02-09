@@ -1,0 +1,9 @@
+@import "../00_Abstracts/index.scss";
+
+.c-sub-nav {
+    padding: 2rem;
+    .active {
+        background-color: $color-primary;
+        border-color: $color-primary;
+    }
+}

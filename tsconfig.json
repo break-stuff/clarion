@@ -1,18 +1,10 @@
 {
-    "compileOnSave": true,
+    "extends": "@nuxt/typescript-edge",
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "noImplicitAny": false,
-        "sourceMap": false,
-        "outDir": "./lib",
-        "newLine": "LF"
+        "baseUrl": ".",
+        "types": [
+            "@types/node",
+            "@nuxt/vue-app-edge"
+        ]
     },
-    "include": [
-        "src/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "**/*.spec.ts"
-    ]
 }

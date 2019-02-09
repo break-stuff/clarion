@@ -1,66 +1,27 @@
 {
-  "name": "clarion",
-  "version": "2.0.0",
-  "description": "CLI for adding the Clarion Style Architecture to a project.",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha -r ts-node/register tests/**/*.ts",
-    "update": "tsc && npm i -g",
-    "build": "tsc && npm publish"
-  },
-  "author": "Burton Smith <burton@breakstuff.io>",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.16.0",
-    "inquirer": "^6.2.1"
-  },
-  "bin": {
-    "clarion": "./bin/clarion"
-  },
-  "install": "npm i -g clarion",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/break-stuff/clarion"
-  },
-  "homepage": "projectclarion.com",
-  "keywords": [
-    "starter project",
-    "scaffolding",
-    "CLI",
-    "build",
-    "methodology",
-    "boilerplate",
-    "architecture",
-    "javascript",
-    "css",
-    "css architecture",
-    "sass",
-    "sass architecture",
-    "scss",
-    "less",
-    "less architecture",
-    "webpack",
-    "parcel",
-    "grunt",
-    "gulp",
-    "angular",
-    "react",
-    "jekyll",
-    "asp.net",
-    "bootstrap",
-    "vue.js"
-  ],
-  "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/chalk": "^0.4.31",
-    "@types/commander": "^2.12.2",
-    "@types/mocha": "^5.2.4",
-    "@types/node": "^8.10.20",
-    "chai": "^4.1.2",
-    "fsevents": "^1.2.4",
-    "mocha": "^5.2.0",
-    "ts-node": "^5.0.1",
-    "typescript": "^2.9.2"
-  }
+    "name": "clarion-docs",
+    "version": "1.0.0",
+    "description": "Documentation for the Clarion CLI tool and framework",
+    "author": "Burton Smith",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt-ts",
+        "build": "nuxt-ts build",
+        "start": "nuxt-ts start",
+        "generate": "nuxt-ts generate",
+        "lint": "tslint --project .",
+        "post-update": "yarn upgrade --latest"
+    },
+    "dependencies": {
+        "cross-env": "^5.2.0",
+        "nuxt": "^2.3.4",
+        "nuxt-ts-edge": "latest",
+        "vue-property-decorator": "^7.3.0"
+    },
+    "devDependencies": {
+        "node-sass": "^4.11.0",
+        "nodemon": "^1.18.9",
+        "sass-loader": "^7.1.0",
+        "tslint-config-standard": "^8.0.1"
+    }
 }

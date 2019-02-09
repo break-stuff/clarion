@@ -1,0 +1,19 @@
+@import "../00_Abstracts/index.scss";
+
+html, body {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    padding-top: 100px;
+}
+
+main {
+    min-height: 100%;
+    margin: 0 auto -40px;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+}

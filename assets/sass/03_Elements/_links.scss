@@ -1,0 +1,14 @@
+@import "../00_Abstracts/index.scss";
+
+a {
+    color: $color-secondary;
+    &:hover {
+        color: $color-secondary;
+    }
+}
+
+p {
+    a{
+        text-decoration: underline;
+    }
+}
