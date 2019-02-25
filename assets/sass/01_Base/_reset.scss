@@ -9,11 +9,27 @@ html, body {
 
 body {
     padding-top: 100px;
+    display: flex;
+    min-height: calc(100vh - 100px);
+    flex-direction: column;
 }
 
 main {
-    min-height: 100%;
-    margin: 0 auto -40px;
-    overflow-x: hidden;
-    padding-bottom: 40px;
+    // min-height: 100%;
+    // margin: 0 auto -40px;
+    // overflow-x: hidden;
+    // padding-bottom: 40px;
+}
+
+#__nuxt,
+#__layout,
+#__layout > div,
+.page-wrapper {
+    height: 100%;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

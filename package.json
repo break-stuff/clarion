@@ -1,27 +1,40 @@
 {
-    "name": "clarion-docs",
-    "version": "1.0.0",
-    "description": "Documentation for the Clarion CLI tool and framework",
-    "author": "Burton Smith",
-    "private": true,
-    "scripts": {
-        "dev": "nuxt-ts",
-        "build": "nuxt-ts build",
-        "start": "nuxt-ts start",
-        "generate": "nuxt-ts generate",
-        "lint": "tslint --project .",
-        "post-update": "yarn upgrade --latest"
-    },
-    "dependencies": {
-        "cross-env": "^5.2.0",
-        "nuxt": "^2.3.4",
-        "nuxt-ts-edge": "latest",
-        "vue-property-decorator": "^7.3.0"
-    },
-    "devDependencies": {
-        "node-sass": "^4.11.0",
-        "nodemon": "^1.18.9",
-        "sass-loader": "^7.1.0",
-        "tslint-config-standard": "^8.0.1"
-    }
+  "name": "clarion-docs",
+  "version": "1.0.0",
+  "description": "Documentation site for the Clarion CLI and CSS Framework",
+  "author": "Burton Smith",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.4.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": ">=2.14.0",
+    "eslint-plugin-jest": ">=21.24.1",
+    "eslint-plugin-node": ">=7.0.1",
+    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.9",
+    "prettier": "1.14.3",
+    "push-dir": "^0.4.1",
+    "sass-loader": "^7.1.0"
+  }
 }

@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark main-menu">
-        <a class="navbar-brand" href="/">Clarion</a>
+        <nuxt-link class="navbar-brand" to="/">Clarion</nuxt-link>
         <button
             class="navbar-toggler"
             type="button"
@@ -15,16 +15,16 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item quick-start">
-                    <a class="nav-link" href="/">Quick Start</a>
+                    <nuxt-link class="nav-link" to="/">Quick Start</nuxt-link>
                 </li>
                 <li class="nav-item documentation">
-                    <a class="nav-link" href="/documentation/">Documentation</a>
+                    <nuxt-link class="nav-link" to="/documentation/">Documentation</nuxt-link>
                 </li>
                 <li class="nav-item examples">
-                    <a class="nav-link" href="/examples/">Examples</a>
+                    <nuxt-link class="nav-link" to="/examples/">Examples</nuxt-link>
                 </li>
                 <li class="nav-item contact">
-                    <a class="nav-link" href="/contact/">Contact</a>
+                    <nuxt-link class="nav-link" to="/contact/">Contact</nuxt-link>
                 </li>
                 <li class="nav-item">
                     <a
@@ -32,7 +32,7 @@
                         target="_blank"
                         href="https://www.npmjs.com/package/clarion"
                     >
-                        <img src="/images/npm_icon_white.png" alt="npm icon">
+                        <img src="~/assets/images/npm_icon_white.png" alt="npm icon">
                     </a>
                 </li>
                 <li class="nav-item">
@@ -41,7 +41,7 @@
                         target="_blank"
                         href="https://github.com/break-stuff/clarion"
                     >
-                        <img src="/images/githubwhite.png" alt="github icon">
+                        <img src="~/assets/images/githubwhite.png" alt="github icon">
                     </a>
                 </li>
             </ul>
@@ -50,8 +50,7 @@
 </template>
 
 <script>
-export default {};
+export default {
+    name: 'MainMenu'
+};
 </script>
-
-<style scoped>
-</style>

@@ -1,0 +1,146 @@
+<template>
+    <div>
+        <h1>Custom Jekyll Themes Using Clarion</h1>
+
+        <p>Jekyll is a simple, blog-aware, static site generator. Jekyll also happens to be the engine behind GitHub Pages, which means you can use Jekyll to host your project’s page (like this one), blog, or website from GitHub. Integrating Clarion into Jekyll was very simple.</p>
+
+        <h2>Starting Your Project</h2>
+        <p>Before you get started, make sure Clarion and the Jekyll requirements are installed:</p>
+        <p>
+            <code>npm install -g clarion</code>
+            <br>
+            <a href="https://jekyllrb.com/docs/installation/#requirements">Jekyll Requirements</a>
+        </p>
+        <p>
+            This example will use the
+            <a
+                href="https://github.com/pietromenna/jekyll-cayman-theme"
+            >Jekyll Cayman theme</a>. The following instruction are excerpts from the official documentation:
+        </p>
+
+        <h4>Create Your Project</h4>
+        <p>
+            Download the theme
+            <a
+                href="http://github.com/pietromenna/jekyll-cayman-theme/archive/master.zip"
+            >here</a>.
+        </p>
+        <p>In the terminal:
+            <br>
+            <code>unzip jekyll-cayman-theme-master.zip</code>
+            <br>
+            <code>cd jekyll-cayman-theme-master</code>
+            <br>
+            <code>bundle install</code>
+        </p>
+
+        <h2>Adding Clarion</h2>
+        <p>
+            Before Clarion is installed, rename the
+            <code>index.html</code> file at the core of the project to
+            <code>_index.html</code> to prevent it from being overridden. Now install Clarion:
+        </p>
+        <p>
+            <code>clarion new</code>
+        </p>
+        <p>
+            Remove the new
+            <code>index.html</code> and rename
+            <code>_index.html</code> back to
+            <code>index.html</code>.
+        </p>
+        <p>
+            In the
+            <code>_includes</code> directory add a reference to your style and script files to the
+            <code>head.html</code> file (or in another designated file).
+        </p>
+        <pre>
+            
+        &lt;link rel="stylesheet" href="/build/styles.css"&gt;
+        &lt;script src="/build/scripts.js"&gt;/script&gt;
+        </pre>
+        <p>
+            <strong>
+                Note: If you are using your Jekyll project for GitHub Pages, make sure you prefix the
+                <code>href</code> and
+                <code>src</code> paths with your project name.
+            </strong>
+        </p>
+
+        <h2>Using the Theme</h2>
+        <p>
+            The Cayman theme uses 2 files in the
+            <code>css</code> directory:
+            <code>cayman.css</code> and
+            <code>normalize.css</code>. You can add the files to your styles in 2 ways:
+        </p>
+        <ol>
+            <li>Cut and paste them or copy them to the appropriate place and change the extension</li>
+            <li>Create new files and and add the contents to the new files</li>
+        </ol>
+
+        <p>
+            Let's use the CLI to do the latter. Create 2 new files: the first file will go in the
+            <code>src/sass/02_Vendors</code> directory for the cayman theme and the second will go in the
+            <code>src/sass/01_Base</code> directory since it is a CSS reset.
+        </p>
+        <p>
+            <code>clarion add theme cayman</code>
+        </p>
+        <p>
+            <code>clarion add base normalize</code>
+        </p>
+        <p>
+            Copy the contents of the
+            <code>css/cayman.css</code> file to the newly created
+            <code>src/sass/02_Vendors/_cayman.scss</code> file and
+            <code>css/normalize.css</code> to
+            <code>src/sass/01_Base/_normalize.scss</code>.
+        </p>
+        <p>
+            Now you can remove the references to the to
+            <code>css/cayman.css</code> and
+            <code>css/normalize.css</code> in the
+            <code>_includes/head.html</code> file.
+        </p>
+
+        <h2>WebPack Watch and Jekyll Serve</h2>
+        <p>
+            When you run
+            <code>jekyll serve</code>, Jekyll will watch for any changes to you files, process them, and the output will go in the
+            <code>_sites</code> directory. The problem is that while this process is running you cannot run additional commands or have additional watchers running to compile your styles or scripts. This can be resolved by installing a package called
+            <a
+                href="https://www.npmjs.com/package/concurrently"
+            >concurrently</a>. This will allow multiple commands to be run simultaneously.
+        </p>
+        <p>
+            <code>npm i concurrently --save-dev</code>
+        </p>
+        <p>
+            In the
+            <code>package.json</code>, under
+            <code>scripts</code>, update the
+            <code>dev</code> command to run the webpack watch command and the jekyll serve command simultaneously:
+        </p>
+        <p>
+            <code>"dev": "concurrently --kill-others \"cross-env NODE_ENV=development webpack -w \" \"bundle exec jekyll serve\"",</code>
+        </p>
+        <p>
+            Now, update the
+            <code>build</code> command to include Jekyll's build command:
+        </p>
+        <p>
+            <code>"build": "cross-env NODE_ENV=production webpack --progress --hide-modules -p && bundle exec jekyll build"</code>
+        </p>
+
+        <h2>Conclusion</h2>
+        <p>You should be able to use the Clarion CLI as you normally would. No additional configuration is necessary.</p>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'JekyllExample',
+    layout: 'examples'
+};
+</script>
