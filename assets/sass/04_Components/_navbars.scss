@@ -11,7 +11,12 @@
     .nav-item {
         font-family: $font-lato;
         .nav-link {
+            font-size: 1.125rem;
             color: rgba(250, 250, 250, .65);
+
+            svg {
+                font-size: 1.5rem;
+            }
         }
 
         img {

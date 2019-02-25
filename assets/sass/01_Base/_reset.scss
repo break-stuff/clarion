@@ -12,6 +12,7 @@ body {
     display: flex;
     min-height: calc(100vh - 100px);
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 main {

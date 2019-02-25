@@ -30,6 +30,11 @@
             max-width: 8rem;
             max-height: 8rem;
             margin: auto;
+            font-size: 200px;
+            background-color: $color-primary;
+            color: white;
+            padding: 40px;
+            border-radius: 50%;
         }
 
         &-title {

@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item quick-start">
-                    <nuxt-link class="nav-link" to="/">Quick Start</nuxt-link>
+                    <nuxt-link class="nav-link" to="/" exact>Quick Start</nuxt-link>
                 </li>
                 <li class="nav-item documentation">
                     <nuxt-link class="nav-link" to="/documentation/">Documentation</nuxt-link>
@@ -32,7 +32,8 @@
                         target="_blank"
                         href="https://www.npmjs.com/package/clarion"
                     >
-                        <img src="~/assets/images/npm_icon_white.png" alt="npm icon">
+                        <span class="sr-only">NPM Link</span>
+                        <i class="fab fa-npm"></i>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -41,7 +42,8 @@
                         target="_blank"
                         href="https://github.com/break-stuff/clarion"
                     >
-                        <img src="~/assets/images/githubwhite.png" alt="github icon">
+                        <span class="sr-only">GitHub Link</span>
+                        <i class="fab fa-github"></i>
                     </a>
                 </li>
             </ul>

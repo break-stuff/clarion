@@ -9,11 +9,12 @@
         <div class="row headliners">
             <div class="col">
                 <div class="card">
-                    <img
+                    <!-- <img
                         class="card-img-top"
                         src="~/assets/images/code_icon.png"
                         alt="code icon"
-                    >
+                    > -->
+                    <i class="fas fa-code card-img-top"></i>
                     <div class="card-body">
                         <h5 class="card-title">Maintainable and Scalable CSS</h5>
                         <p
@@ -30,11 +31,12 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img
+                    <!-- <img
                         class="card-img-top"
                         src="~/assets/images/round_terminal.png"
                         alt="terminal icon"
-                    >
+                    > -->
+                    <i class="fas fa-terminal card-img-top"></i>
                     <div class="card-body">
                         <h5 class="card-title">Easy Scaffolding</h5>
                         <p
@@ -48,11 +50,12 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img
+                    <!-- <img
                         class="card-img-top"
                         src="~/assets/images/screwdriver_logo.png"
                         alt="screwdriver icon"
-                    >
+                    > -->
+                    <i class="fas fa-tools card-img-top"></i>
                     <div class="card-body">
                         <h5 class="card-title">Use Your Favorite Tools</h5>
                         <p
