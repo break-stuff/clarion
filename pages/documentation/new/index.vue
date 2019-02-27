@@ -32,10 +32,10 @@
         <p>Pixrem is a CSS post-processor that, given CSS and a root em (rem) value, returns CSS with pixel unit fallbacks or replacements. It's based on browser data so only needed fallbacks will be added. Basically, it's for IE8 or less, and for IE9 &amp; IE10 in the font shorthand property and in pseudo-elements.</p>
 
 
-        <h4>Styles Only</h4>
+        <h4>Styles Only (Coming Soon!)</h4>
         <p>This will only install the style architecture as well as the style framwork. If you are using a front-end framework or your team has a specific architecture pattern, this will allow you leverage the style architecture while still adhering to an existing specifications.</p>
 
-        <h4>Arcbitecture Only</h4>
+        <h4>Architecture Only</h4>
         <p>This option will only scaffold out the style architecture and will not contain any of the style framework code.</p>
 
         <h3>Style Format</h3>
