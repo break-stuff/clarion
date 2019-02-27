@@ -11,19 +11,25 @@ Install [Node.js](https://nodejs.org/en/), if you don't already have it installe
 
 In your terminal or command prompt type:
 
-    npm install -g clarion
+```
+npm install -g clarion
+- or -
+yarn global add clarion
+```
 
 
 ## Start a New Project
-    clarion new MyProject
+    clarion new
 
-Your dependencies will automatically be installed!
+Answer a few questions about you would like to configure your project and it will be scaffolded out for you.
+
+Your dependencies will also automatically be installed!
 
 
 ## Run Your New Project
 After your dependencies are installed you can run your project.
 
-    cd MyProject
+    cd <project-name>
     npm run dev
 
 ## About Your New Project
@@ -112,23 +118,37 @@ The final compiled JavaScript and CSS file are in build directory in the root of
 
 These are options you can run when initializing you project.
 
-    Project Content
-    -O, --only     generate the style architecture only (great for integrating into frameworks)
-    -E, --empty    generate an empty project without any of the start-up files (COMING SOON!!!)
+## Project Content
 
-    Style Format
-    -C, --scss     files are in .scss format (default)
-    -A, --sass     files are in .sass format
-    -L, --less     files are in .less format
+| Option | Description |
+| --- | --- |
+| Starter Project | generate  the style architecture, the style framework, as well as any task runners/bundlers and optimizers needed to begin developing a web application.
+| Styles Only  |  generate the style architecture only (great for integrating into frameworks) |
+| Architecture Only  |  generate an empty project without any of the start-up files |
 
-    Task Runners and Bundlers
-    -W, --webpack  configure project for WebPack bundler (default)
-    -P, --parcel   configure project for Parcel bundler
-    -U, --gulp     configure project for Gulp task runner
-    -R, --grunt    configure project for Grunt task runner
+## Style Format
+
+| Option | Description |
+| --- | --- |
+| SCSS  |   files are in .scss format |
+| SASS  |   files are in .sass format |
+| LESS  |   files are in .less format |
+
+## Task Runners and Bundlers
+
+| Option | Description |
+| --- | --- |
+| Webpack | configure project for WebPack |bundler
+| Parcel  | configure project for Parcel bundler |
+| Gulp   |  configure project for Gulp task runner |
+| Grunt  |  configure project for Grunt task runner |
 
 
 ## Changelog
+
+2.0.1 - Updated documentation.
+
+2.0.0 - Added new CLI interface.
 
 1.1.2 - Fixed hot reloading for Webpack.
 
