@@ -141,6 +141,38 @@
 <script>
 export default {
     name: 'JekyllExample',
-    layout: 'examples'
+    layout: 'examples',
+    head: {
+        title: 'Jekyll Themes Using Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Jekyll themes.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Jekyll themes.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/examples/jekyll'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

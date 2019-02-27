@@ -4,7 +4,9 @@
 
         <p>
             Feel free to reach out on Twitter
-            <a href="https://twitter.com/stuffbreaker">@stuffbreaker</a> or send me a message here.
+            <a
+                href="https://twitter.com/stuffbreaker"
+            >@stuffbreaker</a> or send me a message here.
             I will get back to you as soon as possible. Thanks!
         </p>
 
@@ -28,8 +30,41 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            title: 'Contact'
+        };
+    },
+    head: {
+        title: 'Contact',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content: 'Feel free to reach out with any questions or ideas.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content: 'Feel free to reach out with any questions or ideas.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/contact'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
+};
 </script>
-
-<style scoped>
-</style>

@@ -12,8 +12,8 @@
 
         <p>Create a new project using the Clarion CLI:</p>
         <pre>
-clarion new BootstrapProject
-cd BootstrapProject
+clarion new
+cd &lt;your-project&gt;
 </pre>
 
         <p>Install Bootstrap (we will be using version 4 for this example):</p>
@@ -75,9 +75,14 @@ $theme-colors: (
 
         <h2>SASS Mixins and Functions</h2>
 
-        <p>You can also inject Bootstrap's SASS mixins and funtions by adding a reference to them in to your <code>00_Abstracts</code> directory (either explicitly in their own file or directly in the manifest file). This will give you access to that functionality throughout your project.</p>
+        <p>You can also inject Bootstrap's SASS mixins and funtions by adding a reference to them in to your
+            <code>00_Abstracts</code> directory (either explicitly in their own file or directly in the manifest file). This will give you access to that functionality throughout your project.
+        </p>
 
-        <p>For exaple, of you wanted to leverage Bootstrap's mixin for media queries, you could add a reference to that SCSS file (<code>@import '~/bootstrap/scss/mixins/breakpoints'</code>) and begin using the <code>media-breakpoint-down(), media-breakpoint-between(), and media-breakpoint-only()</code> anywhere in your SCSS project.</p>
+        <p>For exaple, of you wanted to leverage Bootstrap's mixin for media queries, you could add a reference to that SCSS file (
+            <code>@import '~/bootstrap/scss/mixins/breakpoints'</code>) and begin using the
+            <code>media-breakpoint-down(), media-breakpoint-between(), and media-breakpoint-only()</code> anywhere in your SCSS project.
+        </p>
 
         <h2>Conclusion</h2>
 
@@ -88,6 +93,38 @@ $theme-colors: (
 <script>
 export default {
     name: 'BootstrapExample',
-    layout: 'examples'
+    layout: 'examples',
+    head: {
+        title: 'Bootstrap Themes Using Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Bootstrap themes.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Bootstrap themes.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/examples/bootstrap'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

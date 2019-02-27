@@ -19,6 +19,16 @@ module.exports = {
                 hid: 'description',
                 name: 'description',
                 content: pkg.description
+            },
+            {
+                hid: 'og:image',
+                name: 'og:image',
+                content: '/images/clarion_default_image.png'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
             }
         ],
         link: [{

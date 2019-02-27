@@ -13,6 +13,38 @@
 <script>
 export default {
     name: 'exaples',
-    layout: 'examples'
+    layout: 'examples',
+    head: {
+        title: 'Example Projects with Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'Find out hoe to inclide the Clarion CLI and style framework into your favorite projects.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'Find out hoe to inclide the Clarion CLI and style framework into your favorite projects.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/examples'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

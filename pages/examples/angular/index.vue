@@ -2,8 +2,11 @@
     <div>
         <h1>Custom Angular Themes Using Clarion</h1>
 
-        <p>Clarion plays really well with Angular, especially if you are using Angular CLI. If you don't have it installed already, make sure you
-            <a href="https://cli.angular.io/">install it now</a>.
+        <p>
+            Clarion plays really well with Angular, especially if you are using Angular CLI. If you don't have it installed already, make sure you
+            <a
+                href="https://cli.angular.io/"
+            >install it now</a>.
         </p>
 
         <h2>Starting Your Project</h2>
@@ -12,7 +15,8 @@
             <code>npm install -g clarion @angular/cli</code>
         </p>
 
-        <p>By default, new projects that are created using the Angular CLI use
+        <p>
+            By default, new projects that are created using the Angular CLI use
             <code>.css</code> as the style format. Fortunately, the Angular team has built in a way for you to also configure your project with
             <code>.scss</code>,
             <code>.sass</code>, or
@@ -23,7 +27,8 @@
         </p>
 
         <h3>Changing an Existing Project</h3>
-        <p>If you have an existing project that uses the default
+        <p>
+            If you have an existing project that uses the default
             <code>.css</code> format or would like to change from one format to another, you can do so by changing the Angular CLI configuration. If you already have an existing
             <code>.angular-cli.json</code> configuration file located at the root of your project, you can manually change the
             <code>styleExt</code> property of your choice. If you would like to play it safe, you can also use the Angular CLI to update your project:
@@ -31,7 +36,8 @@
         <p>
             <code>ng set defaults.styleExt scss</code>
         </p>
-        <p>You should now see the
+        <p>
+            You should now see the
             <code>.angular-cli.json</code>. Inside that file you should see, under the
             <code>defaults</code> property, the
             <code>styleExt</code> value set to
@@ -43,12 +49,14 @@
         <p>Adding Clarion to the project can be done in 4 easy steps:</p>
 
         <h4>1. Create a Folder For Your Styles</h4>
-        <p>Under the
+        <p>
+            Under the
             <code>src</code> directory create a new folder called
             <code>sass</code>.
         </p>
         <p>
-            <strong>Note: Clarion will look for the Clarion Style Architecture in folders called
+            <strong>
+                Note: Clarion will look for the Clarion Style Architecture in folders called
                 <code>sass</code>,
                 <code>scss</code>, or
                 <code>less</code>.
@@ -56,7 +64,8 @@
         </p>
 
         <h4>2. Navigate to Your New Directory</h4>
-        <p>Using your command line or terminal, navigate to your new
+        <p>
+            Using your command line or terminal, navigate to your new
             <code>sass</code> folder:
         </p>
         <p>
@@ -64,7 +73,8 @@
         </p>
 
         <h4>3. Add Clarion</h4>
-        <p>In order to avoid overriding andy of the files provided by the You can add the Clarion architecture by using the
+        <p>
+            In order to avoid overriding andy of the files provided by the You can add the Clarion architecture by using the
             <code>--only</code> or
             <code>-O</code> option. This will only install the Clarion Style Architecture.
         </p>
@@ -73,7 +83,8 @@
         </p>
 
         <h4>4. Add the Styles Manifest to Angular</h4>
-        <p>In the root of your project open the
+        <p>
+            In the root of your project open the
             <code>.angular-cli.json</code> file and change the
             <code>styles</code> value to
             <code>sass/styles.scss</code>.
@@ -87,6 +98,38 @@
 <script>
 export default {
     name: 'AngularExample',
-    layout: 'examples'
+    layout: 'examples',
+    head: {
+        title: 'Angular Themes Using Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Angular themes.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Angular themes.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/examples/angular'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

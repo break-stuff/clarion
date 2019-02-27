@@ -9,7 +9,7 @@
         </p>
 
         <h2>Styles</h2>
-        <p>Clarion offers a unique architecure to help reduce the complexity of styling small and large web applications and sites.</p>
+        <p>Clarion offers a unique architecure to reduce the complexity of styling small and large web applications and sites.</p>
 
         <h3>What's with the numbers?</h3>
         <p>Seeing folders prefixed with numbers may seem a little awkward or even down-right blasphemous to you at first. There is a method to this madness. The reason for it is to put the folder structure in the order in witch the styles are implemented in your style sheet. This servers two purposes:</p>
@@ -44,7 +44,8 @@
         <h3>05_Layouts</h3>
         <p>This folder contains everything that takes part in laying out the web site or application. These could be containers used for organizing elements and components within them like like a header, footer, or sidebar. This could also be used for your grid-system.</p>
 
-        <p>Styles for Elements and Components should
+        <p>
+            Styles for Elements and Components should
             <em>not</em> be modified here. Style variations for these should all be contained in a single place. Layouts are for positioning Elements and Components.
         </p>
 
@@ -108,6 +109,38 @@
 <script>
 export default {
     name: 'Architecture',
-    layout: 'documentation'
+    layout: 'documentation',
+    head: {
+        title: 'Style Architecture in Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'Clarion offers a unique architecure to reduce the complexity of styling small and large web applications and sites.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'Clarion offers a unique architecure to reduce the complexity of styling small and large web applications and sites.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/architecture'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

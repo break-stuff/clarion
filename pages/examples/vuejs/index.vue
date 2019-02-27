@@ -25,12 +25,14 @@ npm install
         <p>Adding Clarion to the project can be done in 4 easy steps:</p>
 
         <h4>1. Create a Folder For Your Styles</h4>
-        <p>Under the
+        <p>
+            Under the
             <code>src</code> directory create a new folder called
             <code>sass</code>.
         </p>
         <p>
-            <strong>Note: By default Clarion will look for the Clarion CSS Architecture in folders called
+            <strong>
+                Note: By default Clarion will look for the Clarion CSS Architecture in folders called
                 <code>sass</code>,
                 <code>scss</code>, or
                 <code>less</code>.
@@ -38,7 +40,8 @@ npm install
         </p>
 
         <h4>2. Navigate to Your New Directory</h4>
-        <p>Using your command line or terminal, navigate to your new
+        <p>
+            Using your command line or terminal, navigate to your new
             <code>sass</code> folder:
         </p>
         <p>
@@ -46,7 +49,8 @@ npm install
         </p>
 
         <h4>3. Add Clarion</h4>
-        <p>In order to avoid overriding any of the files provided by the You can add the Clarion architecture by using the
+        <p>
+            In order to avoid overriding any of the files provided by the You can add the Clarion architecture by using the
             <code>--only</code> or
             <code>-O</code> option. This will only install the Clarion Style Architecture.
         </p>
@@ -55,7 +59,8 @@ npm install
         </p>
 
         <h4>4. Add Your Styles to main.js</h4>
-        <p>In the
+        <p>
+            In the
             <code>src</code> folder open the
             <code>main.js</code> file and import your styles:
         </p>
@@ -72,6 +77,38 @@ npm install
 <script>
 export default {
     name: 'VuejsExample',
-    layout: 'examples'
+    layout: 'examples',
+    head: {
+        title: 'Vue.js Themes Using Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Vue.js themes.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create Vue.js themes.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/examples/vuejs'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

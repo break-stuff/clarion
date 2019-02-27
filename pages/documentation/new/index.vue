@@ -81,6 +81,38 @@
 <script>
 export default {
     name: 'NewProject',
-    layout: 'documentation'
+    layout: 'documentation',
+    head: {
+        title: 'Start Your Project with Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'Whether you are making a small static site or a complext enterprise application, the Clarion style architecture and style framework will make managing your styles easier.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'Whether you are making a small static site or a complext enterprise application, the Clarion style architecture and style framework will make managing your styles easier.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/new'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

@@ -134,6 +134,38 @@
 <script>
 export default {
     name: 'AspNetExample',
-    layout: 'examples'
+    layout: 'examples',
+    head: {
+        title: 'ASP.Net Themes Using Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create ASP.Net themes.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'See how to use the Clarion CLI and style framework to create ASP.Net themes.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/examples/aspnet'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

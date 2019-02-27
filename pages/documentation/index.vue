@@ -23,6 +23,38 @@
 <script>
 export default {
     name: 'Documentation',
-    layout: 'documentation'
+    layout: 'documentation',
+    head: {
+        title: 'Clarion Documentation',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'See how the Clarion CLI and style framework can make managing styles in your project simpler.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'See how the Clarion CLI and style framework can make managing styles in your project simpler.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/documentation'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>

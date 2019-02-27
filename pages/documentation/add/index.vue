@@ -2,17 +2,19 @@
     <div>
         <h1>Adding and Removing Files</h1>
 
-        <p>When working with files that require references to other files in order to make them work properly, just adding and removing files is not as simple as it seems. The Clarion CLI is designed to help reduce that friction a little.</p>
+        <p>When working with files that require references to other files in order to make them work properly, just adding and removing files is not as simple as it seems. The Clarion CLI is designed to help reduce that friction.</p>
 
         <h2>Adding a New File</h2>
         <p>Adding a new file is quite simple. In the root of your project type the following command:</p>
         <code>clarion add element headings</code>
         <br>
         <br>
-        <p>This will create the file _headings.scss in the 03_Elements directory as well as add
+        <p>
+            This will create the file _headings.scss in the 03_Elements directory as well as add
             <code>@import '_headings.scss';</code> import statement to the directory manifest file so it can be included in your final CSS file.
         </p>
-        <p>If you look in your newly created _headings.scss file, you will also see a reference to the Abstracts manifest file -
+        <p>
+            If you look in your newly created _headings.scss file, you will also see a reference to the Abstracts manifest file -
             <code>@import "../00_Abstracts/index.scss";</code>. this will give you access to the variables and tools you have created in that folder.
         </p>
 
@@ -31,7 +33,8 @@
         <p>Clarion would find the directory based on the double zeros (00) that were entered rather than the directory name. If the directory is not found, you will be provided with a list of availible options.</p>
 
         <h2>Subdirectory Support</h2>
-        <p>Clarion supports subdirectories within the architecture. For example, if you wanted to further split up your Abstracts folder into
+        <p>
+            Clarion supports subdirectories within the architecture. For example, if you wanted to further split up your Abstracts folder into
             <code>variables</code> and
             <code>mixins</code>, I would still be able to add files to the subdirectories using the following commands (make sure the directories exist before adding files to them):
         </p>
@@ -48,6 +51,38 @@
 <script>
 export default {
     name: 'AddFiles',
-    layout: 'documentation'
+    layout: 'documentation',
+    head: {
+        title: 'Adding and Removing Files With Clarion',
+        meta: [
+            {
+                hid: 'description',
+                name: 'description',
+                content:
+                    'When working with styles that require references to other files in order to make them work properly, just adding and removing files is not as simple as it seems. The Clarion CLI is designed to help reduce that friction.'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content:
+                    'When working with styles that require references to other files in order to make them work properly, just adding and removing files is not as simple as it seems. The Clarion CLI is designed to help reduce that friction.'
+            },
+            {
+                hid: 'og:url',
+                name: 'og:url',
+                content: 'https://projectclarion.com/add'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary'
+            },
+            {
+                hid: 'twitter:creator',
+                name: 'twitter:creator',
+                content: '@stuffbreaker'
+            }
+        ]
+    }
 };
 </script>
