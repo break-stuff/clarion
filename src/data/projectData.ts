@@ -322,7 +322,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "styles.css"
         }),
