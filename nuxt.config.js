@@ -92,7 +92,7 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: [],
+    modules: ['@nuxtjs/sitemap'],
 
     /*
      ** Build configuration
