@@ -34,12 +34,12 @@ export class Add implements IAdd {
 			`${rootDirectory}/${folderName}`
 		);
 		this._fileService.saveFile(
-			`${rootDirectory}/${folderName}/index${extension}`,
+			`${rootDirectory}/${folderName}/index.${extension}`,
 			""
 		);
 		this._fileService.addFileToManifest(
-			`@import './${folderName}/index${extension}';`,
-			`${rootDirectory}/styles${extension}`,
+			`@import './${folderName}/index.${extension}';`,
+			`${rootDirectory}/styles.${extension}`,
 			true
 		);
 	}
@@ -74,16 +74,16 @@ export class Add implements IAdd {
 		if (!this._fileService.fileExists(`${pathToDirectory}/${newFile}`)) {
 			let pathToRoot = this.getPathToRoot(fileName);
 			let importStatement =
-				this._config.importAbstracts == "true" &&
+				this._config.importAbstracts &&
 				!pathToDirectory.includes("00_Abstracts")
-					? `@import "${pathToRoot}00_Abstracts/index${extension}";`
+					? `@import "${pathToRoot}00_Abstracts/index.${extension}";`
 					: "";
 			this._fileService.saveFile(
 				`${pathToDirectory}/${newFile}`,
 				importStatement
 			);
 
-			if (this._config.addToManifest == "true")
+			if (this._config.addToManifest)
 				this._fileService.addFileToManifest(
 					newFile,
 					manifestFile,
@@ -100,11 +100,11 @@ export class Add implements IAdd {
 		if (directories.length > 1) {
 			directories[directories.length - 1] = `_${
 				directories[directories.length - 1]
-			}${extension}`;
+			}.${extension}`;
 			return directories.join("/");
 		}
 
-		return `_${fileName}${extension}`;
+		return `_${fileName}.${extension}`;
 	}
 
 	getPathToRoot(fileName: string) {

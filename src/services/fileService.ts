@@ -65,7 +65,7 @@ export class FileService implements IFileService {
 
     getManifestExtension(directory: string): string {
         let manifest = this.getManifestFile(directory);
-        return manifest ? path.extname(manifest) : '.scss';
+        return manifest ? path.extname(manifest).replace('.', '') : 'scss';
     }
 
     addFileToManifest(fileName: string, manifestFile: string, sort: boolean): void {
