@@ -118,6 +118,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/examples/angular'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Angular Themes Using Clarion'
             }
         ]
     }

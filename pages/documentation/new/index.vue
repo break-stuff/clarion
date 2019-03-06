@@ -101,6 +101,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/new'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Start Your Project with Clarion'
             }
         ]
     }

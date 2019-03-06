@@ -97,6 +97,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/examples/vuejs'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Vue.js Themes Using Clarion'
             }
         ]
     }

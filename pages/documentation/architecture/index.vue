@@ -129,6 +129,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/architecture'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Style Architecture in Clarion'
             }
         ]
     }

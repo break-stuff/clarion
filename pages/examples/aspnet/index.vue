@@ -154,6 +154,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/examples/aspnet'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'ASP.Net Themes Using Clarion'
             }
         ]
     }

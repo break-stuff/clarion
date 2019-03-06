@@ -102,6 +102,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/configuration'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Configuration in Clarion'
             }
         ]
     }

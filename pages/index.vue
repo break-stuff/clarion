@@ -174,6 +174,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Clarion CLI and Style Framework'
             }
         ]
     }

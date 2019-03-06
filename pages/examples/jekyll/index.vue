@@ -161,6 +161,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/examples/jekyll'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Jekyll Themes Using Clarion'
             }
         ]
     }

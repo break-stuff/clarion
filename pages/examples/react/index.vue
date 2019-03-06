@@ -128,6 +128,11 @@ export default {
                 hid: 'og:url',
                 property: 'og:url',
                 content: 'https://projectclarion.com/examples/react'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'React Themes Using Clarion'
             }
         ]
     }
