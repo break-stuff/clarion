@@ -7,7 +7,9 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        meta: [{
+        title: 'Clarion CLI and Style Framework',
+        meta: [
+            {
                 charset: 'utf-8'
             },
             {
@@ -22,7 +24,13 @@ module.exports = {
             {
                 hid: 'og:image',
                 property: 'og:image',
-                content: 'https://projectclarion.com/images/clarion_default_image.png'
+                content:
+                    'https://projectclarion.com/images/clarion_default_image.png'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Clarion CLI and Style Framework'
             },
             {
                 hid: 'twitter:card',
