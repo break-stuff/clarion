@@ -5,13 +5,16 @@ export interface INewProjectInfo {
 	pipeline: string;
 }
 
-export var questions = [
+export var starterQuestions = [
 	{
-		type: "input",
-		name: "projectName",
-		message: "Project Name:",
-		validate: value => value.length > 0 || "Project Name is required."
-	},
+		type: "list",
+		name: "projectStart",
+		message: "Start with default settings or would you like to customize your setup?",
+		choices: ["Default (Starter Project, SCSS, Webpack)", "Manual Configuration"]
+	}
+];
+
+export var manualSetupQuestions = [
 	{
 		type: "list",
 		name: "projectType",
@@ -32,6 +35,12 @@ export var questions = [
 	}
 ];
 
+export const defaultProjectValues: INewProjectInfo = {
+	projectName: '',
+	projectType: 'Starter Project',
+	styleFormat: 'SCSS',
+	pipeline: 'Webpack'
+}
 
 export var newProject = {
 	options: {
