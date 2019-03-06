@@ -1,4 +1,3 @@
-import inquirer = require('inquirer');
 import {newProject, INewProjectInfo} from '../data/newProject';
 import { FileService, IFileService } from "../services/fileService";
 import { IProjectData, IProjectDataService, ProjectDataService } from '../services/projectService';
@@ -8,7 +7,7 @@ import { IShellService, ShellService } from '../services/shellService'
 import { projectData } from "../data/projectData";
 
 export interface INewProject {
-    init(newProductInfo: INewProjectInfo): void;
+    init(projectName: string, newProductInfo: INewProjectInfo): void;
 }
 
 export class NewProject implements INewProject {
@@ -22,15 +21,13 @@ export class NewProject implements INewProject {
     _styleRootPath: string = '';
     _projectData: IProjectData;
 
-    init(newProductInfo: INewProjectInfo) {
+    init(projectName: string, newProductInfo: INewProjectInfo) {
         this._newProductInfo = newProductInfo;
         this._projectService = new ProjectDataService(this._newProductInfo);
-        this.createNewProject();
+        this.createNewProject(projectName);
     }
 
-    createNewProject(): void {
-        let projectName = this._newProductInfo.projectName;
-
+    createNewProject(projectName: string): void {
         if (this._newProductInfo.projectType !== newProject.options.projectType.architectureOnly 
             && this._newProductInfo.projectType !== newProject.options.projectType.stylesOnly) {
             this.createScriptScaffolding(projectName);
@@ -43,10 +40,10 @@ export class NewProject implements INewProject {
     }
 
     createScriptScaffolding(projectName: string) {
-        let extension = this._fileService.getFileExtension(null);
+        let extension = this._newProductInfo.styleFormat.toLowerCase();
         let styleFormat = this._fileService.getStyleFormat(extension);
-        this._styleRootPath = `./src/${styleFormat}/styles${extension}`;
-        let mainContents = this._newProductInfo.pipeline === newProject.options.pipeline.webpack ? `import '../${styleFormat}/styles${extension}';` : '';
+        this._styleRootPath = `./src/${styleFormat}/styles.${extension}`;
+        let mainContents = this._newProductInfo.pipeline === newProject.options.pipeline.webpack ? `import '../${styleFormat}/styles.${extension}';` : '';
         if (projectName) {
             this._directoryService.createDirectory(projectName);
         }
@@ -58,7 +55,7 @@ export class NewProject implements INewProject {
     }
 
     createStyleScaffolding(projectName: string) {
-        let extension = this._fileService.getFileExtension(null);
+        let extension = this._newProductInfo.styleFormat.toLowerCase();
         let rootPath = this.createStyleRootDirectory(projectName, extension);
         let importStatements = this.createStyleDirectories(rootPath, extension);
         this.createRootManifest(rootPath, extension, importStatements);
@@ -79,16 +76,16 @@ export class NewProject implements INewProject {
 
         projectData.styleDirectories.forEach((dir) => {
             this._directoryService.createDirectory(`${rootPath}/${dir.name}`);
-            this._fileService.saveFile(`${rootPath}/${dir.name}/index${extension}`, '');
+            this._fileService.saveFile(`${rootPath}/${dir.name}/index.${extension}`, '');
             this._fileService.saveFile(`${rootPath}/${dir.name}/README.md`, dir.readMe);
-            importStatements += `@import './${dir.name}/index${extension}';\n`;
+            importStatements += `@import './${dir.name}/index.${extension}';\n`;
         });
 
         return importStatements
     }
 
     createRootManifest(rootPath: string, extension: string, importStatements: string): void {
-        this._fileService.saveFile(`${rootPath}/styles${extension}`, importStatements);
+        this._fileService.saveFile(`${rootPath}/styles.${extension}`, importStatements);
     }
 
     createPackageJson(projectName: string) {

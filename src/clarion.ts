@@ -11,13 +11,20 @@ commander
     .usage("<command> [project or file name] [options]");
 
 commander
-    .command("new")
+    .command("new <projectname>")
     .description('Create a new project')
-    .action(() => {
-        prompt(newProjectData.questions)
-            .then(answers => {
+    .action((projectname) => {
+        prompt(newProjectData.starterQuestions)
+            .then(answer => {
                 const newProject = new NewProject();
-                newProject.init(answers);
+                if(answer.projectStart === 'Manual Configuration') {
+                    prompt(newProjectData.manualSetupQuestions)
+                        .then(answers => {
+                            newProject.init(projectname, answers);
+                        });
+                } else {
+                    newProject.init(projectname, newProjectData.defaultProjectValues);
+                }
             });
 });
 
