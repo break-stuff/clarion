@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.ts",
     "update": "tsc && npm i -g",
-    "build": "tsc && npm publish"
+    "deploy": "tsc && npm publish"
   },
   "author": "Burton Smith <burton@breakstuff.io>",
   "license": "MIT",
