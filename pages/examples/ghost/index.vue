@@ -21,13 +21,13 @@ export default {
             },
             {
                 hid: 'og:description',
-                name: 'og:description',
+                property: 'og:description',
                 content:
                     'See how to use the Clarion CLI and style framework to create Ghost themes.'
             },
             {
                 hid: 'og:url',
-                name: 'og:url',
+                property: 'og:url',
                 content: 'https://projectclarion.com/examples/examples/ghost'
             }
         ]

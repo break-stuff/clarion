@@ -25,13 +25,13 @@ export default {
             },
             {
                 hid: 'og:description',
-                name: 'og:description',
+                property: 'og:description',
                 content:
                     'Find out hoe to inclide the Clarion CLI and style framework into your favorite projects.'
             },
             {
                 hid: 'og:url',
-                name: 'og:url',
+                property: 'og:url',
                 content: 'https://projectclarion.com/examples'
             }
         ]

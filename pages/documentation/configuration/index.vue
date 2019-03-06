@@ -94,13 +94,13 @@ export default {
             },
             {
                 hid: 'og:description',
-                name: 'og:description',
+                property: 'og:description',
                 content:
                     "In order to fit your development environment's needs, Clarion is configurable to meet your project's requirements."
             },
             {
                 hid: 'og:url',
-                name: 'og:url',
+                property: 'og:url',
                 content: 'https://projectclarion.com/configuration'
             }
         ]

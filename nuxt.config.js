@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 hid: 'og:image',
-                name: 'og:image',
+                property: 'og:image',
                 content: 'https://projectclarion.com/images/clarion_default_image.png'
             },
             {
@@ -51,7 +51,7 @@ module.exports = {
             {
                 href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css',
                 rel: 'stylesheet'
-            },
+            }
         ],
         script: [{
                 src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js',
@@ -82,9 +82,7 @@ module.exports = {
     /*
      ** Global CSS
      */
-    css: [
-        '@/assets/sass/styles.scss'
-    ],
+    css: ['@/assets/sass/styles.scss'],
 
     /*
      ** Plugins to load before mounting the App
@@ -116,6 +114,6 @@ module.exports = {
         }
     },
     router: {
-      linkActiveClass: 'active'
+        linkActiveClass: 'active'
     }
 }

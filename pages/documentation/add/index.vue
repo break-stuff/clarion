@@ -63,13 +63,13 @@ export default {
             },
             {
                 hid: 'og:description',
-                name: 'og:description',
+                property: 'og:description',
                 content:
                     'When working with styles that require references to other files in order to make them work properly, just adding and removing files is not as simple as it seems. The Clarion CLI is designed to help reduce that friction.'
             },
             {
                 hid: 'og:url',
-                name: 'og:url',
+                property: 'og:url',
                 content: 'https://projectclarion.com/add'
             }
         ]

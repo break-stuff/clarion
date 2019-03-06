@@ -121,13 +121,13 @@ export default {
             },
             {
                 hid: 'og:description',
-                name: 'og:description',
+                property: 'og:description',
                 content:
                     'Clarion offers a unique architecure to reduce the complexity of styling small and large web applications and sites.'
             },
             {
                 hid: 'og:url',
-                name: 'og:url',
+                property: 'og:url',
                 content: 'https://projectclarion.com/architecture'
             }
         ]

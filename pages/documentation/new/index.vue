@@ -93,13 +93,13 @@ export default {
             },
             {
                 hid: 'og:description',
-                name: 'og:description',
+                property: 'og:description',
                 content:
                     'Whether you are making a small static site or a complext enterprise application, the Clarion style architecture and style framework will make managing your styles easier.'
             },
             {
                 hid: 'og:url',
-                name: 'og:url',
+                property: 'og:url',
                 content: 'https://projectclarion.com/new'
             }
         ]
