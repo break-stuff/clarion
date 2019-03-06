@@ -2,7 +2,7 @@
     <div class="new-project">
         <h1>Start Your Project</h1>
         <p>After installing the Clarion CLI running the following command will provide you with the default project:</p>
-        <code>clarion new</code>
+        <code>clarion new ProjectName</code>
         <br>
         <br>
         <p>The default project comes pre-configured for SASS using the .scss format and WebPack as the compiler and bundler. There are some additional features that come out-of-the-box for you to help simplify your development process.</p>
@@ -101,16 +101,6 @@ export default {
                 hid: 'og:url',
                 name: 'og:url',
                 content: 'https://projectclarion.com/new'
-            },
-            {
-                hid: 'twitter:card',
-                name: 'twitter:card',
-                content: 'summary'
-            },
-            {
-                hid: 'twitter:creator',
-                name: 'twitter:creator',
-                content: '@stuffbreaker'
             }
         ]
     }

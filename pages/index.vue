@@ -90,10 +90,10 @@
                                     <em>&nbsp;or&nbsp;</em> yarn global add clarion
                                 </div>
                                 <div>
-                                    <span class="bash-base">></span>clarion new
+                                    <span class="bash-base">></span>clarion new ProjectName
                                 </div>
                                 <div>
-                                    <span class="bash-base">></span>cd &lt;project-name&gt;
+                                    <span class="bash-base">></span>cd ProjectName
                                 </div>
                                 <div>
                                     <span class="bash-base">></span>npm run dev
@@ -174,16 +174,6 @@ export default {
                 hid: 'og:url',
                 name: 'og:url',
                 content: 'https://projectclarion.com/'
-            },
-            {
-                hid: 'twitter:card',
-                name: 'twitter:card',
-                content: 'summary'
-            },
-            {
-                hid: 'twitter:creator',
-                name: 'twitter:creator',
-                content: '@stuffbreaker'
             }
         ]
     }

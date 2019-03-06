@@ -7,7 +7,6 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: pkg.name,
         meta: [{
                 charset: 'utf-8'
             },
@@ -23,12 +22,25 @@ module.exports = {
             {
                 hid: 'og:image',
                 name: 'og:image',
-                content: '/images/clarion_default_image.png'
+                content: 'https://projectclarion.com/images/clarion_default_image.png'
+            },
+            {
+                hid: 'twitter:card',
+                name: 'twitter:card',
+                content: 'summary_large_image'
             },
             {
                 hid: 'twitter:creator',
                 name: 'twitter:creator',
                 content: '@stuffbreaker'
+            },
+            {
+                name: 'robots',
+                content: 'index, follow'
+            },
+            {
+                name: 'HandheldFriendly',
+                content: 'True'
             }
         ],
         link: [{

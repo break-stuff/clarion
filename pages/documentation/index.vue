@@ -43,16 +43,6 @@ export default {
                 hid: 'og:url',
                 name: 'og:url',
                 content: 'https://projectclarion.com/documentation'
-            },
-            {
-                hid: 'twitter:card',
-                name: 'twitter:card',
-                content: 'summary'
-            },
-            {
-                hid: 'twitter:creator',
-                name: 'twitter:creator',
-                content: '@stuffbreaker'
             }
         ]
     }
