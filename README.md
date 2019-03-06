@@ -19,7 +19,7 @@ yarn global add clarion
 
 
 ## Start a New Project
-    clarion new
+    clarion new ProjectName
 
 Answer a few questions about you would like to configure your project and it will be scaffolded out for you.
 
@@ -29,7 +29,7 @@ Your dependencies will also automatically be installed!
 ## Run Your New Project
 After your dependencies are installed you can run your project.
 
-    cd <project-name>
+    cd ProjectName
     npm run dev
 
 ## About Your New Project
@@ -145,6 +145,8 @@ These are options you can run when initializing you project.
 
 
 ## Changelog
+
+2.1.0 - Added a default configuration option and some bug fixes.
 
 2.0.1 - Updated documentation.
 
