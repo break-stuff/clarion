@@ -19,7 +19,8 @@ module.exports = {
             {
                 hid: 'description',
                 name: 'description',
-                content: pkg.description
+                content:
+                    'See how the Clarion CLI and style framework can make managing styles in your project simpler.'
             },
             {
                 hid: 'og:image',
@@ -31,6 +32,12 @@ module.exports = {
                 hid: 'og:title',
                 property: 'og:title',
                 content: 'Clarion CLI and Style Framework'
+            },
+            {
+                hid: 'og:description',
+                property: 'og:description',
+                content:
+                    'See how the Clarion CLI and style framework can make managing styles in your project simpler.'
             },
             {
                 hid: 'twitter:card',
