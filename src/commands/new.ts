@@ -5,6 +5,7 @@ import { ILogService, LogService } from "../services/logService";
 import { IDirectoryService, DirectoryService } from "../services/directoryService";
 import { IShellService, ShellService } from '../services/shellService'
 import { projectData } from "../data/projectData";
+import { styleContent } from '../data/styleContentData';
 
 export interface INewProject {
     init(projectName: string, newProductInfo: INewProjectInfo): void;
@@ -36,14 +37,14 @@ export class NewProject implements INewProject {
             this.createIndexHtml(projectName);
         }
         this.createStyleScaffolding(projectName);
+        this.addStyleFramework(projectName);
         this.displayStartupInstructions(projectName);
     }
 
     createScriptScaffolding(projectName: string) {
         let extension = this._newProductInfo.styleFormat.toLowerCase();
-        let styleFormat = this._fileService.getStyleFormat(extension);
-        this._styleRootPath = `./src/${styleFormat}/styles.${extension}`;
-        let mainContents = this._newProductInfo.pipeline === newProject.options.pipeline.webpack ? `import '../${styleFormat}/styles.${extension}';` : '';
+        this._styleRootPath = `./src/${extension}/styles.${extension}`;
+        let mainContents = this._newProductInfo.pipeline === newProject.options.pipeline.webpack ? `import '../${extension}/styles.${extension}';` : '';
         if (projectName) {
             this._directoryService.createDirectory(projectName);
         }
@@ -64,7 +65,6 @@ export class NewProject implements INewProject {
     createStyleRootDirectory(projectName: string, extension: string): string {
         let rootPath = './';
         if (this._newProductInfo.projectType !== newProject.options.projectType.architectureOnly) {
-            extension = this._fileService.getStyleFormat(extension);
             rootPath = `./${projectName}/src/${extension}`;
             this._directoryService.createDirectory(rootPath);
         }
@@ -117,6 +117,17 @@ export class NewProject implements INewProject {
             this._logService.info('\nTo get started run the following command:');
             if (projectName) this._logService.info(`cd ${projectName}`);
             this._logService.info('npm run dev');
+        }
+    }
+
+    addStyleFramework(projectName: string): void {
+        if(this._newProductInfo.projectType !== 'Architecture Only') {
+            this._directoryService.createDirectory(`./${projectName}/src/${this._newProductInfo.styleFormat.toLowerCase()}/00_Abstracts/mixins`);
+            this._directoryService.createDirectory(`./${projectName}/src/${this._newProductInfo.styleFormat.toLowerCase()}/00_Abstracts/functions`);
+            styleContent
+                .filter(x => x.format === this._newProductInfo.styleFormat.toLowerCase())
+                .forEach(x => x.styles
+                    .forEach(y => this._fileService.saveFile(`./${projectName}/src/${this._newProductInfo.styleFormat.toLowerCase()}/${y.file}`, y.content)));
         }
     }
 }
