@@ -146,6 +146,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.0.0 - Added style framework for SASS and SCSS.
+
 2.1.0 - Added a default configuration option and some bug fixes.
 
 2.0.1 - Updated documentation.
