@@ -13,6 +13,7 @@ export interface IFileService {
     getStyleFormat(extension: string): string;
     addFileToManifest(fileName: string, manifestFile: string, sort: boolean): void;
     removeFileFromManifest(fileName: string, manifestFile: string): void;
+    getImportExtension(extension: string): string;
 }
 
 export class FileService implements IFileService {
@@ -115,5 +116,9 @@ export class FileService implements IFileService {
 
     getStyleFormat(extension: string): string {
         return extension.replace('.', '') === 'less' ? 'less' : 'sass';
+    }
+
+    getImportExtension(extension: string): string {
+        return `${extension !== 'sass' && extension !== 'scss' ? '.' + extension : ''}${extension === 'sass' ? '\'' : '\';'}`;
     }
 }

@@ -38,7 +38,7 @@ export class Add implements IAdd {
 			""
 		);
 		this._fileService.addFileToManifest(
-			`@import './${folderName}/index.${extension}';`,
+			`@import './${folderName}/index${this._fileService.getImportExtension(extension)}`,
 			`${rootDirectory}/styles.${extension}`,
 			true
 		);
@@ -76,7 +76,7 @@ export class Add implements IAdd {
 			let importStatement =
 				this._config.importAbstracts &&
 				!pathToDirectory.includes("00_Abstracts")
-					? `@import "${pathToRoot}00_Abstracts/index.${extension}";`
+					? `@import '${pathToRoot}00_Abstracts/index${this._fileService.getImportExtension(extension)}`
 					: "";
 			this._fileService.saveFile(
 				`${pathToDirectory}/${newFile}`,
@@ -85,7 +85,7 @@ export class Add implements IAdd {
 
 			if (this._config.addToManifest)
 				this._fileService.addFileToManifest(
-					newFile,
+					extension === 'sass' || extension === 'scss' ? fileName : newFile,
 					manifestFile,
 					false
 				);

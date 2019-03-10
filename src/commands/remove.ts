@@ -43,6 +43,6 @@ export class Remove implements IRemove {
         let fileToRemove = `_${fileName}.${extension}`;
         let manifestFile = `${pathToDirectory}/${this._fileService.getManifestFile(pathToDirectory)}`;
         this._fileService.removeFile(`${pathToDirectory}/${fileToRemove}`);
-        this._fileService.removeFileFromManifest(fileToRemove, manifestFile);
+        this._fileService.removeFileFromManifest(extension === 'sass' || extension === 'scss' ? fileName : fileToRemove, manifestFile);
     }
 }

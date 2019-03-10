@@ -78,7 +78,7 @@ export class NewProject implements INewProject {
             this._directoryService.createDirectory(`${rootPath}/${dir.name}`);
             this._fileService.saveFile(`${rootPath}/${dir.name}/index.${extension}`, '');
             this._fileService.saveFile(`${rootPath}/${dir.name}/README.md`, dir.readMe);
-            importStatements += `@import './${dir.name}/index.${extension}';\n`;
+            importStatements += `@import './${dir.name}/index${this._fileService.getImportExtension(extension)}\n`;
         });
 
         return importStatements

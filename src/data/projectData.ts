@@ -311,7 +311,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.scss$/,
+                test: /\.(scss|sass)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
