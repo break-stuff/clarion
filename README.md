@@ -146,6 +146,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.0.2 - Fixed file reference error in SCSS.
+
 3.0.1 - Added additional border radius mixins and fixed some error messages.
 
 3.0.0 - Added style framework for SASS and SCSS.

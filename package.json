@@ -1,7 +1,7 @@
 {
   "name": "clarion",
-  "version": "3.0.1",
-  "description": "CLI for adding the Clarion Style Architecture to a project.",
+  "version": "3.0.2",
+  "description": "CLI for scaffolding and managing the Clarion Style Architecture and styles in your projects.",
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.ts",
