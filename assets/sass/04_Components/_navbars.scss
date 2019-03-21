@@ -17,6 +17,15 @@
             svg {
                 font-size: 1.5rem;
             }
+
+            &.dropdown-item {
+                color: black;
+
+                &.active {
+                    color: white;
+                    border-radius: 0;
+                }
+            }
         }
 
         img {

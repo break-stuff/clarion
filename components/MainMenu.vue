@@ -17,11 +17,35 @@
                 <li class="nav-item quick-start">
                     <nuxt-link class="nav-link" to="/" exact>Quick Start</nuxt-link>
                 </li>
-                <li class="nav-item documentation">
-                    <nuxt-link class="nav-link" to="/documentation/">Documentation</nuxt-link>
+                <li class="nav-item cli dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >CLI</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <nuxt-link class="nav-link dropdown-item" to="/cli/documentation/">Documentation</nuxt-link>
+                        <nuxt-link class="nav-link dropdown-item" to="/cli/examples/">Examples</nuxt-link>
+                    </div>
                 </li>
-                <li class="nav-item examples">
-                    <nuxt-link class="nav-link" to="/examples/">Examples</nuxt-link>
+                <li class="nav-item styl-framework dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >Style Framework</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <nuxt-link class="nav-link dropdown-item" to="/style-framework/documentation/">Documentation</nuxt-link>
+                        <nuxt-link class="nav-link dropdown-item" to="/style-framework/examples/">Examples</nuxt-link>
+                    </div>
                 </li>
                 <li class="nav-item contact">
                     <nuxt-link class="nav-link" to="/contact/">Contact</nuxt-link>
