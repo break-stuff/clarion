@@ -1,0 +1,87 @@
+@import '../variables';
+
+@function build-pallet() {
+    $result: ();
+
+    @each $key,
+    $value in $theme-colors {
+        $group: ($key: ('base': $value,
+            'light': lighten($value, $color-variation),
+            'lighter': lighten($value, $color-variation * 2),
+            'dark': darken($value, $color-variation),
+            'darker': darken($value, $color-variation * 2)));
+
+        $result: map-merge($result, $group);
+    }
+
+    @return $result;
+}
+
+$color-pallette: build-pallet();
+
+/*
+    GET COLOR
+
+    usage:
+        // for the base color
+        color(primary);
+
+        // for variations of a color
+        color(primary, lighter);
+        color(primary, light);
+        color(primary, dark);
+        color(primary, darker);
+*/
+@function color($name: 'primary', $variant: 'base', $opacity: 1) {
+    $color: null;
+
+    // Get the color name
+    $color-name: map-get($color-pallette, $name + unquote(""));
+
+    // Get the color variant
+    @if $color-name {
+        $color: map-get($color-name, $variant);
+
+        @if $color {
+            @return rgba($color, $opacity);
+        }
+
+        @else {
+            @error "Invalid color variation: '#{$name}', '#{$variant}'."
+        }
+    }
+
+    @else {
+        @error "Invalid color name: '#{$name}'."
+    }
+
+    @return $color;
+}
+
+/*
+    GET CONTRASTING COLOR FOR TEXT ACCESSIBILITY (WCAG 2.0 AA+)
+
+    usage:
+        // text for the base color
+        text-color(primary);
+
+        // for variations of a color
+        text-color(primary, lighter);
+        text-color(primary, light);
+        text-color(primary, dark);
+        text-color(primary, darker);
+*/
+@function text-color($name: 'primary', $variant: 'base') {
+    $color: color($name, $variant);
+
+    $color-brightness: round((red($color)*299)+(green($color)*587)+(blue($color)*114)/1000);
+    $light-color: round((red(#ffffff)*299)+(green(#ffffff)*587)+(blue(#ffffff)*114)/1000);
+
+    @if abs($color-brightness) < ($light-color/2) {
+        @return color(white);
+    }
+
+    @else {
+        @return color(black);
+    }
+}

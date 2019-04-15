@@ -1,0 +1,10 @@
+@import '../variables';
+
+@mixin font-size($size) {
+    @if map-has-key($font-sizes, $size) {
+        font-size: map-get($font-sizes, $size);
+    } 
+    @else {
+        @error "Invalid font size: `#{$size}`.";
+    }
+}
