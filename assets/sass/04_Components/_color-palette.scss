@@ -1,0 +1,37 @@
+@import '../00_Abstracts/index';
+
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+
+    .color {
+        display: flex;
+        flex-direction: column;
+        max-width: 48%;
+        @include mb(xl);
+        @include ml(xs);
+
+        .card-body {
+            @include p(md);
+
+            .base {
+                height: 4rem;
+                border: solid 2px color(white);
+                @include p(sm);
+            }
+    
+            .variations {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+    
+                .variation {
+                    height: 4rem;
+                    width: 20%;
+                    border: solid 2px color(white);
+                    @include p(sm);
+                }
+            }
+        }
+    }
+}
