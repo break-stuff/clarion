@@ -1,0 +1,34 @@
+@import 'color-linear-channel-values';
+
+/*
+    Adopted with respect from Sérgio Gomes:
+    https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+*/
+
+@function get-luminance($color) {
+    $red: nth($linear-channel-values, red($color) + 1);
+    $green: nth($linear-channel-values, green($color) + 1);
+    $blue: nth($linear-channel-values, blue($color) + 1);
+
+    @return .2126 * $red+.7152 * $green+.0722 * $blue;
+}
+
+@function get-contrast($back, $front) {
+    $backLum: get-luminance($back) + .05;
+    $foreLum: get-luminance($front) + .05;
+
+    @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}
+
+@function get-contrast-color($color) {
+    $lightContrast: get-contrast($color, white);
+    $darkContrast: get-contrast($color, black);
+
+    @if ($lightContrast > $darkContrast) {
+        @return white;
+    }
+
+    @else {
+        @return black;
+    }
+}

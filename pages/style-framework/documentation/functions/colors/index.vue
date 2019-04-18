@@ -108,15 +108,12 @@ export default {
             colors: [
                 'primary',
                 'secondary',
-                'default',
                 'success',
                 'info',
                 'warning',
                 'danger',
                 'light',
-                'dark',
-                'black',
-                'white'
+                'dark'
             ],
             variations: ['lighter', 'light', 'base', 'dark', 'darker']
         };
