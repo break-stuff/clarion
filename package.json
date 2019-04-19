@@ -16,7 +16,7 @@
   "dependencies": {
     "@nuxtjs/sitemap": "^0.2.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.6.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

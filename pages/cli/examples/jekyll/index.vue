@@ -2,6 +2,8 @@
     <div>
         <h1>Custom Jekyll Themes Using Clarion</h1>
 
+        <h2><code>This page needs revisions</code></h2>
+
         <p>Jekyll is a simple, blog-aware, static site generator. Jekyll also happens to be the engine behind GitHub Pages, which means you can use Jekyll to host your project’s page (like this one), blog, or website from GitHub. Integrating Clarion into Jekyll was very simple.</p>
 
         <h2>Starting Your Project</h2>

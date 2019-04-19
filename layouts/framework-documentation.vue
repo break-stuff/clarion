@@ -8,24 +8,19 @@
                 <div class="list-group c-sub-nav" id="list-tab" role="tablist">
                     <nuxt-link
                         class="list-group-item list-group-item-action js-docs-new"
-                        to="/documentation/new/"
+                        to="/style-framework/documentation/functions/"
                         aria-controls="new project"
-                    >New Project</nuxt-link>
+                    >Functions</nuxt-link>
                     <nuxt-link
                         class="list-group-item list-group-item-action js-docs-architecture"
-                        to="/documentation/architecture/"
+                        to="/style-framework/documentation/mixins/"
                         aria-controls="architecture"
-                    >Architecture</nuxt-link>
+                    >Mixins</nuxt-link>
                     <nuxt-link
                         class="list-group-item list-group-item-action js-docs-add"
-                        to="/documentation/add/"
+                        to="/style-framework/documentation/variables/"
                         aria-controls="add and remove files"
-                    >Add / Remove Files</nuxt-link>
-                    <nuxt-link
-                        class="list-group-item list-group-item-action js-docs-config"
-                        to="/documentation/configuration/"
-                        aria-controls="configuration"
-                    >Configuration</nuxt-link>
+                    >Variables</nuxt-link>
                 </div>
             </div>
         </div>
