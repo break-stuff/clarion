@@ -5,9 +5,7 @@
     @if ($top and not $bottom and not $left and not $right) {
         @include mx($top);
         @include my($top);
-    }
-
-    @else {
+    } @else {
         @include mt($top);
         @include mb($bottom);
         @include ml($left);
@@ -19,14 +17,10 @@
     @if ($left and $right) {
         @include ml($left);
         @include mr($right);
-    }
-
-    @else if ($left and not $right) {
+    } @else if ($left and not $right) {
         @include ml($left);
         @include mr($left);
-    }
-
-    @else {
+    } @else {
         @error "mx(#{$left}, #{$right}): Invalid parameters. Expects mx($size) or mx($left, $right)";
     }
 }
@@ -35,14 +29,10 @@
     @if ($top and $bottom) {
         @include mt($top);
         @include mb($bottom);
-    }
-
-    @else if ($top and not $bottom) {
+    } @else if ($top and not $bottom) {
         @include mt($top);
         @include mb($top);
-    }
-
-    @else {
+    } @else {
         @error "my(#{$top}, #{$bottom}): Invalid parameters. Expects my($size) or my($top, $bottom)";
     }
 }
@@ -67,9 +57,7 @@
     @if ($top and not $bottom and not $left and not $right) {
         @include px($top);
         @include py($top);
-    }
-
-    @else {
+    } @else {
         @include pt($top);
         @include pb($bottom);
         @include pl($left);
@@ -81,14 +69,10 @@
     @if ($left and $right) {
         @include pl($left);
         @include pr($right);
-    }
-
-    @else if ($left and not $right) {
+    } @else if ($left and not $right) {
         @include pl($left);
         @include pr($left);
-    }
-
-    @else {
+    } @else {
         @error "px(#{$left}, #{$right}): Invalid parameters. Expects px($size) or px($left, $right)";
     }
 }
@@ -97,14 +81,10 @@
     @if ($top and $bottom) {
         @include pt($top);
         @include pb($bottom);
-    }
-
-    @else if ($top and not $bottom) {
+    } @else if ($top and not $bottom) {
         @include pt($top);
         @include pb($top);
-    }
-
-    @else {
+    } @else {
         @error "py(#{$top}, #{$bottom}): Invalid parameters. Expects py($size) or py($top, $bottom)";
     }
 }

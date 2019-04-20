@@ -13,8 +13,7 @@
         @media (min-width: $breakpoint-value) {
             @content;
         }
-    }
-    @else {
+    } @else {
         @error "Invalid breakpoint: '#{$breakpoint}'.";
     }
 }
@@ -34,8 +33,7 @@
         @media (max-width: ($breakpoint-value - 1)) {
             @content;
         }
-    }
-    @else {
+    } @else {
         @error "Invalid breakpoint: '#{$breakpoint}'.";
     }
 }
@@ -56,8 +54,7 @@
         @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
             @content;
         }
-    }
-    @else {
+    } @else {
         @if (map-has-key($breakpoints, $lower)==false) {
             @error 'Your lower breakpoint was invalid: #{$lower}.';
         }

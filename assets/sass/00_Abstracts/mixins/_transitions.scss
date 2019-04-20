@@ -3,8 +3,7 @@
 @mixin transition-ease-in-out($speed: fast) {
     @if map-has-key($transitions, $speed) {
         transition: all map-get($transitions, $speed) ease-in-out;
-    } 
-    @else {
-        @error "Invalid font size: `#{$speed}`.";
+    } @else {
+        @error "Invalid transition speed: `#{$speed}`.";
     }
 }

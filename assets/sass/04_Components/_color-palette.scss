@@ -2,12 +2,11 @@
 
 .color-palette {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 
     .color {
         display: flex;
         flex-direction: column;
-        max-width: 48%;
         @include mb(xs);
         @include ml(xs);
 
@@ -16,7 +15,9 @@
 
             .base {
                 height: 4rem;
-                border: solid 2px white;
+                box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+                border: solid 1px color(light);
+                // border: solid 2px white;
                 @include p(sm);
             }
     
@@ -28,7 +29,8 @@
                 .variation {
                     height: 4rem;
                     width: 20%;
-                    border: solid 2px white;
+                    border: solid 1px color(light, lighter);
+                    // border: solid 2px white;
                     @include p(sm);
                 }
             }

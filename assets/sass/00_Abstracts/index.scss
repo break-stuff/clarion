@@ -2,7 +2,8 @@
 @import '_colors.scss';
 @import '_variables.scss';
 @import 'functions/_colors.scss';
-@import 'functions/_spacing.scss';
+@import 'functions/maps';
+@import 'functions/math';
 @import 'functions/_strings.scss';
 @import 'functions/_z-index.scss';
 @import 'mixins/_breakpoints.scss';

@@ -4,8 +4,7 @@
 @function build-pallet() {
     $result: ();
 
-    @each $key,
-    $value in $theme-colors {
+    @each $key, $value in $theme-colors {
         $group: ($key: ('base': $value,
             'light': lighten($value, $color-variation),
             'lighter': lighten($value, $color-variation * 2),
@@ -38,31 +37,25 @@ $color-pallette: build-pallet();
 @function color($name: 'primary', $variant: 'base', $opacity: 1) {
     $color: null;
 
-    @if $name == 'black' {
-        @return black;
-    }
-
-    @if $name == 'white' {
-        @return white;
-    }
-
     // Get the color name
     $color-name: map-get($color-pallette, $name + unquote(""));
 
     // Get the color variant
     @if $color-name {
-        $color: map-get($color-name, $variant);
-
+        @if $name == 'black' {
+            $color: black;
+        } @else if $name == 'white' {
+            $color:  white;
+        } @else {
+            $color: map-get($color-name, $variant);
+        }
+    
         @if $color {
             @return rgba($color, $opacity);
-        }
-
-        @else {
+        } @else {
             @error "Invalid color variation: '#{$name}', '#{$variant}'."
         }
-    }
-
-    @else {
+    } @else {
         @error "Invalid color name: '#{$name}'."
     }
 

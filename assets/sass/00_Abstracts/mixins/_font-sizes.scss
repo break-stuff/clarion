@@ -3,8 +3,7 @@
 @mixin font-size($size) {
     @if map-has-key($font-sizes, $size) {
         font-size: map-get($font-sizes, $size);
-    } 
-    @else {
+    } @else {
         @error "Invalid font size: `#{$size}`.";
     }
 }

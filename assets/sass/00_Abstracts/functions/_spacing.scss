@@ -12,8 +12,7 @@
 
     @if map-has-key($spacing-sizes, $name) {
         @return unquote($prefix + map-get($spacing-sizes, $name));
-    } 
-    @else {
+    } @else {
         @error "Invalid spacing size: '#{$name}'.";
     }
 }

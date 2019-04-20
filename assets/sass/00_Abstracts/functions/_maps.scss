@@ -1,0 +1,8 @@
+@function count($map) {
+    $count: 0;
+    @each $value in $map {
+        $count: $count + 1;
+    }
+
+    @return $count;
+}
