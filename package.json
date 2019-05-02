@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "CLI for scaffolding and managing the Clarion Style Architecture and styles in your projects.",
   "main": "index.js",
   "scripts": {
@@ -58,7 +58,7 @@
     "@types/mocha": "^5.2.4",
     "@types/node": "^8.10.20",
     "chai": "^4.1.2",
-    "fsevents": "^1.2.4",
+    "fsevents": "^2.0.6",
     "mocha": "^5.2.0",
     "ts-node": "^5.0.1",
     "typescript": "^2.9.2"
