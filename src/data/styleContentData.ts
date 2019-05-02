@@ -16,9 +16,9 @@ export const styleContent: IStyleList[] = [
 				file: "00_Abstracts/_variables.scss",
 				content: `//   FONTS
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base: $font-family-sans-serif !default;
+$font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
 $font-size-base: 16px;
 $font-sizes: (
@@ -51,17 +51,14 @@ $spacing-sizes: (
 // COLORS
 
 $theme-colors: (
-    'primary': #ca4800,
-    'secondary': #0971b2,
-    'default': #6c757d,
-    'success': #6f943e,
-    'info': #4f9acc,
+    'primary': #d15f01,
+    'secondary': #30629e,
+    'success': #76b524,
+    'info': #8ebede,
     'warning': #ffc107,
     'danger': #ff0000,
-    'light': #f8f9fa,
-    'dark': #343a40,
-    'black': #000,
-    'white': #fff
+    'light': #c7c7c7,
+    'dark': #494949
 ) !default;
 
 $color-variation: 8%;
@@ -112,22 +109,25 @@ $transitions: (
     med: .3s,
     fast: .1s
 ) !default;
+                
 `
 			},
 			{
 				file: "00_Abstracts/functions/_colors.scss",
 				content: `@import '../variables';
+@import 'color-contrast';
 
 @function build-pallet() {
     $result: ();
 
-    @each $key,
-    $value in $theme-colors {
+    @each $key, $value in $theme-colors {
         $group: ($key: ('base': $value,
             'light': lighten($value, $color-variation),
             'lighter': lighten($value, $color-variation * 2),
+            'lightest': lighten($value, $color-variation * 3),
             'dark': darken($value, $color-variation),
-            'darker': darken($value, $color-variation * 2)));
+            'darker': darken($value, $color-variation * 2),
+            'darkest': darken($value, $color-variation * 3)));
 
         $result: map-merge($result, $group);
     }
@@ -158,18 +158,20 @@ $color-pallette: build-pallet();
 
     // Get the color variant
     @if $color-name {
-        $color: map-get($color-name, $variant);
-
+        @if $name == 'black' {
+            $color: black;
+        } @else if $name == 'white' {
+            $color:  white;
+        } @else {
+            $color: map-get($color-name, $variant);
+        }
+    
         @if $color {
             @return rgba($color, $opacity);
-        }
-
-        @else {
+        } @else {
             @error "Invalid color variation: '#{$name}', '#{$variant}'."
         }
-    }
-
-    @else {
+    } @else {
         @error "Invalid color name: '#{$name}'."
     }
 
@@ -189,20 +191,11 @@ $color-pallette: build-pallet();
         text-color(primary, dark);
         text-color(primary, darker);
 */
-@function text-color($name: 'primary', $variant: 'base') {
-    $color: color($name, $variant);
+@function text-color($name: 'primary', $variant: 'base', $opacity: 1) {
+    $color: color($name, $variant, $opacity);
 
-    $color-brightness: round((red($color)*299)+(green($color)*587)+(blue($color)*114)/1000);
-    $light-color: round((red(#ffffff)*299)+(green(#ffffff)*587)+(blue(#ffffff)*114)/1000);
-
-    @if abs($color-brightness) < ($light-color/2) {
-        @return color(white);
-    }
-
-    @else {
-        @return color(black);
-    }
-}
+    @return get-contrast-color($color);
+}              
 `
 			},
 			{
@@ -226,6 +219,67 @@ $color-pallette: build-pallet();
         @error "Invalid spacing size: '#{$name}'.";
     }
 }
+`
+			},
+			{
+				file: "00_Abstracts/functions/_color-contrast.scss",
+				content: `@import 'math';
+
+/*
+    Adopted with gratitude from w3.org:
+    https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+*/
+
+@function get-relative-luminance($color) {
+    $color: $color / 255;
+
+    @if ($color < 0.03928) {
+        @return $color / 12.92
+    }
+    
+    @return pow(($color + 0.055) / 1.055, 2.4);
+}
+
+@function get-luminance($color) {
+    $red: get-relative-luminance(red($color));
+    $green: get-relative-luminance(green($color));
+    $blue: get-relative-luminance(blue($color));
+
+    @return (.2126 * $red) + (.7152 * $green) + (.0722 * $blue);
+}
+
+@function get-contrast-ratio($back, $front) {
+    $backLum: get-luminance($back) + .05;
+    $frontLum: get-luminance($front) + .05;
+
+    @return max($backLum, $frontLum) / min($backLum, $frontLum);
+}
+
+@function get-contrast-color($color) {
+    $lightContrast: get-contrast-ratio($color, white);
+    $darkContrast: get-contrast-ratio($color, black);
+
+    @if ($lightContrast > 4.5 or $darkContrast < 4.5) {
+        @return white;
+    }
+
+    @return black;
+}                
+`
+			},
+			{
+				file: "00_Abstracts/functions/_math.scss",
+				content: `@function pow($number, $exponent) {
+    $value: 1;
+
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    }
+
+    @return $value;
+}                
 `
 			},
 			{
@@ -258,7 +312,7 @@ $color-pallette: build-pallet();
         @return map-get($z-indexes, $name);
     } 
     @else {
-        @error "Invalid spacing size: '#{$name}'.";
+        @error "Invalid 'z' value: '#{$name}'.";
     }
 }
 `
@@ -635,26 +689,46 @@ $color-pallette: build-pallet();
         transition: all map-get($transitions, $speed) ease-in-out;
     } 
     @else {
-        @error "Invalid font size: \`#{$speed}\`.";
+        @error "Invalid transition speed: \`#{$speed}\`.";
     }
 }
 `
 			},
 			{
 				file: "00_Abstracts/index.scss",
-				content: `@import '_variables.scss';
-@import 'functions/_colors.scss';
-@import 'functions/_spacing.scss';
-@import 'functions/_strings.scss';
-@import 'functions/_z-index.scss';
-@import 'mixins/_border-radius.scss';
-@import 'mixins/_breakpoints.scss';
-@import 'mixins/_font-sizes.scss';
-@import 'mixins/_hover.scss';
-@import 'mixins/_shadows.scss';
-@import 'mixins/_spacing.scss';
-@import 'mixins/_transitions.scss';
+				content: `@import 'variables';
+@import 'functions/colors';
+@import 'functions/math';
+@import 'functions/strings';
+@import 'functions/z-index';
+@import 'mixins/breakpoints';
+@import 'mixins/font-sizes';
+@import 'mixins/hover';
+@import 'mixins/shadows';
+@import 'mixins/spacing';
+@import 'mixins/transitions';                
 `
+			},
+			{
+				file: "01_Base/_base.scss",
+				content: `@import '../00_Abstracts/index';
+
+html,
+body {
+    font-family: $font-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+
+    code,
+    pre {
+        font-family: $font-monospace;
+    }
+}                            
+`
+			},
+			{
+				file: "01_Base/_index.scss",
+				content: `@import 'base';`
 			}
 		]
 	},
@@ -665,10 +739,10 @@ $color-pallette: build-pallet();
 				file: "00_Abstracts/_variables.sass",
 				content: `//   FONTS
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default
-$font-family-base: $font-family-sans-serif !default
-
+$font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
+$font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
+$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default
+                
 $font-size-base: 16px
 $font-sizes: ( xxs: 0.75rem, xs: 0.875rem, sm: 1rem, md: 1.25rem, lg: 1.5rem, xl: 2rem, xxl: 3rem) !default
 
@@ -678,10 +752,9 @@ $line-height-base: 1.5
 
 $spacing-sizes: ( auto: auto, 0: 0, xxs: 0.125rem, xs: 0.25rem, sm: 0.5rem, md: 0.75rem, lg: 1rem, xl: 1.25rem, xxl: 2rem) !default
 
-
 // COLORS
 
-$theme-colors: ('primary': #ca4800, 'secondary': #0971b2, 'default': #6c757d, 'success': #6f943e, 'info': #4f9acc, 'warning': #ffc107, 'danger': #ff0000, 'light': #f8f9fa, 'dark': #343a40, 'black': #000, 'white': #fff) !default
+$theme-colors: ('primary': #d15f01, 'secondary': #30629e, 'success': #76b524, 'info': #8ebede, 'warning': #ffc107, 'danger': #ff0000, 'light': #c7c7c7, 'dark': #494949) !default
 
 $color-variation: 8%
 
@@ -690,20 +763,17 @@ $color-variation: 8%
 
 $breakpoints: ( xs: 480px, sm: 768px, md: 992px, lg: 1200px, xl: 1440px) !default
 
-
 // Z-INDEX
 
 $z-indexes: (sub: -1, none: 0, xxs: 1, xs: 10, sm: 50, md: 100, lg: 200, xl: 500, trump: 99999) !default;
-
 
 // BORDERS
 
 $border-radiuses: (none: 0, sm: 0.25rem, md: 0.5rem, lg: 0.75rem, pill: 10rem, circle: 50%) !default
 
-
 //  TRANSITIONS
 
-$transitions: (slow: .5s, med: .3s, fast: .1s) !default                
+$transitions: (slow: .5s, med: .3s, fast: .1s) !default
 `
 			},
 			{
@@ -715,9 +785,7 @@ $transitions: (slow: .5s, med: .3s, fast: .1s) !default
 
     @each $key, $value in $theme-colors 
         $group: ($key: ('base': $value, 'light': lighten($value, $color-variation), 'lighter': lighten($value, $color-variation * 2), 'dark': darken($value, $color-variation), 'darker': darken($value, $color-variation * 2)))
-
         $result: map-merge($result, $group)
-
 
     @return $result
 
@@ -746,7 +814,12 @@ $color-pallette: build-pallet()
 
     // Get the color variant
     @if $color-name 
-        $color: map-get($color-name, $variant)
+        @if $name == 'black'
+            $color: black
+        @else if $name == 'white'
+            $color:  white
+        @else
+            $color: map-get($color-name, $variant)
 
         @if $color 
             @return rgba($color, $opacity)
@@ -769,16 +842,79 @@ $color-pallette: build-pallet()
 //        text-color(primary, light)
 //        text-color(primary, dark)
 //        text-color(primary, darker)
-@function text-color($name: 'primary', $variant: 'base') 
-    $color: color($name, $variant)
+@function text-color($name: 'primary', $variant: 'base', $opacity: 1)
+    $color: color($name, $variant, $opacity)
 
-    $color-brightness: round((red($color)*299)+(green($color)*587)+(blue($color)*114)/1000)
-    $light-color: round((red(#ffffff)*299)+(green(#ffffff)*587)+(blue(#ffffff)*114)/1000)
+    @return get-contrast-color($color)
+`
+			},
+			{
+				file: "00_Abstracts/functions/_color-contrast.sass",
+				content: `@import 'math'
 
-    @if abs($color-brightness) < ($light-color/2) 
-        @return color(white)
-    @else 
-        @return color(black)                
+/*
+    Adopted with gratitude from w3.org:
+    https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+*/
+
+@function get-relative-luminance($color)
+    $color: $color / 255
+
+    @if ($color < 0.03928)
+        @return $color / 12.92
+    
+    @return pow(($color + 0.055) / 1.055, 2.4)
+
+@function get-luminance($color)
+    $red: get-relative-luminance(red($color))
+    $green: get-relative-luminance(green($color))
+    $blue: get-relative-luminance(blue($color))
+
+    @return (.2126 * $red) + (.7152 * $green) + (.0722 * $blue)
+
+@function get-contrast-ratio($back, $front)
+    $backLum: get-luminance($back) + .05
+    $frontLum: get-luminance($front) + .05
+
+    @return max($backLum, $frontLum) / min($backLum, $frontLum)
+
+@function get-contrast-color($color) 
+    $lightContrast: get-contrast-ratio($color, white)
+    $darkContrast: get-contrast-ratio($color, black)
+
+    @if ($lightContrast > 4.5 or $darkContrast < 4.5)
+        @return white
+
+    @return black;
+`
+			},
+			{
+				file: "00_Abstracts/functions/_math.sass",
+				content: `@function pow($number, $exponent)
+    $value: 1;
+
+    @if $exponent > 0
+        @for $i from 1 through $exponent
+            $value: $value * $number;
+
+    @return $value;
+`
+            },
+			{
+				file: "00_Abstracts/functions/_strings.sass",
+				content: `@function str-replace($string, $search, $replace: '')
+    $index: str-index($string, $search)
+
+    @if $index
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+
+    @return $string;
+
+@function str-ends-with($string, $search)
+    @return str-slice(quote($string), (str-length($string) - str-length($search) + 1)) == $search
+
+@function str-contains($string, $search)
+    @return str-index(quote($string), $search) != null
 `
 			},
 			{
@@ -786,36 +922,18 @@ $color-pallette: build-pallet()
 				content: `@import '../variables'
 @import 'strings'
 
-@function spacing($name) 
+@function spacing($name)
     $prefix: ""
 
     // This enables negative values to be used.
-    @if(str-contains($name, "-")) 
-        $prefix: "-"
+    @if(str-contains($name, "-"))
+        $prefix: "-";
         $name: str-replace($name, "-", "")
 
-    @if map-has-key($spacing-sizes, $name) 
+    @if map-has-key($spacing-sizes, $name)
         @return unquote($prefix + map-get($spacing-sizes, $name))
-    @else 
+    @else
         @error "Invalid spacing size: '#{$name}'."
-`
-			},
-			{
-				file: "00_Abstracts/functions/_strings.sass",
-				content: `@function str-replace($string, $search, $replace: '') 
-    $index: str-index($string, $search)
-
-    @if $index 
-        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
-
-    @return $string
-
-
-@function str-ends-with($string, $search) 
-    @return str-slice(quote($string), (str-length($string) - str-length($search) + 1)) == $search
-
-@function str-contains($string, $search) 
-    @return str-index(quote($string), $search) != null
 `
 			},
 			{
@@ -826,7 +944,7 @@ $color-pallette: build-pallet()
     @if map-has-key($z-indexes, $name) 
         @return map-get($z-indexes, $name)
     @else 
-        @error "Invalid spacing size: '#{$name}'."
+        @error "Invalid 'z' value: '#{$name}'."
 `
 			},
 			{
@@ -1098,10 +1216,9 @@ $color-pallette: build-pallet()
 				file: "00_Abstracts/index.sass",
 				content: `@import 'variables'
 @import 'functions/colors'
-@import 'functions/spacing'
+@import 'functions/math'
 @import 'functions/strings'
 @import 'functions/z-index'
-@import 'mixins/border-radius'
 @import 'mixins/breakpoints'
 @import 'mixins/font-sizes'
 @import 'mixins/hover'
@@ -1109,6 +1226,25 @@ $color-pallette: build-pallet()
 @import 'mixins/spacing'
 @import 'mixins/transitions'
 `
+            },
+			{
+				file: "01_Base/_base.sass",
+				content: `@import '../00_Abstracts/index';
+
+html,
+body
+    font-family: $font-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+
+    code,
+    pre
+        font-family: $font-monospace;
+`
+			},
+			{
+				file: "01_Base/_index.sass",
+				content: `@import 'base'`
 			}
 		]
 	},
