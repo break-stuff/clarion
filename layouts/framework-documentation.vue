@@ -7,6 +7,11 @@
             <div class="col col-md-4">
                 <div class="list-group c-sub-nav" id="list-tab" role="tablist">
                     <nuxt-link
+                        class="list-group-item list-group-item-action js-docs-add"
+                        to="/style-framework/documentation/variables/"
+                        aria-controls="add and remove files"
+                    >Variables</nuxt-link>
+                    <nuxt-link
                         class="list-group-item list-group-item-action js-docs-new"
                         to="/style-framework/documentation/functions/"
                         aria-controls="new project"
@@ -16,11 +21,6 @@
                         to="/style-framework/documentation/mixins/"
                         aria-controls="architecture"
                     >Mixins</nuxt-link>
-                    <nuxt-link
-                        class="list-group-item list-group-item-action js-docs-add"
-                        to="/style-framework/documentation/variables/"
-                        aria-controls="add and remove files"
-                    >Variables</nuxt-link>
                 </div>
             </div>
         </div>

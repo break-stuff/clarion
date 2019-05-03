@@ -154,7 +154,7 @@
 
 <script>
 export default {
-    name: 'Home',
+    name: 'Style Framework',
     head: {
         title: 'Clarion CLI and Style Framework',
         meta: [

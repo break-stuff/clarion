@@ -132,7 +132,7 @@ export default {
         this.doc = this.$refs;
     },
     head: {
-        title: 'Clarion Color Functions',
+        title: 'Color Functions - Clarion',
         meta: [
             {
                 hid: 'description',

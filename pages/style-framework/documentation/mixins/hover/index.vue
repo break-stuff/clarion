@@ -1,31 +1,8 @@
 <template>
     <div>
-        <h1>Contact</h1>
+        <h1>Hover Mixins</h1>
 
-        <p>
-            Feel free to reach out on Twitter
-            <a
-                href="https://twitter.com/stuffbreaker"
-            >@stuffbreaker</a> or send me a message here.
-            I will get back to you as soon as possible. Thanks!
-        </p>
-
-        <form method="POST" action="https://formspree.io/burton@breakstuff.io">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" name="name" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input name="email" type="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea name="message" class="form-control"></textarea>
-            </div>
-            <button class="btn btn-primary">Send</button>
-        </form>
-        <br>
+        <h3>Coming Soon!!!</h3>
     </div>
 </template>
 
@@ -37,7 +14,7 @@ export default {
         };
     },
     head: {
-        title: 'Clarion Style Framework Documentation',
+        title: 'Hover Mixins - Clarion',
         meta: [
             {
                 hid: 'description',
@@ -60,7 +37,7 @@ export default {
             {
                 hid: 'og:title',
                 property: 'og:title',
-                content: 'Clarion Style Framework Documentation'
+                content: 'Clarion Hover Mixins'
             }
         ]
     }
