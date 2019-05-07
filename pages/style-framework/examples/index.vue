@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Style Fraamework Examples</h1>
+        <h1>Style Framework Examples</h1>
 
         <h3>Coming Soon!!!</h3>
     </div>
