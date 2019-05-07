@@ -3,7 +3,7 @@
         <h1>Variables</h1>
 
         <p>
-            Variables are one of the core pieces to project.
+            Variables are one of the core pieces of your project.
             They help bring consistency and organization to your application.
             You can find your varibles file at the root of the
             <code>00_Abstracts</code> directory.
@@ -26,7 +26,7 @@
 
         <p>
             The default values that have been set for these varibles are system fonts.
-            This is done for efficiency feasons and also beacuse really like what Marcin Wichary had to say about in this
+            This is done for performance and beacuse I really like what Marcin Wichary had to say about in this
             <a
                 href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/"
             >Smashing Magazine</a> article.
@@ -45,7 +45,7 @@
                 <tr>
                     <td>Accent</td>
                     <td>
-                        This is primarily used for things like headers or bloquotes. 
+                        This is primarily used for things like headings or bloquotes. 
                         This should help those pieces of your design stand out from the rest of your content.
                     </td>
                 </tr>
@@ -89,7 +89,7 @@
 
 
         <p>
-            For accessibility reasons, it is usally not a good idea to go below <code>16px</code> for your reagular font size so the <code>xxs</code> and <code>xs</code> font sizes should be used sparingly. 
+            For accessibility reasons, it is usally not a good idea to go below <code>16px</code> for your reagular font size, so the <code>xxs</code> and <code>xs</code> font sizes should be used sparingly. 
             If you are setting up heading styles, may be happy to know that the <code>xs-xxl</code> match very nicely with the <code>h6-h1</code> tags, respectively.
         </p>
 
@@ -128,13 +128,13 @@
         <h2>Colors</h2>
 
         <p>
-            Colors are easily one of the most complext things about your site: 
-            trying to capture your brand and make sure it is well represented in your design, 
+            Colors are easily one of the most complext things about your site. 
+            Trying to capture your brand and make sure it is well represented in your design, 
             making sure that you are using the right colors to convey the right message (because colors have meaning),
-            and making sure that your site is accessible to all users.
+            and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors.
             The list goes on and on. 
             A lot rides on your color choices and how you use them. 
-            The tools provided by clarion should hopegully help with a lot of these concerns.
+            The tools provided by clarion should hopegully help with some of these concerns.
         </p>
 
         <p>
@@ -163,7 +163,7 @@
         <h2>Breakpoints</h2>
 
         <p>
-            These values used to help you build responsive sites and applications. 
+            These values are used to help you make your site responsive. 
             Having consistency in these values will help proved a sense of stability in your site and simplify your development experience. 
             If you are using a UI framework like Bootstrap or Foundation, it is a really good idea to replace the default values with their values.
         </p>
@@ -181,7 +181,7 @@
         <h2>Z-Indexes</h2>
 
         <p>
-            This is susally on of the most obviouse and yet most comical implementation to have. 
+            This is usually on of the most obviouse and yet most comical implementations to talk about. 
             When asking developers how they handle z-indexes in their application, 
             the most common answer is to set the value to <code>9999</code>. 
             If that doesn't work, continue adding a <code>9</code> on the end until it does. 
