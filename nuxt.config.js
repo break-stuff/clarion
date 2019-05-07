@@ -105,7 +105,13 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: ['@nuxtjs/sitemap'],
+    modules: [
+        '@nuxtjs/sitemap',
+        ['@nuxtjs/google-analytics', {
+            id: 'UA-106134260-1'
+          }
+        ]
+    ],
 
     sitemap: {
         generate: true,
