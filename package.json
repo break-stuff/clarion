@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "CLI for scaffolding and managing the Clarion Style Architecture and styles in your projects.",
   "main": "index.js",
   "scripts": {

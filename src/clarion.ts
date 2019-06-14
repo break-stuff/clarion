@@ -1,32 +1,41 @@
 import * as commander from "commander";
 import { prompt } from "inquirer";
-import * as newProjectData from './data/newProject';
+import { starterQuestions } from './data/newProject';
 import { NewProject } from "./commands/new";
 import { IAdd, Add } from "./commands/add";
 import { IRemove, Remove } from "./commands/remove";
 import { IConfigService, ConfigService } from "./services/configService";
 
 commander
-    .version("3.1.0")
+    .version("3.2.0")
     .usage("<command> [project or file name] [options]");
 
 commander
-    .command("new <projectname>")
+    .command("new")
     .description('Create a new project')
-    .action((projectname) => {
-        prompt(newProjectData.starterQuestions)
-            .then(answer => {
-                const newProject = new NewProject();
-                if(answer.projectStart === 'Manual Configuration') {
-                    prompt(newProjectData.manualSetupQuestions)
-                        .then(answers => {
-                            newProject.init(projectname, answers);
-                        });
-                } else {
-                    newProject.init(projectname, newProjectData.defaultProjectValues);
-                }
-            });
-});
+    .action(async () => {
+        let projectName: string = '';
+        let pipeline: string = '';
+        const projectStartResponse = await prompt(starterQuestions.projectStart);
+        const newProject = new NewProject();
+        if (projectStartResponse.projectStart === 'Manual Configuration') {
+            const projectTypeResponse = await prompt(starterQuestions.projectType)
+            if (projectTypeResponse.projectType === 'Starter Project') {
+                const projectNameResponse = await prompt(starterQuestions.projectName);
+                const pipelineResponse = await prompt(starterQuestions.pipeline);
+
+                projectName = projectNameResponse.projectName;
+                pipeline = pipelineResponse.pipeline;
+            }
+
+            const styleFormatResponses = await prompt(starterQuestions.styleFormat);
+            newProject.init(projectTypeResponse.projectType, projectName, styleFormatResponses.styleFormat, pipeline);
+        } else {
+            const projectnameResponse = await prompt(starterQuestions.projectName);
+            newProject.init('default', projectnameResponse.projectName, 'SCSS', 'Webpack');
+        }
+    });
+
 
 commander
     .command('add <dir> [filename]')

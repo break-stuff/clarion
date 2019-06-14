@@ -19,7 +19,7 @@ yarn global add clarion
 
 
 ## Start a New Project
-    clarion new ProjectName
+    clarion new
 
 Answer a few questions about you would like to configure your project and it will be scaffolded out for you.
 
@@ -145,6 +145,8 @@ These are options you can run when initializing you project.
 
 
 ## Changelog
+
+3.2.0 - Streamlined new project setup.
 
 3.1.0 - Updated variables, added new color contrast logic, and fixed SASS file references.
 
