@@ -21,6 +21,7 @@ export class ShellService implements IShellService {
 
         this._logger.warning(`Your command '${command}' was successfully executed.`);
     }
+    
     installNPMDependencies(projectName:string, packages: string[], devDependency:boolean = false) {
         let dependencyType = devDependency ? "-D" : "-S";
         let command = `cd ./${projectName} && npm install ${dependencyType} ${packages.join(' ')}`;

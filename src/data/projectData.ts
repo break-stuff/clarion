@@ -117,8 +117,7 @@ export var projectData: IProjectData = {
     postCssConfig: {
         plugins: {
             autoprefixer: {},
-            cssnano: {},
-            pixrem: {}
+            cssnano: {}
         }
     },
     grunt: {
@@ -126,7 +125,6 @@ export var projectData: IProjectData = {
         devDependencies: [
             "autoprefixer",
             "cssnano",
-            "pixrem",
             "grunt",
             "grunt-postcss",
             "grunt-contrib-watch",
