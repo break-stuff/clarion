@@ -1,4 +1,4 @@
-import { newProject, INewProjectInfo } from '../data/newProject';
+import { newProject } from '../data/newProject';
 import { FileService, IFileService } from "../services/fileService";
 import { IProjectData, IProjectDataService, ProjectDataService } from '../services/projectService';
 import { ILogService, LogService } from "../services/logService";

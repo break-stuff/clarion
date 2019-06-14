@@ -8,7 +8,7 @@ import { IConfigService, ConfigService } from "./services/configService";
 
 commander
     .version("3.2.0")
-    .usage("<command> [project or file name] [options]");
+    .usage("<command>");
 
 commander
     .command("new")

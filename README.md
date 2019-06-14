@@ -124,7 +124,7 @@ These are options you can run when initializing you project.
 | --- | --- |
 | Starter Project | generate  the style architecture, the style framework, as well as any task runners/bundlers and optimizers needed to begin developing a web application.
 | Styles Only  |  generate the style architecture only (great for integrating into frameworks) |
-| Architecture Only  |  generate an empty project without any of the start-up files |
+| Architecture Only  |  generate a the style architecture without any of the start-up files |
 
 ## Style Format
 
