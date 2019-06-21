@@ -107,6 +107,7 @@ module.exports = {
      */
     modules: [
         '@nuxtjs/sitemap',
+        '@nuxtjs/markdownit',
         ['@nuxtjs/google-analytics', {
             id: 'UA-106134260-1'
           }

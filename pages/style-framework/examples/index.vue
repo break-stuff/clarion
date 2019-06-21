@@ -1,9 +1,7 @@
-<template>
-    <div>
-        <h1>Style Framework Examples</h1>
+<template lang="md">
+    # Style Framework Examples
 
-        <h3>Coming Soon!!!</h3>
-    </div>
+    ### Coming Soon!!!
 </template>
 
 <script>

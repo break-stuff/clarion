@@ -1,9 +1,21 @@
-<template>
-    <div>
-        <h1>Functions</h1>
+<template lang="md">
+    # Functions
 
-        <h3>Coming Soon!!!</h3>
-    </div>
+    Functions are incredibly useful tools to add logic to our styles. 
+    Precompilers like `sass` and `less` have built in functions, but you can also create custom functions. 
+    The important thing to keep in mind is that `functions` return values whereas `mixins` return `css`.
+
+    There is some fantastic documentation on using and creating functions at [thesassway.com](http://thesassway.com/advanced/pure-sass-functions).
+
+    Here is an overview of the custom functions provided in the Clarion Style Framework.
+
+    ## <nuxt-link to="/style-framework/documentation/functions/colors/">Colors</nuxt-link>
+
+    ## <nuxt-link to="/style-framework/documentation/functions/spacing">Spacing</nuxt-link>
+
+    ## <nuxt-link to="/style-framework/documentation/functions/strings">Strings</nuxt-link>
+
+    ## <nuxt-link to="/style-framework/documentation/functions/z-index">Z-Index</nuxt-link>
 </template>
 
 <script>
