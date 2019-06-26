@@ -43,8 +43,22 @@ module.exports = {
                     {
                         title: 'Documentation',
                         children: [ 
-                            '/documentation/',
-                            
+                            '/framework/documentation/variables.html',
+                            {
+                                title: 'Functions',
+                                children: [ 
+                                    '/framework/documentation/functions/colors.html',
+                                    '/framework/documentation/functions/spacing.html',
+                                    '/framework/documentation/functions/strings.html',
+                                    '/framework/documentation/functions/z-index.html',
+                                ]
+                            },     
+                            {
+                                title: 'Mixins',
+                                children: [ 
+                                    '/framework/documentation/functions/colors.html',
+                                ]
+                            }
                         ]
                     }        
                 ]

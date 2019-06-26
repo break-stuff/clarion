@@ -1,0 +1,10 @@
+{
+	"paths": {
+		"styles": "./docs/.vuepress/styles"
+	},
+	"format": {
+		"styles": "scss"
+	},
+	"addToManifest": true,
+	"importAbstracts": true
+}

@@ -36,14 +36,24 @@ Clarion would find the directory based on the double zeros (00) that were entere
 
 ## Subdirectory Support
 
-Clarion supports subdirectories within the architecture. For example, if you wanted to further split up your Abstracts folder into `variables` and `mixins`, I would still be able to add files to the subdirectories using the following commands (make sure the directories exist before adding files to them):
+Clarion supports subdirectories within the architecture. For example, if you wanted to further split up your Abstracts folder into `variables` and `mixins`, I would still be able to add files to the subdirectories using the following commands:
+
+::: tip NOTE
+Make sure the directories exist before adding files to them.
+:::
 
 ```bash
+mkdir variables
 clarion add abstract variables/colors 
 ```
 
+You should now see a `/variables` directory with the file `_colors.scss` in the `/00_Abstracts` directory: `/00_Abstracts/variables/_colors.scss`.
+
 ```bash
+mkdir mixins
 clarion add abstract mixins/breakpoints 
 ```
+
+Similar to the previous command, you should now see a `/mixins` directory with the file `_breakpoints.scss` in the `/00_Abstracts` directory: `/00_Abstracts/mixins/_breakpoints.scss`.
 
 This allows for greater flexibility in your architecture and enable your code to expand in the future.

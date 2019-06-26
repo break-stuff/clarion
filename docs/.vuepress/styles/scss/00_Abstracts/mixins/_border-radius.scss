@@ -1,0 +1,88 @@
+@import '../variables';
+
+@mixin border-radius($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-top($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-top-left-radius: map-get($border-radiuses, $size);
+        border-top-right-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-top-left($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-top-left-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-top-right($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-top-right-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-bottom($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-bottom-left-radius: map-get($border-radiuses, $size);
+        border-bottom-right-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-bottom-left($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-bottom-left-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-bottom-right($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-bottom-right-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-left($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-radius: 0;
+        border-bottom-left-radius: map-get($border-radiuses, $size);
+        border-top-left-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
+
+@mixin border-radius-right($size) {
+    @if map-has-key($border-radiuses, $size) {
+        border-radius: 0;
+        border-bottom-right-radius: map-get($border-radiuses, $size);
+        border-top-right-radius: map-get($border-radiuses, $size);
+    } 
+    @else {
+        @error "Invalid border-radius size: '#{$size}'.";
+    }
+}
