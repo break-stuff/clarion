@@ -16,7 +16,7 @@ Clarion makes it easy to use your favorite tools! Write your styles in `SASS`, `
 
 ## Getting Started
 
-::: tip
+::: tip NOTE
 **_Make sure you have [Node.js and npm](https://nodejs.org/en/) installed._**
 :::
 
