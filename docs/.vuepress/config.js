@@ -1,13 +1,12 @@
 module.exports = {
-    title: 'Clarion Style Framework',
+    title: 'Clarion',
     description: 'See how the Clarion CLI and style framework can make managing styles in your project simpler.',
     head: [
         ['script', { src: 'https://kit.fontawesome.com/24018dd45e.js' }]
     ],
     themeConfig: {
         nav: [
-            { text: 'Home', link: '/' },
-            { text: 'Contact', link: '/contact/' },
+            { text: 'Contact', link: '/contact.html' },
             { text: 'NPM', link: 'https://www.npmjs.com/package/clarion' },
             { text: 'GitHub', link: 'https://github.com/break-stuff/clarion' },
         ],
@@ -20,8 +19,8 @@ module.exports = {
                         title: 'Documentation',
                         children: [ 
                             '/cli/documentation/new.html',
-                            '/cli/documentation/add.html',
                             '/cli/documentation/architecture.html',
+                            '/cli/documentation/add.html',
                             '/cli/documentation/configuration.html',
                         ]
                     },       
