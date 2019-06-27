@@ -3,5 +3,6 @@
 .custom-block {
     &.tip {
         border-color: color(info) !important;
+        background-color: color(light, lighter) !important;
     }
 }
