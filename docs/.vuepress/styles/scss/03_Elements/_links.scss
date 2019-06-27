@@ -1,0 +1,7 @@
+@import '../00_Abstracts/index';
+
+a { 
+    main & {
+        color: color(secondary);
+    }
+}

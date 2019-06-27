@@ -1,9 +1,29 @@
-@import '../00_Abstracts/index';
+@import "../00_Abstracts/index";
 
 .sidebar {
-    .sidebar-group {
-        .sidebar-heading {
-            color: purple;
+    .sidebar-links {
+        .sidebar-link {
+            &:hover ,
+            &.active {
+                color: color(primary);
+                border-left: 0;
+            }
+        }
+
+        .sidebar-group {
+            .sidebar-heading {
+                &:not(.clickable) {
+                    opacity: 1 !important;
+                }
+
+                &.open {
+                    > span:first-child {
+                        padding-left: 8px;
+                        margin-left: -11px;
+                        border-left: solid 3px color(primary);
+                    }
+                }
+            }
         }
     }
 }

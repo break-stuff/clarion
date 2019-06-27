@@ -37,15 +37,22 @@ $color-pallette: build-pallet();
 @function color($name: 'primary', $variant: 'base', $opacity: 1) {
     $color: null;
 
+    $name: $name + unquote("");
+
+    @if(type-of($variant) == 'number') {
+        $opacity: $variant;
+        $variant: 'base';
+    }
+
     // Get the color name
-    $color-name: map-get($color-pallette, $name + unquote(""));
+    $color-name: map-get($color-pallette, $name);
 
     // Get the color variant
-    @if $color-name {
+    @if $color-name or $name == 'black' or $name == 'white' {
         @if $name == 'black' {
-            $color: black;
+            $color: #000;
         } @else if $name == 'white' {
-            $color:  white;
+            $color:  #fff;
         } @else {
             $color: map-get($color-name, $variant);
         }

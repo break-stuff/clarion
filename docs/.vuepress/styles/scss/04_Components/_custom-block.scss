@@ -1,0 +1,7 @@
+@import '../00_Abstracts/index';
+
+.custom-block {
+    &.tip {
+        border-color: color(info) !important;
+    }
+}

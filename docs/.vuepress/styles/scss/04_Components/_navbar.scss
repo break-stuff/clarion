@@ -1,0 +1,36 @@
+@import '../00_Abstracts/index';
+
+.navbar {
+    background-color: color(primary) !important;
+    color: text-color(primary);
+    background-image: linear-gradient(120deg, color(primary), color(secondary));
+
+    .site-name {
+        color: text-color(primary) !important;
+    }
+
+    .links {
+        background-color: transparent !important;
+
+        .nav-links {
+            .nav-link {
+                @include transition-ease-in-out(med);
+
+                &:hover {
+                    color: text-color(primary);
+                    font-weight: bold;
+                    border-bottom: 2px solid white;
+                }
+
+                &.router-link-active {
+                    color: text-color(primary);
+                    border-bottom: 2px solid white;
+                }
+
+                .icon {
+                    color: color(white, .75);
+                }
+            }
+        }
+    }
+}
