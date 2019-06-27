@@ -19,7 +19,6 @@ module.exports = {
                         title: 'Documentation',
                         children: [ 
                             '/cli/documentation/new.html',
-                            '/cli/documentation/architecture.html',
                             '/cli/documentation/add.html',
                             '/cli/documentation/configuration.html',
                         ]
@@ -42,6 +41,7 @@ module.exports = {
                     {
                         title: 'Documentation',
                         children: [ 
+                            '/framework/documentation/architecture.html',
                             '/framework/documentation/variables.html',
                             {
                                 title: 'Functions',
