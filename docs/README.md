@@ -35,7 +35,9 @@ The project architecture implements the [Clarion CSS Architecture](/framework/do
 
 Additional style files can easily be manged through the CLI as well. In your terminal type the following command:
 
-`clarion add element headings`
+```bash
+clarion add element headings
+```
 
 This will create the file `_headings.scss` in the `03_Elements directory` as well as add `@import '_headings.scss';` import statement to the directory manifest file so it can be included in your final CSS file.
 
@@ -43,7 +45,9 @@ This will create the file `_headings.scss` in the `03_Elements directory` as wel
 
 Similar to adding a file, removing files can also be done through the CLI:
 
-`clarion remove element headings`
+```bash
+clarion remove element headings
+```
 
 This will remove the file `_headings.scss` in the `03_Elements` directory as well as remove `@import '_headings.scss';` import statement from the directory manifest file.
 
@@ -51,6 +55,8 @@ This will remove the file `_headings.scss` in the `03_Elements` directory as wel
 
 To build your application for final use, run the build command:
 
-`npm run build`
+```bash
+npm run build
+```
 
 The final compiled JavaScript and CSS file are in `dist` directory in the root of your project.
