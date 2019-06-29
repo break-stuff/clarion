@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
+    "deploy": "./deploy.sh",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
