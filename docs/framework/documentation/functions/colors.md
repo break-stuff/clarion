@@ -6,7 +6,7 @@ There are two main color functions we will be working with. The rest are variati
 2. `text-color()`
 
 
-## Color Function
+## `color()` Function
 
 The `color()` function allows you to select a color from the `$theme-colors` variable that is set up in your `00_Abstracts/_variables.scss` directory. This will allow you to maximize your reuse as well as provide some other cool features like theme chaining and dynamically generating components like buttons.
 
@@ -100,3 +100,42 @@ The opacity parameter in the `color()` function controls the transparency of the
 
 With Clarion you also have the ability to control the difference in the color variations. If you want your darks to be darker and your lights to be lighter (or _vice versa_), you can update the `$color-variation` variable in the `_variables.scss` file. The value _must be a percentage_. The default value is `8%`. Increasing the number will increase the difference in the variations and decreasing will do the opposite.
 
+## `text-color()` Function
+
+As users of the web and our applications become more and more diverse, inclusive design can be difficult and sometimes very daunting. The `text-color()` function helps find an appropriately contrasting color (`black`, or `white`) for your text based on a given background color. Simply pass the function color of the back (as you would with the `color()` function) and a contrasting color will be returned.
+
+### Example:
+
+```scss
+blockquote {
+    background-color: color(dark, lighter);
+    color: text-color(dark, lighter); // returns white text
+}
+
+.button {
+    .primary {
+        background-color: color(primary);
+        color: text-color(primary); // returns white text
+    }
+}
+```
+
+::: tip ACCESSIBILITY
+The `text-color()` result should meet the [WCAG 2.0 AA](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) color contrast requirement. If you are finding this is not the case, please [contact me](/contact/).
+:::
+
+::: warning
+Using these tools are intended to help your application more accessible and is not fool-proof. Make sure you are using tools to audit your application's accessibility like [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and [Accessibility Insights](https://accessibilityinsights.io/).
+:::
+
+## Additional Functions
+
+There are additional functions that run behind the scenes to make these two color functions work. We will not go into detail on what these do right now, but you should know what they are and what they do.
+
+### Color Contrast
+
+In the `_color-contrast.scss` are a number of functions that calculate the _luminance_ and _contrast ratios_ to get the contrasting colors for the `text-color()` function.
+
+### Math
+
+One downside to `SASS` is that its math functions are pretty basic. Unfortunately, there is no `POW` function to deal with exponents, so I had to write one to help calculate the color contrast.
