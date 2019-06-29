@@ -1,0 +1,37 @@
+@import '../00_Abstracts/index';
+
+.color-palette {
+    .color {
+        background-color: color(light, lighter);
+        border: solid 1px color(light, light);
+        @include p(sm);
+
+        + .color {
+            margin-top: -1px;
+        }
+
+        .name {
+            @include font-size(md);
+            @include p(sm);
+        }
+
+        .base {
+            box-shadow: -0.25rem 0px 1rem -0.5rem rgba(0,0,0,0.75);
+            @include p(sm);
+        }
+
+        .variations {
+            display: flex;
+            width: 100%;
+
+            .variation {
+                &:first-child {
+                    box-shadow: -0.25rem 0px 1rem -0.5rem rgba(0,0,0,0.75);
+                }
+                width: 100%;
+                box-shadow: -0.5rem 0px 1rem -0.5rem rgba(0,0,0,0.75);
+                @include p(sm);
+            }
+        }
+    }
+}

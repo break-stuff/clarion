@@ -10,7 +10,8 @@ There are two main color functions we will be working with. The rest are variati
 
 The `color()` function allows you to select a color from the `$theme-colors` variable that is set up in your `00_Abstracts/_variables.scss` directory. This will allow you to maximize your reuse as well as provide some other cool features like theme chaining and dynamically generating components like buttons.
 
-Example:
+### Example:
+
 ```scss
 h1 {
     color: color(primary);
@@ -40,3 +41,62 @@ Now, using the `color()` function and passing in the color name is only the most
 ## Variant
 
 Behind the scenes, Clarion has constructed a color palette based on the colors you provided in your variable file. This is a huge time saver in terms of finding color variations as well as it keeps your code light and clean. Out of the box, the palette consists of 5 variations (`lighter`, `light`, `base`, `dark`, and `darker`).
+
+Taking advantage of these variations is as simple as adding another value to your function:
+
+```scss
+.alert {
+    &.warning {
+        .header {
+            background-color: color(warning, dark);
+        }
+
+        .body {
+            background-color: color(warning, lighter);
+        }
+    }
+
+    &.danger {
+        .header {
+            background-color: color(danger, darker);
+        }
+
+        .body {
+            background-color: color(warning, light);
+        }
+    }
+}
+```
+
+::: tip NOTE
+When using the `base` color, you do not need to specify `color(primary, base)` as it is the default variation, so all you need to do is specify the color - `color(primary)`.
+:::
+
+Once you have updated the `$theme-colors` variable in the `_variables.scss` file, Clarion will automatically build out your color palette for you.
+
+###  Color Palette:
+
+<color-palette />
+
+## Opacity
+
+The opacity parameter in the `color()` function controls the transparency of the color. The value _must_ be between `0` and `1` (the closer to 0 it is the more transparent it is). This can be specified for the base and variation colors.
+
+### Example
+
+```scss
+.modal-background {
+    background-color: color(dark, 0.75);
+
+    .modal {
+        .head {
+            background-color: color(light, darker, 0.2);
+        }
+    }
+}
+```
+
+## Color Variation
+
+With Clarion you also have the ability to control the difference in the color variations. If you want your darks to be darker and your lights to be lighter (or _vice versa_), you can update the `$color-variation` variable in the `_variables.scss` file. The value _must be a percentage_. The default value is `8%`. Increasing the number will increase the difference in the variations and decreasing will do the opposite.
+

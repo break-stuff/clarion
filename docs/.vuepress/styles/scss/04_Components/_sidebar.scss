@@ -6,7 +6,7 @@
             &:hover ,
             &.active {
                 color: color(primary);
-                border-left: 0;
+                border-left-color: transparent;
             }
         }
 
