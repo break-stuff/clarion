@@ -4,6 +4,14 @@ module.exports = {
     head: [
         ['script', { src: 'https://kit.fontawesome.com/24018dd45e.js' }]
     ],
+    plugins: [
+        [ 
+            '@vuepress/google-analytics',
+            {
+                'ga': 'UA-106134260-1'
+            }
+        ]  
+    ],
     themeConfig: {
         nav: [
             { text: 'Contact', link: '/contact.html' },
@@ -55,7 +63,12 @@ module.exports = {
                             {
                                 title: 'Mixins',
                                 children: [ 
-                                    '/framework/documentation/functions/colors.html',
+                                    '/framework/documentation/mixins/border-radius.html',
+                                    '/framework/documentation/mixins/breakpoints.html',
+                                    '/framework/documentation/mixins/display.html',
+                                    '/framework/documentation/mixins/font-sizes.html',
+                                    '/framework/documentation/mixins/hover.html',
+                                    '/framework/documentation/mixins/spacing.html',
                                 ]
                             }
                         ]
