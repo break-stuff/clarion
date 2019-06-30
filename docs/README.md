@@ -11,7 +11,7 @@ CSS doesn't suck (_or at least it doesn't have to_)! The days of the monolithic 
 ```bash
 npm install -g clarion  or  yarn global add clarion
 clarion new
-# answer a few questions questions
+# answer a few questions about your project
 cd ProjectName
 npm run dev
 ```
