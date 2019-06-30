@@ -1,6 +1,24 @@
 # Get Started
 
-CSS doesn't suck (or at least it doesn't have to)! The days of the monolithic styles.css page are gone! Use Clarion to help you and your teams build better projects that are easier to maintain, collaborate in and built for scale. The last thing you need to do is waste your time wrestling with styles that don't seem to cooperate.
+CSS doesn't suck (_or at least it doesn't have to_)! The days of the monolithic `styles.css` page are gone! Use Clarion to help you and your teams build better projects that are easier to maintain, collaborate in, and built for scale. The last thing you need to do is waste your time wrestling with styles that don't seem to cooperate.
+
+## Getting Started
+
+::: tip NOTE
+**_Make sure you have [Node.js and npm](https://nodejs.org/en/) installed._**
+:::
+
+```bash
+npm install -g clarion  or  yarn global add clarion
+clarion new
+# answer a few questions questions
+cd ProjectName
+npm run dev
+```
+
+### Your New Project
+
+The project architecture implements the [Clarion CSS Architecture](/framework/documentation/architecture.html).
 
 ### Maintainable and Scalable CSS
 
@@ -13,23 +31,6 @@ Creating new projects and making sure all of the necessary components are workin
 ### Use Your Favorite Tools
 
 Clarion makes it easy to use your favorite tools! Write your styles in `SASS`, `SCSS`, or `LESS`. Run your projects with your favorite task runners and bundlers like `Grunt`, `Gulp`, `WebPack`, or `Parcel`. the goal is to get you up and running as quickly as possible and help you create amazing things.
-
-## Getting Started
-
-::: tip NOTE
-**_Make sure you have [Node.js and npm](https://nodejs.org/en/) installed._**
-:::
-
-```bash
-npm install -g clarion  or  yarn global add clarion
-clarion new ProjectName
-cd ProjectName
-npm run dev
-```
-
-### Your New Project
-
-The project architecture implements the [Clarion CSS Architecture](/framework/documentation/architecture/).
 
 ## Adding a New File
 
