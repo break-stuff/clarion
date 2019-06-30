@@ -16,10 +16,14 @@ Here is an example of using the `spacing()` function along with the [`color()` f
 }
 ```
 
-The function can also take negative values. Here is an example, of how you can use the function directly, but for margins and paddings, it is better to use the [spacing mixins](/framework/documentation/mixins/spacing.html).
+The function can also take negative values.
 
 ```scss
 .negative-margin {
     margin-left: spacing(-sm);
 }
 ```
+
+::: tip NOTE
+While there may be a need to call the spacing function directly, in general, for _margin_ and _padding_, it is better to use the [spacing mixins](/framework/documentation/mixins/spacing.html).
+:::
