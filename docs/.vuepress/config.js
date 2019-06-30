@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'Clarion',
+    title: 'Project Clarion',
     description: 'See how the Clarion CLI and style framework can make managing styles and design systems simpler.',
     head: [
         ['link', { rel: 'icon', href: '/images/favicon.png' }],
