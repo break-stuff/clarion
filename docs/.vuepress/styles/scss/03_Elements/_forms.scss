@@ -21,6 +21,7 @@
 
     textarea.form-input {
         height: 7.5rem;
+        @include py(sm);
     }
 
 }
