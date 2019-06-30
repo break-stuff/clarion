@@ -8,7 +8,7 @@ For more information on the various types of media queries, check out this [MDN 
 
 ## Breakpoint Mixin Overview
 
-The breakpoint mixins provide a way for you create highly responsive designs while still writing modular and maintainable code. The mixins will pull the values based on the `$breakpoints` [variable](/framework/documentation/variables.html#breakpoints) in the `_variables.scss` file at the root of the `/00_Abstracts` directory.
+The breakpoint mixins provide a way to create highly responsive designs while still writing modular and maintainable code. The mixins will pull the values based on the `$breakpoints` [variable](/framework/documentation/variables.html#breakpoints) in the `_variables.scss` file at the root of the `/00_Abstracts` directory.
 
 There are three variations of the the breakpoint mixin:
 
@@ -31,7 +31,7 @@ There are three variations of the the breakpoint mixin:
 
 ## Using Standard CSS
 
-Using the breakpoint mixins is fairly straight forward, but is different than the way media queries are normally written in your `CSS`. A typical breakpoint would look something like this:
+Using the breakpoint mixins is fairly straight forward, but is different than the way media queries are normally written in `CSS`. A set of breakpoints in a standard `CSS` stylesheet may look something like this:
 
 ```css
 .card {
@@ -60,7 +60,7 @@ Using the breakpoint mixins is fairly straight forward, but is different than th
 
 ## Using the Breakpoint Mixins
 
-This example is pretty simple, but as this code becomes more and more complex, you now need to manage code in multiple places across a style sheet that could be very large. Fortunately, using the code nesting features of preprocessors like `SASS` and `LESS`, this code can be greatly simplified.
+This example is pretty simple, but as this code becomes more and more complex, you now need to manage code in multiple places across a style sheet that could be very large. Fortunately, using the code nesting features of a preprocessor like `SASS` and `LESS`, this code can be greatly simplified.
 
 ```scss
 .card {
@@ -76,4 +76,4 @@ This example is pretty simple, but as this code becomes more and more complex, y
 }
 ```
 
-By nesting our breakpoints in a single place, all of our code now becomes modular. We can now easily change the name our classes in a single place. We can also move or remove our code much more efficiently. Maintenance efficiency just shot up exponentially!
+By nesting our breakpoints in a single place, the code now becomes modular. Renaming classes can be done in a single place. Moving or removing code can now be done much more efficiently. Maintenance efficiency just shot up exponentially!
