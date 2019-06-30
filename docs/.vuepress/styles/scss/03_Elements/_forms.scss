@@ -1,0 +1,26 @@
+@import '../00_Abstracts/index';
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    @include mb(xl);
+    @include font-size(sm);
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-input {
+        height: 2.5rem;
+        border: 1px solid color(light);
+        @include font-size(sm);
+        @include px(sm);
+        // @include border-radius(pill);
+
+    }
+
+    textarea.form-input {
+        height: 7.5rem;
+    }
+
+}

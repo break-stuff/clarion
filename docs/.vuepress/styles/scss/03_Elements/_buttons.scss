@@ -1,0 +1,13 @@
+@import '../00_Abstracts/index';
+
+.button {
+    cursor: pointer;
+    @include font-size(md);
+    @include py(md);
+    @include px(xl);
+
+    &.primary {
+        background-color: color(primary);
+        color: text-color(primary);
+    }
+}
