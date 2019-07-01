@@ -79,6 +79,7 @@ module.exports = {
                                     '/framework/documentation/mixins/display.html',
                                     '/framework/documentation/mixins/font-sizes.html',
                                     '/framework/documentation/mixins/hover.html',
+                                    '/framework/documentation/mixins/shadows.html',
                                     '/framework/documentation/mixins/spacing.html',
                                 ]
                             }
