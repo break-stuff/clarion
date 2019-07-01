@@ -146,6 +146,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.2.1 - Fix color functions to handle "black" and "white" values
+
 3.2.0 - Streamlined new project setup.
 
 3.1.0 - Updated variables, added new color contrast logic, and fixed SASS file references.
