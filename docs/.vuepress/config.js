@@ -15,14 +15,20 @@ module.exports = {
             { property: 'HandheldFriendly', content: 'True' },
         ]
     ],
-    plugins: {
-        '@vuepress/google-analytics': {
-            'ga': 'UA-106134260-1'
-        },
-        'sitemap': {
-            hostname: 'https://projectclarion.com'
-        }
-    },
+    plugins: [
+        [
+            '@vuepress/google-analytics',
+            {
+                'ga': 'UA-106134260-1'
+            }
+        ],
+        [
+            'sitemap',
+            {
+                hostname: 'https://projectclarion.com'
+            }
+        ]
+    ],
     themeConfig: {
         nav: [
             { text: 'Contact', link: '/contact.html' },
