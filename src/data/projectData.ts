@@ -166,7 +166,6 @@ module.exports = function (grunt) {
                 processors: [
                     require('autoprefixer')(),
                     require('cssnano')(),
-                    require('pixrem')()
                 ]
             },
             dist: {
@@ -190,7 +189,6 @@ module.exports = function (grunt) {
         devDependencies: [
             "autoprefixer",
             "cssnano",
-            "pixrem",
             "cross-env",
             "gulp",
             "gulp-postcss",
@@ -247,7 +245,6 @@ gulp.task('%%styleFormat%%:watch', function () {
         devDependencies: [
             "autoprefixer",
             "cssnano",
-            "pixrem",
             "cross-env",
         ],
         lessDependencies: [
@@ -264,7 +261,6 @@ gulp.task('%%styleFormat%%:watch', function () {
         configFile: 'webpack.config.js',
         devDependencies: [
             "autoprefixer",
-            "pixrem",
             "css-loader",
             "style-loader",
             "cross-env",
@@ -290,7 +286,7 @@ gulp.task('%%styleFormat%%:watch', function () {
         },
         configContents:
 `const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');

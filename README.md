@@ -138,13 +138,15 @@ These are options you can run when initializing you project.
 
 | Option | Description |
 | --- | --- |
-| Webpack | configure project for WebPack |bundler
+| Webpack | configure project for WebPack bundler |
 | Parcel  | configure project for Parcel bundler |
 | Gulp   |  configure project for Gulp task runner |
 | Grunt  |  configure project for Grunt task runner |
 
 
 ## Changelog
+
+3.2.2 - Fix CleanWebpackPlugin error for WebPack projects.
 
 3.2.1 - Fix color functions to handle "black" and "white" values
 
