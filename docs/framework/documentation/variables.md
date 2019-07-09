@@ -124,7 +124,7 @@ $border-radiuses: (
 ) !default;
 ```
 
-## Box-Shadows
+## Shadows
 
 Shadows can add very attractive depth and interaction to your design. Keeping them consistent from one component to another can be a little frustrating. They can also create a great deal of clutter in your code. Abstracting them into a reusable place and using them with the `box-shadow()` mixin will keep your UI consistent and your code clean.
 
