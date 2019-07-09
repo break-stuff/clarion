@@ -4,7 +4,7 @@ After creating your project, if you navigate to the `/src` folder you should see
 
 ## Styles
 
-Clarion offers a unique architecure to reduce the complexity of styling small and large web applications and sites.
+Clarion offers a unique architecture to reduce the complexity of styling small and large web applications and sites.
 
 ### What's with the numbers?
 

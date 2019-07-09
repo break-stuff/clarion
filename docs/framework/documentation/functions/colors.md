@@ -5,7 +5,6 @@ There are two main color functions we will be working with. The rest are variati
 1. `color()`
 2. `text-color()`
 
-
 ## `color()` Function
 
 The `color()` function allows you to select a color from the `$theme-colors` variable that is set up in your `00_Abstracts/_variables.scss` directory. This will allow you to maximize your reuse as well as provide some other cool features like theme chaining and dynamically generating components like buttons.
@@ -29,7 +28,7 @@ h1 {
     }
 }
 ```
-    
+
 Now, using the `color()` function and passing in the color name is only the most basic feature available. By default, passing in the name of the color you want as the only parameter will get the color value that you specified in the `00_Abstracts/_variables` file. However, there are 3 possible parameters that can be passed into this function to produce different results: 
 
 | Parameter | Value Type | Description | Default Value |
@@ -74,7 +73,7 @@ When using the `base` color, you do not need to specify `color(primary, base)` a
 
 Once you have updated the `$theme-colors` variable in the `_variables.scss` file, Clarion will automatically build out your color palette for you.
 
-###  Color Palette:
+### Color Palette:
 
 <color-palette />
 

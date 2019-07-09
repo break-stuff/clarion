@@ -54,17 +54,17 @@ $theme-colors: (
 ) !default;
 ```
 
-If you are using the style framwork, you can update the existing `$theme-colors` variable with your desired colors and the entire framework will now adopt your new color scheme.
+If you are using the style framework, you can update the existing `$theme-colors` variable with your desired colors and the entire framework will now adopt your new color scheme.
 
 If you are not using the style framework, you can still easily achieve this by creating a colors file in your Abstracts directory (`clarion add abstract colors`), pasting in this code, and changing the color values (make sure you remove the `!default` attribute in your code).
 
-The Bootstrap team has done a great job making the framework customizable and values that can be overrriden can be found in the `/scss/_variables.scss` file in the [Bootstrap project](https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss);
+The Bootstrap team has done a great job making the framework customizable and values that can be overridden can be found in the `/scss/_variables.scss` file in the [Bootstrap project](https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss);
 
 ## Bootstrap's SASS Mixins and Functions
 
-You can also inject Bootstrap's SASS mixins and funtions by adding a reference to them in to your `00_Abstracts` directory (either explicitly in their own file or directly in the manifest file). This will give you access to that functionality throughout your project.
+You can also inject Bootstrap's SASS mixins and functions by adding a reference to them in to your `00_Abstracts` directory (either explicitly in their own file or directly in the manifest file). This will give you access to that functionality throughout your project.
 
-For exaple, of you wanted to leverage Bootstrap's mixin for media queries, you could add a reference to that SCSS file (`@import '~/bootstrap/scss/mixins/breakpoints'`) and begin using the `media-breakpoint-down()`, `media-breakpoint-between()`, and `media-breakpoint-only()` anywhere in your SCSS project.
+For example, of you wanted to leverage Bootstrap's mixin for media queries, you could add a reference to that SCSS file (`@import '~/bootstrap/scss/mixins/breakpoints'`) and begin using the `media-breakpoint-down()`, `media-breakpoint-between()`, and `media-breakpoint-only()` anywhere in your SCSS project.
 
 ## Conclusion
 

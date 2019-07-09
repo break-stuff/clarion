@@ -3,7 +3,7 @@
 In order to fit your development environment's needs, Clarion is configurable to meet your project's requirements. If the default configuration is used, no config file is generated in order to avoid unnecessary clutter in your project. To add a config file to your project, run the following command at the root of your project:
 
 ```bash
-clarion config 
+clarion config
 ```
 
 You will them be prompted with a series of questions to create your custom configurations as well as the default options.

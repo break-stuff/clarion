@@ -7,7 +7,7 @@ When working with files that require references to other files in order to make 
 Adding a new file is quite simple. In the root of your project type the following command:
 
 ```bash
-clarion add element headings 
+clarion add element headings
 ```
 
 This will create the file `_headings.scss` in the `03_Elements` directory as well as add `@import '_headings.scss';` import statement to the directory manifest file so it can be included in your final CSS file.
@@ -19,7 +19,7 @@ If you look in your newly created `_headings.scss` file, you will also see a ref
 Similar to adding a file, removing files can also be done through the CLI:
 
 ```bash
-clarion remove element headings 
+clarion remove element headings
 ```
 
 This will remove the file `_headings.scss` in the `03_Elements` directory as well as remove `@import '_headings.scss';` import statement from the directory manifest file.
@@ -29,7 +29,7 @@ This will remove the file `_headings.scss` in the `03_Elements` directory as wel
 When specifying a directory to add or remove a file from, you do not have to use the entire directory name. This parameter supports "fuzzy search" witch means that it will try to find the appropriate directory based on part or all of the directory name. So, if I wanted to, I could add an item to the Abstracts folder by using the following command:
 
 ```bash
-clarion add 00 colors 
+clarion add 00 colors
 ```
 
 Clarion would find the directory based on the double zeros (00) that were entered rather than the directory name. If the directory is not found, you will be provided with a list of available options.
@@ -44,14 +44,14 @@ Make sure the directories exist before adding files to them.
 
 ```bash
 mkdir variables
-clarion add abstract variables/colors 
+clarion add abstract variables/colors
 ```
 
 You should now see a `/variables` directory with the file `_colors.scss` in the `/00_Abstracts` directory: `/00_Abstracts/variables/_colors.scss`.
 
 ```bash
 mkdir mixins
-clarion add abstract mixins/breakpoints 
+clarion add abstract mixins/breakpoints
 ```
 
 Similar to the previous command, you should now see a `/mixins` directory with the file `_breakpoints.scss` in the `/00_Abstracts` directory: `/00_Abstracts/mixins/_breakpoints.scss`.

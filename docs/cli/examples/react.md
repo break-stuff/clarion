@@ -29,6 +29,7 @@ npm install node-sass -D
 ```
 
 ## Adding Clarion
+
 Adding Clarion to the project can be done in 5 easy steps:
 
 1. In your command terminal, navigate to the root of the `/src` directory.

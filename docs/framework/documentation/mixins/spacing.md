@@ -35,7 +35,7 @@ The available margin mixins are a s follows:
 ```scss
 .card {
     @include p(lg);
-    
+
     .card-header {
         @include mb(md);
     }

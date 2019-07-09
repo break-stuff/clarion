@@ -34,7 +34,7 @@ Clarion makes it easy to use your favorite tools! Write your styles in `SASS`, `
 
 ## Adding a New File
 
-Additional style files can easily be manged through the CLI as well. In your terminal type the following command:
+Additional style files can easily be managed through the CLI as well. In your terminal type the following command:
 
 ```bash
 clarion add element headings

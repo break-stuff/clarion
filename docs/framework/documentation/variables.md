@@ -12,7 +12,7 @@ For performance reasons, the default values that have been set for these variabl
 
 | Type | Description |
 |---|---|
-| Accent | This is primarily used for things like headings or bloquotes. This should help those pieces of your design stand out from the rest of your content.
+| Accent | This is primarily used for things like headings or blockquotes. This should help those pieces of your design stand out from the rest of your content.
 | Base | This is the default font for your site. If it is not text that should stand out more than other text, it should be using this font. This font should be simple and easy to read at both large and small font sizes. |
 | Monospace	| If you are creating a tutorial site that has code snippets or special call-out text, this font is an excellent way to help highlight those parts of your application. |
 
@@ -32,7 +32,7 @@ $font-sizes: (
 ) !default;
 ```
 
-For accessibility reasons, it is usally not a good idea to go below `16px` for your reagular font size, so the `xxs` and `xs` font sizes should be used sparingly. If you are setting up heading styles, may be happy to know that the `xs-xxl` match very nicely with the `h6-h1` tags, respectively.
+For accessibility reasons, it is usually not a good idea to go below `16px` for your regular font size, so the `xxs` and `xs` font sizes should be used sparingly. If you are setting up heading styles, may be happy to know that the `xs-xxl` match very nicely with the `h6-h1` tags, respectively.
 
 ## Line Height
 
@@ -58,7 +58,7 @@ $spacing-sizes: (
 
 ## Colors
 
-Colors are easily one of the most complext things about your site. Trying to capture your brand and make sure it is well represented in your design, making sure that you are using the right colors to convey the right message (because colors have meaning), and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors. The list goes on and on. A lot rides on your color choices and how you use them. The tools provided by clarion should hopegully help with some of these concerns.
+Colors are easily one of the most complex things about your site. Trying to capture your brand and make sure it is well represented in your design, making sure that you are using the right colors to convey the right message (because colors have meaning), and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors. The list goes on and on. A lot rides on your color choices and how you use them. The tools provided by clarion should hopefully help with some of these concerns.
 
 The default colors that have been chosen are just a basic pallet, but should be a good starting place.
 
@@ -111,7 +111,7 @@ $z-indexes: (
 
 ## Border Radiuses
 
-These are pretty straigh forward. This is a way to keep your rounded corners consistent throughout your application.
+These are pretty straight forward. This is a way to keep your rounded corners consistent throughout your application.
 
 ```scss
 $border-radiuses: (
