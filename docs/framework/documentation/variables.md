@@ -4,7 +4,7 @@ Variables are one of the core pieces of your project. They help bring consistenc
 
 ## Fonts
 
-There are 3 default font types set up to start out with (`$font-accent`, `$font-base`, and `$font-monospace`). This should usually be more than enough to get you started. If you feel like you need more font families in your project than this, feel free to add them, but do so carefully. Having all of those fancy fonts on your site may look nice, but they come at a cost (both technically and cognitively).
+There are 3 default font types set up to start out with (`$font-accent`, `$font-base`, and `$font-monospace`). This should usually be more than enough for a website or application. If you feel like you need more font families in your project than this, feel free to add them, but do so carefully. Having all of those fancy fonts on your site may look nice, but they come at a cost (both for performance and usability).
 
 For performance reasons, the default values that have been set for these variables are system fonts. For further reading on this, check out Marcin Wichary's excellent [Smashing Magazine article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
@@ -14,11 +14,11 @@ For performance reasons, the default values that have been set for these variabl
 |---|---|
 | Accent | This is primarily used for things like headings or blockquotes. This should help those pieces of your design stand out from the rest of your content.
 | Base | This is the default font for your site. If it is not text that should stand out more than other text, it should be using this font. This font should be simple and easy to read at both large and small font sizes. |
-| Monospace	| If you are creating a tutorial site that has code snippets or special call-out text, this font is an excellent way to help highlight those parts of your application. |
+| Monospace | If you are creating a tutorial site that has code snippets or special call-out text, this font is an excellent way to help highlight those parts of your application. |
 
 ## Font Sizes
 
-The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increase or they zoom in.
+The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increased or they zoom in and out.
 
 ```scss
 $font-sizes: (
