@@ -9,7 +9,7 @@ npm install -g clarion  or  yarn global add clarion
 After installing the Clarion CLI running the following command will provide you with the default project:
 
 ```bash
-clarion new 
+clarion new
 ```
 
 The default project comes pre-configured for SASS using the .scss format and WebPack as the compiler and bundler. There are some additional features that come out-of-the-box for you to help simplify your development process.
@@ -22,7 +22,7 @@ One fo the great things about the Clarion CLI is the amount of flexibility you h
 
 ### Starter Project
 
-If you are starting an application from scratch, this is a great boilerplate! This will install the style architecture, the style framwork, as well as any task runners/bundlers and optimizers needed to begin developing a web application.
+If you are starting an application from scratch, this is a great boilerplate! This will install the style architecture, the style framework, as well as any task runners/bundlers and optimizers needed to begin developing a web application.
 
 In the Starter Project the following tools will also be installed to optimize your code:
 
@@ -40,7 +40,7 @@ CSSNano takes your nicely formatted CSS and runs it through many focused optimiz
 
 ### Styles Only
 
-This will only install the style architecture as well as the style framwork. If you are using a front-end framework or your team has a specific architecture pattern, this will allow you leverage the style architecture while still adhering to an existing specifications.
+This will only install the style architecture as well as the style framework. If you are using a front-end framework or your team has a specific architecture pattern, this will allow you leverage the style architecture while still adhering to an existing specifications.
 
 ### Architecture Only
 

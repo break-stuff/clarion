@@ -4,7 +4,7 @@ Variables are one of the core pieces of your project. They help bring consistenc
 
 ## Fonts
 
-There are 3 default font types set up to start out with (`$font-accent`, `$font-base`, and `$font-monospace`). This should usually be more than enough to get you started. If you feel like you need more font families in your project than this, feel free to add them, but do so carefully. Having all of those fancy fonts on your site may look nice, but they come at a cost (both technically and cognitively).
+There are 3 default font types set up to start out with (`$font-accent`, `$font-base`, and `$font-monospace`). This should usually be more than enough for a website or application. If you feel like you need more font families in your project than this, feel free to add them, but do so carefully. Having all of those fancy fonts on your site may look nice, but they come at a cost (both for performance and usability).
 
 For performance reasons, the default values that have been set for these variables are system fonts. For further reading on this, check out Marcin Wichary's excellent [Smashing Magazine article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
@@ -12,13 +12,13 @@ For performance reasons, the default values that have been set for these variabl
 
 | Type | Description |
 |---|---|
-| Accent | This is primarily used for things like headings or bloquotes. This should help those pieces of your design stand out from the rest of your content.
+| Accent | This is primarily used for things like headings or blockquotes. This should help those pieces of your design stand out from the rest of your content.
 | Base | This is the default font for your site. If it is not text that should stand out more than other text, it should be using this font. This font should be simple and easy to read at both large and small font sizes. |
-| Monospace	| If you are creating a tutorial site that has code snippets or special call-out text, this font is an excellent way to help highlight those parts of your application. |
+| Monospace | If you are creating a tutorial site that has code snippets or special call-out text, this font is an excellent way to help highlight those parts of your application. |
 
 ## Font Sizes
 
-The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increase or they zoom in.
+The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increased or they zoom in and out.
 
 ```scss
 $font-sizes: (
@@ -32,7 +32,7 @@ $font-sizes: (
 ) !default;
 ```
 
-For accessibility reasons, it is usally not a good idea to go below `16px` for your reagular font size, so the `xxs` and `xs` font sizes should be used sparingly. If you are setting up heading styles, may be happy to know that the `xs-xxl` match very nicely with the `h6-h1` tags, respectively.
+For accessibility reasons, it is usually not a good idea to go below `16px` for your regular font size, so the `xxs` and `xs` font sizes should be used sparingly. If you are setting up heading styles, may be happy to know that the `xs-xxl` match very nicely with the `h6-h1` tags, respectively.
 
 ## Line Height
 
@@ -58,7 +58,7 @@ $spacing-sizes: (
 
 ## Colors
 
-Colors are easily one of the most complext things about your site. Trying to capture your brand and make sure it is well represented in your design, making sure that you are using the right colors to convey the right message (because colors have meaning), and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors. The list goes on and on. A lot rides on your color choices and how you use them. The tools provided by clarion should hopegully help with some of these concerns.
+Colors are easily one of the most complex things about your site. Trying to capture your brand and make sure it is well represented in your design, making sure that you are using the right colors to convey the right message (because colors have meaning), and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors. The list goes on and on. A lot rides on your color choices and how you use them. The tools provided by clarion should hopefully help with some of these concerns.
 
 The default colors that have been chosen are just a basic pallet, but should be a good starting place.
 
@@ -111,7 +111,7 @@ $z-indexes: (
 
 ## Border Radiuses
 
-These are pretty straigh forward. This is a way to keep your rounded corners consistent throughout your application.
+These are pretty straight forward. This is a way to keep your rounded corners consistent throughout your application.
 
 ```scss
 $border-radiuses: (
@@ -121,6 +121,23 @@ $border-radiuses: (
     lg: 0.75rem,
     pill: 10rem,
     circle: 50%
+) !default;
+```
+
+## Shadows
+
+Shadows can add very attractive depth and interaction to your design. Keeping them consistent from one component to another can be a little frustrating. They can also create a great deal of clutter in your code. Abstracting them into a reusable place and using them with the `box-shadow()` mixin will keep your UI consistent and your code clean.
+
+```scss
+$shadows: (
+    none: none,
+    inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+    outline: "0 0 0 3px rgba(0, 0, 0, 0.5)",
+    xs: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+    sm: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    md: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    lg: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    xl: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
 ) !default;
 ```
 
