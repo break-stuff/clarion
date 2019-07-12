@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuepress-plugin-autometa": "^0.1.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "vuepress": "^1.0.0-alpha.48",
+    "@vue/cli-plugin-babel": "^3.9.2",
+    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-service": "^3.9.2",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
@@ -24,6 +24,7 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.0.0-alpha.48",
     "vuepress-plugin-sitemap": "^2.1.2"
   },
   "eslintConfig": {

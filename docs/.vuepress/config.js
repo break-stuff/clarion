@@ -27,6 +27,24 @@ module.exports = {
             {
                 hostname: 'https://projectclarion.com'
             }
+        ],
+        [
+            'autometa',
+            {
+                enable: true, // enables/disables everything - control per page using frontmatter
+                image: true, // regular meta image used by search engines
+                twitter: true, // twitter card
+                og: true, // open graph: facebook, pinterest, google+
+                schema: true, // schema.org for google
+                site: {
+                    name: 'Clarion',
+                },
+                canonical_base: 'https://projectclarion.com',
+                author: {
+                    name: 'Burton Smith',
+                    twitter: '@stuffbreaker',
+                },
+            }
         ]
     ],
     themeConfig: {
