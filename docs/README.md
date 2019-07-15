@@ -1,63 +1,32 @@
-# Get Started
+<h1>Tools for Building Your Design Systems</h1>
 
-CSS doesn't suck (_or at least it doesn't have to_)! The days of the monolithic `styles.css` page are gone! Use Clarion to help you and your teams build better projects that are easier to maintain, collaborate in, and built for scale. The last thing you need to do is waste your time wrestling with styles that don't seem to cooperate.
+Clarion is a developer toolbox to speed up your web development time and make your code more maintainable and scalable. Out of the box it comes with a _CLI Tool_ (for scaffolding and maintenance) and a _Style Framework_ (for rapid application development).
 
-## Getting Started
+## Easy Scaffolding
 
-::: tip NOTE
-**_Make sure you have [Node.js and npm](https://nodejs.org/en/) installed._**
-:::
+Creating new projects and making sure all of the necessary components are working properly can slow things _WAY_ down. After you've done that, adding new files and maintaining references can get confusing and frustrating. With the CLI, scaffolding and maintaining projects is a breeze
 
-```bash
-npm install -g clarion  or  yarn global add clarion
-clarion new
-# answer a few questions about your project
-cd ProjectName
-npm run dev
-```
+## Use What You Want
 
-### Your New Project
+Feel free to use only those aspects of the tooling you want. If there is an part of the framework you don't want to use or you are not ready for yet, no problem. It is designed so that any unused piece will not be added to to your final build.
 
-The project architecture implements the [Clarion CSS Architecture](/framework/documentation/architecture.html).
+Both the CLI and the Framework are highly configurable and extendable. If you prefer you directory names to be different than the default, _change them_! If you have more custom variables than are available, _add them_! You have complete control over your tools and how they get used.
 
-### Maintainable and Scalable CSS
+## This is _Your_ Toolbox
 
-The Clarion CSS Architecture is designed so your CSS actually "cascades" and allows you to avoid sprinkling those pesky `!important` attributes throughout your code. Now you can avoid spending hours trying to figure out why your menu won't align properly.
+Many frameworks are abstracted into NPM packages and you are limited to customize the things that they allow you to. With Clarion, everything is scaffolded out for you in your source code and not in an NPM package, so you have complete control on customizing it. This also means your customizations get checked into your source control (which NPM packages typically do not).
 
-### Easy Scaffolding
+## UX Consistency
 
-Creating new projects and making sure all of the necessary components are working properly can slow things WAY down. After you've done that, adding new files and maintaining references can get confusing and frustrating. Using the CLI, you can scaffold out projects and create new integrated style sheets with no additional work.
+All of the [design tokens](/framework/documentation/variables.html) are centrally stored in one place with _mixins_ and _functions_ developed around the use of those tokens to provide consistency in your Design and User Experience.
 
-### Use Your Favorite Tools
+## Maintainable and Scalable
+
+As your application grows in size and complexity, your code should be able to grow and scale right along with it. Having a clean, easy to follow architecture makes this much more manageable (especially in teams).
+
+I addition to that, the Clarion Style Architecture is designed so your CSS _"cascades"_ and allows you to avoid sprinkling those pesky `!important` attributes throughout your code. Well architected CSS allows you code to be predictable so you are never up late at night wondering why your menu isn't lining up.
+
+## Use Your Favorite Tools
 
 Clarion makes it easy to use your favorite tools! Write your styles in `SASS`, `SCSS`, or `LESS`. Run your projects with your favorite task runners and bundlers like `Grunt`, `Gulp`, `WebPack`, or `Parcel`. the goal is to get you up and running as quickly as possible and help you create amazing things.
 
-## Adding a New File
-
-Additional style files can easily be managed through the CLI as well. In your terminal type the following command:
-
-```bash
-clarion add element headings
-```
-
-This will create the file `_headings.scss` in the `03_Elements directory` as well as add `@import '_headings.scss';` import statement to the directory manifest file so it can be included in your final CSS file.
-
-## Removing a File
-
-Similar to adding a file, removing files can also be done through the CLI:
-
-```bash
-clarion remove element headings
-```
-
-This will remove the file `_headings.scss` in the `03_Elements` directory as well as remove `@import '_headings.scss';` import statement from the directory manifest file.
-
-## Building Your Project
-
-To build your application for final use, run the build command:
-
-```bash
-npm run build
-```
-
-The final compiled JavaScript and CSS file are in `dist` directory in the root of your project.

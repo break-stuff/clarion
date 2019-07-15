@@ -13,7 +13,8 @@ module.exports = {
             { property: 'twitter:creator', content: '@stuffbreaker' },
             { property: 'robots', content: 'index, follow' },
             { property: 'HandheldFriendly', content: 'True' },
-        ]
+        ],
+        ['script', { src: 'https://kit.fontawesome.com/24018dd45e.js' }]
     ],
     plugins: [
         [
@@ -54,9 +55,11 @@ module.exports = {
             { text: 'GitHub', link: 'https://github.com/break-stuff/clarion' },
         ],
         sidebar: [
-            '/',
+            ['/', 'Home'],
+            '/GetStarted.html',
             {
                 title: 'CLI',
+                collapsable: false,
                 children: [
                     {
                         title: 'Documentation',
@@ -80,6 +83,7 @@ module.exports = {
             },
             {
                 title: 'Framework',
+                collapsable: false,
                 children: [
                     {
                         title: 'Documentation',

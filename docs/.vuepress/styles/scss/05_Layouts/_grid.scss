@@ -1,0 +1,10 @@
+@import '../00_Abstracts/index';
+
+.row {
+    display: flex;
+
+    .col {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+}

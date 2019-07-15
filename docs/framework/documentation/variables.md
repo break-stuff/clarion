@@ -1,6 +1,6 @@
 # Variables
 
-Variables are one of the core pieces of your project. They help bring consistency and organization to your application. You can find your variables file at the root of the `00_Abstracts` directory. If you have values that you use regularly throughout our site or application, it is highly recommended that you add them here to maximize their reuse and minimize maintenance time.
+Variables (sometimes called _design tokens_) are one of the core pieces of your project. They help bring consistency and organization to your application. You can find your variables file at the root of the `00_Abstracts` directory. If you have values that you use regularly throughout our site or application, it is highly recommended that you add them here to maximize their reuse and minimize maintenance time.
 
 ## Fonts
 
