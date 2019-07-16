@@ -25,3 +25,6 @@ The `z()` function is about as straight forward as they come, but will be immens
     z-index: z(trump);
 }
 ```
+::: tip NOTE
+Another common pattern is, rather than using the default values, use the component name that you are setting the z-index for (`tooltip`, `modal`, etc.). This could be very useful, but be careful, as it could also result in a lot of unnecessary values.
+:::

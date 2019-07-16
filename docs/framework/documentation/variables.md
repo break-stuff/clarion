@@ -32,15 +32,15 @@ $font-sizes: (
 ) !default;
 ```
 
-For accessibility reasons, it is usually not a good idea to go below `16px` for your regular font size, so the `xxs` and `xs` font sizes should be used sparingly. If you are setting up heading styles, may be happy to know that the `xs-xxl` match very nicely with the `h6-h1` tags, respectively.
+For accessibility reasons, it is usually not a good idea to go below `16px` for your regular font size, so the `xxs` and `xs` font sizes should be used sparingly. If you are setting up heading styles, you may be happy to know that the `xs-xxl` match very nicely with the `h6-h1` tags, respectively.
 
 ## Line Height
 
-The `$line-height-base` is a way to globally set the line-height (space between each line of text) property. For readability purposes, it has been defaulted to `1.5`. Mozilla (MDN) provides some excellent documentation on line-height and how to use it.
+The `$line-height-base` is a way to globally set the line-height (space between each line of text) property. For readability purposes, it has been defaulted to `1.5`. Mozilla (MDN) provides some excellent documentation on [line-height and how to use it](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height).
 
 ## Spacing
 
-The spacing variables control the padding and margin values for your site. At first you may think that globally restricting these properties is extremely limiting, but it actually makes development so much simpler when you're not always pixel counting or doing math to get things to line up properly. It's also nice to know that because they are using `rem`'s for their units, it will scale with your other content as users zoom or adjust their font sizes.
+The spacing variables control things like padding and margins for your site. At first you may think that globally restricting these properties is extremely limiting, but it actually makes development so much simpler when you're not always pixel counting or doing math to get things to line up properly. It's also nice to know that because they are using `rem`'s for their units, it will scale with your other content as users zoom or adjust their font sizes.
 
 ```scss
 $spacing-sizes: (
@@ -58,7 +58,7 @@ $spacing-sizes: (
 
 ## Colors
 
-Colors are easily one of the most complex things about your site. Trying to capture your brand and make sure it is well represented in your design, making sure that you are using the right colors to convey the right message (because colors have meaning), and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors. The list goes on and on. A lot rides on your color choices and how you use them. The tools provided by clarion should hopefully help with some of these concerns.
+Colors are easily one of the most complex things about your site. Trying to capture your brand and make sure it is well represented in your design, making sure that you are using the right colors to convey the right message (because colors have meaning), and making sure that your site is accessible to all users are just some of the considerations that need to be made when choosing colors. The list goes on and on. A lot rides on your color choices and how you use them. Clarion's color tools should help with some of these concerns.
 
 The default colors that have been chosen are just a basic pallet, but should be a good starting place.
 
@@ -75,11 +75,11 @@ $theme-colors: (
 ) !default;
 ```
 
-The `primary` and `secondary` colors should be reserved for your brand, but the rest are there for either communication purposed or content styling (borders, text, backgrounds, etc.).
+The `primary` and `secondary` colors should be reserved for your brand, but the rest are there for either communication purposes or content styling (borders, text, backgrounds, etc.).
 
 ## Breakpoints
 
-These values are used to help you make your site responsive. Having consistency in these values will help proved a sense of stability in your site and simplify your development experience. If you are using a UI framework like Bootstrap or Foundation, it is a really good idea to replace the default values with their values.
+These values are used to help you make your site responsive. Having consistency in these values will help provide a sense of stability in your site and simplify your development experience. If you are using a UI framework like Bootstrap or Foundation, it is a really good idea to replace the default values with their values to add consistency and predictability to your application.
 
 ```scss
 $breakpoints: (
@@ -93,7 +93,7 @@ $breakpoints: (
 
 ## Z-Indexes
 
-This is usually on of the most obvious and yet most comical implementations to talk about. When asking developers how they handle z-indexes in their application, the most common answer is to set the value to `9999`. If that doesn't work, continue adding a 9 on the end until it does. Having a repeatable pattern and process for this should help remove this behavior as well as some of the unpredictability of your application. Another common pattern is, rather than using the values below, use the component that you are setting the z-index for (`tooltip`, `modal`, etc.).
+This is usually on of the most obvious and yet most comical implementations to talk about. When asking developers how they handle z-indexes in their application, the most common answer is to set the value to `9999`. If that doesn't work, continue adding a 9 on the end until it does. Having a repeatable pattern and process for this should help remove this behavior as well as some of the unpredictability of your application.
 
 ```scss
 $z-indexes: (
@@ -126,7 +126,7 @@ $border-radiuses: (
 
 ## Shadows
 
-Shadows can add very attractive depth and interaction to your design. Keeping them consistent from one component to another can be a little frustrating. They can also create a great deal of clutter in your code. Abstracting them into a reusable place and using them with the `box-shadow()` mixin will keep your UI consistent and your code clean.
+Shadows can add very attractive depth and interaction to your design. Keeping them consistent from one component to another can be a little frustrating. They can also create a great deal of clutter in your code. Abstracting them into a reusable place and using them with the `shadow()` mixin will keep your UI consistent and your code clean.
 
 ```scss
 $shadows: (
