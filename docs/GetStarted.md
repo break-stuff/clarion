@@ -17,19 +17,19 @@ npm run dev
 ```
 
 ::: warning NOTE
-Unfortunately, the style framework is not available for `LESS` at this time. _However_, the CLI and style architecture fully support `LESS`, so feel free to take full advantage of those tools in your project.
+The Style Framework is not currently available for `LESS`. However, the CLI and Style Architecture are fully supported.
 :::
 
 ## Your New Project
 
-The default project is configured with [SASS](http://sass-lang.com/) using the .scss syntax and [webpack](https://webpack.js.org/) as the compiler and module manager.
+The default project is configured with [SASS](http://sass-lang.com/) using the `.scss` syntax and [webpack](https://webpack.js.org/) as the compiler and module manager.
 
 The project implements the Clarion Style Architecture.
 
 ```bash
 ProjectName/
 |
-|--build/
+|--dist/
 |
 |--src/
 |  |--sass/
@@ -66,7 +66,7 @@ ProjectName/
 |     |--components/         # Component-Specific Scripts
 |     |--services/           # Reusable Functionality
 |     |--main.js             # The Main Manifest that ties the project together
-|   
+|
 |--index.html
 |--package.json
 |--postcss.config.js
@@ -106,3 +106,5 @@ npm run build
 ```
 
 The final compiled JavaScript and CSS file are in `dist` directory in the root of your project.
+
+Find out more at <https://projectclarion.com!>

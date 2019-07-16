@@ -1,14 +1,14 @@
 <h1>Tools for Building Your Design Systems</h1>
 
-Clarion is a developer toolbox to speed up your web development time and make your code more maintainable and scalable. Out of the box it comes with a _CLI Tool_ (for scaffolding and maintenance) and a _Style Framework_ (for rapid application development).
+Clarion is a toolbox to accelerate your web development and make your code more maintainable and scalable. Out of the box it comes with a _CLI Tool_ (for scaffolding and maintenance) and a _Style Framework_ (for rapid application development).
 
 ## Easy Scaffolding
 
-Creating new projects and making sure all of the necessary components are working properly can slow things _WAY_ down. After you've done that, adding new files and maintaining references can get confusing and frustrating. With the CLI, scaffolding and maintaining projects is a breeze
+Creating new projects and making sure all of the necessary components are working properly can slow things _WAY_ down. After you've done that, adding new files and maintaining references can get confusing and frustrating. With the CLI, scaffolding and maintaining projects is a breeze.
 
 ## Use What You Want
 
-Feel free to use only those aspects of the tooling you want. If there is an part of the framework you don't want to use or you are not ready for yet, no problem. It is designed so that any unused piece will not be added to to your final build.
+Feel free to use only those aspects of the tooling you want. If there is an part of the framework you don't want to use or you are not ready for yet, _no problem_. It is designed so that any unused piece will not be added to to your final build.
 
 Both the CLI and the Framework are highly configurable and extendable. If you prefer you directory names to be different than the default, _change them_! If you have more custom variables than are available, _add them_! You have complete control over your tools and how they get used.
 
@@ -24,9 +24,10 @@ All of the [design tokens](/framework/documentation/variables.html) are centrall
 
 As your application grows in size and complexity, your code should be able to grow and scale right along with it. Having a clean, easy to follow architecture makes this much more manageable (especially in teams).
 
-I addition to that, the Clarion Style Architecture is designed so your CSS _"cascades"_ and allows you to avoid sprinkling those pesky `!important` attributes throughout your code. Well architected CSS allows you code to be predictable so you are never up late at night wondering why your menu isn't lining up.
+I addition to that, the [Clarion Style Architecture](/framework/documentation/architecture.html) is designed so your CSS _"cascades"_ and allows you to avoid sprinkling those pesky `!important` attributes throughout your code. Well architected CSS allows you code to be predictable so you are never up late at night wondering why your menu isn't lining up.
 
 ## Use Your Favorite Tools
 
-Clarion makes it easy to use your favorite tools! Write your styles in `SASS`, `SCSS`, or `LESS`. Run your projects with your favorite task runners and bundlers like `Grunt`, `Gulp`, `WebPack`, or `Parcel`. the goal is to get you up and running as quickly as possible and help you create amazing things.
+Clarion makes it easy to use your [favorite tools](/cli/documentation/new.html)! Write your styles in `SASS`, `SCSS`, or `LESS`*. Run your projects with your favorite task runners and bundlers like `Grunt`, `Gulp`, `WebPack`, or `Parcel`. the goal is to get you up and running as quickly as possible and help you create amazing things.
 
+<small><em>*The Style Framework is not currently available for LESS. However, the CLI and Style Architecture are fully supported.</em></small>
