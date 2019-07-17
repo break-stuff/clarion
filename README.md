@@ -146,6 +146,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.4.0 - Fix [directory creation](https://projectclarion.com/cli/documentation/add.html#adding-directories) logic
+
 3.2.2 - Fix CleanWebpackPlugin error for WebPack projects.
 
 3.2.1 - Fix color functions to handle "black" and "white" values

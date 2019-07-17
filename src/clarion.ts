@@ -7,7 +7,7 @@ import { IRemove, Remove } from "./commands/remove";
 import { IConfigService, ConfigService } from "./services/configService";
 
 commander
-    .version("3.3.0")
+    .version("3.4.0")
     .usage("<command>");
 
 commander
@@ -42,10 +42,15 @@ commander
     .description('Use "add <dir> <filename>" to add a style sheet to a specific directory || Use "add <filename>" to add a style sheet to current directory')
     .action((dir, filename) => {
         let add: IAdd = new Add();
-        if(filename)
-            add.addFileToSpecifiedDirectory(dir, filename);
-        else
-            add.addFileToCurrentDirectory(dir);
+
+        if (dir === 'directory') {
+            add.addNewDirectory(filename);
+        } else {
+            if (filename)
+                add.addFileToSpecifiedDirectory(dir, filename);
+            else
+                add.addFileToCurrentDirectory(dir);
+        }
 });
 
 commander
