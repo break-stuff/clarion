@@ -57,3 +57,15 @@ clarion add abstract mixins/breakpoints
 Similar to the previous command, you should now see a `/mixins` directory with the file `_breakpoints.scss` in the `/00_Abstracts` directory: `/00_Abstracts/mixins/_breakpoints.scss`.
 
 This allows for greater flexibility in your architecture and enable your code to expand in the future.
+
+## Adding Directories
+
+That's right! You can add new directories using the CLI! A popular trend is to create a directory called "Shame". This directory is used for adding style hot fixes until the style can be added to the appropriate file later. The idea is to have this file lower down in the architecture so I overrides any of the previous rules. Adding a new directory is similar to adding a new file, but we use the `directory` keyword.
+
+```bash
+clarion add directory 08_Shame 
+```
+
+::: warning WARNING
+Keep in mind that this practice is designed for hot fixes and temporary solutions. The reason it is called the _Shame_ directory is because something is broken and you want to get the code out of that directory as soon as possible.
+:::
