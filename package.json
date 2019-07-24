@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Tooling for scaffolding and managing your Style Architecture and Design Systems.",
   "main": "index.js",
   "scripts": {

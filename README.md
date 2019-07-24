@@ -25,7 +25,6 @@ Answer a few questions about you would like to configure your project and it wil
 
 Your dependencies will also automatically be installed!
 
-
 ## Run Your New Project
 After your dependencies are installed you can run your project.
 
@@ -145,6 +144,8 @@ These are options you can run when initializing you project.
 
 
 ## Changelog
+
+3.4.0 - Fix [padding and margin mixin](https://projectclarion.com/framework/documentation/mixins/spacing.html) parameter order
 
 3.4.0 - Fix [directory creation](https://projectclarion.com/cli/documentation/add.html#adding-directories) logic
 

@@ -544,7 +544,7 @@ $color-pallette: build-pallet();
                 content: `@import '../variables';
 @import '../functions/spacing';
 
-@mixin m($top: auto, $bottom: null, $left: null, $right: null) {
+@mixin m($top: auto, $right: null, $bottom: null, $left: null) {
     @if ($top and not $bottom and not $left and not $right) {
         @include mx($top);
         @include my($top);
@@ -606,7 +606,7 @@ $color-pallette: build-pallet();
     margin-bottom: spacing($size);
 }
 
-@mixin p($top: auto, $bottom: null, $left: null, $right: null) {
+@mixin p($top: auto, $right: null, $bottom: null, $left: null) {
     @if ($top and not $bottom and not $left and not $right) {
         @include px($top);
         @include py($top);
@@ -1110,7 +1110,7 @@ $color-pallette: build-pallet()
 
 // MARGINS
 
-=m($top: auto, $bottom: null, $left: null, $right: null) 
+=m($top: auto, $right: null, $bottom: null, $left: null) 
     @if ($top and not $bottom and not $left and not $right) 
         +mx($top)
         +my($top)
@@ -1155,7 +1155,7 @@ $color-pallette: build-pallet()
 
 // PADDING
 
-=p($top: auto, $bottom: null, $left: null, $right: null) 
+=p($top: auto, $right: null, $bottom: null, $left: null) 
     @if ($top and not $bottom and not $left and not $right) 
         +px($top)
         +py($top)
