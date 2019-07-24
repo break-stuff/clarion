@@ -72,7 +72,7 @@ module.exports = {
                     {
                         title: 'Examples',
                         children: [
-                            '/cli/examples/angular.html',
+                            '/cli/examples/add-to-existing-project.html',
                             '/cli/examples/aspnet.html',
                             '/cli/examples/bootstrap.html',
                             '/cli/examples/react.html',

@@ -1,0 +1,13 @@
+@import '../00_Abstracts/index';
+
+.page {
+    .content__default {
+        max-width: 800px !important;
+        padding-bottom: 0 !important;
+    }
+
+    .page-nav {
+        max-width: 800px !important;
+        padding: 0 !important;
+    }
+}
