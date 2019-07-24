@@ -73,10 +73,6 @@ module.exports = {
                         title: 'Examples',
                         children: [
                             '/cli/examples/add-to-existing-project.html',
-                            '/cli/examples/aspnet.html',
-                            '/cli/examples/bootstrap.html',
-                            '/cli/examples/react.html',
-                            '/cli/examples/vue.html',
                         ]
                     }
                 ]
@@ -111,6 +107,12 @@ module.exports = {
                                     '/framework/documentation/mixins/spacing.html',
                                 ]
                             }
+                        ]
+                    },
+                    {
+                        title: 'Examples',
+                        children: [
+                            '/framework/examples/bootstrap.html',
                         ]
                     }
                 ]

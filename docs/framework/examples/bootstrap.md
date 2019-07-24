@@ -1,4 +1,4 @@
-# Custom Bootstrap Themes Using Clarion
+# Creating Bootstrap Themes Using Clarion
 
 Bootstrap is the most popular the world's most popular front-end component library. It provides you with an incredible responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery. Creating sites with is is fast and easy. Combining it with the Clarion Style Architecture will make customizing your site scalable and easy to maintain.
 
