@@ -121,14 +121,19 @@ blockquote {
         color: text-color(primary); // returns white text
     }
 }
+
+.modal {
+    background-color: color(light, lighter);
+    color: text-color(light, lighter); // returns black text
+}
 ```
 
 ::: tip ACCESSIBILITY
-The `text-color()` result should meet the [WCAG 2.0 AA](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) color contrast requirement. If you are finding this is not the case, please [contact me](/contact/).
+The `text-color()` result should meet the [WCAG 2.0 AA](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) color contrast requirement. If this is not the case, please [contact me](/contact/).
 :::
 
 ::: warning
-Using these tools are intended to help your application more accessible and is not fool-proof. Make sure you are using tools to audit your application's accessibility like [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and [Accessibility Insights](https://accessibilityinsights.io/).
+These tools are intended to help your application be more accessible, but they are not fool-proof. Please, make sure you are using tools to audit your application's accessibility like [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and [Accessibility Insights](https://accessibilityinsights.io/).
 :::
 
 ## Additional Functions
