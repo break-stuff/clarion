@@ -77,6 +77,10 @@ Once you have updated the `$theme-colors` variable in the `_variables.scss` file
 
 <color-palette />
 
+::: tip NOTE
+`black` and `white` are available (even though they are not specified in the palette). You are able to change their opacity, but not color variations are not available for them. 
+:::
+
 ## Opacity
 
 The opacity parameter in the `color()` function controls the transparency of the color. The value _must_ be between `0` and `1` (the closer to 0 it is the more transparent it is). This can be specified for the base and variation colors.
