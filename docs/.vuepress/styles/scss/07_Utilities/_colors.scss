@@ -2,6 +2,24 @@
 
 $variations: ('lighter', 'light', 'base', 'dark', 'darker');
 
+.color-white {
+    color: color(white);
+}
+
+.color-black {
+    color: color(black);
+}
+
+.bg-white {
+    color: text-color(white);
+    background-color: color(white);
+}
+
+.bg-black {
+    color: text-color(black);
+    background-color: color(black);
+}
+
 @each $color, $value in $theme-colors {
     /*
         .color-primary

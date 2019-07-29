@@ -1,5 +1,13 @@
 <template>
     <div class="color-palette">
+        <div class="color">
+            <div class="name">white</div>
+            <div :class="['base', 'bg-white']">white</div>
+        </div>
+        <div class="color">
+            <div class="name">black</div>
+            <div :class="['base', 'bg-black']">black</div>
+        </div>
         <div class="color" v-for="color in colors" :key="color">
             <div class="name">{{color}}</div>
             <div :class="['base', 'bg-' + color]">base</div>
