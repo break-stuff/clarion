@@ -1,6 +1,6 @@
 @import '../variables';
 
-@mixin border-radius($size) {
+@mixin radius($size) {
     @if map-has-key($border-radiuses, $size) {
         border-radius: map-get($border-radiuses, $size);
     } 
@@ -9,7 +9,7 @@
     }
 }
 
-@mixin border-radius-top($size) {
+@mixin radius-t($size) {
     @if map-has-key($border-radiuses, $size) {
         border-top-left-radius: map-get($border-radiuses, $size);
         border-top-right-radius: map-get($border-radiuses, $size);
@@ -19,7 +19,7 @@
     }
 }
 
-@mixin border-radius-top-left($size) {
+@mixin radius-tl($size) {
     @if map-has-key($border-radiuses, $size) {
         border-top-left-radius: map-get($border-radiuses, $size);
     } 
@@ -28,7 +28,7 @@
     }
 }
 
-@mixin border-radius-top-right($size) {
+@mixin radius-tr($size) {
     @if map-has-key($border-radiuses, $size) {
         border-top-right-radius: map-get($border-radiuses, $size);
     } 
@@ -37,7 +37,7 @@
     }
 }
 
-@mixin border-radius-bottom($size) {
+@mixin radius-b($size) {
     @if map-has-key($border-radiuses, $size) {
         border-bottom-left-radius: map-get($border-radiuses, $size);
         border-bottom-right-radius: map-get($border-radiuses, $size);
@@ -47,7 +47,7 @@
     }
 }
 
-@mixin border-radius-bottom-left($size) {
+@mixin radius-bl($size) {
     @if map-has-key($border-radiuses, $size) {
         border-bottom-left-radius: map-get($border-radiuses, $size);
     } 
@@ -56,7 +56,7 @@
     }
 }
 
-@mixin border-radius-bottom-right($size) {
+@mixin radius-br($size) {
     @if map-has-key($border-radiuses, $size) {
         border-bottom-right-radius: map-get($border-radiuses, $size);
     } 
@@ -65,7 +65,7 @@
     }
 }
 
-@mixin border-radius-left($size) {
+@mixin radius-l($size) {
     @if map-has-key($border-radiuses, $size) {
         border-radius: 0;
         border-bottom-left-radius: map-get($border-radiuses, $size);
@@ -76,7 +76,7 @@
     }
 }
 
-@mixin border-radius-right($size) {
+@mixin radius-r($size) {
     @if map-has-key($border-radiuses, $size) {
         border-radius: 0;
         border-bottom-right-radius: map-get($border-radiuses, $size);

@@ -1,0 +1,31 @@
+@import '../00_Abstracts/index';
+
+@each $radius, $value in $border-radiuses {
+    .radius-#{$radius} {
+        @include radius($radius);
+    }
+    
+    .radius-t-#{$radius} {
+        @include radius-t($radius);
+    }
+    
+    .radius-tl-#{$radius} {
+        @include radius-tl($radius);
+    }
+    
+    .radius-tr-#{$radius} {
+        @include radius-tr($radius);
+    }
+    
+    .radius-b-#{$radius} {
+        @include radius-b($radius);
+    }
+    
+    .radius-bl-#{$radius} {
+        @include radius-bl($radius);
+    }
+    
+    .radius-br-#{$radius} {
+        @include radius-br($radius);
+    }
+}

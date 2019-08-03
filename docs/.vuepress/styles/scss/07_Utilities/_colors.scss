@@ -40,6 +40,10 @@ $variations: ('lighter', 'light', 'base', 'dark', 'darker');
         color: text-color($color) !important;
     }
 
+    .fill-#{$color} {
+        fill: color($color) !important;
+    }
+
     @each $variation in $variations {
         /*
             .color-primary-lighter
