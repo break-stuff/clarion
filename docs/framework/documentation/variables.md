@@ -124,6 +124,16 @@ $border-radiuses: (
 ) !default;
 ```
 
+## Borders
+
+The border variables are a little unique from the other variables in that they use values from other variables. For example, the `$border-size` uses values from the [`$spacing-sizes`](#spacing) variable and the `$border-color` variable uses values from the [`$theme-colors`](#colors) variable. It is important to remember that when changing these default values, or you may have unexpected results.
+
+```scss
+$border-style: solid !default;
+$border-size: 1 !default; // 1px
+$border-color: light !default;
+```
+
 ## Shadows
 
 Shadows can add very attractive depth and interaction to your design. Keeping them consistent from one component to another can be a little frustrating. They can also create a great deal of clutter in your code. Abstracting them into a reusable place and using them with the `shadow()` mixin will keep your UI consistent and your code clean.
