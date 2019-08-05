@@ -1,0 +1,46 @@
+@import '../variables';
+@import 'colors';
+
+@function border($style, $size, $color, $variant: base, $opacity: 1) {
+    $b-size: '';
+    $b-style: $border-style;
+    $b-color: '';
+
+    @if($size == '') {
+        @if map-has-key($spacing-sizes, $border-size) {
+            $b-size: map-get($spacing-sizes, $border-size);
+        } @else {
+            @error "Invalid border size: '#{$size}'. Values must be selected from the '$spacing-sizes' variable.";
+        }
+    } @else {
+        @if map-has-key($spacing-sizes, $size) {
+            $b-size: map-get($spacing-sizes, $size);
+        } @else {
+            @error "Invalid border size: '#{$size}'. Values must be selected from the '$spacing-sizes' variable.";
+        }
+    }
+
+    @if($style != '') {
+        $b-style: $style;
+    }
+
+    @if($color != '') {
+        $b-color: color($color, $variant, $opacity);
+    } @else {
+        @if(length($border-color) > 1) {
+            $g-color: nth($border-color, 1);
+            $g-variant: nth($border-color, 2);
+            $g-opacity: 1;
+
+            @if(length($border-color) > 2) {
+                $g-opacity: nth($border-color, 3);
+            }
+
+            $b-color: color($g-color, $g-variant, $g-opacity);
+        } @else {
+            $b-color: color($border-color);
+        }
+    }
+
+    @return $b-size $b-style $b-color;
+}

@@ -1,5 +1,7 @@
 @import '../00_Abstracts/index';
 
+// BORDER RADIUS
+
 @each $radius, $value in $border-radiuses {
     .radius-#{$radius} {
         @include radius($radius);
@@ -28,4 +30,48 @@
     .radius-br-#{$radius} {
         @include radius-br($radius);
     }
+}
+
+// BORDERS
+
+@each $size, $value in $spacing-sizes {
+    .border-#{$size} {
+        @include border(solid, $size);
+    }
+    
+    .border-t-#{$size} {
+        @include border-t(solid, $size);
+    }
+
+    .border-x-#{$size} {
+        @include border-x(solid, $size);
+    }
+
+    .border-y-#{$size} {
+        @include border-y(solid, $size);
+    }
+    
+    .border-l-#{$size} {
+        @include border-l(solid, $size);
+    }
+    
+    .border-r-#{$size} {
+        @include border-r(solid, $size);
+    }
+    
+    .border-b-#{$size} {
+        @include border-b(solid, $size);
+    }
+}
+
+.border-dashed {
+    @include border(dashed, xs);
+}
+
+.border-dotted {
+    @include border(dotted, xs);
+}
+
+.border-l-primary {
+    @include border-l(solid, md, primary);
 }

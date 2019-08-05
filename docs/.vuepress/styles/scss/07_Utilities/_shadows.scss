@@ -1,0 +1,7 @@
+@import '../00_Abstracts/index';
+
+@each $size, $value in $shadows {
+    .shadow-#{$size} {
+        @include shadow($size);
+    }
+}

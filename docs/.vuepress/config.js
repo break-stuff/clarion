@@ -99,6 +99,7 @@ module.exports = {
                                 title: 'Mixins',
                                 children: [
                                     '/framework/documentation/mixins/border-radius.html',
+                                    '/framework/documentation/mixins/borders.html',
                                     '/framework/documentation/mixins/breakpoints.html',
                                     '/framework/documentation/mixins/display.html',
                                     '/framework/documentation/mixins/font-sizes.html',
