@@ -6,8 +6,8 @@ The mixins will pull the values based on the border [variables](/framework/docum
 
 There are two global settings that allow you to create consistency throughout your application as well as reduce the amount of typing you need to do to get borders set up.
 
-3xs. `$border-style` - This is used to determine the style of the of your border - `solid`, `dashed`, etc.
-2. `$border-size` - This will use values from the  `$spacing-sizes` [variable](/framework/documentation/variables.html#spacing). The default value for this is `3xs` or `0.0625rem` (`1px` if your base font size is set to `3xs6px`).
+1. `$border-style` - This is used to determine the style of the of your border - `solid`, `dashed`, etc.
+2. `$border-size` - This will use values from the  `$spacing-sizes` [variable](/framework/documentation/variables.html#spacing). The default value for this is `3xs` or `0.0625rem` (`1px` if your base font size is set to `16px`).
 3. `$border-color` - This will pull values from the `$theme-colors` [variable](/framework/documentation/variables.html#colors). The default value for this is set to `light`. 
 
 :::tip NOTE
@@ -33,31 +33,31 @@ border-b() | border - bottom
 <div class="grid-wrap col-3">
     <div>
         <h4>border()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-3xs bg-white"></div>
     </div>
     <div>
         <h4>border-x()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-x-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-x-3xs bg-white"></div>
     </div>
     <div>
         <h4>border-y()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-y-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-y-3xs bg-white"></div>
     </div>
     <div>
         <h4>border-l()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-l-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-l-3xs bg-white"></div>
     </div>
     <div>
         <h4>border-r()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-r-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-r-3xs bg-white"></div>
     </div>
     <div>
         <h4>border-t()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-t-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-t-3xs bg-white"></div>
     </div>
     <div>
         <h4>border-b()</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-b-3xs bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-b-3xs bg-white"></div>
     </div>
 </div>
 
@@ -77,15 +77,15 @@ opacity | `$border-color` | The opacity of the color
 
 <div class="grid-wrap col-3">
     <div>
-        <h4>border(dashed, xs)</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-dashed bg-white"></div>
+        <h4>border(dashed, xxs)</h4>
+        <div style="width:100%; height:100px" class="shadow-xs border-dashed bg-white"></div>
     </div>
     <div>
         <h4>border(dotted, xs)</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-dotted bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-dotted bg-white"></div>
     </div>
     <div>
         <h4>border-l(solid, md, primary)</h4>
-        <div style="width:3xs00%; height:3xs00px" class="shadow-xs border-l-primary bg-white"></div>
+        <div style="width:100%; height:100px" class="shadow-xs border-l-primary bg-white"></div>
     </div>
 </div>

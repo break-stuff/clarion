@@ -65,7 +65,7 @@
 }
 
 .border-dashed {
-    @include border(dashed, xs);
+    @include border(dashed, xxs);
 }
 
 .border-dotted {

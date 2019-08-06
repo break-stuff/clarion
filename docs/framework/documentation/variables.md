@@ -45,7 +45,8 @@ The spacing variables control things like padding and margins for your site. At 
 ```scss
 $spacing-sizes: (
     auto: auto,
-    0: 0,
+    none: 0,
+    3xs: 0.0625rem,
     xxs: 0.125rem,
     xs: 0.25rem,
     sm: 0.5rem,
@@ -130,7 +131,7 @@ The border variables are a little unique from the other variables in that they u
 
 ```scss
 $border-style: solid !default;
-$border-size: 1 !default; // 1px
+$border-size: 3xs !default; // 1px
 $border-color: light !default;
 ```
 
