@@ -145,6 +145,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.6.0- Added `important` parameter on mixins
+
 3.5.1- Updated spacing variable to be more inline with naming convention
 
 3.5.0- Add [border mixin](https://projectclarion.com/framework/documentation/mixins/border.html)
