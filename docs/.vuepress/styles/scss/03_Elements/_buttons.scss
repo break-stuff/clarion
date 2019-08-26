@@ -6,8 +6,16 @@
     @include py(md);
     @include px(xl);
 
-    &.primary {
-        background-color: color(primary);
-        color: text-color(primary);
+    @each $color, $value in $theme-colors {
+        &.#{$color} {
+            background-color: color($color);
+            color: text-color($color);
+
+            &.hollow {
+                background-color: transparent;
+                color: color($color) !important;
+                @include border(solid, 3xs, $color);
+            }    
+        }
     }
 }
