@@ -16,7 +16,14 @@ radius-br(lg) | border radius - bottom right (large)
 radius(pill) | border radius (pill)
 radius(circle) | border radius (circle)
 
-## Example:
+## Parameters
+
+Name | Type | Default Value | Description
+-- | -- | -- | --
+size | string | required | the size of the border radius based on the `border-radiuses` values defined in the `variables` file
+important | bool | false | determines whether or not the `!important` property is added to the css rule
+
+## Example
 
 <border-radius-grid />
 
@@ -46,3 +53,7 @@ See how the two compare when they are be added to a _square_ rather than a _rect
                 rectangle-class="radius-circle" />
 </div>
 :::
+
+## `!important`
+
+Setting the `!important` property on your rules is as simple as adding another value to your your mixin - `radius(lg, true)`.

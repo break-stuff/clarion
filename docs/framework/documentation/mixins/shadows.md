@@ -32,3 +32,7 @@ Shadows can play an important role in the various states of you UI elements. Tak
     }
 }
 ```
+
+## `!important`
+
+Setting the `!important` property on your rules is as simple as adding another value to your your mixin - `shadow(lg, true)`.

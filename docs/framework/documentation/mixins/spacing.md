@@ -52,3 +52,7 @@ The available margin mixins are a s follows:
     }
 }
 ```
+
+## `!important`
+
+Setting the `!important` property on your rules is as simple as adding another value to your your mixin - `mb(lg, true)`. For mixins that accept more than one parameter, you can use a named parameter to bypass having to define all pof the properties - `m(lg, $important: true)`;

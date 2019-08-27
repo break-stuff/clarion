@@ -37,3 +37,7 @@ h6 {
     @include font-size(xs);
 }
 ```
+
+## `!important`
+
+Setting the `!important` property on your rules is as simple as adding another value to your your mixin - `font-size(lg, true)`.
