@@ -1,7 +1,7 @@
 {
   "name": "clarion",
-  "version": "3.6.0",
-  "description": "Tooling for scaffolding and managing your Style Architecture and Design Systems.",
+  "version": "3.7.0",
+  "description": "A CSS and Design System Framework for rapidly building applications.",
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.ts",
@@ -23,7 +23,7 @@
     "type": "git",
     "url": "https://github.com/break-stuff/clarion"
   },
-  "homepage": "projectclarion.com",
+  "homepage": "https://projectclarion.com",
   "keywords": [
     "clarion",
     "css",
@@ -34,7 +34,8 @@
     "scss architecture",
     "less",
     "less architecture",
-    "design system",
+    "design systems",
+    "design system framework",
     "starter project",
     "scaffolding",
     "CLI",
@@ -46,13 +47,7 @@
     "webpack",
     "parcel",
     "grunt",
-    "gulp",
-    "angular",
-    "react",
-    "jekyll",
-    "asp.net",
-    "bootstrap",
-    "vue.js"
+    "gulp"
   ],
   "devDependencies": {
     "@types/chai": "^4.1.4",
