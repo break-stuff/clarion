@@ -3,7 +3,7 @@
 .sidebar {
     .sidebar-links {
         .sidebar-link {
-            &:hover ,
+            &:hover,
             &.active {
                 color: color(primary);
                 border-left-color: transparent;
@@ -12,6 +12,8 @@
 
         .sidebar-group {
             .sidebar-heading {
+                cursor: pointer !important;
+
                 &:not(.clickable) {
                     opacity: 1 !important;
                 }
