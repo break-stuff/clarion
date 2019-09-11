@@ -9,10 +9,13 @@ CSS doesn't suck (_or at least it doesn't have to_)! The days of the monolithic 
 :::
 
 ```bash
-npm install -g clarion  or  yarn global add clarion
+npm install -g clarion  
+# or  
+yarn global add clarion
+
 clarion new
 # answer a few questions about your project
-cd ProjectName
+cd <project-name>
 npm run dev
 ```
 
@@ -105,6 +108,6 @@ To build your application for final use, run the build command:
 npm run build
 ```
 
-The final compiled JavaScript and CSS file are in `dist` directory in the root of your project.
+The final compiled `scripts.js` and `styles.css` files are in `dist` directory in the root of your project.
 
 Find out more at <https://projectclarion.com!>

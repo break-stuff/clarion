@@ -1,4 +1,6 @@
-<h1>Tools for Building Your Design Systems</h1>
+# Tools for Building Your Design Systems
+
+## A CSS and Design System Framework for Building Your Applications
 
 Clarion is a toolbox to accelerate your web development and make your code more maintainable and scalable. Out of the box it comes with a _CLI Tool_ (for scaffolding and maintenance) and a _Style Framework_ (for rapid application development).
 
@@ -18,7 +20,7 @@ Many frameworks are abstracted into NPM packages and you are limited to customiz
 
 ## UX Consistency
 
-All of the [design tokens](/framework/documentation/variables.html) are centrally stored in one place with _mixins_ and _functions_ developed around the use of those tokens to provide consistency in your Design and User Experience.
+All of the [design tokens](/framework/documentation/variables.html) are centrally stored in one place and the _mixins_ and _functions_ are designed to use of those tokens. This will provide consistency in your Design and User Experience.
 
 ## Maintainable and Scalable
 
@@ -30,4 +32,4 @@ I addition to that, the [Clarion Style Architecture](/framework/documentation/ar
 
 Clarion makes it easy to use your [favorite tools](/cli/documentation/new.html)! Write your styles in `SASS`, `SCSS`, or `LESS`*. Run your projects with your favorite task runners and bundlers like `Grunt`, `Gulp`, `WebPack`, or `Parcel`. the goal is to get you up and running as quickly as possible and help you create amazing things.
 
-<small><em>*The Style Framework is not currently available for LESS. However, the CLI and Style Architecture are fully supported.</em></small>
+<small><em>*The Style Framework is not currently available for `LESS`. However, the CLI and Style Architecture are fully supported.</em></small>
