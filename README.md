@@ -165,6 +165,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.7.1 - Fixed bug in `Pow` function for some bundlers/task runners for decimals.
+
 3.7.0 - Added [display mixins](https://projectclarion.com/framework/documentation/mixins/display.html) - `full-width`, `full-height`, `full-screen`, and `screen-reader-only`
 
 3.6.0 - Added `important` parameter on mixins

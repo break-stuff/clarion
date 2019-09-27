@@ -1,6 +1,6 @@
 {
   "name": "clarion",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "A CSS and Design System Framework for rapidly building applications.",
   "main": "index.js",
   "scripts": {
