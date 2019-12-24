@@ -14,7 +14,10 @@ export interface IStyleContent {
             styles: [
                 {
                     file: "00_Abstracts/_variables.scss",
-                    content: `//   FONTS
+                    content: `// CONTAINERS
+$content-width: 600px !default;                    
+
+//   FONTS
     
 $font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
@@ -897,7 +900,11 @@ body {
             styles: [
                 {
                     file: "00_Abstracts/_variables.sass",
-                    content: `//   FONTS
+                    content: `// CONTAINERS
+
+$content-width: 600px !default
+
+//   FONTS
     
 $font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
 $font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
