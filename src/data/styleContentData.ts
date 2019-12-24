@@ -43,14 +43,14 @@ $line-height-base: 1.5 !default;
 $spacing-sizes: (
     auto: auto,
     none: 0,
-    3xs: 0.0625rem,
-    xxs: 0.125rem,
-    xs: 0.25rem,
-    sm: 0.5rem,
-    md: 0.75rem,
-    lg: 1rem,
-    xl: 1.25rem,
-    xxl: 2rem
+    3xs: 0.0625rem, // 1px
+    xxs: 0.125rem,  // 2px
+    xs: 0.25rem,    // 4px
+    sm: 0.5rem,     // 8px
+    md: 0.75rem,    // 12px
+    lg: 1rem,       // 16px
+    xl: 1.25rem,    // 20px
+    xxl: 2rem       // 32px
 ) !default;
 
 
@@ -73,11 +73,12 @@ $color-variation: 8% !default;
 // BREAKPOINTS
 
 $breakpoints: (
-    xs: 480px,
-    sm: 768px,
-    md: 992px,
-    lg: 1200px,
-    xl: 1440px
+    xxs: 20rem,  // 320px
+    xs: 30rem,   // 480px
+    sm: 48rem,   // 768px
+    md: 62rem,   // 992px
+    lg: 75rem,   // 1200px
+    xl: 90rem    // 1440px
 ) !default;
 
 
@@ -947,7 +948,7 @@ $color-variation: 8% !default
 
 // BREAKPOINTS
 
-$breakpoints: ( xs: 480px, sm: 768px, md: 992px, lg: 1200px, xl: 1440px) !default
+$breakpoints: (xxs: 20rem, xs: 30rem, sm: 48rem, md: 62rem, lg: 75rem, xl: 90rem) !default
 
 // Z-INDEX
 
