@@ -18,20 +18,22 @@ export interface IStyleContent {
 $content-width: 600px !default;                    
 
 //   FONTS
-    
-$font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-size-base: 16px !default;
 
-$font-size-base: 16px;
+$fonts: (
+    accent: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+) !default;
+
 $font-sizes: (
-    xxs: 0.75rem,
-    xs: 0.875rem,
-    sm: 1rem,
-    md: 1.25rem,
-    lg: 1.5rem,
-    xl: 2rem,
-    xxl: 3rem
+    xxs: 0.75rem, // 12px
+    xs: 0.875rem, // 14px
+    sm: 1rem,     // 16px
+    md: 1.25rem,  // 30px
+    lg: 1.5rem,   // 24px
+    xl: 2rem,     // 32px
+    xxl: 3rem     // 48px
 ) !default;
 
 $line-height-base: 1.5 !default;
@@ -685,6 +687,24 @@ $color-pallette: build-pallet();
 `
                 },
                 {
+                    file: "00_Abstracts/mixins/_font.scss",
+                    content: `@import '../variables';
+
+@mixin font($font: base, $important: false) {
+    @if map-has-key($fonts, $font) {
+        @if($important == true) {
+            font-family: unquote(map-get($fonts, $font)) !important;
+        } @else {
+            font-family: unquote(map-get($fonts, $font));
+        }
+    } 
+    @else {
+        @error "Invalid shadow size: '#{$font}'.";
+    }
+} 
+                    `
+                },
+                {
                     file: "00_Abstracts/mixins/_colors.scss",
                     content: `@import '../functions/colors';
 
@@ -905,12 +925,11 @@ body {
 $content-width: 600px !default
 
 //   FONTS
-    
-$font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
-$font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
-$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default
-                
+
 $font-size-base: 16px !default
+
+$fonts: (accent: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace') !default
+
 $font-sizes: ( xxs: 0.75rem, xs: 0.875rem, sm: 1rem, md: 1.25rem, lg: 1.5rem, xl: 2rem, xxl: 3rem) !default
 
 $line-height-base: 1.5 !default
@@ -1390,6 +1409,20 @@ $color-pallette: build-pallet()
             font-size: map-get($font-sizes, $size)
     @else 
         @error "Invalid font size: '#{$size}'."
+`
+                },
+                {
+                    file: "00_Abstracts/mixins/_font.sass",
+                    content: `@import '../variables';
+
+=font($font: base, $important: false)
+    @if map-has-key($fonts, $font)
+        @if($important == true)
+            font-family: unquote(map-get($fonts, $font)) !important;
+        @else
+            font-family: unquote(map-get($fonts, $font));
+    @else 
+        @error "Invalid shadow size: '#{$font}'.";
 `
                 },
                 {
