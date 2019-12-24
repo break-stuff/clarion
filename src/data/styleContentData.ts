@@ -763,7 +763,7 @@ $color-pallette: build-pallet();
                     content: `@import '../variables';
 @import '../functions/spacing';
 
-@mixin m($top, $right: $top, $bottom: $top, $left: $top, $important: false) {
+@mixin m($top, $right: $top, $bottom: $top, $left: $right, $important: false) {
     @include mt($top, $important);
     @include mb($bottom, $important);
     @include ml($left, $important);
@@ -796,7 +796,7 @@ $color-pallette: build-pallet();
     margin-bottom: spacing($size);
 }
 
-@mixin p($top, $right: $top, $bottom: $top, $left: $top, $important: false) {
+@mixin p($top, $right: $top, $bottom: $top, $left: $right, $important: false) {
     @include pt($top, $important);
     @include pb($bottom, $important);
     @include pl($left, $important);
@@ -1479,7 +1479,7 @@ $color-pallette: build-pallet()
                     content: `@import '../variables';
 @import '../functions/spacing';
 
-=m($top, $right: $top, $bottom: $top, $left: $top, $important: false)
+=m($top, $right: $top, $bottom: $top, $left: $right, $important: false)
     @include mt($top, $important)
     @include mb($bottom, $important)
     @include ml($left, $important)
@@ -1505,7 +1505,7 @@ $color-pallette: build-pallet()
 =mb($size, $important: false)
     margin-bottom: spacing($size)
 
-=p($top, $right: $top, $bottom: $top, $left: $top, $important: false)
+=p($top, $right: $top, $bottom: $top, $left: $right, $important: false)
     @include pt($top, $important)
     @include pb($bottom, $important)
     @include pl($left, $important)
