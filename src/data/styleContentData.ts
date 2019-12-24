@@ -682,6 +682,23 @@ $color-pallette: build-pallet();
 `
                 },
                 {
+                    file: "00_Abstracts/mixins/_colors.scss",
+                    content: `@import '../functions/colors';
+
+@mixin bg-color($name: 'primary', $variant: 'base', $opacity: 1, $important: false) {
+    @if($important) {
+        color: text-color($name, $variant, $opacity) !important;
+        background-color: color($name, $variant, $opacity) !important;
+    }
+
+    @else {
+        color: text-color($name, $variant, $opacity);
+        background-color: color($name, $variant, $opacity);
+    }
+}
+`
+                },
+                {
                     file: "00_Abstracts/mixins/_hover.scss",
                     content: `@mixin hover {
     &:hover {
@@ -814,6 +831,25 @@ $color-pallette: build-pallet();
 `
                 },
                 {
+                    file: "00_Abstracts/mixins/_z-index.scss",
+                    content: `@import '../variables';
+
+    @mixin z-index($size, $important: false) {
+        @if map-has-key($z-indexes, $size) {
+            @if($important == true) {
+                z-index: map-get($z-indexes, $size) !important;
+            }
+            @else {
+                z-index: map-get($z-indexes, $size);
+            }
+        }
+        @else {
+            @error "Invalid z-index: '#{$size}'.";
+        }
+    }
+`
+                },
+                {
                     file: "00_Abstracts/index.scss",
                     content: `@import 'variables';
 @import 'functions/colors';
@@ -823,12 +859,14 @@ $color-pallette: build-pallet();
 @import 'mixins/borders';
 @import 'mixins/border-radius';
 @import 'mixins/breakpoints';
+@import 'mixins/colors';
 @import 'mixins/display';
 @import 'mixins/font-sizes';
 @import 'mixins/hover';
 @import 'mixins/shadows';
 @import 'mixins/spacing';
 @import 'mixins/transitions';                
+@import 'mixins/z-index';                
 `
                 },
                 {
@@ -1348,6 +1386,20 @@ $color-pallette: build-pallet()
 `
                 },
                 {
+                    file: "00_Abstracts/mixins/_colors.sass",
+                    content: `@import '../functions/colors';
+
+=bg-color($name: 'primary', $variant: 'base', $opacity: 1, $important: false)
+    @if($important)
+        color: text-color($name, $variant, $opacity) !important
+        background-color: color($name, $variant, $opacity) !important
+
+    @else
+        color: text-color($name, $variant, $opacity);
+        background-color: color($name, $variant, $opacity);
+`
+                },
+                {
                     file: "00_Abstracts/mixins/_hover.sass",
                     content: `=hover 
     &:hover 
@@ -1452,6 +1504,20 @@ $color-pallette: build-pallet()
 `
                 },
                 {
+                    file: "00_Abstracts/mixins/_z-index.sass",
+                    content: `@import '../variables';
+
+=z-index($size, $important: false)
+    @if map-has-key($z-indexes, $size)
+        @if($important == true)
+            z-index: map-get($z-indexes, $size) !important
+        @else
+            z-index: map-get($z-indexes, $size)
+    @else
+        @error "Invalid z-index: '#{$size}'."
+`
+                },
+                {
                     file: "00_Abstracts/index.sass",
                     content: `@import 'variables'
 @import 'functions/colors'
@@ -1461,12 +1527,14 @@ $color-pallette: build-pallet()
 @import 'mixins/border-radius'
 @import 'mixins/borders'
 @import 'mixins/breakpoints'
+@import 'mixins/colors'
 @import 'mixins/display'
 @import 'mixins/font-sizes'
 @import 'mixins/hover'
 @import 'mixins/shadows'
 @import 'mixins/spacing'
 @import 'mixins/transitions'
+@import 'mixins/z-index'
 `
                 },
                 {
