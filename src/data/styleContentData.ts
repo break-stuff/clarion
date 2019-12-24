@@ -99,18 +99,21 @@ $z-indexes: (
 
 // BORDERS
 
-$border-style: solid !default;
-$border-size: 3xs !default; // 1px
-$border-color: light !default;
+$border: (
+    style: solid,
+    size: 3xs,    // from $spacing-sizes
+    color: light lighter
+) !default;
 
 $border-radiuses: (
     none: 0,
-    sm: 0.25rem,
-    md: 0.5rem,
-    lg: 0.75rem,
+    sm: 0.25rem, // 4px
+    md: 0.5rem,  // 8px
+    lg: 0.75rem, // 12px
     pill: 10rem,
     circle: 50%
 ) !default;
+
 
 //  SHADOWS
 
@@ -138,6 +141,15 @@ $transitions: (
                     file: '00_Abstracts/functions/_borders.scss',
                     content: `@import '../variables';
 @import 'colors';
+
+@function default-border($setting) {
+    @if map-has-key($border, $setting) {
+        @return map-get($border, $setting);
+    } 
+    @else {
+        @error "Invalid default border value: '#{$setting}'.";
+    }
+}
 
 @function border($style, $size, $color, $variant: base, $opacity: 1, $important: false) {
     @if($important == true) {
@@ -418,32 +430,32 @@ $color-pallette: build-pallet();
                     file: '00_Abstracts/mixins/_borders.scss',
                     content: `@import '../functions/borders';
 
-@mixin border($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     border: border($style, $size, $color, $variant, $opacity, $important);
 }
 
-@mixin border-t($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border-t($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     border-top: border($style, $size, $color, $variant, $opacity, $important);
 }
 
-@mixin border-b($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border-b($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     border-bottom: border($style, $size, $color, $variant, $opacity, $important);
 }
 
-@mixin border-l($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border-l($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     border-left: border($style, $size, $color, $variant, $opacity, $important);
 }
 
-@mixin border-r($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border-r($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     border-right: border($style, $size, $color, $variant, $opacity, $important);
 }
 
-@mixin border-x($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border-x($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     @include border-l($style, $size, $color, $variant, $opacity, $important);
     @include border-r($style, $size, $color, $variant, $opacity, $important);
 }
 
-@mixin border-y($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false) {
+@mixin border-y($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     @include border-t($style, $size, $color, $variant, $opacity, $important);
     @include border-b($style, $size, $color, $variant, $opacity, $important);
 }                    
@@ -956,9 +968,7 @@ $z-indexes: (sub: -1, none: 0, xxs: 1, xs: 10, sm: 50, md: 100, lg: 200, xl: 500
 
 // BORDERS
 
-$border-style: solid !default
-$border-size: 3xs !default
-$border-color: light !default
+$border: (style: solid, size: 3xs, color: light lighter) !default
 
 $border-radiuses: (none: 0, sm: 0.25rem, md: 0.5rem, lg: 0.75rem, pill: 10rem, circle: 50%) !default
 
@@ -975,6 +985,12 @@ $transitions: (slow: .5s, med: .3s, fast: .1s) !default
                     file: '00_Abstracts/functions/_borders.sass',
                     content: `@import '../variables'
 @import 'colors'
+
+@function default-border($setting)
+    @if map-has-key($border, $setting)
+        @return map-get($border, $setting)
+    @else
+        @error "Invalid default border value: '#{$setting}'."
 
 @function border($style, $size, $color, $variant: base, $opacity: 1, $important: false)
     @if($important == true)
@@ -1265,26 +1281,26 @@ $color-pallette: build-pallet()
                     file: "00_Abstracts/mixins/_borders.sass",
                     content: `@import '../functions/borders';
 
-=border($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-t($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border-t($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-top: border($style, $size, $color, $variant, $opacity, $important);
 
-=border-b($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border-b($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-bottom: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-l($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border-l($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-left: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-r($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border-r($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-right: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-x($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border-x($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     @include border-l($style, $size, $color, $variant, $opacity, $important)
     @include border-r($style, $size, $color, $variant, $opacity, $important)
 
-=border-y($style: $border-style, $size: $border-size, $color: $border-color, $variant: base, $opacity: 1, $important: false)
+=border-y($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     @include border-t($style, $size, $color, $variant, $opacity, $important)
     @include border-b($style, $size, $color, $variant, $opacity, $important)
 `
