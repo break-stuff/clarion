@@ -31,7 +31,7 @@ $font-sizes: (
     xxl: 3rem
 ) !default;
 
-$line-height-base: 1.5;
+$line-height-base: 1.5 !default;
 
 // SPACING
 
@@ -52,17 +52,17 @@ $spacing-sizes: (
 // COLORS
 
 $theme-colors: (
-    'primary': #d15f01,
-    'secondary': #30629e,
-    'success': #76b524,
-    'info': #8ebede,
-    'warning': #ffc107,
-    'danger': #ff0000,
-    'light': #c7c7c7,
-    'dark': #494949
+    primary: #d15f01,
+    secondary: #30629e,
+    success: #669c1f, 
+    info: #509BCE, 
+    warning: #B88A00, 
+    danger: #c70000, 
+    light: #ababab,
+    dark: #545454
 ) !default;
 
-$color-variation: 8%;
+$color-variation: 8% !default;
 
 
 // BREAKPOINTS
@@ -834,19 +834,19 @@ $color-pallette: build-pallet();
                     file: "00_Abstracts/mixins/_z-index.scss",
                     content: `@import '../variables';
 
-    @mixin z-index($size, $important: false) {
-        @if map-has-key($z-indexes, $size) {
-            @if($important == true) {
-                z-index: map-get($z-indexes, $size) !important;
-            }
-            @else {
-                z-index: map-get($z-indexes, $size);
-            }
+@mixin z-index($size, $important: false) {
+    @if map-has-key($z-indexes, $size) {
+        @if($important == true) {
+            z-index: map-get($z-indexes, $size) !important;
         }
         @else {
-            @error "Invalid z-index: '#{$size}'.";
+            z-index: map-get($z-indexes, $size);
         }
     }
+    @else {
+        @error "Invalid z-index: '#{$size}'.";
+    }
+}
 `
                 },
                 {
@@ -865,7 +865,7 @@ $color-pallette: build-pallet();
 @import 'mixins/hover';
 @import 'mixins/shadows';
 @import 'mixins/spacing';
-@import 'mixins/transitions';                
+@import 'mixins/transitions';  
 @import 'mixins/z-index';                
 `
                 },
@@ -903,10 +903,10 @@ $font-accent: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica 
 $font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default
 $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default
                 
-$font-size-base: 16px
+$font-size-base: 16px !default
 $font-sizes: ( xxs: 0.75rem, xs: 0.875rem, sm: 1rem, md: 1.25rem, lg: 1.5rem, xl: 2rem, xxl: 3rem) !default
 
-$line-height-base: 1.5
+$line-height-base: 1.5 !default
 
 // SPACING
 
@@ -914,9 +914,9 @@ $spacing-sizes: ( auto: auto, none: 0, 3xs: 0.0625rem, xxs: 0.125rem, xs: 0.25re
 
 // COLORS
 
-$theme-colors: ('primary': #d15f01, 'secondary': #30629e, 'success': #76b524, 'info': #8ebede, 'warning': #ffc107, 'danger': #ff0000, 'light': #c7c7c7, 'dark': #494949) !default
+$theme-colors: (primary: #24598d, secondary: #117d47, success: #76b524, info: #669c1f, warning: #B88A00, danger: #c70000, light: #ababab, dark: #545454) !default
 
-$color-variation: 8%
+$color-variation: 8% !default
 
 
 // BREAKPOINTS
