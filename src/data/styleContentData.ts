@@ -911,13 +911,18 @@ $color-pallette: build-pallet();
     
 html,
 body {
-    font-family: $font-base;
     font-size: $font-size-base;
     line-height: $line-height-base;
+    @include font(base);
+
+    main {
+        max-width: $content-width;
+        @include mx(auto);
+    }
 
     code,
     pre {
-        font-family: $font-monospace;
+        @include font(monospace);
     }
 }                            
 `
@@ -1600,13 +1605,17 @@ $color-pallette: build-pallet()
     
 html,
 body
-    font-family: $font-base;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    font-size: $font-size-base
+    line-height: $line-height-base
+    @include font(base)
+
+    main
+        max-width: $content-width
+        @include mx(auto)
 
     code,
     pre
-        font-family: $font-monospace;
+        @include font(monospace)
 `
                 },
                 {

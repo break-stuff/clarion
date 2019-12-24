@@ -336,23 +336,31 @@ module.exports = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Clarion</title>
-        <link rel="stylesheet" href="%%cssDir%%">
+        <link rel="stylesheet" href="./dist/styles.css">
     </head>
     
     <body>
-        <h1>Congratulations! You did it!</h1>
-        <img src="https://media.giphy.com/media/2xO491sY6f0cM/giphy.gif" alt="tobias huzzah!">
-        <h2>This page is intentionally ugly!</h2>
-        <p>Create some styles and start having fun!</p>
-        <ul>
-            <li>Modify headings by creating a headings file: <code>clarion add element headings</code>.</li>
-            <li>Modify paragraphs by creating a paragraphs file: <code>clarion add element paragraphs</code>.</li>
-        </ul>
-        <h3>Here is some sweet, sweet dummy text to play with. Enjoy!</h3>
-        <p>Bacon ipsum dolor amet ball tip hamburger adipisicing chicken prosciutto non. Shoulder venison quis, flank leberkas turducken dolor tenderloin nostrud. Ham strip steak swine boudin tempor. Shoulder doner mollit brisket. Cillum strip steak picanha kevin et culpa commodo lorem pastrami.</p>
-        <p>Elit est ut prosciutto sausage spare ribs tenderloin pork loin cupidatat brisket dolore pancetta occaecat. Elit meatball leberkas burgdoggen ham hock beef ribs ut bresaola voluptate pork belly eu culpa t-bone esse pork loin. Quis corned beef minim eu velit excepteur. Quis consequat bacon corned beef boudin chicken anim sint labore kielbasa do ipsum sed. Frankfurter laborum turkey do brisket elit exercitation adipisicing doner irure jowl leberkas. Culpa flank kevin drumstick sunt porchetta kielbasa pancetta picanha ea dolor ad. Irure tongue in pork belly alcatra sirloin mollit reprehenderit tri-tip dolore.</p>
-        <p>Id tri-tip meatball pork belly, mollit burgdoggen leberkas cupim. Do nostrud sirloin jerky capicola ham hock deserunt, spare ribs pork belly boudin culpa salami in duis. Biltong ut aute chuck nostrud drumstick short ribs et ham hock in lorem. Prosciutto exercitation salami in enim. Laborum shoulder ribeye kielbasa exercitation bacon officia ut alcatra rump pork turkey. Excepteur ut voluptate, qui labore est pork chop pastrami hamburger cupim laborum doner shank.</p>
-        <script src="%%jsDir%%"></script>
+        <main>
+            <h1>Congratulations! You did it!</h1>
+            <img src="https://media.giphy.com/media/2xO491sY6f0cM/giphy.gif" alt="tobias huzzah!">
+            <h2>This page is intentionally ugly!</h2>
+            <p><i>Create some styles and start having fun!</i></p>
+            <ul>
+                <li>Modify headings by creating a headings file: <br>
+                    <b><code>clarion add element headings</code></b>
+                </li>
+                <li>Modify paragraphs by creating a paragraphs file: <br>
+                    <b><code>clarion add element paragraphs</code></b>
+                </li>
+            </ul>
+            <h2>Here is some sweet, sweet dummy text to play with</h2>
+            <p>Bacon ipsum dolor amet ball tip hamburger adipisicing chicken prosciutto non. Shoulder venison quis, flank leberkas turducken dolor tenderloin nostrud. Ham strip steak swine boudin tempor. Shoulder doner mollit brisket. Cillum strip steak picanha kevin et culpa commodo lorem pastrami.</p>
+            <h3>Bacon ipsum</h3>
+            <p>Elit est ut prosciutto sausage spare ribs tenderloin pork loin cupidatat brisket dolore pancetta occaecat. Elit meatball leberkas burgdoggen ham hock beef ribs ut bresaola voluptate pork belly eu culpa t-bone esse pork loin. Quis corned beef minim eu velit excepteur. Quis consequat bacon corned beef boudin chicken anim sint labore kielbasa do ipsum sed. Frankfurter laborum turkey do brisket elit exercitation adipisicing doner irure jowl leberkas. Culpa flank kevin drumstick sunt porchetta kielbasa pancetta picanha ea dolor ad. Irure tongue in pork belly alcatra sirloin mollit reprehenderit tri-tip dolore.</p>
+            <h3>Tri-tip Meatball Pork Belly</h3>
+            <p>Id tri-tip meatball pork belly, mollit burgdoggen leberkas cupim. Do nostrud sirloin jerky capicola ham hock deserunt, spare ribs pork belly boudin culpa salami in duis. Biltong ut aute chuck nostrud drumstick short ribs et ham hock in lorem. Prosciutto exercitation salami in enim. Laborum shoulder ribeye kielbasa exercitation bacon officia ut alcatra rump pork turkey. Excepteur ut voluptate, qui labore est pork chop pastrami hamburger cupim laborum doner shank.</p>
+        </main>
+        <script src="./dist/scripts.js"></script>
     </body>
     
 </html>`
