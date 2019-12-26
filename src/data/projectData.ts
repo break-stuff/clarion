@@ -129,7 +129,8 @@ export var projectData: IProjectData = {
             "grunt-postcss",
             "grunt-contrib-watch",
             "grunt-contrib-connect",
-            "cross-env"
+            "cross-env",
+            "node-sass"
         ],
         lessDependencies: [
             'grunt-contrib-less'
@@ -141,48 +142,62 @@ export var projectData: IProjectData = {
             "dev": "cross-env NODE_ENV=development grunt dev",
             "build": "cross-env NODE_ENV=production grunt build"
         },
-        configContents: `
-module.exports = function (grunt) {
+        configContents: `const sass = require("node-sass");
+
+module.exports = function(grunt) {
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        %%styleFormat%%: {
+        pkg: grunt.file.readJSON("package.json"),
+        sass: {
+            options: {
+                implementation: sass,
+                sourceMap: true
+            },
             dist: {
                 files: {
-                    'dist/styles.css': 'src/%%styleFormat%%/styles.%%extension%%'
+                    "dist/styles.css": "src/scss/styles.scss"
                 }
             }
         },
         watch: {
             css: {
-                files: '**/*.%%extension%%',
-                tasks: [
-                    '%%styleFormat%%'
-                ]
+                files: "**/*.scss",
+                tasks: ["sass", "postcss"],
+                options: {
+                    livereload: true
+                }
             }
         },
         postcss: {
             options: {
                 map: true,
                 processors: [
-                    require('autoprefixer')(),
-                    require('cssnano')(),
+                    require("autoprefixer")(), 
+                    require("cssnano")()
                 ]
             },
             dist: {
-                src: 'css/*.css'
+                src: "dist/*.css"
             }
         },
         connect: {
-            uses_defaults: {}
+            server: {
+                options: {
+                    port: 8000,
+                    hostname: "*",
+                    open: true,
+                    onCreateServer: function(server, connect, options) {}
+                }
+            }
         }
     });
-    grunt.loadNpmTasks('grunt-%%styleFormat%%');
-    grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('dev', ['%%styleFormat%%', 'connect', 'watch']);
-    grunt.registerTask('build', ['%%styleFormat%%']);
-}`
+    grunt.loadNpmTasks("grunt-sass");
+    grunt.loadNpmTasks("grunt-postcss");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-contrib-connect");
+    grunt.registerTask("dev", ["sass", "postcss", "connect", "watch"]);
+    grunt.registerTask("build", ["sass", "postcss"]);
+};
+`
     },
     gulp: {
         configFile: 'gulpfile.js',

@@ -924,7 +924,7 @@ body {
 `
             },
             {
-                file: "01_Base/_index.scss",
+                file: "01_Base/index.scss",
                 content: `@import 'base';`
             }
         ]

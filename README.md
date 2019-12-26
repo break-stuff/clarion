@@ -165,6 +165,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.8.1 - Fix Grunt build
+
 3.8.0 - Miscellaneous bug fixes and added mixins such as: `z-index` mixin, updated default color pallet for accessibility, `$content-width` variable, font families variables are now a map and use the `font` mixin, media queries now use `rem`s instead of `px`s, and spacing mixins now follow standard CSS patterns.
 
 3.7.1 - Fixed bug in `Pow` function for some bundlers/task runners for decimals.
