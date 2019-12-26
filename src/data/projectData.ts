@@ -346,11 +346,11 @@ module.exports = {
             <h2>This page is intentionally ugly!</h2>
             <p><i>Create some styles and start having fun!</i></p>
             <ul>
-                <li>Modify headings by creating a headings file: <br>
+                <li>Modify headings by creating a <i>headings</i> file: <br>
                     <b><code>clarion add element headings</code></b>
                 </li>
-                <li>Modify paragraphs by creating a paragraphs file: <br>
-                    <b><code>clarion add element paragraphs</code></b>
+                <li>Modify lists by creating a <i>lists</i> file: <br>
+                    <b><code>clarion add element lists</code></b>
                 </li>
             </ul>
             <h2>Here is some sweet, sweet dummy text to play with</h2>
