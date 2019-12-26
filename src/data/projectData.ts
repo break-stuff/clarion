@@ -336,7 +336,7 @@ module.exports = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Clarion</title>
-        <link rel="stylesheet" href="./dist/styles.css">
+        <link rel="stylesheet" href="%%cssDir%%">
     </head>
     
     <body>
@@ -360,7 +360,7 @@ module.exports = {
             <h3>Tri-tip Meatball Pork Belly</h3>
             <p>Id tri-tip meatball pork belly, mollit burgdoggen leberkas cupim. Do nostrud sirloin jerky capicola ham hock deserunt, spare ribs pork belly boudin culpa salami in duis. Biltong ut aute chuck nostrud drumstick short ribs et ham hock in lorem. Prosciutto exercitation salami in enim. Laborum shoulder ribeye kielbasa exercitation bacon officia ut alcatra rump pork turkey. Excepteur ut voluptate, qui labore est pork chop pastrami hamburger cupim laborum doner shank.</p>
         </main>
-        <script src="./dist/scripts.js"></script>
+        <script src="%%jsDir%%"></script>
     </body>
     
 </html>`
