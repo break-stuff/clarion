@@ -1,20 +1,20 @@
 export interface IStyleContent {
-        file: string;
-        content: string;
-    }
-    
-    export interface IStyleList {
-        format: string;
-        styles: IStyleContent[];
-    }
-    
-    export const styleContent: IStyleList[] = [
-        {
-            format: "scss",
-            styles: [
-                {
-                    file: "00_Abstracts/_variables.scss",
-                    content: `// CONTAINERS
+    file: string;
+    content: string;
+}
+
+export interface IStyleList {
+    format: string;
+    styles: IStyleContent[];
+}
+
+export const styleContent: IStyleList[] = [
+    {
+        format: "scss",
+        styles: [
+            {
+                file: "00_Abstracts/_variables.scss",
+                content: `// CONTAINERS
 $content-width: 600px !default;                    
 
 //   FONTS
@@ -136,10 +136,10 @@ $transitions: (
     fast: .1s
 ) !default;
 `
-                },
-                {
-                    file: '00_Abstracts/functions/_borders.scss',
-                    content: `@import '../variables';
+            },
+            {
+                file: '00_Abstracts/functions/_borders.scss',
+                content: `@import '../variables';
 @import 'colors';
 
 @function default-border($setting) {
@@ -152,17 +152,17 @@ $transitions: (
 }
 
 @function border($style, $size, $color, $variant: base, $opacity: 1, $important: false) {
-    @if($important == true) {
+    @if ($important == true) {
         @return $style spacing($size) split-color-list($color, $variant, $opacity) !important;
     } @else {
         @return $style spacing($size) split-color-list($color, $variant, $opacity);
     }
 }
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_colors.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/functions/_colors.scss",
+                content: `@import '../variables';
 @import 'color-contrast';
 
 @function build-pallet() {
@@ -203,7 +203,7 @@ $color-pallette: build-pallet();
 
     $name: $name + unquote("");
 
-    @if(type-of($variant) == 'number') {
+    @if (type-of($variant) == 'number') {
         $opacity: $variant;
         $variant: 'base';
     }
@@ -254,12 +254,12 @@ $color-pallette: build-pallet();
 
 // Used for splitting up color blocks - ex: "primary dark 0.75"
 @function split-color-list($color, $variant: base, $opacity: 1) {
-    @if(length($color) > 1) {
+    @if (length($color) > 1) {
         $g-color: nth($color, 1);
         $g-variant: nth($color, 2);
         $g-opacity: 1;
 
-        @if(length($color) > 2) {
+        @if (length($color) > 2) {
             $g-opacity: nth($color, 3);
         }
 
@@ -279,13 +279,13 @@ $color-pallette: build-pallet();
     $prefix: "";
 
     // This enables negative values to be used.
-    @if(str-contains($name, "-")) {
+    @if (str-contains($name, "-")) {
         $prefix: "-";
         $name: str-replace($name, "-", "");
     }
 
     @if map-has-key($spacing-sizes, $name) {
-        @if($important == true) {
+        @if ($important == true) {
             @return unquote($prefix + map-get($spacing-sizes, $name)) !important;
         } @else {
             @return unquote($prefix + map-get($spacing-sizes, $name));
@@ -296,10 +296,10 @@ $color-pallette: build-pallet();
     }
 }    
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_color-contrast.scss",
-                    content: `@import 'math';
+            },
+            {
+                file: "00_Abstracts/functions/_color-contrast.scss",
+                content: `@import 'math';
     
 /*
     Adopted with gratitude from w3.org:
@@ -342,10 +342,10 @@ $color-pallette: build-pallet();
     @return black;
 }                    
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_math.scss",
-                    content: `@function pow($base, $exponent, $precision: 12) {
+            },
+            {
+                file: "00_Abstracts/functions/_math.scss",
+                content: `@function pow($base, $exponent, $precision: 12) {
     @if (floor($exponent) !=$exponent) {
         $precision2: pow(10, $precision);
         $exponent: round($exponent * $precision2);
@@ -390,14 +390,14 @@ $color-pallette: build-pallet();
     @return $x;
 }              
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_strings.scss",
-                    content: `@function str-replace($string, $search, $replace: '') {
+            },
+            {
+                file: "00_Abstracts/functions/_strings.scss",
+                content: `@function str-replace($string, $search, $replace: '') {
     $index: str-index($string, $search);
 
     @if $index {
-        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
     }
 
     @return $string;
@@ -411,10 +411,10 @@ $color-pallette: build-pallet();
     @return str-index(quote($string), $search) != null;
 }
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_z-index.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/functions/_z-index.scss",
+                content: `@import '../variables';
     
 @function z($name) {
     @if map-has-key($z-indexes, $name) {
@@ -425,10 +425,10 @@ $color-pallette: build-pallet();
     }
 }
 `
-                },
-                {
-                    file: '00_Abstracts/mixins/_borders.scss',
-                    content: `@import '../functions/borders';
+            },
+            {
+                file: '00_Abstracts/mixins/_borders.scss',
+                content: `@import '../functions/borders';
 
 @mixin border($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false) {
     border: border($style, $size, $color, $variant, $opacity, $important);
@@ -460,10 +460,10 @@ $color-pallette: build-pallet();
     @include border-b($style, $size, $color, $variant, $opacity, $important);
 }                    
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_border-radius.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_border-radius.scss",
+                content: `@import '../variables';
 
 @mixin radius($size, $important: false) {
     @include radius-t($size, $important);
@@ -492,7 +492,7 @@ $color-pallette: build-pallet();
 
 @mixin radius-tl($size, $important: false) {
     @if map-has-key($border-radiuses, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             border-top-left-radius: map-get($border-radiuses, $size) !important;
         } @else {
             border-top-left-radius: map-get($border-radiuses, $size);
@@ -505,7 +505,7 @@ $color-pallette: build-pallet();
 
 @mixin radius-tr($size, $important: false) {
     @if map-has-key($border-radiuses, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             border-top-right-radius: map-get($border-radiuses, $size) !important;
         } @else {
             border-top-right-radius: map-get($border-radiuses, $size);
@@ -518,7 +518,7 @@ $color-pallette: build-pallet();
 
 @mixin radius-bl($size, $important: false) {
     @if map-has-key($border-radiuses, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             border-bottom-left-radius: map-get($border-radiuses, $size) !important;
         } @else {
             border-bottom-left-radius: map-get($border-radiuses, $size);
@@ -531,7 +531,7 @@ $color-pallette: build-pallet();
 
 @mixin radius-br($size, $important: false) {
     @if map-has-key($border-radiuses, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             border-bottom-right-radius: map-get($border-radiuses, $size) !important;
         } @else {
             border-bottom-right-radius: map-get($border-radiuses, $size);
@@ -542,10 +542,10 @@ $color-pallette: build-pallet();
     }
 }    
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_breakpoints.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_breakpoints.scss",
+                content: `@import '../variables';
     
 /*
     BREAKPOINT ABOVE
@@ -615,10 +615,10 @@ $color-pallette: build-pallet();
     }
 }
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_display.scss",
-                    content: `@mixin full-width($important: false) {
+            },
+            {
+                file: "00_Abstracts/mixins/_display.scss",
+                content: `@mixin full-width($important: false) {
     @if ($important == true) {
         position: relative !important;
         left: 50% !important;
@@ -659,13 +659,8 @@ $color-pallette: build-pallet();
 }
 
 @mixin full-screen($important: false) {
-    @if ($important == true) {
-        @include full-width(true);
-        @include full-height(true);
-    } @else {
-        @include full-width;
-        @include full-height;
-    }
+    @include full-width($important);
+    @include full-height($important);
 }
 
 @mixin screen-reader-only {
@@ -680,14 +675,14 @@ $color-pallette: build-pallet();
     border: 0 !important;
 }  
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_font-sizes.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_font-sizes.scss",
+                content: `@import '../variables';
 
 @mixin font-size($size, $important: false) {
     @if map-has-key($font-sizes, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             font-size: map-get($font-sizes, $size) !important;
         } @else {
             font-size: map-get($font-sizes, $size);
@@ -698,14 +693,14 @@ $color-pallette: build-pallet();
     }
 }    
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_font.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_font.scss",
+                content: `@import '../variables';
 
 @mixin font($font: base, $important: false) {
     @if map-has-key($fonts, $font) {
-        @if($important == true) {
+        @if ($important == true) {
             font-family: unquote(map-get($fonts, $font)) !important;
         } @else {
             font-family: unquote(map-get($fonts, $font));
@@ -716,13 +711,13 @@ $color-pallette: build-pallet();
     }
 } 
                     `
-                },
-                {
-                    file: "00_Abstracts/mixins/_colors.scss",
-                    content: `@import '../functions/colors';
+            },
+            {
+                file: "00_Abstracts/mixins/_colors.scss",
+                content: `@import '../functions/colors';
 
 @mixin bg-color($name: 'primary', $variant: 'base', $opacity: 1, $important: false) {
-    @if($important) {
+    @if ($important) {
         color: text-color($name, $variant, $opacity) !important;
         background-color: color($name, $variant, $opacity) !important;
     }
@@ -733,10 +728,10 @@ $color-pallette: build-pallet();
     }
 }
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_hover.scss",
-                    content: `@mixin hover {
+            },
+            {
+                file: "00_Abstracts/mixins/_hover.scss",
+                content: `@mixin hover {
     &:hover {
         @content;
     }
@@ -757,10 +752,10 @@ $color-pallette: build-pallet();
     }
 }
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_spacing.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_spacing.scss",
+                content: `@import '../variables';
 @import '../functions/spacing';
 
 @mixin m($top, $right: $top, $bottom: $top, $left: $right, $important: false) {
@@ -829,14 +824,14 @@ $color-pallette: build-pallet();
     padding-bottom: spacing($size, $important);
 }
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_shadows.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_shadows.scss",
+                content: `@import '../variables';
 
 @mixin shadow($size: sm, $important: false) {
     @if map-has-key($shadows, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             box-shadow: unquote(map-get($shadows, $size)) !important;
         } @else {
             box-shadow: unquote(map-get($shadows, $size));
@@ -847,14 +842,14 @@ $color-pallette: build-pallet();
     }
 }    
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_transitions.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_transitions.scss",
+                content: `@import '../variables';
 
 @mixin transition-ease-in-out($speed: fast, $important: false) {
     @if map-has-key($transitions, $speed) {
-        @if($important == true) {
+        @if ($important == true) {
             transition: all map-get($transitions, $speed) ease-in-out !important;
         } @else {
             transition: all map-get($transitions, $speed) ease-in-out;
@@ -865,14 +860,14 @@ $color-pallette: build-pallet();
     }
 }    
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_z-index.scss",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_z-index.scss",
+                content: `@import '../variables';
 
 @mixin z-index($size, $important: false) {
     @if map-has-key($z-indexes, $size) {
-        @if($important == true) {
+        @if ($important == true) {
             z-index: map-get($z-indexes, $size) !important;
         }
         @else {
@@ -884,10 +879,10 @@ $color-pallette: build-pallet();
     }
 }
 `
-                },
-                {
-                    file: "00_Abstracts/index.scss",
-                    content: `@import 'variables';
+            },
+            {
+                file: "00_Abstracts/index.scss",
+                content: `@import 'variables';
 @import 'functions/colors';
 @import 'functions/math';
 @import 'functions/strings';
@@ -897,6 +892,7 @@ $color-pallette: build-pallet();
 @import 'mixins/breakpoints';
 @import 'mixins/colors';
 @import 'mixins/display';
+@import 'mixins/font';
 @import 'mixins/font-sizes';
 @import 'mixins/hover';
 @import 'mixins/shadows';
@@ -904,10 +900,10 @@ $color-pallette: build-pallet();
 @import 'mixins/transitions';  
 @import 'mixins/z-index';                
 `
-                },
-                {
-                    file: "01_Base/_base.scss",
-                    content: `@import '../00_Abstracts/index';
+            },
+            {
+                file: "01_Base/_base.scss",
+                content: `@import '../00_Abstracts/index';
     
 html,
 body {
@@ -926,19 +922,19 @@ body {
     }
 }                            
 `
-                },
-                {
-                    file: "01_Base/_index.scss",
-                    content: `@import 'base';`
-                }
-            ]
-        },
-        {
-            format: "sass",
-            styles: [
-                {
-                    file: "00_Abstracts/_variables.sass",
-                    content: `// CONTAINERS
+            },
+            {
+                file: "01_Base/_index.scss",
+                content: `@import 'base';`
+            }
+        ]
+    },
+    {
+        format: "sass",
+        styles: [
+            {
+                file: "00_Abstracts/_variables.sass",
+                content: `// CONTAINERS
 
 $content-width: 600px !default
 
@@ -985,10 +981,10 @@ $shadows: (none: none, inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)", outline: 
 
 $transitions: (slow: .5s, med: .3s, fast: .1s) !default
 `
-                },
-                {
-                    file: '00_Abstracts/functions/_borders.sass',
-                    content: `@import '../variables'
+            },
+            {
+                file: '00_Abstracts/functions/_borders.sass',
+                content: `@import '../variables'
 @import 'colors'
 
 @function default-border($setting)
@@ -998,15 +994,15 @@ $transitions: (slow: .5s, med: .3s, fast: .1s) !default
         @error "Invalid default border value: '#{$setting}'."
 
 @function border($style, $size, $color, $variant: base, $opacity: 1, $important: false)
-    @if($important == true)
+    @if ($important == true)
         @return $style spacing($size) split-color-list($color, $variant, $opacity) !important
     @else
         @return $style spacing($size) split-color-list($color, $variant, $opacity)
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_colors.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/functions/_colors.sass",
+                content: `@import '../variables'
     
 @function build-pallet() 
     $result: ()
@@ -1039,7 +1035,7 @@ $color-pallette: build-pallet()
 
     $name: $name + unquote("")
 
-    @if(type-of($variant) == 'number')
+    @if (type-of($variant) == 'number')
         $opacity: $variant
         $variant: 'base'
 
@@ -1081,10 +1077,10 @@ $color-pallette: build-pallet()
 
     @return get-contrast-color($color)
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_color-contrast.sass",
-                    content: `@import 'math'
+            },
+            {
+                file: "00_Abstracts/functions/_color-contrast.sass",
+                content: `@import 'math'
     
 /*
     Adopted with gratitude from w3.org:
@@ -1123,22 +1119,22 @@ $color-pallette: build-pallet()
 
 // Used for splitting up color blocks - ex: "primary dark 0.75"
 @function split-color-list($color, $variant: base, $opacity: 1)
-    @if(length($color) > 1)
+    @if (length($color) > 1)
         $g-color: nth($color, 1)
         $g-variant: nth($color, 2)
         $g-opacity: 1
 
-        @if(length($color) > 2)
+        @if (length($color) > 2)
             $g-opacity: nth($color, 3)
 
         @return color($g-color, $g-variant, $g-opacity)
     @else
         @return color($color, $variant, $opacity);
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_math.sass",
-                    content: `@function pow($base, $exponent, $precision: 12)
+            },
+            {
+                file: "00_Abstracts/functions/_math.sass",
+                content: `@function pow($base, $exponent, $precision: 12)
     @if (floor($exponent) !=$exponent)
         $precision2: pow(10, $precision)
         $exponent: round($exponent * $precision2)
@@ -1170,14 +1166,14 @@ $color-pallette: build-pallet()
 
     @return $x
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_strings.sass",
-                    content: `@function str-replace($string, $search, $replace: '')
+            },
+            {
+                file: "00_Abstracts/functions/_strings.sass",
+                content: `@function str-replace($string, $search, $replace: '')
     $index: str-index($string, $search)
 
     @if $index
-        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
 
     @return $string;
 
@@ -1187,32 +1183,32 @@ $color-pallette: build-pallet()
 @function str-contains($string, $search)
     @return str-index(quote($string), $search) != null
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_spacing.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/functions/_spacing.sass",
+                content: `@import '../variables'
 @import 'strings'
 
-@function spacing($name)
+@function spacing($name, $important: flase)
     $prefix: ""
 
     // This enables negative values to be used.
-    @if(str-contains($name, "-"))
+    @if (str-contains($name, "-"))
         $prefix: "-";
         $name: str-replace($name, "-", "")
 
     @if map-has-key($spacing-sizes, $name)
-        @if($important == true)
+        @if ($important == true)
             @return unquote($prefix + map-get($spacing-sizes, $name)) !important
         @else
             @return unquote($prefix + map-get($spacing-sizes, $name))
     @else
         @error "Invalid spacing size: '#{$name}'."
 `
-                },
-                {
-                    file: "00_Abstracts/functions/_z-index.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/functions/_z-index.sass",
+                content: `@import '../variables'
     
 @function z($name) 
     @if map-has-key($z-indexes, $name) 
@@ -1220,105 +1216,105 @@ $color-pallette: build-pallet()
     @else 
         @error "Invalid 'z' value: '#{$name}'."
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_border-radius.sass",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_border-radius.sass",
+                content: `@import '../variables';
 
-=radius($size, $important: false)
+@mixin radius($size, $important: false)
     @include radius-t($size, $important)
     @include radius-b($size, $important)
 
-=radius-t($size, $important: false) 
+@mixin radius-t($size, $important: false) 
     @include radius-tl($size, $important)
     @include radius-tr($size, $important)
 
-=radius-b($size, $important: false)
+@mixin radius-b($size, $important: false)
     @include radius-bl($size, $important)
     @include radius-br($size, $important)
 
-=radius-l($size, $important: false)
+@mixin radius-l($size, $important: false)
     @include radius-tl($size, $important)
     @include radius-bl($size, $important)
 
-=radius-r($size, $important: false)
+@mixin radius-r($size, $important: false)
     @include radius-tr($size, $important)
     @include radius-br($size, $important)
 
-=radius-tl($size, $important: false)
+@mixin radius-tl($size, $important: false)
     @if map-has-key($border-radiuses, $size)
-        @if($important == true)
+        @if ($important == true)
             border-top-left-radius: map-get($border-radiuses, $size) !important
         @else
             border-top-left-radius: map-get($border-radiuses, $size)
     @else
         @error "Invalid border-radius size: '#{$size}'."
 
-=radius-tr($size, $important: false)
+@mixin radius-tr($size, $important: false)
     @if map-has-key($border-radiuses, $size)
-        @if($important == true)
+        @if ($important == true)
             border-top-right-radius: map-get($border-radiuses, $size) !important
         @else
             border-top-right-radius: map-get($border-radiuses, $size)
     @else
         @error "Invalid border-radius size: '#{$size}'."
 
-=radius-bl($size, $important: false)
+@mixin radius-bl($size, $important: false)
     @if map-has-key($border-radiuses, $size)
-        @if($important == true)
+        @if ($important == true)
             border-bottom-left-radius: map-get($border-radiuses, $size) !important
         @else
             border-bottom-left-radius: map-get($border-radiuses, $size)
     @else
         @error "Invalid border-radius size: '#{$size}'."
 
-=radius-br($size, $important: false)
+@mixin radius-br($size, $important: false)
     @if map-has-key($border-radiuses, $size)
-        @if($important == true)
+        @if ($important == true)
             border-bottom-right-radius: map-get($border-radiuses, $size) !important
         @else
             border-bottom-right-radius: map-get($border-radiuses, $size)
     @else
         @error "Invalid border-radius size: '#{$size}'."
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_borders.sass",
-                    content: `@import '../functions/borders';
+            },
+            {
+                file: "00_Abstracts/mixins/_borders.sass",
+                content: `@import '../functions/borders';
 
-=border($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-t($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border-t($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-top: border($style, $size, $color, $variant, $opacity, $important);
 
-=border-b($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border-b($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-bottom: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-l($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border-l($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-left: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-r($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border-r($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     border-right: border($style, $size, $color, $variant, $opacity, $important)
 
-=border-x($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border-x($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     @include border-l($style, $size, $color, $variant, $opacity, $important)
     @include border-r($style, $size, $color, $variant, $opacity, $important)
 
-=border-y($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
+@mixin border-y($style: default-border(style), $size: default-border(size), $color: default-border(color), $variant: base, $opacity: 1, $important: false)
     @include border-t($style, $size, $color, $variant, $opacity, $important)
     @include border-b($style, $size, $color, $variant, $opacity, $important)
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_breakpoints.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/mixins/_breakpoints.sass",
+                content: `@import '../variables'
     
 //    BREAKPOINT ABOVE
 //
 //    Usage:
-//        +breakpoint-above(sm) 
-=breakpoint-above($breakpoint) 
+//        @include breakpoint-above(sm) 
+@mixin breakpoint-above($breakpoint) 
     @if map-has-key($breakpoints, $breakpoint) 
         $breakpoint-value: map-get($breakpoints, $breakpoint)
 
@@ -1331,8 +1327,8 @@ $color-pallette: build-pallet()
 //    BREAKPOINT BELOW
 //
 //    Usage:
-//        +breakpoint-below(sm) 
-=breakpoint-below($breakpoint) 
+//        @include breakpoint-below(sm) 
+@mixin breakpoint-below($breakpoint) 
     @if map-has-key($breakpoints, $breakpoint) 
         $breakpoint-value: map-get($breakpoints, $breakpoint)
 
@@ -1345,8 +1341,8 @@ $color-pallette: build-pallet()
 //    BREAKPOINT BETWEEN
 //
 //    Usage:
-//        +breakpoint-between(sm, md) 
-=breakpoint-between($lower, $upper) 
+//        @include breakpoint-between(sm, md) 
+@mixin breakpoint-between($lower, $upper) 
     @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) 
         $lower-breakpoint: map-get($breakpoints, $lower)
         $upper-breakpoint: map-get($breakpoints, $upper)
@@ -1360,10 +1356,10 @@ $color-pallette: build-pallet()
     @if (map-has-key($breakpoints, $upper)==false) 
         @warn "Your upper breakpoint was invalid: '#{$upper}'."                
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_display.sass",
-                    content: `+full-width($important: false)
+            },
+            {
+                file: "00_Abstracts/mixins/_display.sass",
+                content: `@mixin full-width($important: false)
     @if ($important == true)
         position: relative !important
         left: 50% !important
@@ -1381,7 +1377,7 @@ $color-pallette: build-pallet()
         margin-right: -50vw
         max-width: 100vw
 
-+full-height($important: false)
+@mixin full-height($important: false)
     @if ($important == true)
         position: fixed !important
         top: 50% !important
@@ -1399,15 +1395,11 @@ $color-pallette: build-pallet()
         margin-bottom: -50vh
         max-height: 100vh
 
-+full-screen($important: false) {
-    @if ($important == true)
-        =full-width(true)
-        =full-height(true)
-    @else
-        =full-width
-        =full-height
+@mixin full-screen($important: false)
+    @include full-width(true)
+    @include full-height(true)
 
-+screen-reader-only
+@mixin screen-reader-only
     position: absolute !important
     width: 1px !important
     height: 1px !important
@@ -1418,41 +1410,41 @@ $color-pallette: build-pallet()
     white-space: nowrap !important
     border: 0 !important
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_font-sizes.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/mixins/_font-sizes.sass",
+                content: `@import '../variables'
         
-=font-size($size) 
+@mixin font-size($size) 
     @if map-has-key($font-sizes, $size) 
-        @if($important == true)
+        @if ($important == true)
             font-size: map-get($font-sizes, $size) !important
         @else
             font-size: map-get($font-sizes, $size)
     @else 
         @error "Invalid font size: '#{$size}'."
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_font.sass",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_font.sass",
+                content: `@import '../variables';
 
-=font($font: base, $important: false)
+@mixin font($font: base, $important: false)
     @if map-has-key($fonts, $font)
-        @if($important == true)
+        @if ($important == true)
             font-family: unquote(map-get($fonts, $font)) !important;
         @else
             font-family: unquote(map-get($fonts, $font));
     @else 
         @error "Invalid shadow size: '#{$font}'.";
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_colors.sass",
-                    content: `@import '../functions/colors';
+            },
+            {
+                file: "00_Abstracts/mixins/_colors.sass",
+                content: `@import '../functions/colors';
 
-=bg-color($name: 'primary', $variant: 'base', $opacity: 1, $important: false)
-    @if($important)
+@mixin bg-color($name: 'primary', $variant: 'base', $opacity: 1, $important: false)
+    @if ($important)
         color: text-color($name, $variant, $opacity) !important
         background-color: color($name, $variant, $opacity) !important
 
@@ -1460,128 +1452,128 @@ $color-pallette: build-pallet()
         color: text-color($name, $variant, $opacity);
         background-color: color($name, $variant, $opacity);
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_hover.sass",
-                    content: `=hover 
+            },
+            {
+                file: "00_Abstracts/mixins/_hover.sass",
+                content: `@mixin hover 
     &:hover 
         @content
 
-=hover-focus 
+@mixin hover-focus 
     &:hover,
     &:focus 
         @content
 
-=hover-focus-active 
+@mixin hover-focus-active 
     &:hover,
     &:focus,
     &:active 
         @content
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_spacing.sass",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_spacing.sass",
+                content: `@import '../variables';
 @import '../functions/spacing';
 
-=m($top, $right: $top, $bottom: $top, $left: $right, $important: false)
+@mixin m($top, $right: $top, $bottom: $top, $left: $right, $important: false)
     @include mt($top, $important)
     @include mb($bottom, $important)
     @include ml($left, $important)
     @include mr($right, $important)
 
-=mx($left, $right: $left, $important: false)
+@mixin mx($left, $right: $left, $important: false)
     @include ml($left, $important)
     @include mr($right, $important)
 
-=my($top, $bottom: $top, $important: false)
+@mixin my($top, $bottom: $top, $important: false)
     @include mt($top, $important)
     @include mb($bottom, $important)
 
-=ml($size, $important: false)
+@mixin ml($size, $important: false)
     margin-left: spacing($size)
 
-=mt($size, $important: false)
+@mixin mt($size, $important: false)
     margin-top: spacing($size)
 
-=mr($size, $important: false)
+@mixin mr($size, $important: false)
     margin-right: spacing($size)
 
-=mb($size, $important: false)
+@mixin mb($size, $important: false)
     margin-bottom: spacing($size)
 
-=p($top, $right: $top, $bottom: $top, $left: $right, $important: false)
+@mixin p($top, $right: $top, $bottom: $top, $left: $right, $important: false)
     @include pt($top, $important)
     @include pb($bottom, $important)
     @include pl($left, $important)
     @include pr($right, $important)
 
-=px($left, $right: $left, $important: false)
+@mixin px($left, $right: $left, $important: false)
     @include pl($left, $important)
     @include pr($right, $important)
 
-=py($top, $bottom: $top, $important: false)
+@mixin py($top, $bottom: $top, $important: false)
     @include pt($top, $important)
     @include pb($bottom, $important)
 
-=pl($size, $important: false)
+@mixin pl($size, $important: false)
     padding-left: spacing($size, $important)
 
-=pt($size, $important: false)
+@mixin pt($size, $important: false)
     padding-top: spacing($size, $important)
 
-=pr($size, $important: false)
+@mixin pr($size, $important: false)
     padding-right: spacing($size, $important)
 
-=pb($size, $important: false)
+@mixin pb($size, $important: false)
     padding-bottom: spacing($size, $important)
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_shadows.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/mixins/_shadows.sass",
+                content: `@import '../variables'
     
-=shadow($size: sm) 
+@mixin shadow($size: sm) 
     @if map-has-key($shadows, $size)
-        @if($important == true)
+        @if ($important == true)
             box-shadow: unquote(map-get($shadows, $size)) !important
         @else
             box-shadow: unquote(map-get($shadows, $size))
     @else
         @error "Invalid shadow size: '#{$size}'."
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_transitions.sass",
-                    content: `@import '../variables'
+            },
+            {
+                file: "00_Abstracts/mixins/_transitions.sass",
+                content: `@import '../variables'
     
-=transition-ease-in-out($speed: fast) 
+@mixin transition-ease-in-out($speed: fast) 
     @if map-has-key($transitions, $speed) 
-        @if($important == true)
+        @if ($important == true)
             transition: all map-get($transitions, $speed) ease-in-out !important
         @else
             transition: all map-get($transitions, $speed) ease-in-out
     @else 
         @error "Invalid transition speed: '#{$speed}'."
 `
-                },
-                {
-                    file: "00_Abstracts/mixins/_z-index.sass",
-                    content: `@import '../variables';
+            },
+            {
+                file: "00_Abstracts/mixins/_z-index.sass",
+                content: `@import '../variables';
 
-=z-index($size, $important: false)
+@mixin z-index($size, $important: false)
     @if map-has-key($z-indexes, $size)
-        @if($important == true)
+        @if ($important == true)
             z-index: map-get($z-indexes, $size) !important
         @else
             z-index: map-get($z-indexes, $size)
     @else
         @error "Invalid z-index: '#{$size}'."
 `
-                },
-                {
-                    file: "00_Abstracts/index.sass",
-                    content: `@import 'variables'
+            },
+            {
+                file: "00_Abstracts/index.sass",
+                content: `@import 'variables'
 @import 'functions/colors'
 @import 'functions/math'
 @import 'functions/strings'
@@ -1591,6 +1583,7 @@ $color-pallette: build-pallet()
 @import 'mixins/breakpoints'
 @import 'mixins/colors'
 @import 'mixins/display'
+@import 'mixins/font'
 @import 'mixins/font-sizes'
 @import 'mixins/hover'
 @import 'mixins/shadows'
@@ -1598,10 +1591,10 @@ $color-pallette: build-pallet()
 @import 'mixins/transitions'
 @import 'mixins/z-index'
 `
-                },
-                {
-                    file: "01_Base/_base.sass",
-                    content: `@import '../00_Abstracts/index';
+            },
+            {
+                file: "01_Base/_base.sass",
+                content: `@import '../00_Abstracts/index';
     
 html,
 body
@@ -1617,16 +1610,15 @@ body
     pre
         @include font(monospace)
 `
-                },
-                {
-                    file: "01_Base/_index.sass",
-                    content: `@import 'base'`
-                }
-            ]
-        },
-        {
-            format: "less",
-            styles: []
-        }
-    ];
-    
+            },
+            {
+                file: "01_Base/_index.sass",
+                content: `@import 'base'`
+            }
+        ]
+    },
+    {
+        format: "less",
+        styles: []
+    }
+];
