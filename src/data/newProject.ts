@@ -48,14 +48,6 @@ export var starterQuestions = {
 	]
 }
 
-
-export const defaultProjectValues: INewProjectInfo = {
-	projectName: '',
-	projectType: 'Starter Project',
-	styleFormat: 'SCSS',
-	pipeline: 'Webpack'
-}
-
 export var newProject = {
 	options: {
 		projectType: {
