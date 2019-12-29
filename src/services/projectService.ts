@@ -17,12 +17,15 @@ export class ProjectDataService implements IProjectDataService {
     _projectTypeData: IProjectTypeData;
 
     constructor(private _pipeline: string, private _styleFormat: string) {
-        this._projectTypeData = this.getProjectTypeData();        
+        this._projectTypeData = this.getProjectTypeData();
     }
 
     getProjectData(projectName: string): IProjectData {
-        if(this._pipeline !== newProject.options.pipeline.parcel) this.createBundleConfigurationFile(projectName);
-        if(this._pipeline !== newProject.options.pipeline.grunt) this.createPostCssConfig(projectName);
+        if (this._pipeline !== newProject.options.pipeline.parcel)
+            this.createBundleConfigurationFile(projectName);
+
+        if (this._pipeline !== newProject.options.pipeline.grunt)
+            this.createPostCssConfig(projectName);
 
         return {
             devDependencies: this.getProjectDependencies(),
@@ -32,8 +35,8 @@ export class ProjectDataService implements IProjectDataService {
 
     getHtmlTemplate(cssPath: string, jsPath: string): string {
         return projectData.indexHtml
-                            .replace(/%%cssDir%%/g, cssPath)
-                            .replace(/%%jsDir%%/g, jsPath);
+            .replace(/%%cssDir%%/g, cssPath)
+            .replace(/%%jsDir%%/g, jsPath);
     }
 
     createBundleConfigurationFile(projectName: string): void {
@@ -43,27 +46,38 @@ export class ProjectDataService implements IProjectDataService {
 
     createPostCssConfig(projectName: string): void {
         let content = 'module.exports = ' + JSON.stringify(projectData.postCssConfig, null, '\t');
-
         this._fileService.saveFile(`./${projectName}/postcss.config.js`, content);
     }
 
     getConfigFileContents(): string {
         let extension = this._fileService.getFileExtension(null).replace('.', '');
         let styleFormat = extension === 'less' ? 'less' : 'sass';
+
+        return this.updateConfigTemplateWithProjectData(extension, styleFormat);
+    }
+
+    updateConfigTemplateWithProjectData(extension: string, styleFormat: string) {
         let contents: string = this._projectTypeData.configContents
-                                                        .replace(/%%styleFormat%%/g, styleFormat)
-                                                        .replace(/%%extension%%/g, extension);
-        
-        if(this._pipeline === 'Grunt') contents.replace(/grunt-less/g, 'grunt-contrib-less');
+            .replace(/%%styleFormat%%/g, styleFormat)
+            .replace(/%%extension%%/g, extension);
+
+        if (this._pipeline === 'Grunt') {
+            if (styleFormat === 'less') {
+                contents = contents.replace(/grunt-less/g, 'grunt-contrib-less');
+            }
+
+            if (styleFormat === 'sass') {
+                contents = 'const sass = require("node-sass");\n' + contents;
+                contents = contents.replace(/sass: {\n/g, 'sass: {\n\t\toptions: {\n\t\t\timplementation: sass,\n\t\t\tsourceMap: true\n\t\t},\n');
+            }
+        }
 
         return contents;
     }
 
     getProjectDependencies(): string[] {
         let dependencies = this._projectTypeData.devDependencies;
-        dependencies = dependencies.concat(this._styleFormat === newProject.options.styleFormat.less ? this._projectTypeData.lessDependencies : this._projectTypeData.sassDependencies);
-
-        return dependencies;
+        return dependencies.concat(this._styleFormat === newProject.options.styleFormat.less ? this._projectTypeData.lessDependencies : this._projectTypeData.sassDependencies);
     }
 
     getProjectTypeData() {

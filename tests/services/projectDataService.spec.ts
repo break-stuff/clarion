@@ -1,102 +1,68 @@
 import { should, expect } from 'chai';
-import program from '../../src/clarion';
-import { IProjectDataService, ProjectDataService } from '../../src/services/projectService';
+import { IProjectTypeData, projectData } from '../../src/data/projectData';
+import { INewProjectInfo, newProject } from "../../src/data/newProject";
+import { IProjectDataService, ProjectDataService } from  '../../src/services/projectService';
 
 describe('Project Data Service', () => {
-    describe('getProjectTypeData()', () => {
-        it('it should return the grunt object', () => {
+    describe('getHtmlTemplate()', () => {
+        it('it should replace template strings with specified file paths', () => {
             // arrange
-            let sut = new ProjectDataService();
-            let gruntConfigFile = 'gruntfile.js';
+            let sut = new ProjectDataService('grunt', 'scss');
 
             // act
-            program.parse(['clarion', 'new', 'Test', '--grunt']);
-            let projectTypeData = sut.getProjectTypeData();
+            let htmlTemplate = sut.getHtmlTemplate('/dist/styles.css', '/dist/scripts.js');
 
             // assert
-            expect(projectTypeData.configFile).to.equal(gruntConfigFile);
+            expect(htmlTemplate.includes('/dist/styles.css')).to.be.true;
+            expect(htmlTemplate.includes('/dist/scripts.js')).to.be.true;
+        });
+    });
+
+    describe('updateConfigTemplateWithProjectData()', () => {
+        it('it should update Grunt config with "grunt-contrib-less"', () => {
+            // arrange
+            let sut = new ProjectDataService('Grunt', 'less');
+
+            // act
+            let gruntConfig = sut.updateConfigTemplateWithProjectData('less', 'less');
+
+            // assert
+            expect(gruntConfig.includes('grunt-contrib-less')).to.be.true;
+        });
+
+        it('it should import "node-sass" library into Grunt config', () => {
+            // arrange
+            let sut = new ProjectDataService('Grunt', 'sass');
+
+            // act
+            let gruntConfig = sut.updateConfigTemplateWithProjectData('scss', 'sass');
+
+            // assert
+            expect(gruntConfig.includes('const sass = require("node-sass");')).to.be.true;
+        });
+
+        it('it should update Grunt config to look for files in the "SCSS" format', () => {
+            // arrange
+            let sut = new ProjectDataService('Grunt', 'sass');
+
+            // act
+            let gruntConfig = sut.updateConfigTemplateWithProjectData('scss', 'sass');
+
+            // assert
+            expect(gruntConfig.includes('src/scss/styles.scss')).to.be.true;
         });
     });
 
     describe('getProjectDependencies()', () => {
-        it('it should return less dependencies for a Grunt project', () => {
+        it('it should return an array of "sass" dependencies for Grunt', () => {
             // arrange
-            let sut = new ProjectDataService();
-            let gruntLessDependencies = [
-                "autoprefixer",
-                "cssnano",
-                "pixrem",
-                "grunt",
-                "grunt-postcss",
-                "grunt-contrib-watch",
-                "grunt-contrib-connect",
-                "cross-env",
-                'grunt-contrib-less'
-            ];
+            let sut = new ProjectDataService('Grunt', 'SCSS');
 
             // act
-            program.parse(['clarion', 'new', 'Test', '--grunt', '--less']);
-            let projectDependencies = sut.getProjectDependencies();
+            let sassDependencies = sut.getProjectDependencies();
 
             // assert
-            expect(projectDependencies).to.deep.equal(gruntLessDependencies);
-        });
-    });
-
-    describe('getConfigFileContents()', () => {
-        it('it should return grunt config file content for sass project', () => {
-            // arrange
-            let sut = new ProjectDataService();
-            let configContents = `
-module.exports = function (grunt) {
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        sass: {
-            dist: {
-                files: {
-                    'build/styles.css': 'src/sass/styles.sass'
-                }
-            }
-        },
-        watch: {
-            css: {
-                files: '**/*.sass',
-                tasks: [
-                    'sass'
-                ]
-            }
-        },
-        postcss: {
-            options: {
-                map: true,
-                processors: [
-                    require('autoprefixer')(),
-                    require('cssnano')(),
-                    require('pixrem')()
-                ]
-            },
-            dist: {
-                src: 'css/*.css'
-            }
-        },
-        connect: {
-            uses_defaults: {}
-        }
-    });
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('dev', ['sass', 'connect', 'watch']);
-    grunt.registerTask('build', ['sass']);
-}`;
-    
-            // act
-            program.parse(['clarion', 'new', 'Test', '--grunt', '--sass']);
-            let configFile =  sut.getConfigFileContents();
-
-            // assert
-            expect(configFile).to.equal(configContents);
+            expect(sassDependencies.some(x => x === 'grunt-sass')).to.be.true;
         });
     });
 });
