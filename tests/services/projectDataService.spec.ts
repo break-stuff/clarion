@@ -51,6 +51,17 @@ describe('Project Data Service', () => {
             // assert
             expect(gruntConfig.includes('src/scss/styles.scss')).to.be.true;
         });
+
+        it('it should update Webpack config to look for files in the "LESS" format', () => {
+            // arrange
+            let sut = new ProjectDataService('Webpack', 'less');
+
+            // act
+            let webpackConfig = sut.updateConfigTemplateWithProjectData('less', 'less');
+            
+            // assert
+            expect(webpackConfig.includes('.less$')).to.be.true;
+        });
     });
 
     describe('getProjectDependencies()', () => {

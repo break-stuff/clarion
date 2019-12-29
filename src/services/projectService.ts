@@ -67,8 +67,14 @@ export class ProjectDataService implements IProjectDataService {
             }
 
             if (styleFormat === 'sass') {
-                contents = 'const sass = require("node-sass");\n' + contents;
-                contents = contents.replace(/sass: {\n/g, 'sass: {\n\t\toptions: {\n\t\t\timplementation: sass,\n\t\t\tsourceMap: true\n\t\t},\n');
+                contents = 'const sass = require("node-sass");\n\n' + contents;
+                contents = contents.replace(/sass: {\n/g, 'sass: {\n\t\t\toptions: {\n\t\t\t\timplementation: sass,\n\t\t\t\tsourceMap: true\n\t\t\t},\n');
+            }
+        }
+
+        if (this._pipeline === 'Webpack') {
+            if (styleFormat === 'less') {
+                contents = contents.replace('(scss|sass)', 'less');
             }
         }
 
