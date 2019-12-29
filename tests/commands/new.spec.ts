@@ -1,11 +1,21 @@
 import { should, expect } from 'chai';
-import program from '../../src/clarion';
 import { INewProject, NewProject } from '../../src/commands/new';
 
 describe('New Project Services', () => {
-    // describe('', () => {
-    //     it('it should replace the CSS and JS directories with paths to the build directory');
-    // });
+    describe('convertToKebabCase()', () => {
+        it('it should convert string to kebab case', () => {
+            // Arrange
+            let sut = new NewProject();
+            let text = 'MyTestProjectName';
+            let expectedResult = 'my-test-project-name';
+
+            // Act
+            let result = sut.convertToKebabCase(text);
+
+            // Assert
+            expect(result).is.equal(expectedResult);
+        });
+    });
 
     // describe('', ()=> {
 
