@@ -2,13 +2,19 @@
 
 Variables (sometimes called _design tokens_) are one of the core pieces of your project. They help bring consistency and organization to your application. You can find your variables file at the root of the `00_Abstracts` directory. If you have values that you use regularly throughout our site or application, it is highly recommended that you add them here to maximize their reuse and minimize maintenance time.
 
+## Containers
+
+There is currently only 1 container variable and it is `$content-width`. This is the max-width of the main content of your pages. The default is set to `600px` for optimal readability for pages with a lot of text (documentation sites, blogs, etc.), but feel free to tweak this to suit your needs.
+
 ## Fonts
 
-There are 3 default font types set up to start out with (`$font-accent`, `$font-base`, and `$font-monospace`). This should usually be more than enough for a website or application. If you feel like you need more font families in your project than this, feel free to add them, but do so carefully. Having all of those fancy fonts on your site may look nice, but they come at a cost (both for performance and usability).
+There are 3 default font types set up to start out with (`accent`, `base`, and `monospace`). This should usually be more than enough for a website or application. If you feel like you need more font families in your project than this, feel free to add them, but do so carefully. Having all of those fancy fonts on your site may look nice, but they come at a cost (both for performance and usability).
 
 For performance reasons, the default values that have been set for these variables are system fonts. For further reading on this, check out Marcin Wichary's excellent [Smashing Magazine article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
-## Font Types
+For more information on how to use your fonts, check out the documentation on the [font mixin](/framework/documentation/mixins/font.html).
+
+## Font Families
 
 | Type | Description |
 |---|---|
@@ -16,19 +22,27 @@ For performance reasons, the default values that have been set for these variabl
 | Base | This is the default font for your site. If it is not text that should stand out more than other text, it should be using this font. This font should be simple and easy to read at both large and small font sizes. |
 | Monospace | If you are creating a tutorial site that has code snippets or special call-out text, this font is an excellent way to help highlight those parts of your application. |
 
+```scss
+$fonts: (
+    accent: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    base: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+) !default;
+```
+
 ## Font Sizes
 
 The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increased or they zoom in and out.
 
 ```scss
 $font-sizes: (
-    xxs: 0.75rem,
-    xs: 0.875rem,
-    sm: 1rem,
-    md: 1.25rem,
-    lg: 1.5rem,
-    xl: 2rem,
-    xxl: 3rem
+    xxs: 0.75rem, // 12px
+    xs: 0.875rem, // 14px
+    sm: 1rem,     // 16px
+    md: 1.25rem,  // 30px
+    lg: 1.5rem,   // 24px
+    xl: 2rem,     // 32px
+    xxl: 3rem     // 48px
 ) !default;
 ```
 
@@ -46,14 +60,14 @@ The spacing variables control things like padding and margins for your site. At 
 $spacing-sizes: (
     auto: auto,
     none: 0,
-    3xs: 0.0625rem,
-    xxs: 0.125rem,
-    xs: 0.25rem,
-    sm: 0.5rem,
-    md: 0.75rem,
-    lg: 1rem,
-    xl: 1.25rem,
-    xxl: 2rem
+    3xs: 0.0625rem, // 1px
+    xxs: 0.125rem,  // 2px
+    xs: 0.25rem,    // 4px
+    sm: 0.5rem,     // 8px
+    md: 0.75rem,    // 12px
+    lg: 1rem,       // 16px
+    xl: 1.25rem,    // 20px
+    xxl: 2rem       // 32px
 ) !default;
 ```
 
@@ -84,17 +98,20 @@ These values are used to help you make your site responsive. Having consistency 
 
 ```scss
 $breakpoints: (
-    xs: 480px,
-    sm: 768px,
-    md: 992px,
-    lg: 1200px,
-    xl: 1440px
+    xxs: 20rem,  // 320px
+    xs: 30rem,   // 480px
+    sm: 48rem,   // 768px
+    md: 62rem,   // 992px
+    lg: 75rem,   // 1200px
+    xl: 90rem    // 1440px
 ) !default;
 ```
 
 ## Z-Indexes
 
 This is usually on of the most obvious and yet most comical implementations to talk about. When asking developers how they handle z-indexes in their application, the most common answer is to set the value to `9999`. If that doesn't work, continue adding a 9 on the end until it does. Having a repeatable pattern and process for this should help remove this behavior as well as some of the unpredictability of your application.
+
+To take advantage of these values there is a [z-index function](/framework/documentation/functions/z-index.html), but more importantly [z-index mixin](/framework/documentation/mixins/z-index.html). You will probably use the mixin more than the function.
 
 ```scss
 $z-indexes: (
@@ -117,10 +134,10 @@ These are pretty straight forward. This is a way to keep your rounded corners co
 ```scss
 $border-radiuses: (
     none: 0,
-    sm: 0.25rem,
-    md: 0.5rem,
-    lg: 0.75rem,
-    pill: 10rem,
+    sm: 0.25rem, // 4px
+    md: 0.5rem,  // 8px
+    lg: 0.75rem, // 12px
+    pill: 10rem, // 160px
     circle: 50%
 ) !default;
 ```
@@ -129,10 +146,14 @@ $border-radiuses: (
 
 The border variables are a little unique from the other variables in that they use values from other variables. For example, the `$border-size` uses values from the [`$spacing-sizes`](#spacing) variable and the `$border-color` variable uses values from the [`$theme-colors`](#colors) variable. It is important to remember that when changing these default values, or you may have unexpected results.
 
+It is not very likely that you will use these values regularly since they are already implemented in the [borders mixin](/framework/documentation/mixins/borders.html), but there is a [default border mixin](/framework/documentation/mixins/borders.html#default-border) available to use get these values.
+
 ```scss
-$border-style: solid !default;
-$border-size: 3xs !default; // 1px
-$border-color: light !default;
+$border: (
+    style: solid,
+    size: 3xs,    // from $spacing-sizes
+    color: light lighter
+) !default;
 ```
 
 ## Shadows
