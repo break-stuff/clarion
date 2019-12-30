@@ -92,3 +92,7 @@ important | bool | false | determines whether or not the `!important` property i
 ## `!important`
 
 The last parameter in this mixin is `$important` and defining all of the parameters just to make your style `!important` may seem a bit tedious - `border-l(solid, md, primary, base, 1, true)`. Don't worry! You can pass in a named parameter as a shortcut: `border(dashed, $important: true);`.
+
+## Default Styles
+
+You will probably not use this mixin as it is already implemented in the `border()` mixins, but there is a `default-border()` mixin that takes one parameter - the setting name. The default setting names are `style`, `size`, and `color`.
