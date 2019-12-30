@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Color Functions | Project Clarion</title>
+    <meta name="description" content="There are two main color functions we will be working with. The rest are variations. These functions are:">
+    <link rel="icon" href="/images/favicon.png">
+  <meta property="og:image" content="/images/clarion_default_image.png">[object Object]
+  <script src="https://kit.fontawesome.com/24018dd45e.js"></script>
+    <meta name="twitter:title" content="Color Functions"><meta name="twitter:description" content="There are two main color functions we will be working with. The rest are variations. These functions are:"><meta name="twitter:card" content="summary"><meta name="twitter:url" content="https://projectclarion.com/framework/documentation/functions/colors.html"><meta name="twitter:creator" content="@stuffbreaker"><meta property="og:type" content="article"><meta property="og:title" content="Color Functions"><meta property="og:description" content="There are two main color functions we will be working with. The rest are variations. These functions are:"><meta property="og:url" content="https://projectclarion.com/framework/documentation/functions/colors.html"><meta property="og:site_name" content="Clarion"><meta property="article:author" content="Burton Smith"><meta itemprop="name" content="Color Functions"><meta itemprop="description" content="There are two main color functions we will be working with. The rest are variations. These functions are:">
+    <link rel="preload" href="/assets/css/0.styles.feb30ac9.css" as="style"><link rel="preload" href="/assets/js/app.1d29a22a.js" as="script"><link rel="preload" href="/assets/js/2.4a05fb05.js" as="script"><link rel="preload" href="/assets/js/19.3cc4e4e1.js" as="script"><link rel="preload" href="/assets/js/6.7f765a1e.js" as="script"><link rel="prefetch" href="/assets/js/10.fd2f8738.js"><link rel="prefetch" href="/assets/js/11.c371999c.js"><link rel="prefetch" href="/assets/js/12.4c0f01de.js"><link rel="prefetch" href="/assets/js/13.af9a9c10.js"><link rel="prefetch" href="/assets/js/14.dc238a97.js"><link rel="prefetch" href="/assets/js/15.910a9498.js"><link rel="prefetch" href="/assets/js/16.fdd89a55.js"><link rel="prefetch" href="/assets/js/17.1c5fd193.js"><link rel="prefetch" href="/assets/js/18.989f5a37.js"><link rel="prefetch" href="/assets/js/20.c2dc03dd.js"><link rel="prefetch" href="/assets/js/21.578bd0d3.js"><link rel="prefetch" href="/assets/js/22.618ba9bd.js"><link rel="prefetch" href="/assets/js/23.46492dd9.js"><link rel="prefetch" href="/assets/js/24.973a6870.js"><link rel="prefetch" href="/assets/js/25.560dcf1a.js"><link rel="prefetch" href="/assets/js/26.91379d4a.js"><link rel="prefetch" href="/assets/js/27.6622680b.js"><link rel="prefetch" href="/assets/js/28.95a251a0.js"><link rel="prefetch" href="/assets/js/29.1186dc21.js"><link rel="prefetch" href="/assets/js/3.5454d0b9.js"><link rel="prefetch" href="/assets/js/30.508b440f.js"><link rel="prefetch" href="/assets/js/31.7763bde6.js"><link rel="prefetch" href="/assets/js/32.0881bf81.js"><link rel="prefetch" href="/assets/js/33.adad9f41.js"><link rel="prefetch" href="/assets/js/34.34365af9.js"><link rel="prefetch" href="/assets/js/35.a0210e3d.js"><link rel="prefetch" href="/assets/js/4.0d655dff.js"><link rel="prefetch" href="/assets/js/5.d7a153e8.js"><link rel="prefetch" href="/assets/js/7.5bf82486.js"><link rel="prefetch" href="/assets/js/8.a73e4043.js"><link rel="prefetch" href="/assets/js/9.82fac271.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.feb30ac9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Project Clarion</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div><div class="nav-item"><a href="https://www.npmjs.com/package/clarion" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  NPM
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/break-stuff/clarion" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></div><div class="nav-item"><a href="https://www.npmjs.com/package/clarion" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  NPM
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/break-stuff/clarion" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Home</a></li><li><a href="/GetStarted.html" class="sidebar-link">Getting Started</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>CLI</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Documentation</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cli/documentation/new.html" class="sidebar-link">Start Your Project</a></li><li><a href="/cli/documentation/add.html" class="sidebar-link">Adding and Removing Files</a></li><li><a href="/cli/documentation/configuration.html" class="sidebar-link">Configuration</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Examples</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Framework</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Documentation</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/framework/documentation/architecture.html" class="sidebar-link">Style Architecture</a></li><li><a href="/framework/documentation/variables.html" class="sidebar-link">Variables</a></li><li><section class="sidebar-group collapsable is-sub-group depth-2"><p class="sidebar-heading open"><span>Functions</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/framework/documentation/functions/colors.html" class="active sidebar-link">Color Functions</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/framework/documentation/functions/colors.html#color-function" class="sidebar-link">color() Function</a></li><li class="sidebar-sub-header"><a href="/framework/documentation/functions/colors.html#variant" class="sidebar-link">Variant</a></li><li class="sidebar-sub-header"><a href="/framework/documentation/functions/colors.html#opacity" class="sidebar-link">Opacity</a></li><li class="sidebar-sub-header"><a href="/framework/documentation/functions/colors.html#color-variation" class="sidebar-link">Color Variation</a></li><li class="sidebar-sub-header"><a href="/framework/documentation/functions/colors.html#text-color-function" class="sidebar-link">text-color() Function</a></li><li class="sidebar-sub-header"><a href="/framework/documentation/functions/colors.html#additional-functions" class="sidebar-link">Additional Functions</a></li></ul></li><li><a href="/framework/documentation/functions/spacing.html" class="sidebar-link">Spacing Functions</a></li><li><a href="/framework/documentation/functions/strings.html" class="sidebar-link">String Functions</a></li><li><a href="/framework/documentation/functions/z-index.html" class="sidebar-link">Z-Index Functions</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-2"><p class="sidebar-heading"><span>Mixins</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Examples</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="color-functions"><a href="#color-functions" class="header-anchor">#</a> Color Functions</h1> <p>There are two main color functions we will be working with. The rest are variations. These functions are:</p> <ol><li><code>color()</code></li> <li><code>text-color()</code></li></ol> <h2 id="color-function"><a href="#color-function" class="header-anchor">#</a> <code>color()</code> Function</h2> <p>The <code>color()</code> function allows you to select a color from the <code>$theme-colors</code> variable that is set up in your <code>00_Abstracts/_variables.scss</code> directory. This will allow you to maximize your reuse as well as provide some other cool features like theme chaining and dynamically generating components like buttons.</p> <h3 id="example"><a href="#example" class="header-anchor">#</a> Example:</h3> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">h1 </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>primary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*  or  */</span>
+
+<span class="token selector">.alert </span><span class="token punctuation">{</span>
+    <span class="token selector">.warning </span><span class="token punctuation">{</span>
+        <span class="token property">border</span><span class="token punctuation">:</span> solid 1px <span class="token function">color</span><span class="token punctuation">(</span>warning<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token selector">.danger </span><span class="token punctuation">{</span>
+        <span class="token property">border</span><span class="token punctuation">:</span> solid 1px <span class="token function">color</span><span class="token punctuation">(</span>danger<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Now, using the <code>color()</code> function and passing in the color name is only the most basic feature available. By default, passing in the name of the color you want as the only parameter will get the color value that you specified in the <code>00_Abstracts/_variables</code> file. However, there are 3 possible parameters that can be passed into this function to produce different results:</p> <table><thead><tr><th>Parameter</th> <th>Value Type</th> <th>Description</th> <th>Default Value</th></tr></thead> <tbody><tr><td>name</td> <td>string</td> <td>name of the color specified in the <code>00_Abstracts/_variables</code> file (as seen in the example above)</td> <td>primary</td></tr> <tr><td>variant</td> <td>string</td> <td>selecting a variation of that color based on your color palette</td> <td>base</td></tr> <tr><td>opacity</td> <td>number (between 0 and 1)</td> <td>Adjusting this number between 0 and 1 will adjust the opacity of the color select. 0 is completely opaque and 1 is completely solid.</td> <td>1</td></tr></tbody></table> <h2 id="variant"><a href="#variant" class="header-anchor">#</a> Variant</h2> <p>Behind the scenes, Clarion has constructed a color palette based on the colors you provided in your variable file. This is a huge time saver in terms of finding color variations as well as it keeps your code light and clean. Out of the box, the palette consists of 5 variations (<code>lighter</code>, <code>light</code>, <code>base</code>, <code>dark</code>, and <code>darker</code>).</p> <p>Taking advantage of these variations is as simple as adding another value to your function:</p> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.alert </span><span class="token punctuation">{</span>
+    <span class="token selector"><span class="token parent important">&amp;</span>.warning </span><span class="token punctuation">{</span>
+        <span class="token selector">.header </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>warning<span class="token punctuation">,</span> dark<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token selector">.body </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>warning<span class="token punctuation">,</span> lighter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token selector"><span class="token parent important">&amp;</span>.danger </span><span class="token punctuation">{</span>
+        <span class="token selector">.header </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>danger<span class="token punctuation">,</span> darker<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token selector">.body </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>warning<span class="token punctuation">,</span> light<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">NOTE</p> <p>When using the <code>base</code> color, you do not need to specify <code>color(primary, base)</code> as it is the default variation, so all you need to do is specify the color - <code>color(primary)</code>.</p></div> <p>Once you have updated the <code>$theme-colors</code> variable in the <code>_variables.scss</code> file, Clarion will automatically build out your color palette for you.</p> <h3 id="color-palette"><a href="#color-palette" class="header-anchor">#</a> Color Palette:</h3> <div class="color-palette"><div class="color"><div class="name">white</div> <div class="base bg-white">white</div></div> <div class="color"><div class="name">black</div> <div class="base bg-black">black</div></div> <div class="color"><div class="name">primary</div> <div class="base bg-primary">base</div> <div class="variations"><div class="variation bg-primary-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-primary-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-primary-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-primary-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-primary-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">secondary</div> <div class="base bg-secondary">base</div> <div class="variations"><div class="variation bg-secondary-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-secondary-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-secondary-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-secondary-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-secondary-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">success</div> <div class="base bg-success">base</div> <div class="variations"><div class="variation bg-success-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-success-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-success-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-success-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-success-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">info</div> <div class="base bg-info">base</div> <div class="variations"><div class="variation bg-info-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-info-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-info-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-info-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-info-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">warning</div> <div class="base bg-warning">base</div> <div class="variations"><div class="variation bg-warning-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-warning-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-warning-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-warning-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-warning-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">danger</div> <div class="base bg-danger">base</div> <div class="variations"><div class="variation bg-danger-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-danger-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-danger-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-danger-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-danger-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">light</div> <div class="base bg-light">base</div> <div class="variations"><div class="variation bg-light-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-light-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-light-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-light-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-light-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div><div class="color"><div class="name">dark</div> <div class="base bg-dark">base</div> <div class="variations"><div class="variation bg-dark-lighter">
+                lighter (<span class="hex"></span>)
+            </div><div class="variation bg-dark-light">
+                light (<span class="hex"></span>)
+            </div><div class="variation bg-dark-base">
+                base (<span class="hex"></span>)
+            </div><div class="variation bg-dark-dark">
+                dark (<span class="hex"></span>)
+            </div><div class="variation bg-dark-darker">
+                darker (<span class="hex"></span>)
+            </div></div></div></div> <div class="tip custom-block"><p class="custom-block-title">NOTE</p> <p><code>black</code> and <code>white</code> are available (even though they are not specified in the palette). You are able to change their opacity, but not color variations are not available for them.</p></div> <h2 id="opacity"><a href="#opacity" class="header-anchor">#</a> Opacity</h2> <p>The opacity parameter in the <code>color()</code> function controls the transparency of the color. The value <em>must</em> be between <code>0</code> and <code>1</code> (the closer to 0 it is the more transparent it is). This can be specified for the base and variation colors.</p> <h3 id="example-2"><a href="#example-2" class="header-anchor">#</a> Example</h3> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.modal-background </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>dark<span class="token punctuation">,</span> 0.75<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token selector">.modal </span><span class="token punctuation">{</span>
+        <span class="token selector">.head </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>light<span class="token punctuation">,</span> darker<span class="token punctuation">,</span> 0.2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="color-variation"><a href="#color-variation" class="header-anchor">#</a> Color Variation</h2> <p>With Clarion you also have the ability to control the difference in the color variations. If you want your darks to be darker and your lights to be lighter (or <em>vice versa</em>), you can update the <code>$color-variation</code> variable in the <code>_variables.scss</code> file. The value <em>must be a percentage</em>. The default value is <code>8%</code>. Increasing the number will increase the difference in the variations and decreasing will do the opposite.</p> <h2 id="text-color-function"><a href="#text-color-function" class="header-anchor">#</a> <code>text-color()</code> Function</h2> <p>As users of the web and our applications become more and more diverse, inclusive design can be difficult and sometimes very daunting. The <code>text-color()</code> function helps find an appropriately contrasting color (<code>black</code>, or <code>white</code>) for your text based on a given background color. Simply pass the function color of the back (as you would with the <code>color()</code> function) and a contrasting color will be returned.</p> <h3 id="example-3"><a href="#example-3" class="header-anchor">#</a> Example:</h3> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">blockquote </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>dark<span class="token punctuation">,</span> lighter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">text-color</span><span class="token punctuation">(</span>dark<span class="token punctuation">,</span> lighter<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns white text</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.button </span><span class="token punctuation">{</span>
+    <span class="token selector">.primary </span><span class="token punctuation">{</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>primary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">text-color</span><span class="token punctuation">(</span>primary<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns white text</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.modal </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>light<span class="token punctuation">,</span> lighter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">text-color</span><span class="token punctuation">(</span>light<span class="token punctuation">,</span> lighter<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns black text</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">ACCESSIBILITY</p> <p>The <code>text-color()</code> result should meet the <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html" target="_blank" rel="noopener noreferrer">WCAG 2.0 AA<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> color contrast requirement. If this is not the case, please <a href="/contact/">contact me</a>.</p></div> <div class="warning custom-block"><p>These tools are intended to help your application be more accessible, but they are not fool-proof. Please, make sure you are using tools to audit your application's accessibility like <a href="https://developers.google.com/web/tools/lighthouse/" target="_blank" rel="noopener noreferrer">Lighthouse<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and <a href="https://accessibilityinsights.io/" target="_blank" rel="noopener noreferrer">Accessibility Insights<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p></div> <h2 id="additional-functions"><a href="#additional-functions" class="header-anchor">#</a> Additional Functions</h2> <p>There are additional functions that run behind the scenes to make these two color functions work. We will not go into detail on what these do right now, but you should know what they are and what they do.</p> <h3 id="color-contrast"><a href="#color-contrast" class="header-anchor">#</a> Color Contrast</h3> <p>In the <code>_color-contrast.scss</code> are a number of functions that calculate the <em>luminance</em> and <em>contrast ratios</em> to get the contrasting colors for the <code>text-color()</code> function.</p> <h3 id="math"><a href="#math" class="header-anchor">#</a> Math</h3> <p>One downside to <code>SASS</code> is that its math functions are pretty basic. Unfortunately, there is no <code>POW</code> function to deal with exponents, so I had to write one to help calculate the color contrast.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/framework/documentation/variables.html" class="prev">
+          Variables
+        </a></span> <span class="next"><a href="/framework/documentation/functions/spacing.html">
+          Spacing Functions
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1d29a22a.js" defer></script><script src="/assets/js/2.4a05fb05.js" defer></script><script src="/assets/js/19.3cc4e4e1.js" defer></script><script src="/assets/js/6.7f765a1e.js" defer></script>
+  </body>
+</html>
