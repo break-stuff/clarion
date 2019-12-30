@@ -23,3 +23,21 @@ Which will result in:
     z-index: 500;
 }
 ```
+
+## `!important`
+
+The mixin also takes in a second parameter - `$important` - for setting the `!important` property.
+
+```scss
+.modal {
+    @include z-index(xl, true);
+}
+```
+
+Which will result in:
+
+```css
+.modal {
+    z-index: 500 !important;
+}
+```
