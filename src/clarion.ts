@@ -7,7 +7,7 @@ import { IRemove, Remove } from "./commands/remove";
 import { IConfigService, ConfigService } from "./services/configService";
 
 commander
-    .version("3.8.2")
+    .version("3.8.3")
     .usage("<command>");
 
 commander
@@ -31,8 +31,8 @@ commander
             const styleFormatResponses = await prompt(starterQuestions.styleFormat);
             newProject.init(projectTypeResponse.projectType, projectName, styleFormatResponses.styleFormat, pipeline);
         } else {
-            const projectnameResponse = await prompt(starterQuestions.projectName);
-            newProject.init('default', projectnameResponse.projectName, 'SCSS', 'Webpack');
+            const projectNameResponse = await prompt(starterQuestions.projectName);
+            newProject.init('default', projectNameResponse.projectName, 'SCSS', 'Webpack');
         }
     });
 

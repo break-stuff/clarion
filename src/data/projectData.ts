@@ -129,29 +129,23 @@ export var projectData: IProjectData = {
             "grunt-postcss",
             "grunt-contrib-watch",
             "grunt-contrib-connect",
-            "cross-env",
-            "node-sass"
+            "cross-env"
         ],
         lessDependencies: [
             'grunt-contrib-less'
         ],
         sassDependencies: [
-            'grunt-sass'
+            'grunt-sass',
+            "node-sass"
         ],
         npmCommands: {
             "dev": "cross-env NODE_ENV=development grunt dev",
             "build": "cross-env NODE_ENV=production grunt build"
         },
-        configContents: `const sass = require("node-sass");
-
-module.exports = function(grunt) {
+        configContents: `module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         %%styleFormat%%: {
-            options: {
-                implementation: sass,
-                sourceMap: true
-            },
             dist: {
                 files: {
                     "dist/styles.css": "src/%%extension%%/styles.%%extension%%"

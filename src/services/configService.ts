@@ -3,8 +3,18 @@ import { IClarionConfig, projectData } from '../data/projectData';
 import { IFileService, FileService } from "../services/fileService";
 import { ILogService, LogService } from "./logService";
 
+interface IConfig {
+    paths: {
+        styles: string,
+    },
+    format: {
+        styles: string,
+    },
+    addToManifest: boolean,
+    importAbstracts: boolean
+}
+
 export interface IConfigService {
-    saveConfig(property?: string, value?: string): void;
     getConfigData(): any;
     updateConfigInfo(): void;
 }
@@ -13,15 +23,6 @@ export class ConfigService implements IConfigService {
     _fileService: IFileService = new FileService();
     _logger: ILogService = new LogService();
     _configFileName = 'clarion-config.json';
-
-    saveConfig(property?: string, value?: string): void {
-        let config = this.getConfigData();
-        if (property)
-            config = this.updateConfigProperty(config, property, value);
-
-        if (config)
-            this._fileService.saveFile(this._configFileName, JSON.stringify(config, null, '\t'));
-    }
 
     getConfigData(): IClarionConfig {
         if (this._fileService.fileExists('./' + this._configFileName)) {
@@ -33,40 +34,26 @@ export class ConfigService implements IConfigService {
         return projectData.clarionConfig;
     }
 
-    updateConfigProperty(config: any, property: string | string[], value: string) {
-        let properties = typeof property === "string" ? property.split('.') : property;
-
-        if (properties.length > 1) {
-            var p = properties.shift();
-            if (config[p] == null || typeof config[p] !== 'object') {
-                config[p] = {};
-            }
-            this.updateConfigProperty(config[p], properties, value);
-        } else {
-            if (properties[0] in config) {
-                config[properties[0]] = value;
-            } else {
-                this._logger.warning(properties[0] + ' was not found.');
-                return false;
-            }
-        }
-
-        return config;
+    async updateConfigInfo() {
+        let responses = await this.promptUserInput();
+        let config = this.updateConfigData(responses);
+        this._fileService.saveFile(this._configFileName, JSON.stringify(config, null, '\t'));
     }
 
-    updateConfigInfo() {
-        let config = {
+    updateConfigData(responses: any): IConfig {
+        return {
             paths: {
-                styles: "./src",
+                styles: responses.stylePath || './src',
             },
             format: {
-                styles: "scss",
+                styles: responses.styleFormat || 'scss',
             },
-            addToManifest: true,
-            importAbstracts: true
+            addToManifest: responses.addToManifest === true,
+            importAbstracts: responses.importAbstracts === true
         };
+    }
 
-
+    async promptUserInput() {
         let questions = [
             {
                 type: "input",
@@ -96,14 +83,6 @@ export class ConfigService implements IConfigService {
             }
         ];
 
-        prompt(questions)
-            .then(answers => {
-                config.addToManifest = answers.addToManifest;
-                config.format.styles = answers.styleFormat;
-                config.importAbstracts = answers.importAbstracts;
-                config.paths.styles = answers.stylePath
-                
-                this._fileService.saveFile(this._configFileName, JSON.stringify(config, null, '\t'));
-            });
+        return await prompt(questions);;
     }
 }

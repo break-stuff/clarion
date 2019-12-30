@@ -100,20 +100,21 @@ export class NewProject implements INewProject {
     }
 
     createPackageJson() {
-        projectData.packageJson.name = this._projectName
-            .replace(/\s+/g, '-')
-            .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-            .toLowerCase();
-
+        projectData.packageJson.name = this.convertToKebabCase(this._projectName);
         projectData.packageJson.scripts = this._projectData.projectCommands;
         this._fileService.saveFile(`./${this._projectName}/package.json`, JSON.stringify(projectData.packageJson, null, '\t'));
         this._shellService.installNPMDependencies(this._projectName, this._projectData.devDependencies, true);
     }
 
+    convertToKebabCase(text: string) {
+        return text.replace(/\s+/g, '-')
+            .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+            .toLowerCase();
+    }
+
     createTaskRunner(): void {
         this._projectData = this._projectService.getProjectData(this._projectName);
     }
-
 
     createIndexHtml() {
         let isParcel = this._pipeline === newProject.options.pipeline.parcel;

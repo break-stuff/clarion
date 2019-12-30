@@ -1,5 +1,4 @@
 import { should, expect } from 'chai';
-import program from '../../src/clarion';
 import { IAdd, Add } from '../../src/commands/add';
 
 describe('New Project Services', () => {
@@ -7,7 +6,7 @@ describe('New Project Services', () => {
         it('it should convert new file path to proper file format', () => {
             // arrange
             let fileName = 'test/test/file';
-            let extension = '.sass';
+            let extension = 'sass';
             let sut = new Add();
 
             // act
