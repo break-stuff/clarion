@@ -4,7 +4,7 @@ Variables (sometimes called _design tokens_) are one of the core pieces of your 
 
 ## Containers
 
-There is currently only 1 container variable and it is `$content-width`. This is the max-width of the main content of your pages. The default is set to `600px` for optimal readability for pages with a lot of text (documentation sites, blogs, etc.), but feel free to tweak this to suit your needs.
+There is currently only 1 container variable and it is `$content-width`. This is the max-width of the main content of your pages. The default value is set to `600px` for optimal readability for pages with a lot of text (documentation sites, blogs, etc.), but feel free to tweak this to suit your needs.
 
 ## Fonts
 
@@ -32,7 +32,7 @@ $fonts: (
 
 ## Font Sizes
 
-The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increased or they zoom in and out.
+The default font sizes are `xxs-xxl`. They also use `rem`'s for the unit of measure. This is to provide proper scaling when the user's browser default font size is increased or they zoom in and out or adjust their default font size.
 
 ```scss
 $font-sizes: (
