@@ -102,10 +102,12 @@ module.exports = {
                                     '/framework/documentation/mixins/borders.html',
                                     '/framework/documentation/mixins/breakpoints.html',
                                     '/framework/documentation/mixins/display.html',
+                                    '/framework/documentation/mixins/font.html',
                                     '/framework/documentation/mixins/font-sizes.html',
                                     '/framework/documentation/mixins/hover.html',
                                     '/framework/documentation/mixins/shadows.html',
                                     '/framework/documentation/mixins/spacing.html',
+                                    '/framework/documentation/mixins/z-index.html',
                                 ]
                             }
                         ]
