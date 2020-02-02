@@ -57,8 +57,8 @@ $spacing-sizes: (
 // COLORS
 
 $theme-colors: (
-    primary: #d15f01,
-    secondary: #30629e,
+    primary: #24598d,
+    secondary: #117d47,
     success: #669c1f, 
     info: #509BCE, 
     warning: #B88A00, 
