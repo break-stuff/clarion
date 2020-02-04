@@ -954,7 +954,7 @@ $spacing-sizes: ( auto: auto, none: 0, 3xs: 0.0625rem, xxs: 0.125rem, xs: 0.25re
 
 // COLORS
 
-$theme-colors: (primary: #24598d, secondary: #117d47, success: #76b524, info: #669c1f, warning: #B88A00, danger: #c70000, light: #ababab, dark: #545454) !default
+$theme-colors: (primary: #24598d, secondary: #117d47, success: #669c1f, info: #509BCE, warning: #B88A00, danger: #c70000, light: #ababab, dark: #545454) !default
 
 $color-variation: 8% !default
 
