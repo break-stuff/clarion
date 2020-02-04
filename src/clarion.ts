@@ -7,7 +7,7 @@ import { IRemove, Remove } from "./commands/remove";
 import { IConfigService, ConfigService } from "./services/configService";
 
 commander
-    .version("3.8.3")
+    .version("3.8.4")
     .usage("<command>");
 
 commander

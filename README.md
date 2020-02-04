@@ -165,6 +165,8 @@ These are options you can run when initializing you project.
 
 ## Changelog
 
+3.8.4 - Fix color palette.
+
 3.8.3 - Updated pipeline config files to handle 'less' and 'sass' configurations better.
 
 3.8.1 - Fix Grunt build
