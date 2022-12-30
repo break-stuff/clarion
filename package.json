@@ -57,7 +57,7 @@
     "@types/node": "^8.10.20",
     "chai": "^4.1.2",
     "fsevents": "^2.0.6",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "ts-node": "^5.0.1",
     "typescript": "^2.9.2"
   }
